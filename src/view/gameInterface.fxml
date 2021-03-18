@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<TabPane prefHeight="844.0" prefWidth="1270.0" side="LEFT" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.GameController">
+<TabPane prefHeight="844.0" prefWidth="1270.0" side="LEFT" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <tabs>
       <Tab>
          <content>

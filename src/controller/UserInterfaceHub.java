@@ -1,4 +1,4 @@
-package userInterface;
+package controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,20 +9,20 @@ import javafx.stage.Stage;
 public class UserInterfaceHub extends Application {
 
     private static Parent gameUIScene;
-    private static Parent loginScene;
+    private static Parent serverConnectScene;
     private static Stage window;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
-        gameUIScene = FXMLLoader.load(getClass().getResource("gameInterface.fxml"));
-        loginScene = FXMLLoader.load(getClass().getResource("introScene.fxml"));
+        gameUIScene = FXMLLoader.load(getClass().getResource("../view/gameInterface.fxml"));
+        serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
 
-//        window.setTitle("Login Authentication");
-//        window.setScene(new Scene(loginScene));
-//        window.show();
-        switchToGameScene();
+        window.setTitle("Connect to Server");
+        window.setScene(new Scene(serverConnectScene));
+        window.show();
+//        switchToGameScene();
     }
 
     public static void switchToGameScene() {
@@ -33,11 +33,5 @@ public class UserInterfaceHub extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-}
-
-class Player {
-    public void print() {
-        System.out.println("Player printed");
     }
 }
