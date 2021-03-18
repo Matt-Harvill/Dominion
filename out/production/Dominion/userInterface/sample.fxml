@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="userInterface.GameController">
+   <children>
+      <TextField fx:id="gameInterface" layoutX="14.0" layoutY="227.0" onAction="#gameCommandEntered" prefHeight="25.0" prefWidth="337.0" />
+      <TextField fx:id="chatInterface" layoutX="388.0" layoutY="227.0" onAction="#chatMessageEntered" prefHeight="25.0" prefWidth="200.0" />
+      <TextArea fx:id="gameDisplay" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="337.0" />
+      <TextArea fx:id="chatDisplay" editable="false" layoutX="388.0" layoutY="14.0" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="200.0" />
+      <HBox layoutX="19.0" layoutY="303.0" prefHeight="150.0" prefWidth="561.0">
+         <children>
+            <ImageView fx:id="img2" fitHeight="150.0" fitWidth="102.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
+            <ScrollPane prefHeight="150.0" prefWidth="177.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="313.0" />
+              </content>
+            </ScrollPane>
+            <ImageView fx:id="img3" fitHeight="150.0" fitWidth="35.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="87.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:/C:/Users/mharv/Documents/UTD%20Spring%202021/Prof%20Dev/LinkedIn%20Post.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="87.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="87.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+
+   </children>
+</Pane>
