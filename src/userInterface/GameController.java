@@ -3,6 +3,7 @@ package userInterface;
 import cardStuff.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -15,41 +16,29 @@ import java.util.List;
 
 public class GameController {
 
-    @FXML private TextField gameInterface;
-
-    @FXML private TextField chatInterface;
-
-    @FXML private TextArea gameDisplay;
+    @FXML private TextField gameInterface, chatInterface;
+    @FXML private TextArea gameDisplay, chatDisplay;
     private List<String> gameDisplayStrings = new ArrayList<>();
-
-    @FXML private TextArea chatDisplay;
     private List<String> chatDisplayStrings = new ArrayList<>();
+    @FXML private ImageView image1, image2, image3, image4, image5;
+    @FXML private ImageView cardInGame00,cardInGame10,cardInGame20,cardInGame30,cardInGame40,cardInGame01,cardInGame11,cardInGame21,cardInGame31,cardInGame41;
+    @FXML private Label label00, label10, label20, label30, label40, label01, label11, label21, label31, label41;
 
-    @FXML private ImageView img2;
-    @FXML private ImageView img3;
-
-    private int count = 0;
-    private Player p;
-    private Card card;
+    private List<ImageView> images = new ArrayList<>();
 
     public void initialize() {
         chatDisplay.setText("This is the chat display");
-        p = new Player();
 
-        img3.setImage(new Image(new File("Images/Me and John.jpg").toURI().toString()));
-        card = CardFactory.getCard("Copper");
-    }
-
-
-    public void onMouseEntered(MouseEvent mouseEvent) {
-        gameDisplay.setText("Mouse entered chat display");
-    }
-
-    public void onMouseExited(MouseEvent mouseEvent) {
-        gameDisplay.setText("Mouse left chat display");
+        cardInGame00.setImage(CardFactory.getCard("Silver").getCardImage());
+        label00.setText("Cards Remaining: 10");
+        cardInGame10.setImage(CardFactory.getCard("Copper").getCardImage());
+        label10.setText("Cards Remaining: 20");
+        cardInGame20.setImage(CardFactory.getCard("Gold").getCardImage());
+        label20.setText("Cards Remaining: 5");
     }
 
     public void gameCommandEntered(ActionEvent actionEvent) {
+        if(gameDisplayStrings.size()>7) gameDisplayStrings.remove(0);
         gameDisplayStrings.add(gameInterface.getText());
         gameInterface.setText(null);
         StringBuilder builder = new StringBuilder();
@@ -58,8 +47,8 @@ public class GameController {
         }
         gameDisplay.setText(builder.toString());
     }
-
     public void chatMessageEntered(ActionEvent actionEvent) {
+        if(chatDisplayStrings.size()>7) chatDisplayStrings.remove(0);
         chatDisplayStrings.add(chatInterface.getText());
         chatInterface.setText(null);
         StringBuilder builder = new StringBuilder();
@@ -70,12 +59,7 @@ public class GameController {
     }
 
     public void onImageClicked(MouseEvent mouseEvent) {
-        if(count%2==0) {
-            img2.setImage(new Image(new File("C:/Users/mharv/Documents/UTD Spring 2021/Prof Dev/LinkedIn Post.PNG").toURI().toString()));
-            p.print();
-        } else {
-            img2.setImage(new Image(card.getImageFile().toURI().toString()));
-        }
-        count++;
+        ImageView temp = (ImageView) mouseEvent.getSource();
+        temp.setImage(CardFactory.getCard("Copper").getCardImage());
     }
 }

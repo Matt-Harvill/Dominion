@@ -3,13 +3,24 @@ package cardStuff;
 import javafx.scene.image.Image;
 
 import java.io.File;
-import java.io.Serializable;
 
-public abstract class Card implements Serializable {
-    protected String name;
-    protected int cost;
-    protected Image cardImage;
+public class TreasureCard extends Card {
 
+    private int purchasePower;
+
+    public TreasureCard(String name, int cost, int purchasePower, Image image) {
+        this.name = name;
+        this.cost = cost;
+        this.purchasePower = purchasePower;
+        this.cardImage = image;
+    }
+
+    public int getPurchasePower() {
+        return purchasePower;
+    }
+    public void setPurchasePower(int purchasePower) {
+        this.purchasePower = purchasePower;
+    }
     public Image getCardImage() {
         return cardImage;
     }
@@ -29,5 +40,3 @@ public abstract class Card implements Serializable {
         this.cost = cost;
     }
 }
-
-

@@ -19,9 +19,10 @@ public class UserInterfaceHub extends Application {
         gameUIScene = FXMLLoader.load(getClass().getResource("sample.fxml"));
         loginScene = FXMLLoader.load(getClass().getResource("introScene.fxml"));
 
-        window.setTitle("Login Authentication");
-        window.setScene(new Scene(loginScene));
-        window.show();
+//        window.setTitle("Login Authentication");
+//        window.setScene(new Scene(loginScene));
+//        window.show();
+        switchToGameScene();
     }
 
     public static void switchToGameScene() {
