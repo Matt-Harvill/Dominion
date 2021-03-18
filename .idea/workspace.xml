@@ -2,24 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/SetNameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/card/ActionCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/card/BlankCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/factory/CardCollectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/factory/PlayerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/setPlayerNameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ActionCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ActionCardDependent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ActionCardIndependent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/BlankCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Card.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/ClientSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/TreasureCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/VictoryCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameInterface.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ActionCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TreasureCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/TreasureCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/VictoryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/VictoryCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/gameInterface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameInterface.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1pwUsdv9yTSYa3oE15M1u0tyMJW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../UTD Spring 2021/Java Coding/CardGameServer" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -69,7 +114,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616102080070</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit with new server connect scene. minor updates">
+      <created>1616102280830</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1616102280830</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit with new server connect scene. minor updates">
+      <created>1616102421679</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616102421679</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,9 +141,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="commit with new server connect scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit with new server connect scene" />
+    <MESSAGE value="commit with new server connect scene. minor updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit with new server connect scene. minor updates" />
   </component>
 </project>

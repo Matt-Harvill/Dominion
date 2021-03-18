@@ -1,4 +1,4 @@
-package model;
+package model.card;
 
 import javafx.scene.image.Image;
 
@@ -32,12 +32,6 @@ public abstract class Card implements Serializable {
     }
     public void setCost(int cost) {
         this.cost = cost;
-    }
-}
-
-class BlankCard extends Card {
-    public BlankCard(String name, int cost, Image cardImage) {
-        super(name, cost, cardImage);
     }
 }
 

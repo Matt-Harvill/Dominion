@@ -1,6 +1,7 @@
-package model;
+package model.card;
 
 import javafx.scene.image.Image;
+import model.card.Card;
 
 public class VictoryCard extends Card {
 

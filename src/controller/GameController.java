@@ -1,6 +1,5 @@
 package controller;
 
-import model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -8,18 +7,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import model.Player;
+import model.factory.CardFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
 
+    private Player player;
+
     @FXML private TextField gameInterface, chatInterface;
     @FXML private TextArea gameDisplay, chatDisplay;
-    private List<String> gameDisplayStrings = new ArrayList<>();
-    private List<String> chatDisplayStrings = new ArrayList<>();
+    private List<String> gameDisplayStrings, chatDisplayStrings;
 
-    @FXML private ImageView card1, card2, card3, card4, card5, otherCard1, otherCard2, otherCard3, otherCard4, otherCard5;
+    @FXML private ImageView card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, otherCard1, otherCard2, otherCard3, otherCard4, otherCard5;
 
     @FXML private ImageView actionCardInGame1, actionCardInGame2, actionCardInGame3, actionCardInGame4, actionCardInGame5,
             actionCardInGame6, actionCardInGame7, actionCardInGame8, actionCardInGame9, actionCardInGame10,
@@ -29,10 +31,12 @@ public class GameController {
             labelTCIG1, labelTCIG2, labelTCIG3, labelTCIG4,
             labelVCIG1, labelVCIG2, labelVCIG3, labelVCIG4;
 
-    private List<ImageView> images = new ArrayList<>();
-
     public void initialize() {
+        gameDisplayStrings = new ArrayList<>();
+        chatDisplayStrings = new ArrayList<>();
+
         chatDisplay.setText("This is the chat display");
+        gameDisplay.setText("This is the game event log");
 
         otherCard1.setImage(CardFactory.getCard("BackViewCard").getCardImage());
         otherCard2.setImage(CardFactory.getCard("BackViewCard").getCardImage());
@@ -40,6 +44,8 @@ public class GameController {
         otherCard4.setImage(CardFactory.getCard("BackViewCard").getCardImage());
         otherCard5.setImage(CardFactory.getCard("BackViewCard").getCardImage());
 
+
+        // Cards in Game Initializing
         actionCardInGame1.setImage(CardFactory.getCard("Village").getCardImage());
         labelACIG1.setText("Cards Remaining: 1");
         actionCardInGame2.setImage(CardFactory.getCard("Woodcutter").getCardImage());
@@ -75,7 +81,7 @@ public class GameController {
 
     public void gameCommandEntered(ActionEvent actionEvent) {
         if(gameDisplayStrings.size()>=7) gameDisplayStrings.remove(0);
-        gameDisplayStrings.add(gameInterface.getText());
+        gameDisplayStrings.add(UserInterfaceHub.getPlayer().getName() + ": " + gameInterface.getText());
         gameInterface.setText(null);
         StringBuilder builder = new StringBuilder();
         for(String s: gameDisplayStrings) {
@@ -85,7 +91,7 @@ public class GameController {
     }
     public void chatMessageEntered(ActionEvent actionEvent) {
         if(chatDisplayStrings.size()>=7) chatDisplayStrings.remove(0);
-        chatDisplayStrings.add(chatInterface.getText());
+        chatDisplayStrings.add(UserInterfaceHub.getPlayer().getName() + ": " + chatInterface.getText());
         chatInterface.setText(null);
         StringBuilder builder = new StringBuilder();
         for(String s: chatDisplayStrings) {

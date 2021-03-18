@@ -18,13 +18,12 @@ public class ServerConnectController {
 
     public void onLoginSubmit(ActionEvent actionEvent) {
 
-
         String ipAddressOfHost = ipAddressBox.getText();
         String portOfHost = portNumBox.getText();
 
         try {
             new ClientSideConnection(ipAddressOfHost,portOfHost);
-            UserInterfaceHub.switchToGameScene();
+            UserInterfaceHub.switchToSetNameScene();
         } catch (Exception ex) {
             errorMessage.setText("Incorrect Host IP and/or Port, Please Try Again");
         }
