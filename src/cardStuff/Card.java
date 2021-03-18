@@ -1,5 +1,6 @@
 package cardStuff;
 
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 
 import java.io.File;
@@ -9,6 +10,33 @@ public abstract class Card implements Serializable {
     protected String name;
     protected int cost;
     protected Image cardImage;
+
+    public Image getCardImage() {
+        return cardImage;
+    }
+    public void setCardImage(Image cardImage) {
+        this.cardImage = cardImage;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getCost() {
+        return cost;
+    }
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+}
+
+class BaseCard extends Card {
+
+    public BaseCard(String name, Image image) {
+        this.name = name;
+        this.cardImage = image;
+    }
 
     public Image getCardImage() {
         return cardImage;

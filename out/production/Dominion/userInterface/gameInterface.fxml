@@ -116,16 +116,16 @@
                               <Insets />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="label00" GridPane.rowIndex="1" />
-                        <Label fx:id="label10" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="label20" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label fx:id="label30" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Label fx:id="label40" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label fx:id="label01" GridPane.rowIndex="3" />
-                        <Label fx:id="label11" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="label21" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Label fx:id="label31" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Label fx:id="label41" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Label fx:id="labelACIG1" GridPane.rowIndex="1" />
+                        <Label fx:id="labelACIG2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="labelACIG3" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="labelACIG4" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label fx:id="labelACIG5" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Label fx:id="labelACIG6" GridPane.rowIndex="3" />
+                        <Label fx:id="labelACIG7" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="labelACIG8" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label fx:id="labelACIG9" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label fx:id="labelACIG10" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="796.0" layoutY="84.0" prefHeight="471.0" prefWidth="195.0">

@@ -16,7 +16,7 @@ public class UserInterfaceHub extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
-        gameUIScene = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        gameUIScene = FXMLLoader.load(getClass().getResource("gameInterface.fxml"));
         loginScene = FXMLLoader.load(getClass().getResource("introScene.fxml"));
 
 //        window.setTitle("Login Authentication");
