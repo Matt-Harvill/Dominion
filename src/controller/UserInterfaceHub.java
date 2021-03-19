@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Player;
+import model.Client;
 import model.card.ActionCard;
 import model.card.Card;
 import model.factory.CardFactory;
@@ -17,20 +17,25 @@ public class UserInterfaceHub extends Application {
 
     private static Parent gameUIScene, serverConnectScene, setNameScene;
     private static Stage window;
-    private static Player player;
+    private static Client client;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
-        gameUIScene = FXMLLoader.load(getClass().getResource("../view/gameInterface.fxml"));
+        client = new Client();
+
+        FXMLLoader gameUILoader = new FXMLLoader();
+        gameUIScene = gameUILoader.load(getClass().getResource("../view/gameInterface.fxml"));
+        client.setGameUIController(gameUILoader.getController());
+
         serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
         setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
 
-        window.setTitle("Connect to Server");
-        window.setScene(new Scene(serverConnectScene));
-        window.show();
-//        switchToSetNameScene();
+//        window.setTitle("Connect to Server");
+//        window.setScene(new Scene(serverConnectScene));
+//        window.show();
+        switchToSetNameScene();
 //        testCards();
 
     }
@@ -56,11 +61,8 @@ public class UserInterfaceHub extends Application {
         }
     }
 
-    public static Player getPlayer() {
-        return player;
-    }
-    public static void setPlayer(Player player) {
-        UserInterfaceHub.player = player;
+    public static Client getPlayer() {
+        return client;
     }
 
     public static void switchToGameScene() {

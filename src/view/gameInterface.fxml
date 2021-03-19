@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -9,54 +10,71 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane prefHeight="844.0" prefWidth="1270.0" side="LEFT" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
+<TabPane prefHeight="911.0" prefWidth="1270.0" side="LEFT" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <tabs>
       <Tab>
          <content>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="844.0" prefWidth="1241.0">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="912.0" prefWidth="1241.0">
                <children>
                   <TextField fx:id="gameInterface" layoutX="968.0" layoutY="526.0" onAction="#gameCommandEntered" prefHeight="25.0" prefWidth="201.0" />
                   <TextField fx:id="chatInterface" layoutX="974.0" layoutY="239.0" onAction="#chatMessageEntered" prefHeight="25.0" prefWidth="200.0" />
-                  <TextArea fx:id="gameDisplay" editable="false" layoutX="968.0" layoutY="309.0" prefHeight="200.0" prefWidth="200.0" />
-                  <TextArea fx:id="chatDisplay" editable="false" layoutX="974.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" />
-                  <GridPane layoutX="60.0" layoutY="309.0" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="750.0">
+                  <TextArea fx:id="gameLogDisplay" editable="false" layoutX="968.0" layoutY="309.0" prefHeight="200.0" prefWidth="200.0" />
+                  <TextArea fx:id="chatLogDisplay" editable="false" layoutX="974.0" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" />
+                  <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="90.0" layoutY="480.0" maxHeight="400.0" maxWidth="750.0" minHeight="400.0" minWidth="750.0" prefHeight="400.0" prefWidth="750.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="200.0" minHeight="200.0" prefHeight="200.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="200.0" prefHeight="200.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fx:id="card2" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-                        <ImageView fx:id="card1" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="card3" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-                        <ImageView fx:id="card4" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
-                        <ImageView fx:id="card5" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-                        <ImageView fx:id="card6" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-                        <ImageView fx:id="card7" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ImageView fx:id="card8" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <ImageView fx:id="card9" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <ImageView fx:id="card10" fitHeight="250.0" fitWidth="150.0" onMouseClicked="#onImageClicked" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <ImageView fx:id="card2" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                        <ImageView fx:id="card1" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="card3" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                        <ImageView fx:id="card4" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                        <ImageView fx:id="card5" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                        <ImageView fx:id="card6" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="card7" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fx:id="card8" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ImageView fx:id="card9" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ImageView fx:id="card10" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <HBox layoutX="60.0" layoutY="28.0" prefHeight="250.0" prefWidth="698.0">
+                  <TextField fx:id="changeNameField" layoutX="1000.0" layoutY="710.0" onAction="#changeName" />
+                  <Button layoutX="1028.0" layoutY="744.0" mnemonicParsing="false" onAction="#changeName" text="Change Name" />
+                  <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="90.0" layoutY="20.0" maxHeight="400.0" maxWidth="750.0" minHeight="400.0" minWidth="750.0" prefHeight="400.0" prefWidth="750.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="200.0" minHeight="200.0" prefHeight="200.0" vgrow="NEVER" />
+                        <RowConstraints maxHeight="250.0" minHeight="200.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <ImageView fx:id="otherCard1" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="otherCard2" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="otherCard3" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="otherCard4" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="otherCard5" fitHeight="250.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="opponentCard2" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+                        <ImageView fx:id="opponentCard1" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="opponentCard3" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                        <ImageView fx:id="opponentCard4" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
+                        <ImageView fx:id="opponentCard5" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
+                        <ImageView fx:id="opponentCard6" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                        <ImageView fx:id="opponentCard7" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fx:id="opponentCard8" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ImageView fx:id="opponentCard9" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ImageView fx:id="opponentCard10" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                      </children>
-                  </HBox>
+                  </GridPane>
             
                </children>
             </Pane>

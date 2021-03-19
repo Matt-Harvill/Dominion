@@ -26,14 +26,12 @@ public class CardCollection {
         actionCards.removeIf(c -> !(c instanceof ActionCard));
         return actionCards;
     }
-
     public List<Card> getVictoryCards(){
 
         List<Card> victoryCards = collection;
         victoryCards.removeIf(c -> !(c instanceof VictoryCard));
         return victoryCards;
     }
-
     public List<Card> getTreasureCards(){
         List<Card> treasureCards = collection;
         treasureCards.removeIf(c -> !(c instanceof TreasureCard));

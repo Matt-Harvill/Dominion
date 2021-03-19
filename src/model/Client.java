@@ -1,18 +1,19 @@
 package model;
 
-import java.util.List;
-
-public class Player {
+public class Client {
 
     private String name;
     private CardCollection hand, deck, discardPile;
     private int handLimit, numActions, numBuys, handPurchasePower, amountSpentThisTurn, bonusPurchasePower;
     private ClientSideConnection clientSideConnection;
+    private ModuleLayer.Controller gameUIController;
 
-    public Player(String name) {
-        this.name = name;
+    public ModuleLayer.Controller getGameUIController() {
+        return gameUIController;
     }
-
+    public void setGameUIController(ModuleLayer.Controller gameUIController) {
+        this.gameUIController = gameUIController;
+    }
     public ClientSideConnection getClientSideConnection() {
         return clientSideConnection;
     }

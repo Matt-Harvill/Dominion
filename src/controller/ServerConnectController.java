@@ -22,7 +22,8 @@ public class ServerConnectController {
         String portOfHost = portNumBox.getText();
 
         try {
-            new ClientSideConnection(ipAddressOfHost,portOfHost);
+            ClientSideConnection csc = new ClientSideConnection(ipAddressOfHost,portOfHost);
+            UserInterfaceHub.getPlayer().setClientSideConnection(csc);
             UserInterfaceHub.switchToSetNameScene();
         } catch (Exception ex) {
             errorMessage.setText("Incorrect Host IP and/or Port, Please Try Again");

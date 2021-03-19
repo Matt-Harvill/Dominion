@@ -3,8 +3,6 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import model.ClientSideConnection;
-import model.factory.PlayerFactory;
 
 public class SetNameController {
 
@@ -15,7 +13,7 @@ public class SetNameController {
 
     public void nameEntered(ActionEvent actionEvent) {
         name = nameTextField.getText();
-        UserInterfaceHub.setPlayer(PlayerFactory.getPlayer(name));
+        UserInterfaceHub.getPlayer().setName(name);
         UserInterfaceHub.switchToGameScene();
     }
 }
