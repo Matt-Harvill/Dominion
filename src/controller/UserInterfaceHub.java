@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Client;
+import model.ClientSideConnection;
 import model.card.ActionCard;
 import model.card.Card;
 import model.factory.CardFactory;
@@ -17,20 +18,28 @@ public class UserInterfaceHub extends Application {
 
     private static Parent gameUIScene, serverConnectScene, setNameScene;
     private static Stage window;
+
+    private static GameController gameController;
     private static Client client;
+    private static ClientSideConnection clientSideConnection;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
+
         client = new Client();
 
-        FXMLLoader gameUILoader = new FXMLLoader();
-        gameUIScene = gameUILoader.load(getClass().getResource("../view/gameInterface.fxml"));
-        client.setGameUIController(gameUILoader.getController());
+        FXMLLoader gameUILoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
+        gameUIScene = gameUILoader.load();
+
+        gameController = gameUILoader.getController();
 
         serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
         setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
+
+        //-------------Use this for listening to restore down--------------------//
+//        window.centerOnScreen();
 
 //        window.setTitle("Connect to Server");
 //        window.setScene(new Scene(serverConnectScene));
@@ -61,14 +70,25 @@ public class UserInterfaceHub extends Application {
         }
     }
 
-    public static Client getPlayer() {
+    public static Client getClient() {
         return client;
     }
-
+    public static ClientSideConnection getClientSideConnection() {
+        return clientSideConnection;
+    }
+    public static GameController getGameController() {
+        return gameController;
+    }
+    public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
+        UserInterfaceHub.clientSideConnection = clientSideConnection;
+    }
     public static void switchToGameScene() {
         window.setTitle("Dominion");
-        window.setX(100); window.setY(50);
         window.setScene(new Scene(gameUIScene));
+        window.setMaximized(true);
+        window.setMinWidth(1320);
+        window.setMinHeight(845);
+        window.show();
         window.show();
     }
     public static void switchToSetNameScene() {
