@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameController {
 
@@ -55,6 +57,10 @@ public class GameController {
     @FXML private Text actionCardNumber1,actionCardNumber2,actionCardNumber3,actionCardNumber4,actionCardNumber5,
             actionCardNumber6,actionCardNumber7,actionCardNumber8,actionCardNumber9,actionCardNumber10;
     private Text[] actionCardNumbers;
+    @FXML private Rectangle buyActionCardButton1,buyActionCardButton2,buyActionCardButton3,buyActionCardButton4,buyActionCardButton5,
+            buyActionCardButton6,buyActionCardButton7,buyActionCardButton8,buyActionCardButton9,buyActionCardButton10;
+    private Rectangle[] buyActionCardButtons;
+    private String[] namesOfActionCardsInSupply;
 
     //---------------TreasureCards In Supply---------------//
     @ FXML private Rectangle treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4;
@@ -88,6 +94,8 @@ public class GameController {
     //---------------Opponent and Player Deck------------------//
     @FXML private Rectangle playerDeck, opponentDeck;
 
+    @FXML private Button actionButton;
+
     public void initialize() throws FileNotFoundException {
         chatDisplayStrings = new ArrayList<>();
         gameDisplayStrings = new ArrayList<>();
@@ -111,18 +119,25 @@ public class GameController {
                 actionCardNumBackground6,actionCardNumBackground7,actionCardNumBackground8,actionCardNumBackground9,actionCardNumBackground10};
         actionCardNumbers = new Text[]{actionCardNumber1,actionCardNumber2,actionCardNumber3,actionCardNumber4,actionCardNumber5,
                 actionCardNumber6,actionCardNumber7,actionCardNumber8,actionCardNumber9,actionCardNumber10};
+        buyActionCardButtons = new Rectangle[]{buyActionCardButton1,buyActionCardButton2,buyActionCardButton3,buyActionCardButton4,buyActionCardButton5,
+                buyActionCardButton6,buyActionCardButton7,buyActionCardButton8,buyActionCardButton9,buyActionCardButton10};
+        namesOfActionCardsInSupply = new String[actionCardsInSupply.length];
         scanner = new Scanner(actionCardsInGame);
         ImagePattern imagePattern;
         int index = 0;
         while(scanner.hasNext()) {
             String s = scanner.next();
+            namesOfActionCardsInSupply[index] = s;
             int num = scanner.nextInt();
             imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + ".jpg").toURI().toString()));
             actionCardsInSupply[index].setFill(imagePattern);
+            imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
+            buyActionCardButtons[index].setFill(imagePattern);
             actionCardNumbers[index].setText(String.valueOf(num));
             actionCardsInSupply[index].setVisible(true);
             actionCardNumBackgrounds[index].setVisible(true);
             actionCardNumbers[index].setVisible(true);
+            buyActionCardButtons[index].setVisible(true);
             index++;
         }
 
@@ -204,6 +219,9 @@ public class GameController {
     public Rectangle[] getOppCardsPlayed() {
         return oppCardsPlayed;
     }
+    public Button getActionButton() { return actionButton; }
+    public Rectangle[] getBuyActionCardButtons() {return buyActionCardButtons;}
+    public Rectangle[] getActionCardsInSupply() {return actionCardsInSupply;}
 
     //-------------------Internal Updates------------------------//
 
@@ -270,11 +288,14 @@ public class GameController {
         }
 
     }
-    public void drawCards(ActionEvent actionEvent) {
-        UserInterfaceHub.getPlayer().newTurn();
-        CardCollection hand = UserInterfaceHub.getPlayer().getHand();
-        displayHand(hand);
-        UserInterfaceHub.getPlayer().discardHand();
+    public void actionButtonClicked(ActionEvent actionEvent) {
+        if(actionButton.getText().equals("Start Turn")) {
+            PlayerActionMediator.StartTurn(UserInterfaceHub.getPlayer(),this);
+        }
+        else if(actionButton.getText().equals("End Turn")) {
+            PlayerActionMediator.EndTurn(UserInterfaceHub.getPlayer(),this);
+        }
+
     }
     public void actionCardInSupplyClicked(MouseEvent mouseEvent) {
         Object cardClicked = mouseEvent.getSource();
@@ -300,43 +321,13 @@ public class GameController {
             }
         }
     }
-
-    public void displayHand(CardCollection hand) {
-        int index = 0;
-        List<Card> cards = hand.getAllCards();
-        Set<String> distinctCardsInHand = hand.getDistinctCards();
-
-        for(int i=0; i<cardsInHand.length; i++) {
-            cardsInHand[i].setVisible(false);
-            numsCardInHand[i].setVisible(false);
-            cardInHandNumbers[i].setVisible(false);
+    public void actionCardBuyClicked(MouseEvent mouseEvent) {
+        Rectangle buyButtonClicked = (Rectangle) mouseEvent.getSource();
+        String actionCardClicked = "Error in actionCardBuyClicked";
+        for(int i=0; i< buyActionCardButtons.length; i++) {
+            if(buyActionCardButtons[i].equals(buyButtonClicked)) actionCardClicked = namesOfActionCardsInSupply[i];
         }
-
-        int countOfCard;
-
-        for(String s: distinctCardsInHand) {
-            Card cardToDisplay = null;
-            countOfCard = 0;
-            for(Card c: cards) {
-                if(c.getName().equals(s)) {
-                    countOfCard = hand.numCardInCollection(c);
-                    cardToDisplay = c;
-                    break;
-                }
-            }
-            if(countOfCard==1) {
-                cardsInHand[index].setFill(new ImagePattern(cardToDisplay.getCardImage()));
-                cardsInHand[index].setVisible(true);
-                index++;
-            } else if(countOfCard>1) {
-                cardsInHand[index].setFill(new ImagePattern(cardToDisplay.getCardImage()));
-                cardInHandNumbers[index].setText(String.valueOf(countOfCard));
-                cardsInHand[index].setVisible(true);
-                numsCardInHand[index].setVisible(true);
-                cardInHandNumbers[index].setVisible(true);
-                index++;
-            }
-        }
+        PlayerActionMediator.buyCard(UserInterfaceHub.getPlayer(),this,actionCardClicked);
     }
 
     //-------------------External Updates------------------------//

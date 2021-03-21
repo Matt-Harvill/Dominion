@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/ActionCardsInGame.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/TreasureVictoryExtraCardsInGame.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardCollectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardCollectionFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SetNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SetNameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/plus sign.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,15 +78,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,7 +106,8 @@
       <workItem from="1616280934561" duration="10435000" />
       <workItem from="1616295278095" duration="4536000" />
       <workItem from="1616300477247" duration="4237000" />
-      <workItem from="1616331317819" duration="17193000" />
+      <workItem from="1616331317819" duration="17313000" />
+      <workItem from="1616352466417" duration="4581000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -182,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616342467307</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters.">
+      <created>1616351453175</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616351453175</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +207,7 @@
     <MESSAGE value="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that." />
     <MESSAGE value="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such." />
     <MESSAGE value="numCards in hand works correctly now" />
-    <option name="LAST_COMMIT_MESSAGE" value="numCards in hand works correctly now" />
+    <MESSAGE value="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters." />
+    <option name="LAST_COMMIT_MESSAGE" value="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters." />
   </component>
 </project>
