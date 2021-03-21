@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Client;
 import model.ClientSideConnection;
+import model.Player;
 import model.card.ActionCard;
 import model.card.Card;
 import model.factory.CardFactory;
@@ -20,14 +20,14 @@ public class UserInterfaceHub extends Application {
     private static Stage window;
 
     private static GameController gameController;
-    private static Client client;
+    private static Player player;
     private static ClientSideConnection clientSideConnection;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
-        client = new Client();
+        player = new Player();
 
         FXMLLoader gameUILoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
         gameUIScene = gameUILoader.load();
@@ -43,8 +43,8 @@ public class UserInterfaceHub extends Application {
         switchToSetNameScene();
 
         //-------------Center Frame if resized--------------------//
-        window.widthProperty().addListener((obs, oldVal, newVal) -> { window.centerOnScreen(); });
-        window.heightProperty().addListener((obs, oldVal, newVal) -> { window.centerOnScreen(); });
+        window.widthProperty().addListener((obs, oldVal, newVal) -> window.centerOnScreen());
+        window.heightProperty().addListener((obs, oldVal, newVal) -> window.centerOnScreen());
     }
 
     public static void testCards() {
@@ -68,8 +68,8 @@ public class UserInterfaceHub extends Application {
         }
     }
 
-    public static Client getClient() {
-        return client;
+    public static Player getPlayer() {
+        return player;
     }
     public static ClientSideConnection getClientSideConnection() {
         return clientSideConnection;

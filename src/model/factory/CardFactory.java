@@ -8,23 +8,23 @@ import java.io.File;
 public class CardFactory {
 
     public static Card getCard(String cardType) {
-        switch (cardType) {
-            case "BackViewCard": return new BlankCard(cardType, 0, new Image(new File("Images/BackViewCard.jpg").toURI().toString()));
-            case "Copper": return new TreasureCard(cardType, 0,1, new Image(new File("Images/Copper.jpg").toURI().toString()));
-            case "Silver": return new TreasureCard(cardType, 3, 2, new Image(new File("Images/Silver.jpg").toURI().toString()));
-            case "Gold": return new TreasureCard(cardType, 6, 3, new Image(new File("Images/Gold.jpg").toURI().toString()));
-            case "Platinum": return new TreasureCard(cardType, 9, 5, new Image(new File("Images/Platinum.jpg").toURI().toString()));
-            case "Village": return new ActionCard(cardType, 3, "+1 Card +2 Actions", new Image(new File("Images/Village.jpg").toURI().toString()),null);
-            case "Woodcutter": return new ActionCard(cardType, 3, "+1 Buy +2 Coins", new Image(new File("Images/Woodcutter.jpg").toURI().toString()), null);
-            case "Smithy": return new ActionCard(cardType, 4, "+3 Cards", new Image(new File("Images/Smithy.jpg").toURI().toString()), null);
-            case "Festival": return new ActionCard(cardType, 5, "+2 Actions +1 Buy +2 Coins", new Image(new File("Images/Festival.jpg").toURI().toString()), null);
-            case "Laboratory": return new ActionCard(cardType, 5, "+2 Cards +1 Action", new Image(new File("Images/Laboratory.jpg").toURI().toString()), null);
-            case "Market": return new ActionCard(cardType, 5, "+1 Card +1 Action +1 Buy +1 Coin", new Image(new File("Images/Market.jpg").toURI().toString()), null);
-            case "Estate": return new VictoryCard(cardType,2, 1, new Image(new File("Images/Estate.jpg").toURI().toString()));
-            case "Duchy": return new VictoryCard(cardType,5, 3, new Image(new File("Images/Duchy.jpg").toURI().toString()));
-            case "Province": return new VictoryCard(cardType,8, 6, new Image(new File("Images/Province.jpg").toURI().toString()));
-            case "Colony": return new VictoryCard(cardType,11, 10, new Image(new File("Images/Colony.jpg").toURI().toString()));
-        }
-        return null;
+        return switch (cardType) {
+            case "BackViewCard" -> new BlankCard(cardType, 0, new Image(new File("src/resources/BackViewCard.jpg").toURI().toString()));
+            case "Copper" -> new TreasureCard(cardType, 0, 1, new Image(new File("src/resources/Copper.jpg").toURI().toString()));
+            case "Silver" -> new TreasureCard(cardType, 3, 2, new Image(new File("src/resources/Silver.jpg").toURI().toString()));
+            case "Gold" -> new TreasureCard(cardType, 6, 3, new Image(new File("src/resources/Gold.jpg").toURI().toString()));
+            case "Platinum" -> new TreasureCard(cardType, 9, 5, new Image(new File("src/resources/Platinum.jpg").toURI().toString()));
+            case "Village" -> new ActionCard(cardType, 3, "+1 Card +2 Actions", new Image(new File("src/resources/Village.jpg").toURI().toString()), null);
+            case "Woodcutter" -> new ActionCard(cardType, 3, "+1 Buy +2 Coins", new Image(new File("src/resources/Woodcutter.jpg").toURI().toString()), null);
+            case "Smithy" -> new ActionCard(cardType, 4, "+3 Cards", new Image(new File("src/resources/Smithy.jpg").toURI().toString()), null);
+            case "Festival" -> new ActionCard(cardType, 5, "+2 Actions +1 Buy +2 Coins", new Image(new File("src/resources/Festival.jpg").toURI().toString()), null);
+            case "Laboratory" -> new ActionCard(cardType, 5, "+2 Cards +1 Action", new Image(new File("src/resources/Laboratory.jpg").toURI().toString()), null);
+            case "Market" -> new ActionCard(cardType, 5, "+1 Card +1 Action +1 Buy +1 Coin", new Image(new File("src/resources/Market.jpg").toURI().toString()), null);
+            case "Estate" -> new VictoryCard(cardType, 2, 1, new Image(new File("src/resources/Estate.jpg").toURI().toString()));
+            case "Duchy" -> new VictoryCard(cardType, 5, 3, new Image(new File("src/resources/Duchy.jpg").toURI().toString()));
+            case "Province" -> new VictoryCard(cardType, 8, 6, new Image(new File("src/resources/Province.jpg").toURI().toString()));
+            case "Colony" -> new VictoryCard(cardType, 11, 10, new Image(new File("src/resources/Colony.jpg").toURI().toString()));
+            default -> null;
+        };
     }
 }

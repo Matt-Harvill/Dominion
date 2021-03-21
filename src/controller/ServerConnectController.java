@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import model.Client;
+import model.Player;
 import model.ClientSideConnection;
 
 import java.io.IOException;

@@ -13,7 +13,7 @@ public class SetNameController {
 
     public void nameEntered(ActionEvent actionEvent) {
         name = nameTextField.getText();
-        UserInterfaceHub.getClient().setName(name);
+        UserInterfaceHub.getPlayer().setName(name);
         UserInterfaceHub.switchToGameScene();
     }
 }

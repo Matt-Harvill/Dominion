@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/Colony.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Copper.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Duchy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Estate.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Laboratory.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Market.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Platinum.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Province.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Silver.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Smithy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Village.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Woodcutter.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/plus sign.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/style1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SetNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SetNameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardCollectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardCollectionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/style1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,13 +81,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -118,7 +110,8 @@
       <updated>1616093855657</updated>
       <workItem from="1616280934561" duration="10435000" />
       <workItem from="1616295278095" duration="4536000" />
-      <workItem from="1616300477247" duration="3976000" />
+      <workItem from="1616300477247" duration="4237000" />
+      <workItem from="1616331317819" duration="10483000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -169,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616291522748</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such.">
+      <created>1616305042597</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1616305042597</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +195,7 @@
     <MESSAGE value="I have objects for components on the gameUI. Client has the gameController object so that it can update these components on the gameUI." />
     <MESSAGE value="commit with new gameScene structure" />
     <MESSAGE value="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that." />
-    <option name="LAST_COMMIT_MESSAGE" value="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that." />
+    <MESSAGE value="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such." />
+    <option name="LAST_COMMIT_MESSAGE" value="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such." />
   </component>
 </project>
