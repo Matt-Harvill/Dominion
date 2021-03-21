@@ -27,7 +27,6 @@ public class UserInterfaceHub extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
-
         client = new Client();
 
         FXMLLoader gameUILoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
@@ -38,15 +37,14 @@ public class UserInterfaceHub extends Application {
         serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
         setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
 
-        //-------------Use this for listening to restore down--------------------//
-//        window.centerOnScreen();
-
 //        window.setTitle("Connect to Server");
 //        window.setScene(new Scene(serverConnectScene));
 //        window.show();
         switchToSetNameScene();
-//        testCards();
 
+        //-------------Center Frame if resized--------------------//
+        window.widthProperty().addListener((obs, oldVal, newVal) -> { window.centerOnScreen(); });
+        window.heightProperty().addListener((obs, oldVal, newVal) -> { window.centerOnScreen(); });
     }
 
     public static void testCards() {
@@ -82,13 +80,13 @@ public class UserInterfaceHub extends Application {
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
         UserInterfaceHub.clientSideConnection = clientSideConnection;
     }
+
     public static void switchToGameScene() {
         window.setTitle("Dominion");
         window.setScene(new Scene(gameUIScene));
         window.setMaximized(true);
-        window.setMinWidth(1320);
-        window.setMinHeight(845);
-        window.show();
+        window.setMinWidth(1296);
+        window.setMinHeight(839);
         window.show();
     }
     public static void switchToSetNameScene() {

@@ -2,15 +2,17 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="borderPaneBackground" stylesheets="@style1.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
    <center>
-      <StackPane maxHeight="800.0" maxWidth="1280.0" minHeight="800.0" minWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+      <StackPane fx:id="mainStackPane" maxHeight="800.0" maxWidth="1280.0" minHeight="800.0" minWidth="1280.0" prefHeight="800.0" prefWidth="1280.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
@@ -20,24 +22,231 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane fx:id="opponentHand" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="160.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
+            <StackPane fx:id="opponentHand" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets bottom="10.0" left="430.0" right="10.0" top="10.0" />
                </StackPane.margin>
+               <children>
+                  <ImageView fx:id="oppCardPlayed1" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Village.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed2" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Copper.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed3" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="160.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Estate.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed4" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Gold.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="240.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed5" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Market.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="320.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed6" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Province.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed7" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed8" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" top="40.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Duchy.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed9" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Festival.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="200.0" top="40.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed10" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Laboratory.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="280.0" top="40.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="oppCardPlayed11" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Platinum.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="360.0" top="40.0" />
+                     </StackPane.margin>
+                  </ImageView>
+               </children>
             </StackPane>
             <StackPane fx:id="actionCardSupply" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
-                  <Insets bottom="10.0" left="320.0" right="10.0" top="200.0" />
+                  <Insets bottom="10.0" left="320.0" right="10.0" top="220.0" />
                </StackPane.margin>
-            </StackPane>
-            <StackPane fx:id="playerHand" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="160.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="430.0" right="10.0" top="10.0" />
-               </StackPane.margin>
+               <children>
+                  <ImageView fx:id="actionCardInSupply1" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" styleClass="borderPaneBackground" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum1" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT" />
+                  <ImageView fx:id="actionCardInSupply2" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum2" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="5" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply3" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" styleClass="cardHighlight" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum3" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply4" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="300.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum4" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="78" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="300.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply5" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum5" alignment="CENTER" contentDisplay="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply6" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" styleClass="cardHighlight" StackPane.alignment="BOTTOM_LEFT">
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum6" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="160.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply7" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" styleClass="cardHighlight" StackPane.alignment="BOTTOM_LEFT">
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="100.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum7" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="160.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply8" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="200.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum8" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="160.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply9" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="300.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum9" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="300.0" top="160.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <ImageView fx:id="actionCardInSupply10" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <Label fx:id="actionCardInSupplyNum10" alignment="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="numberLabel" text="10" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" top="160.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
             </StackPane>
             <StackPane fx:id="actionBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
-                  <Insets bottom="200.0" left="430.0" right="10.0" top="10.0" />
+                  <Insets bottom="220.0" left="430.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </StackPane>
             <StackPane fx:id="playersInfo" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" StackPane.alignment="BOTTOM_LEFT">
@@ -47,7 +256,7 @@
             </StackPane>
             <StackPane fx:id="extraCardSupply" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
-                  <Insets bottom="10.0" left="830.0" right="10.0" top="200.0" />
+                  <Insets bottom="10.0" left="830.0" right="10.0" top="220.0" />
                </StackPane.margin>
             </StackPane>
             <TextArea fx:id="gameLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="220.0" StackPane.alignment="TOP_RIGHT">
@@ -65,31 +274,135 @@
                   <Insets bottom="10.0" left="10.0" right="60.0" top="10.0" />
                </StackPane.margin>
             </TextField>
-            <ImageView fx:id="opponentDiscard" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+            <ImageView fx:id="opponentDiscard" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets bottom="10.0" left="320.0" right="10.0" top="10.0" />
                </StackPane.margin>
+               <image>
+                  <Image url="@../resources/Estate.jpg" />
+               </image>
             </ImageView>
-            <ImageView fx:id="playerDiscard" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_LEFT">
+            <ImageView fx:id="playerDiscard" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets bottom="10.0" left="320.0" right="10.0" top="10.0" />
                </StackPane.margin>
+               <image>
+                  <Image url="@../resources/Smithy.jpg" />
+               </image>
             </ImageView>
-            <ImageView fx:id="playerDeck" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="BOTTOM_LEFT">
+            <ImageView fx:id="playerDeck" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets bottom="10.0" left="940.0" right="10.0" top="10.0" />
                </StackPane.margin>
+               <image>
+                  <Image url="@../resources/BackViewCard.png" />
+               </image>
             </ImageView>
-            <ImageView fx:id="opponentDeck" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+            <ImageView fx:id="opponentDeck" fitHeight="160.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets bottom="10.0" left="940.0" right="10.0" top="10.0" />
                </StackPane.margin>
+               <image>
+                  <Image url="@../resources/BackViewCard.png" />
+               </image>
             </ImageView>
             <Button fx:id="chatSendButton" mnemonicParsing="false" onAction="#chatSend" text="Send" StackPane.alignment="BOTTOM_RIGHT">
                <StackPane.margin>
                   <Insets bottom="13.0" left="10.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </Button>
+            <StackPane fx:id="playerHand" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
+               <children>
+                  <ImageView fx:id="cardInHand1" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Village.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand2" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Copper.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand3" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="160.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Estate.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand4" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Gold.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="240.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand5" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Market.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="320.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand6" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Province.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand7" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Colony.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand8" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" top="40.0" />
+                     </StackPane.margin>
+                     <image>
+                        <Image url="@../resources/Duchy.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand9" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Festival.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="200.0" top="40.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand10" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Laboratory.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="280.0" top="40.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="cardInHand11" fitHeight="160.0" fitWidth="100.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+                     <image>
+                        <Image url="@../resources/Platinum.jpg" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="360.0" top="40.0" />
+                     </StackPane.margin>
+                  </ImageView>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="430.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </StackPane>
          </children>
       </StackPane>
    </center>
