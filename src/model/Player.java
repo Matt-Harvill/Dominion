@@ -42,13 +42,6 @@ public class Player {
         bonusPurchasePower = 0;
     }
 
-    public void executeTurn() {
-        newTurn();
-        displayHandOn(UserInterfaceHub.getGameController().getCardsInHandDisplay(),
-                UserInterfaceHub.getGameController().getCardsInHandNumBackground(),UserInterfaceHub.getGameController().getCardInHandNumbers());
-        discardHand();
-    }
-
     public CardCollection getHand() {
         return hand;
     }
@@ -183,38 +176,5 @@ public class Player {
         amountSpentThisTurn+=card.getCost();
     }
 
-    public void displayHandOn(Rectangle[] displaySections, Rectangle[] displayNumberBackgrounds, Text[] displayNumbers) {
-        int index = 0;
-        List<Card> cards = hand.getAllCards();
-        Set<String> distinctCardsInHand = hand.getDistinctCards();
 
-        int countOfCard;
-
-        for(String s: distinctCardsInHand) {
-            Card cardToDisplay = null;
-            countOfCard = 0;
-            for(Card c: cards) {
-                if(c.getName().equals(s)) {
-                    countOfCard = hand.numCardInCollection(c);
-                    cardToDisplay = c;
-                    break;
-                }
-            }
-            if(countOfCard==1) {
-                displaySections[index].setFill(new ImagePattern(cardToDisplay.getCardImage()));
-                displaySections[index].setVisible(true);
-                displayNumberBackgrounds[index].setVisible(false);
-                displayNumbers[index].setVisible(false);
-                index++;
-            } else if(countOfCard>1) {
-                displaySections[index].setFill(new ImagePattern(cardToDisplay.getCardImage()));
-                displayNumbers[index].setText(String.valueOf(countOfCard));
-                displaySections[index].setVisible(true);
-                displayNumberBackgrounds[index].setVisible(true);
-                displayNumbers[index].setVisible(true);
-                index++;
-            }
-        }
-
-    }
 }

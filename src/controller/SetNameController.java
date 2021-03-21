@@ -11,7 +11,7 @@ public class SetNameController {
     @FXML
     private TextField nameTextField;
 
-    public void nameEntered(ActionEvent actionEvent) {
+    public void nameEntered(ActionEvent actionEvent) throws InterruptedException {
         name = nameTextField.getText();
         UserInterfaceHub.getPlayer().setName(name);
         UserInterfaceHub.switchToGameScene();

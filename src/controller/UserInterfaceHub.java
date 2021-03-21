@@ -81,7 +81,7 @@ public class UserInterfaceHub extends Application {
         UserInterfaceHub.clientSideConnection = clientSideConnection;
     }
 
-    public static void switchToGameScene() {
+    public static void switchToGameScene() throws InterruptedException {
         window.setTitle("Dominion");
         window.setScene(new Scene(gameUIScene));
         window.setMaximized(true);

@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/resources/ActionCardsInGame.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/TreasureVictoryExtraCardsInGame.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardCollectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardCollectionFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/SetNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SetNameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardCollectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardCollectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +117,7 @@
       <workItem from="1616280934561" duration="10435000" />
       <workItem from="1616295278095" duration="4536000" />
       <workItem from="1616300477247" duration="4237000" />
-      <workItem from="1616331317819" duration="10483000" />
+      <workItem from="1616331317819" duration="17193000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -169,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616305042597</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="numCards in hand works correctly now">
+      <created>1616342467306</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1616342467307</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +209,7 @@
     <MESSAGE value="commit with new gameScene structure" />
     <MESSAGE value="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that." />
     <MESSAGE value="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such." />
-    <option name="LAST_COMMIT_MESSAGE" value="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such." />
+    <MESSAGE value="numCards in hand works correctly now" />
+    <option name="LAST_COMMIT_MESSAGE" value="numCards in hand works correctly now" />
   </component>
 </project>
