@@ -424,7 +424,7 @@
             </StackPane>
             <StackPane fx:id="actionCardSupply" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
-                  <Insets bottom="10.0" left="320.0" right="10.0" top="220.0" />
+                  <Insets bottom="10.0" left="320.0" right="10.0" top="10.0" />
                </StackPane.margin>
                <children>
                   <Rectangle fx:id="actionCardInSupply1" arcHeight="10.0" arcWidth="10.0" height="160.0" onMouseClicked="#actionCardInSupplyClicked" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
@@ -831,113 +831,9 @@
             </StackPane>
             <StackPane fx:id="extraCardSupply" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
-                  <Insets bottom="10.0" left="830.0" right="10.0" top="220.0" />
+                  <Insets bottom="10.0" left="830.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </StackPane>
-            <TextArea fx:id="gameLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="220.0" StackPane.alignment="TOP_RIGHT">
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="120.0" />
-               </StackPane.margin>
-            </TextArea>
-            <TextArea fx:id="chatLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="270.0" prefWidth="220.0" StackPane.alignment="BOTTOM_RIGHT">
-               <StackPane.margin>
-                  <Insets bottom="50.0" left="10.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </TextArea>
-            <TextField fx:id="chatType" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#chatSend" prefHeight="30.0" prefWidth="170.0" StackPane.alignment="BOTTOM_RIGHT">
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="60.0" top="10.0" />
-               </StackPane.margin>
-            </TextField>
-            <Button fx:id="chatSendButton" mnemonicParsing="false" onAction="#chatSend" text="Send" StackPane.alignment="BOTTOM_RIGHT">
-               <StackPane.margin>
-                  <Insets bottom="13.0" left="10.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </Button>
-            <Rectangle fx:id="opponentDiscard" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="320.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </Rectangle>
-            <Rectangle fx:id="opponentDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="940.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </Rectangle>
-            <Rectangle fx:id="playerDiscard" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="320.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </Rectangle>
-            <Rectangle fx:id="playerDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="940.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </Rectangle>
             <StackPane fx:id="playerHand" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
                <children>
                   <Rectangle fx:id="cardInHand1" arcHeight="10.0" arcWidth="10.0" height="160.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
@@ -1314,7 +1210,7 @@
             </StackPane>
             <StackPane fx:id="opponentPlayArea" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
                <children>
-                  <Rectangle fx:id="oppCardPlayed1" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="oppCardPlayed1" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0">
                            <stops>
@@ -1332,7 +1228,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed2" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="oppCardPlayed2" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="80.0" />
                      </StackPane.margin>
@@ -1353,7 +1249,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed3" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="oppCardPlayed3" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="160.0" />
                      </StackPane.margin>
@@ -1374,7 +1270,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed4" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="oppCardPlayed4" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="240.0" />
                      </StackPane.margin>
@@ -1395,7 +1291,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed5" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="oppCardPlayed5" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="320.0" />
                      </StackPane.margin>
@@ -1416,7 +1312,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed6" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="oppCardPlayed6" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="400.0" />
                      </StackPane.margin>
@@ -1437,7 +1333,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed7" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="oppCardPlayed7" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="40.0" />
                      </StackPane.margin>
@@ -1458,7 +1354,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed8" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="oppCardPlayed8" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="120.0" />
                      </StackPane.margin>
@@ -1479,7 +1375,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed9" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="oppCardPlayed9" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="200.0" />
                      </StackPane.margin>
@@ -1500,7 +1396,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed10" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="oppCardPlayed10" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="280.0" />
                      </StackPane.margin>
@@ -1521,7 +1417,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed11" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="oppCardPlayed11" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="360.0" />
                      </StackPane.margin>
@@ -1544,9 +1440,113 @@
                   </Rectangle>
                </children>
                <StackPane.margin>
-                  <Insets bottom="10.0" left="430.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="430.0" right="10.0" top="340.0" />
                </StackPane.margin>
             </StackPane>
+            <TextArea fx:id="gameLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="220.0" StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="120.0" />
+               </StackPane.margin>
+            </TextArea>
+            <TextArea fx:id="chatLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="270.0" prefWidth="220.0" StackPane.alignment="BOTTOM_RIGHT">
+               <StackPane.margin>
+                  <Insets bottom="50.0" left="10.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </TextArea>
+            <TextField fx:id="chatType" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#chatSend" prefHeight="30.0" prefWidth="170.0" StackPane.alignment="BOTTOM_RIGHT">
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="60.0" top="10.0" />
+               </StackPane.margin>
+            </TextField>
+            <Button fx:id="chatSendButton" mnemonicParsing="false" onAction="#chatSend" text="Send" StackPane.alignment="BOTTOM_RIGHT">
+               <StackPane.margin>
+                  <Insets bottom="13.0" left="10.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </Button>
+            <Rectangle fx:id="opponentDiscard" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="320.0" right="10.0" top="340.0" />
+               </StackPane.margin>
+            </Rectangle>
+            <Rectangle fx:id="opponentDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="940.0" right="10.0" top="340.0" />
+               </StackPane.margin>
+            </Rectangle>
+            <Rectangle fx:id="playerDiscard" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="320.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </Rectangle>
+            <Rectangle fx:id="playerDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="940.0" right="10.0" top="10.0" />
+               </StackPane.margin>
+            </Rectangle>
          </children>
       </StackPane>
    </center>

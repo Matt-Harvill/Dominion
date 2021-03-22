@@ -33,7 +33,7 @@ public class ClientSideConnection implements Runnable {
             String instruction = scanner.next();
             receive = scanner.nextLine();
             if(instruction.equals("chat")) {
-                UserInterfaceHub.getGameController().addMessageToChatLog(receive);
+                UserInterfaceHub.getPlayerActionMediator().addMessageToChatLog(receive);
             }
         }
     }

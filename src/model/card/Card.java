@@ -3,6 +3,7 @@ package model.card;
 import javafx.scene.image.Image;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public abstract class Card implements Serializable {
     protected String name;
@@ -33,6 +34,22 @@ public abstract class Card implements Serializable {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final Card other = (Card) obj;
+        if (!name.equals(other.getName())) {
+            return false;
+        }
+        return true;
+    }
+
 }
 
 

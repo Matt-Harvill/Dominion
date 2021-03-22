@@ -114,8 +114,9 @@ public class Player {
     }
     public int getHandPurchasePower(){
         handPurchasePower = 0;
-        for(TreasureCard card: hand.getTreasureCards()){
-            handPurchasePower+=card.getPurchasePower();
+        for(TreasureCard card: hand.getDistinctTreasureCards()){
+            int numCard = hand.numCardInCollection(card);
+            handPurchasePower+=card.getPurchasePower()*numCard;
         }
         handPurchasePower-=amountSpentThisTurn;
         handPurchasePower+=bonusPurchasePower;
@@ -159,18 +160,21 @@ public class Player {
     }
     public int getTotalPoints() {
         int points = 0;
-        for (VictoryCard card : discardPile.getVictoryCards()) {
-            points += card.getVictoryPoints();
+        for (VictoryCard card : discardPile.getDistinctVictoryCards()) {
+            int numCard = hand.numCardInCollection(card);
+            points += card.getVictoryPoints()*numCard;
         }
-        for (VictoryCard card : deck.getVictoryCards()) {
-            points += card.getVictoryPoints();
+        for (VictoryCard card : deck.getDistinctVictoryCards()) {
+            int numCard = hand.numCardInCollection(card);
+            points += card.getVictoryPoints()*numCard;
         }
-        for (VictoryCard card : hand.getVictoryCards()) {
-            points += card.getVictoryPoints();
+        for (VictoryCard card : hand.getDistinctVictoryCards()) {
+            int numCard = hand.numCardInCollection(card);
+            points += card.getVictoryPoints()*numCard;
         }
         return points;
     }
-    public void completeTransaction(Card card) {
+    public void buyCard(Card card) {
         discardPile.addCardToCollection(card);
         numBuys--;
         amountSpentThisTurn+=card.getCost();
