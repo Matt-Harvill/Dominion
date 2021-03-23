@@ -11,6 +11,7 @@ import model.card.TreasureCard;
 import model.card.VictoryCard;
 import model.factory.CardFactory;
 import view.ActionCardSupplyDisplay;
+import view.LeftSupplyCardDisplay;
 import view.PlayerHandDisplay;
 
 import java.util.ArrayList;
@@ -155,7 +156,44 @@ public class PlayerActionMediator {
         cardsInDisplayOrder = new ArrayList<>();
     }
 
-    public void buyCard(String actionCardClicked) {
+    public void buyFromLeftCardSupply(String cardClicked) {
+        LeftSupplyCardDisplay display = controller.getLeftSupplyCardDisplay();
+        String[] names = display.getNamesOfCardsInSupply();
+        Text[] actionCardNumbers = display.getCardNums();
+
+        int index = -1;
+        for(int i=0;i<names.length;i++) {
+            if(names[i] != null && names[i].equals(cardClicked)) index = i;
+        }
+
+        Text actionCardNumber = actionCardNumbers[index];
+        int numCardRemaining = Integer.parseInt(actionCardNumber.getText());
+        int costOfCard = CardFactory.getCard(cardClicked).getCost();
+
+
+        if(numCardRemaining==0) {
+            addMessageToGameLog("There aren't any " + cardClicked + "s left");
+        }
+        else if(player.getHandPurchasePower() < costOfCard) {
+            addMessageToGameLog("You don't have enough coins to purchase a " + cardClicked);
+        }
+        if(player.getHandPurchasePower() >= costOfCard && numCardRemaining>0 ) {
+            addMessageToGameLog("You purchased a " + cardClicked);
+            player.buyCard(CardFactory.getCard(cardClicked));
+
+            if(numCardRemaining==1) {
+                actionCardNumber.setText("0");
+            } else {
+                actionCardNumber.setText(String.valueOf(numCardRemaining-1));
+            }
+        }
+
+        if(player.getNumBuys()==0) {
+            enableBuying(false);
+            endPhase();
+        }
+    }
+    public void buyFromActionCardSupply(String actionCardClicked) {
 
         ActionCardSupplyDisplay display = controller.getActionCardSupplyDisplay();
         String[] names = display.getNamesOfActionCardsInSupply();
@@ -194,15 +232,24 @@ public class PlayerActionMediator {
         }
     }
     public void enableBuying(boolean enable) {
+        LeftSupplyCardDisplay leftSupplyCardDisplay = controller.getLeftSupplyCardDisplay();
         ActionCardSupplyDisplay actionCardSupplyDisplay = controller.getActionCardSupplyDisplay();
 
-        Rectangle[] buttons = actionCardSupplyDisplay.getBuyActionCardButtons();
+        Rectangle[] leftCardButtons = leftSupplyCardDisplay.getCardBuyButtons();
+        Rectangle[] leftCards = leftSupplyCardDisplay.getCardsInSupply();
+        Rectangle[] actionCardButtons = actionCardSupplyDisplay.getBuyActionCardButtons();
         Rectangle[] actionCards = actionCardSupplyDisplay.getActionCardsInSupply();
-        for(int i=0; i< actionCards.length; i++) {
-            if(actionCards[i].isVisible()) {
-                buttons[i].setVisible(enable);
+        for(int i=0;i<leftCardButtons.length;i++) {
+            if(leftCards[i].isVisible()) {
+                leftCardButtons[i].setVisible(enable);
             }
         }
+        for(int i=0; i< actionCards.length; i++) {
+            if(actionCards[i].isVisible()) {
+                actionCardButtons[i].setVisible(enable);
+            }
+        }
+
     }
 
     public void addMessageToChatLog(String msg) {

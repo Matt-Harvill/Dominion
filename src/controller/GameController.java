@@ -11,6 +11,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import view.ActionCardSupplyDisplay;
+import view.LeftSupplyCardDisplay;
 import view.PlayerHandDisplay;
 
 import java.io.File;
@@ -23,7 +24,7 @@ public class GameController {
 
     //-------------List of Action Cards in the Game------------//
     private final File actionCardsInGame = new File("src/resources/ActionCardsInGame.txt");
-    private final File treasureVictoryExtraCardsInGame = new File("src/resources/TreasureVictoryExtraCardsInGame.txt");
+    private final File leftSupplyCardsInGame = new File("src/resources/leftSupplyCardsInGame.txt");
 
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
@@ -37,58 +38,66 @@ public class GameController {
     //---------------Cards In Hand---------------//
     @FXML private Rectangle cardInHand1,cardInHand2,cardInHand3,cardInHand4,cardInHand5,cardInHand6,cardInHand7,cardInHand8,cardInHand9,cardInHand10,cardInHand11;
     private Rectangle[] cardsInHand;
-    @FXML private Rectangle numCardInHand1,numCardInHand2,numCardInHand3,numCardInHand4,numCardInHand5,
-            numCardInHand6,numCardInHand7,numCardInHand8,numCardInHand9,numCardInHand10,numCardInHand11;
-    private Rectangle[] numsCardInHand;
-    @FXML private Text cardInHandNumber1,cardInHandNumber2,cardInHandNumber3,cardInHandNumber4,cardInHandNumber5,
-            cardInHandNumber6,cardInHandNumber7,cardInHandNumber8,cardInHandNumber9,cardInHandNumber10,cardInHandNumber11;
-    private Text[] cardInHandNumbers;
+    @FXML private Rectangle cardInHandNumBack1,cardInHandNumBack2,cardInHandNumBack3,cardInHandNumBack4,cardInHandNumBack5,cardInHandNumBack6,
+            cardInHandNumBack7,cardInHandNumBack8,cardInHandNumBack9,cardInHandNumBack10,cardInHandNumBack11;
+    private Rectangle[] cardsInHandNumBacks;
+    @FXML private Text cardInHandNum1,cardInHandNum2,cardInHandNum3,cardInHandNum4,cardInHandNum5,cardInHandNum6,cardInHandNum7,
+            cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11;
+    private Text[] cardsInHandNums;
     private PlayerHandDisplay playerHandDisplay;
 
     //---------------ActionCards In Supply---------------//
     @FXML private Rectangle actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
             actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10;
     private Rectangle[] actionCardsInSupply;
-    @FXML private Rectangle actionCardNumBackground1,actionCardNumBackground2,actionCardNumBackground3,actionCardNumBackground4,actionCardNumBackground5,
-            actionCardNumBackground6,actionCardNumBackground7,actionCardNumBackground8,actionCardNumBackground9,actionCardNumBackground10;
-    private Rectangle[] actionCardNumBackgrounds;
-    @FXML private Text actionCardNumber1,actionCardNumber2,actionCardNumber3,actionCardNumber4,actionCardNumber5,
-            actionCardNumber6,actionCardNumber7,actionCardNumber8,actionCardNumber9,actionCardNumber10;
-    private Text[] actionCardNumbers;
-    @FXML private Rectangle buyActionCardButton1,buyActionCardButton2,buyActionCardButton3,buyActionCardButton4,buyActionCardButton5,
-            buyActionCardButton6,buyActionCardButton7,buyActionCardButton8,buyActionCardButton9,buyActionCardButton10;
-    private Rectangle[] buyActionCardButtons;
+    @FXML private Rectangle actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,actionCardNumBack6,
+            actionCardNumBack7,actionCardNumBack8,actionCardNumBack9,actionCardNumBack10;
+    private Rectangle[] actionCardNumBacks;
+    @FXML private Text actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
+            actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10;
+    private Text[] actionCardNums;
+    @FXML private Rectangle actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
+            actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10;
+    private Rectangle[] actionCardBuyButtons;
     private String[] namesOfActionCardsInSupply;
     private ActionCardSupplyDisplay actionCardSupplyDisplay;
 
     //---------------TreasureCards In Supply---------------//
     @ FXML private Rectangle treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4;
-    private Rectangle[] treasureCardsInSupply;
     @FXML private Rectangle treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4;
-    private Rectangle[] treasureCardNumBacks;
     @FXML private Text treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4;
-    private Text[] treasureCardNums;
+    @FXML private Rectangle treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4;
 
     //---------------VictoryCards In Supply---------------//
     @ FXML private Rectangle victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4;
-    private Rectangle[] victoryCardsInSupply;
     @FXML private Rectangle victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4;
-    private Rectangle[] victoryCardNumBacks;
     @FXML private Text victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4;
-    private Text[] victoryCardNums;
+    @FXML private Rectangle victoryCardBuyButton1,victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4;
 
     //---------------Extra Cards In Supply---------------//
     @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
-    private Rectangle[] extraCardsInSupply;
     @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
-    private Rectangle[] extraCardNumBacks;
     @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
-    private Text[] extraCardNums;
+    @FXML private Rectangle extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4;
 
-    //---------------Opponent Played Cards---------------//
-    @FXML private Rectangle oppCardPlayed1,oppCardPlayed2,oppCardPlayed3,oppCardPlayed4,oppCardPlayed5,oppCardPlayed6,
-            oppCardPlayed7,oppCardPlayed8,oppCardPlayed9,oppCardPlayed10,oppCardPlayed11;
-    private Rectangle[] oppCardsPlayed;
+    //-------------All Cards In LeftMost Supply-----------//
+    private Rectangle[] cardsInLeftSupply;
+    private Rectangle[] cardsInLeftSupplyNumBacks;
+    private Text[] cardsInLeftSupplyNums;
+    private Rectangle[] leftSupplyCardsBuyButtons;
+    private String[] namesOfCardsInLeftSupply;
+    private LeftSupplyCardDisplay leftSupplyCardDisplay;
+
+    //---------------Cards in Play---------------//
+    @FXML private Rectangle cardInPlay1,cardInPlay2,cardInPlay3,cardInPlay4,cardInPlay5,cardInPlay6,
+            cardInPlay7,cardInPlay8,cardInPlay9,cardInPlay10,cardInPlay11;
+    private Rectangle[] cardsInPlay;
+    @FXML private Rectangle cardInPlayNumBack1,cardInPlayNumBack2,cardInPlayNumBack3,cardInPlayNumBack4,cardInPlayNumBack5,
+            cardInPlayNumBack6,cardInPlayNumBack7,cardInPlayNumBack8,cardInPlayNumBack9,cardInPlayNumBack10,cardInPlayNumBack11;
+    private Rectangle[] cardsInPlayNumBacks;
+    @FXML private Text cardInPlayNum1,cardInPlayNum2,cardInPlayNum3,cardInPlayNum4,cardInPlayNum5,cardInPlayNum6,
+            cardInPlayNum7,cardInPlayNum8,cardInPlayNum9,cardInPlayNum10,cardInPlayNum11;
+    private Text[] cardsInPlayNums;
 
     //---------------Opponent and Player Deck------------------//
     @FXML private Rectangle playerDeck, opponentDeck;
@@ -98,29 +107,30 @@ public class GameController {
     public void initialize() throws FileNotFoundException {
         chatDisplayStrings = new ArrayList<>();
         gameDisplayStrings = new ArrayList<>();
+        chatType.setText(null);
 
         //--------------Initialize order of CardsInHand-----------------//
         cardsInHand = new Rectangle[]{cardInHand1, cardInHand2, cardInHand3, cardInHand4, cardInHand5, cardInHand6, cardInHand7, cardInHand8, cardInHand9, cardInHand10, cardInHand11};
-        numsCardInHand = new Rectangle[]{numCardInHand1,numCardInHand2,numCardInHand3,numCardInHand4,numCardInHand5,
-                numCardInHand6,numCardInHand7,numCardInHand8,numCardInHand9,numCardInHand10,numCardInHand11};
-        cardInHandNumbers = new Text[]{cardInHandNumber1,cardInHandNumber2,cardInHandNumber3,cardInHandNumber4,cardInHandNumber5,
-                cardInHandNumber6,cardInHandNumber7,cardInHandNumber8,cardInHandNumber9,cardInHandNumber10,cardInHandNumber11};
+        cardsInHandNumBacks = new Rectangle[]{cardInHandNumBack1,cardInHandNumBack2,cardInHandNumBack3,cardInHandNumBack4,cardInHandNumBack5,cardInHandNumBack6,
+                cardInHandNumBack7,cardInHandNumBack9,cardInHandNumBack8,cardInHandNumBack10,cardInHandNumBack11};
+        cardsInHandNums = new Text[]{cardInHandNum1,cardInHandNum2,cardInHandNum3,cardInHandNum4,cardInHandNum5,cardInHandNum6,cardInHandNum7,
+                cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11};
         for(int i=0; i<cardsInHand.length; i++) {
             cardsInHand[i].setViewOrder(cardsInHand.length-i);
-            numsCardInHand[i].setViewOrder(cardsInHand.length-i-0.1);
-            cardInHandNumbers[i].setViewOrder(cardsInHand.length-i-0.2);
+            cardsInHandNumBacks[i].setViewOrder(cardsInHand.length-i-0.1);
+            cardsInHandNums[i].setViewOrder(cardsInHand.length-i-0.2);
         }
-        playerHandDisplay = new PlayerHandDisplay(cardsInHand, numsCardInHand, cardInHandNumbers);
+        playerHandDisplay = new PlayerHandDisplay(cardsInHand, cardsInHandNumBacks, cardsInHandNums);
 
         //--------------Initialize all ActionCardsInSupply to CardsInGame-----------------//
         actionCardsInSupply = new Rectangle[]{actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
                 actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10};
-        actionCardNumBackgrounds = new Rectangle[]{actionCardNumBackground1,actionCardNumBackground2,actionCardNumBackground3,actionCardNumBackground4,actionCardNumBackground5,
-                actionCardNumBackground6,actionCardNumBackground7,actionCardNumBackground8,actionCardNumBackground9,actionCardNumBackground10};
-        actionCardNumbers = new Text[]{actionCardNumber1,actionCardNumber2,actionCardNumber3,actionCardNumber4,actionCardNumber5,
-                actionCardNumber6,actionCardNumber7,actionCardNumber8,actionCardNumber9,actionCardNumber10};
-        buyActionCardButtons = new Rectangle[]{buyActionCardButton1,buyActionCardButton2,buyActionCardButton3,buyActionCardButton4,buyActionCardButton5,
-                buyActionCardButton6,buyActionCardButton7,buyActionCardButton8,buyActionCardButton9,buyActionCardButton10};
+        actionCardNumBacks = new Rectangle[]{actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,actionCardNumBack6,
+                actionCardNumBack7,actionCardNumBack8,actionCardNumBack9,actionCardNumBack10};
+        actionCardNums = new Text[]{actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
+                actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
+        actionCardBuyButtons = new Rectangle[]{actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
+                actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10};
         namesOfActionCardsInSupply = new String[actionCardsInSupply.length];
         Scanner scanner = new Scanner(actionCardsInGame);
         ImagePattern imagePattern;
@@ -132,72 +142,51 @@ public class GameController {
             imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + ".jpg").toURI().toString()));
             actionCardsInSupply[index].setFill(imagePattern);
             imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
-            buyActionCardButtons[index].setFill(imagePattern);
-            actionCardNumbers[index].setText(String.valueOf(num));
+            actionCardBuyButtons[index].setFill(imagePattern);
+            actionCardNums[index].setText(String.valueOf(num));
             actionCardsInSupply[index].setVisible(true);
-            actionCardNumBackgrounds[index].setVisible(true);
-            actionCardNumbers[index].setVisible(true);
+            actionCardNumBacks[index].setVisible(true);
+            actionCardNums[index].setVisible(true);
 //            buyActionCardButtons[index].setVisible(true);
             index++;
         }
-        actionCardSupplyDisplay = new ActionCardSupplyDisplay(actionCardsInSupply,actionCardNumBackgrounds,actionCardNumbers,
-                buyActionCardButtons,namesOfActionCardsInSupply);
+        actionCardSupplyDisplay = new ActionCardSupplyDisplay(actionCardsInSupply,actionCardNumBacks,actionCardNums,
+                actionCardBuyButtons,namesOfActionCardsInSupply);
 
         //--------------Initialize all Treasure/Victory/ExtraCardsInSupply to CardsInGame-----------------//
-        treasureCardsInSupply = new Rectangle[]{treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4};
-        treasureCardNumBacks = new Rectangle[]{treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4};
-        treasureCardNums = new Text[]{treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4};
-        victoryCardsInSupply = new Rectangle[]{victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4};
-        victoryCardNumBacks = new Rectangle[]{victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4};
-        victoryCardNums = new Text[]{victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4};
-        extraCardsInSupply = new Rectangle[]{extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4};
-        extraCardNumBacks = new Rectangle[]{extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4};
-        extraCardNums = new Text[]{extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4};
-        scanner = new Scanner(treasureVictoryExtraCardsInGame);
+        cardsInLeftSupply = new Rectangle[]{treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4,
+                victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4,extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4};
+        cardsInLeftSupplyNumBacks = new Rectangle[]{treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4,
+                victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4,extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4};
+        cardsInLeftSupplyNums = new Text[]{treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4,
+                victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4,extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4};
+        leftSupplyCardsBuyButtons = new Rectangle[]{treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4,
+                victoryCardBuyButton1,victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4,extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4};
+        namesOfCardsInLeftSupply = new String[cardsInLeftSupply.length];
+        leftSupplyCardDisplay = new LeftSupplyCardDisplay(cardsInLeftSupply,cardsInLeftSupplyNumBacks,cardsInLeftSupplyNums,
+                leftSupplyCardsBuyButtons,namesOfCardsInLeftSupply);
+
+        scanner = new Scanner(leftSupplyCardsInGame);
         String s = scanner.next();
-        if(s.contains("TreasureCards")) {
-            index = 0;
-            while (scanner.hasNext()) {
-                s = scanner.next();
-                if (s.contains("VictoryCards")) break;
-                int num = scanner.nextInt();
-                imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + "_Small.jpg").toURI().toString()));
-                treasureCardsInSupply[index].setFill(imagePattern);
-                treasureCardNums[index].setText(String.valueOf(num));
-                treasureCardsInSupply[index].setVisible(true);
-                treasureCardNumBacks[index].setVisible(true);
-                treasureCardNums[index].setVisible(true);
-                index++;
-            }
+        index = 0;
+        while (scanner.hasNext()) {
+            s = scanner.next();
+            if (s.contains("Cards")) continue;
+            namesOfCardsInLeftSupply[index] = s;
+            int num = scanner.nextInt();
+            imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + "_Small.jpg").toURI().toString()));
+            cardsInLeftSupply[index].setFill(imagePattern);
+            cardsInLeftSupplyNums[index].setText(String.valueOf(num));
+            cardsInLeftSupply[index].setVisible(true);
+            cardsInLeftSupplyNumBacks[index].setVisible(true);
+            cardsInLeftSupplyNums[index].setVisible(true);
+            index++;
         }
-        if(s.contains("VictoryCards")) {
-            index = 0;
-            while (scanner.hasNext()) {
-                s = scanner.next();
-                if (s.contains("ExtraCards")) break;
-                int num = scanner.nextInt();
-                imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + "_Small.jpg").toURI().toString()));
-                victoryCardsInSupply[index].setFill(imagePattern);
-                victoryCardNums[index].setText(String.valueOf(num));
-                victoryCardsInSupply[index].setVisible(true);
-                victoryCardNumBacks[index].setVisible(true);
-                victoryCardNums[index].setVisible(true);
-                index++;
-            }
-        }
-        if(s.contains("ExtraCards")) {
-            index = 0;
-            while (scanner.hasNext()) {
-                s = scanner.next();
-                int num = scanner.nextInt();
-                imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + "_Small.jpg").toURI().toString()));
-                extraCardsInSupply[index].setFill(imagePattern);
-                extraCardNums[index].setText(String.valueOf(num));
-                extraCardsInSupply[index].setVisible(true);
-                extraCardNumBacks[index].setVisible(true);
-                extraCardNums[index].setVisible(true);
-                index++;
-            }
+        for(String string: namesOfCardsInLeftSupply) System.out.println(string);
+
+        for(Rectangle rectangle: leftSupplyCardsBuyButtons) {
+            imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
+            rectangle.setFill(imagePattern);
         }
 
         //--------------Initialize player Decks-----------------//
@@ -207,9 +196,13 @@ public class GameController {
         playerDeck.setVisible(true);
         opponentDeck.setVisible(true);
 
-        //--------------Initialize all OppCardPlayed-----------------//
-        oppCardsPlayed = new Rectangle[]{oppCardPlayed1,oppCardPlayed2,oppCardPlayed3,oppCardPlayed4,oppCardPlayed5,oppCardPlayed6,
-                oppCardPlayed7,oppCardPlayed8,oppCardPlayed9,oppCardPlayed10,oppCardPlayed11};
+        //------------------Initialize Cards In Play--------------//
+        cardsInPlay = new Rectangle[]{cardInPlay1,cardInPlay2,cardInPlay3,cardInPlay4,cardInPlay5,cardInPlay6,
+                cardInPlay7,cardInPlay8,cardInPlay9,cardInPlay10,cardInPlay11};
+        cardsInPlayNumBacks = new Rectangle[]{cardInPlayNumBack1,cardInPlayNumBack2,cardInPlayNumBack3,cardInPlayNumBack4,cardInPlayNumBack5,
+                cardInPlayNumBack6,cardInPlayNumBack7,cardInPlayNumBack8,cardInPlayNumBack9,cardInPlayNumBack10,cardInPlayNumBack11};
+        cardsInPlayNums = new Text[]{cardInPlayNum1,cardInPlayNum2,cardInPlayNum3,cardInPlayNum4,cardInPlayNum5,cardInPlayNum6,
+                cardInPlayNum7,cardInPlayNum8,cardInPlayNum9,cardInPlayNum10,cardInPlayNum11};
 
     }
 
@@ -229,11 +222,13 @@ public class GameController {
     }
     public PlayerHandDisplay getPlayerHandDisplay() {return playerHandDisplay;}
     public ActionCardSupplyDisplay getActionCardSupplyDisplay() {return actionCardSupplyDisplay;}
+    public LeftSupplyCardDisplay getLeftSupplyCardDisplay() { return leftSupplyCardDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
 
     //-------------------Internal Updates------------------------//
 
     public void chatSend(ActionEvent actionEvent) {
+        if(chatType.getText()==null) return;
         String newChat = UserInterfaceHub.getPlayer().getName() + ": " + chatType.getText();
         UserInterfaceHub.getPlayerActionMediator().addMessageToChatLog(newChat);
 //        UserInterfaceHub.getClientSideConnection().send("chat " + newChat);
@@ -252,20 +247,20 @@ public class GameController {
         Object cardClicked = mouseEvent.getSource();
         if(cardClicked instanceof Rectangle) {
             for(int i=0; i<cardsInHand.length; i++) {
-                if(cardsInHand[i].equals(cardClicked) || numsCardInHand[i].equals(cardClicked)) {
+                if(cardsInHand[i].equals(cardClicked) || cardsInHandNumBacks[i].equals(cardClicked)) {
                     cardsInHand[i].setViewOrder(0.2);
-                    numsCardInHand[i].setViewOrder(0.1);
-                    cardInHandNumbers[i].setViewOrder(0);
+                    cardsInHandNumBacks[i].setViewOrder(0.1);
+                    cardsInHandNums[i].setViewOrder(0);
                     cardsInHand[i].setStyle(redCardGlowStyle);
                     break;
                 }
             }
         } else if(cardClicked instanceof Text) {
             for(int i=0; i<cardsInHand.length; i++) {
-                if(cardInHandNumbers[i].equals(cardClicked)) {
+                if(cardsInHandNums[i].equals(cardClicked)) {
                     cardsInHand[i].setViewOrder(0.2);
-                    numsCardInHand[i].setViewOrder(0.1);
-                    cardInHandNumbers[i].setViewOrder(0);
+                    cardsInHandNumBacks[i].setViewOrder(0.1);
+                    cardsInHandNums[i].setViewOrder(0);
                     cardsInHand[i].setStyle(redCardGlowStyle);
                     break;
                 }
@@ -276,19 +271,19 @@ public class GameController {
         Object cardClicked = mouseEvent.getSource();
         if(cardClicked instanceof Rectangle) {
             for(int i=0; i<cardsInHand.length; i++) {
-                if(cardsInHand[i].equals(cardClicked) || numsCardInHand[i].equals(cardClicked)) {
+                if(cardsInHand[i].equals(cardClicked) || cardsInHandNumBacks[i].equals(cardClicked)) {
                     cardsInHand[i].setViewOrder(cardsInHand.length-i);
-                    numsCardInHand[i].setViewOrder(cardsInHand.length-i-0.1);
-                    cardInHandNumbers[i].setViewOrder(cardsInHand.length-i-0.2);
+                    cardsInHandNumBacks[i].setViewOrder(cardsInHand.length-i-0.1);
+                    cardsInHandNums[i].setViewOrder(cardsInHand.length-i-0.2);
                     break;
                 }
             }
         } else if(cardClicked instanceof Text) {
             for(int i=0; i<cardsInHand.length; i++) {
-                if(cardInHandNumbers[i].equals(cardClicked)) {
+                if(cardsInHandNums[i].equals(cardClicked)) {
                     cardsInHand[i].setViewOrder(cardsInHand.length-i);
-                    numsCardInHand[i].setViewOrder(cardsInHand.length-i-0.1);
-                    cardInHandNumbers[i].setViewOrder(cardsInHand.length-i-0.2);
+                    cardsInHandNumBacks[i].setViewOrder(cardsInHand.length-i-0.1);
+                    cardsInHandNums[i].setViewOrder(cardsInHand.length-i-0.2);
                     break;
                 }
             }
@@ -308,32 +303,40 @@ public class GameController {
         Object cardClicked = mouseEvent.getSource();
         if(cardClicked instanceof Rectangle) {
             for(int i=0; i<actionCardsInSupply.length; i++) {
-                if(actionCardsInSupply[i].equals(cardClicked) || actionCardNumBackgrounds[i].equals(cardClicked)) {
-                    if(Integer.parseInt(actionCardNumbers[i].getText())<=1) {
-                        actionCardNumbers[i].setText("0");
+                if(actionCardsInSupply[i].equals(cardClicked) || actionCardNumBacks[i].equals(cardClicked)) {
+                    if(Integer.parseInt(actionCardNums[i].getText())<=1) {
+                        actionCardNums[i].setText("0");
                     } else {
-                        actionCardNumbers[i].setText(String.valueOf(Integer.parseInt(actionCardNumbers[i].getText())-1));
+                        actionCardNums[i].setText(String.valueOf(Integer.parseInt(actionCardNums[i].getText())-1));
                     }
                 }
             }
         } else if(cardClicked instanceof Text) {
             for(int i=0; i<actionCardsInSupply.length; i++) {
-                if(actionCardNumbers[i].equals(cardClicked)) {
-                    if(Integer.parseInt(actionCardNumbers[i].getText())<=1) {
-                        actionCardNumbers[i].setText("0");
+                if(actionCardNums[i].equals(cardClicked)) {
+                    if(Integer.parseInt(actionCardNums[i].getText())<=1) {
+                        actionCardNums[i].setText("0");
                     } else {
-                        actionCardNumbers[i].setText(String.valueOf(Integer.parseInt(actionCardNumbers[i].getText())-1));
+                        actionCardNums[i].setText(String.valueOf(Integer.parseInt(actionCardNums[i].getText())-1));
                     }
                 }
             }
         }
     }
-    public void actionCardBuyClicked(MouseEvent mouseEvent) {
+    public void buyButtonClicked(MouseEvent mouseEvent) {
         Rectangle buyButtonClicked = (Rectangle) mouseEvent.getSource();
-        String actionCardClicked = "Error in actionCardBuyClicked";
-        for(int i=0; i< buyActionCardButtons.length; i++) {
-            if(buyActionCardButtons[i].equals(buyButtonClicked)) actionCardClicked = namesOfActionCardsInSupply[i];
+        String cardClicked = "Error in buyButtonClicked";;
+        for(int i=0; i< leftSupplyCardsBuyButtons.length; i++) {
+            if(leftSupplyCardsBuyButtons[i].equals(buyButtonClicked)) {
+                cardClicked = namesOfCardsInLeftSupply[i];
+                UserInterfaceHub.getPlayerActionMediator().buyFromLeftCardSupply(cardClicked);
+            }
         }
-        UserInterfaceHub.getPlayerActionMediator().buyCard(actionCardClicked);
+        for(int i=0; i< actionCardBuyButtons.length; i++) {
+            if(actionCardBuyButtons[i].equals(buyButtonClicked)) {
+                cardClicked = namesOfActionCardsInSupply[i];
+                UserInterfaceHub.getPlayerActionMediator().buyFromActionCardSupply(cardClicked);
+            }
+        }
     }
 }

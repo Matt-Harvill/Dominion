@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/PlayerHandDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/LeftSupplyCardDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/ClientSideConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/Card.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/plus sign.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/ActionCardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/ActionCardsInGame.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/TreasureVictoryExtraCardsInGame.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/ActionCardSupplyDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/ActionCardSupplyDisplay.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/ActionCardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/ActionCardsInGame.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/TreasureVictoryExtraCardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/leftSupplyCardsInGame.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,15 +83,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -124,7 +113,8 @@
       <workItem from="1616300477247" duration="4237000" />
       <workItem from="1616331317819" duration="17313000" />
       <workItem from="1616352466417" duration="5809000" />
-      <workItem from="1616435923791" duration="9437000" />
+      <workItem from="1616435923791" duration="10695000" />
+      <workItem from="1616457465304" duration="5150000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -203,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616357218278</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game">
+      <created>1616445566085</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1616445566085</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +230,7 @@
     <MESSAGE value="numCards in hand works correctly now" />
     <MESSAGE value="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters." />
     <MESSAGE value="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion." />
-    <option name="LAST_COMMIT_MESSAGE" value="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion." />
+    <MESSAGE value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
+    <option name="LAST_COMMIT_MESSAGE" value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
   </component>
 </project>

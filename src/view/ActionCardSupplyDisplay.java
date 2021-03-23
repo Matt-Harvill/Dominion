@@ -6,17 +6,17 @@ import javafx.scene.text.Text;
 public class ActionCardSupplyDisplay {
 
     private final Rectangle[] actionCardsInSupply;
-    private final Rectangle[] actionCardNumBackgrounds;
-    private final Text[] actionCardNumbers;
-    private final Rectangle[] buyActionCardButtons;
+    private final Rectangle[] actionCardNumBacks;
+    private final Text[] actionCardNums;
+    private final Rectangle[] actionCardBuyButtons;
     private final String[] namesOfActionCardsInSupply;
 
-    public ActionCardSupplyDisplay(Rectangle[] actionCardsInSupply, Rectangle[] actionCardNumBackgrounds,
-                                   Text[] actionCardNumbers, Rectangle[] buyActionCardButtons, String[] namesOfActionCardsInSupply) {
+    public ActionCardSupplyDisplay(Rectangle[] actionCardsInSupply, Rectangle[] actionCardNumBacks,
+                                   Text[] actionCardNums, Rectangle[] actionCardBuyButtons, String[] namesOfActionCardsInSupply) {
         this.actionCardsInSupply = actionCardsInSupply;
-        this.actionCardNumBackgrounds = actionCardNumBackgrounds;
-        this.actionCardNumbers = actionCardNumbers;
-        this.buyActionCardButtons = buyActionCardButtons;
+        this.actionCardNumBacks = actionCardNumBacks;
+        this.actionCardNums = actionCardNums;
+        this.actionCardBuyButtons = actionCardBuyButtons;
         this.namesOfActionCardsInSupply = namesOfActionCardsInSupply;
     }
 
@@ -24,13 +24,13 @@ public class ActionCardSupplyDisplay {
         return actionCardsInSupply;
     }
     public Rectangle[] getActionCardNumBackgrounds() {
-        return actionCardNumBackgrounds;
+        return actionCardNumBacks;
     }
     public Text[] getActionCardNumbers() {
-        return actionCardNumbers;
+        return actionCardNums;
     }
     public Rectangle[] getBuyActionCardButtons() {
-        return buyActionCardButtons;
+        return actionCardBuyButtons;
     }
     public String[] getNamesOfActionCardsInSupply() {
         return namesOfActionCardsInSupply;

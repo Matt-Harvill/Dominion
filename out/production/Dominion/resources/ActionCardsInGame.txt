@@ -1,4 +1,4 @@
-Village 10
+Village 4
 Woodcutter 10
 Smithy 10
 Festival 10

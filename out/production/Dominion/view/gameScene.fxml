@@ -420,6 +420,66 @@
                         <Insets left="200.0" top="302.0" />
                      </StackPane.margin>
                   </Text>
+                  <Rectangle fx:id="treasureCardBuyButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="treasureCardBuyButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="treasureCardBuyButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" top="280.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="treasureCardBuyButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" top="380.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardBuyButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="180.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardBuyButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="180.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardBuyButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="180.0" top="280.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardBuyButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="180.0" top="380.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardBuyButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardBuyButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardBuyButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets top="280.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardBuyButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets top="380.0" />
+                     </StackPane.margin>
+                  </Rectangle>
                </children>
             </StackPane>
             <StackPane fx:id="actionCardSupply" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
@@ -634,53 +694,53 @@
                         <Insets left="400.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground1" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT" />
-                  <Rectangle fx:id="actionCardNumBackground2" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack1" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT" />
+                  <Rectangle fx:id="actionCardNumBack2" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="100.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground3" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack3" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="200.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground4" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack4" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="300.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground5" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack5" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="400.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground6" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack6" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets top="160.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground7" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack7" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="100.0" top="160.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground8" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack8" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="200.0" top="160.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground9" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack9" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="300.0" top="160.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardNumBackground10" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardNumBack10" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#actionCardInSupplyClicked" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="400.0" top="160.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fx:id="actionCardNumber1" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum1" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets top="2.0" />
                      </StackPane.margin>
@@ -688,7 +748,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Text>
-                  <Text fx:id="actionCardNumber2" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum2" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -696,7 +756,7 @@
                         <Insets left="100.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber3" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum3" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -704,7 +764,7 @@
                         <Insets left="200.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber4" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum4" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -712,7 +772,7 @@
                         <Insets left="300.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber5" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum5" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -720,7 +780,7 @@
                         <Insets left="400.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber6" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum6" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -728,7 +788,7 @@
                         <Insets top="162.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber7" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum7" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -736,7 +796,7 @@
                         <Insets left="100.0" top="162.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber8" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum8" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -744,7 +804,7 @@
                         <Insets left="200.0" top="162.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber9" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum9" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -752,7 +812,7 @@
                         <Insets left="300.0" top="162.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="actionCardNumber10" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="actionCardNum10" fill="WHITE" onMouseClicked="#actionCardInSupplyClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -760,52 +820,52 @@
                         <Insets left="400.0" top="162.0" />
                      </StackPane.margin>
                   </Text>
-                  <Rectangle fx:id="buyActionCardButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="80.0" top="140.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="180.0" top="140.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="280.0" top="140.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="380.0" top="140.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton5" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton5" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="480.0" top="140.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton6" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton6" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton7" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton7" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="180.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton8" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton8" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="280.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton9" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton9" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="380.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="buyActionCardButton10" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#actionCardBuyClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton10" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="BOTTOM_LEFT">
                      <StackPane.margin>
                         <Insets left="480.0" />
                      </StackPane.margin>
@@ -1064,58 +1124,58 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand1" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT" />
-                  <Rectangle fx:id="numCardInHand2" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack1" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT" />
+                  <Rectangle fx:id="cardInHandNumBack2" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand3" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack3" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="160.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand4" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack4" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="240.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand5" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack5" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="320.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand6" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack6" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="400.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand7" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack7" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="40.0" top="40.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand8" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack8" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="120.0" top="40.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand9" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack9" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="200.0" top="40.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand10" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack10" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="280.0" top="40.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="numCardInHand11" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="cardInHandNumBack11" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="360.0" top="40.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fx:id="cardInHandNumber1" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum1" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1123,7 +1183,7 @@
                         <Insets top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber2" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum2" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1131,7 +1191,7 @@
                         <Insets left="80.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber3" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum3" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1139,7 +1199,7 @@
                         <Insets left="160.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber4" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum4" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1147,7 +1207,7 @@
                         <Insets left="240.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber5" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum5" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1155,7 +1215,7 @@
                         <Insets left="320.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber6" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum6" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1163,7 +1223,7 @@
                         <Insets left="400.0" top="2.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber7" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum7" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1171,7 +1231,7 @@
                         <Insets left="40.0" top="42.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber8" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum8" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1179,7 +1239,7 @@
                         <Insets left="120.0" top="42.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber9" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum9" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1187,7 +1247,7 @@
                         <Insets left="200.0" top="42.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber10" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum10" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1195,7 +1255,7 @@
                         <Insets left="280.0" top="42.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="cardInHandNumber11" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="cardInHandNum11" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -1206,241 +1266,6 @@
                </children>
                <StackPane.margin>
                   <Insets bottom="10.0" left="430.0" right="10.0" top="10.0" />
-               </StackPane.margin>
-            </StackPane>
-            <StackPane fx:id="opponentPlayArea" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
-               <children>
-                  <Rectangle fx:id="oppCardPlayed1" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed2" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="80.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed3" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="160.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed4" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="240.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed5" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="320.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed6" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="400.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed7" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-                     <StackPane.margin>
-                        <Insets left="40.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed8" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-                     <StackPane.margin>
-                        <Insets left="120.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed9" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-                     <StackPane.margin>
-                        <Insets left="200.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed10" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-                     <StackPane.margin>
-                        <Insets left="280.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle fx:id="oppCardPlayed11" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-                     <StackPane.margin>
-                        <Insets left="360.0" />
-                     </StackPane.margin>
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-               </children>
-               <StackPane.margin>
-                  <Insets bottom="10.0" left="430.0" right="10.0" top="340.0" />
                </StackPane.margin>
             </StackPane>
             <TextArea fx:id="gameLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="220.0" StackPane.alignment="TOP_RIGHT">
@@ -1547,6 +1372,380 @@
                   <Insets bottom="10.0" left="940.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </Rectangle>
+            <StackPane fx:id="playerHand1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
+               <children>
+                  <Rectangle fx:id="cardInPlay1" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay2" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay3" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="160.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay4" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="240.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay5" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="320.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay6" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay7" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                     <StackPane.margin>
+                        <Insets left="40.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay8" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay9" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay10" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                     <StackPane.margin>
+                        <Insets left="280.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlay11" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
+                     <StackPane.margin>
+                        <Insets left="360.0" />
+                     </StackPane.margin>
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack1" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT" />
+                  <Rectangle fx:id="cardInPlayNumBack2" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack3" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="160.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack4" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="240.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack5" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="320.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack6" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack7" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack8" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack9" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack10" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="280.0" top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="cardInPlayNumBack11" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="WHITE" strokeWidth="2.0" visible="false" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="360.0" top="40.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Text fx:id="cardInPlayNum1" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum2" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="80.0" top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum3" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="160.0" top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum4" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="240.0" top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum5" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="320.0" top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum6" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="400.0" top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum7" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="40.0" top="42.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum8" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="120.0" top="42.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum9" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="200.0" top="42.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum10" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="280.0" top="42.0" />
+                     </StackPane.margin>
+                  </Text>
+                  <Text fx:id="cardInPlayNum11" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" visible="false" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="360.0" top="42.0" />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="10.0" left="430.0" right="10.0" top="340.0" />
+               </StackPane.margin>
+            </StackPane>
          </children>
       </StackPane>
    </center>
