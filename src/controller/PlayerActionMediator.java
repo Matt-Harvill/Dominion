@@ -29,32 +29,23 @@ public class PlayerActionMediator {
         cardsInDisplayOrder = new ArrayList<>();
     }
 
-    public void startPhase() {
+    public void startTurn() {
         player.newTurn();
-        controller.getPlayerHandDisplay().setNamesOfCards(displayHand());
-        controller.getActionButton().setText("End Turn");
-        controller.getActionButton().setVisible(true);
+        displayHand();
         actionPhase();
     }
     public void actionPhase() {
+        controller.getActionButton().setText("Enter Buy Phase");
         List<ActionCard> actionCards = player.getHand().getDistinctActionCards();
         Rectangle[] cardsInHand = controller.getPlayerHandDisplay().getCards();
         for(ActionCard actionCard: actionCards) {
             int index = cardsInDisplayOrder.indexOf(actionCard);
             cardsInHand[index].setStyle(controller.getGreenCardGlowStyle());
         }
-//        while(player.getNumActions()>0 && player.getHand().getDistinctActionCards().size()>0) {
-//            //wait
-//        }
-        controller.getBuyPhaseButton().setVisible(true);
-        if(actionCards.size()==0) buyPhase();
+        checkNumActions();
     }
     public void buyPhase() {
-        controller.getBuyPhaseButton().setVisible(false);
-        System.out.println("buy phase entered");
         enableBuying(true);
-
-        //do buy phase stuff
 
         List<TreasureCard> treasureCards = player.getHand().getDistinctTreasureCards();
         Rectangle[] cardsInHand = controller.getPlayerHandDisplay().getCards();
@@ -62,72 +53,15 @@ public class PlayerActionMediator {
             int index = cardsInDisplayOrder.indexOf(treasureCard);
             cardsInHand[index].setStyle(controller.getGreenCardGlowStyle());
         }
-
+        controller.getActionButton().setText("End Turn");
     }
     public void endPhase() {
         enableBuying(false);
-        player.discardHand();
-        controller.getPlayerHandDisplay().setNamesOfCards(displayHand());
+
+        player.endTurn();
+        displayHand();
+
         controller.getActionButton().setText("Start Turn");
-        controller.getActionButton().setVisible(true);
-    }
-
-    public String[] displayHand() {
-        resetHandDisplay();
-
-        int index = 0;
-        CardCollection hand = player.getHand();
-        String [] namesOfCardsForDisplay = new String[hand.getSize()];
-
-        List<ActionCard> actionCards = hand.getDistinctActionCards();
-        List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
-        List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
-
-        for(ActionCard actionCard: actionCards) {
-            int numCard = hand.numCardInCollection(actionCard);
-            displayCardInHand(actionCard,index,numCard);
-            cardsInDisplayOrder.add(actionCard);
-            namesOfCardsForDisplay[index] = actionCard.getName();
-            index++;
-        }
-        for(TreasureCard treasureCard: treasureCards) {
-            int numCard = hand.numCardInCollection(treasureCard);
-            displayCardInHand(treasureCard,index,numCard);
-            cardsInDisplayOrder.add(treasureCard);
-            namesOfCardsForDisplay[index] = treasureCard.getName();
-            index++;
-        }
-        for(VictoryCard victoryCard: victoryCards) {
-            int numCard = hand.numCardInCollection(victoryCard);
-            displayCardInHand(victoryCard,index,numCard);
-            cardsInDisplayOrder.add(victoryCard);
-            namesOfCardsForDisplay[index] = victoryCard.getName();
-            index++;
-        }
-        return namesOfCardsForDisplay;
-    }
-    private void displayCardInHand(Card card, int index, int numCard) {
-        PlayerHandDisplay playerHandDisplay = controller.getPlayerHandDisplay();
-        if(numCard==1) {
-            playerHandDisplay.getCards()[index].setFill(new ImagePattern(card.getCardImage()));
-            playerHandDisplay.getCards()[index].setVisible(true);
-        } else if(numCard>1) {
-            playerHandDisplay.getCards()[index].setFill(new ImagePattern(card.getCardImage()));
-            playerHandDisplay.getCardNums()[index].setText(String.valueOf(numCard));
-            playerHandDisplay.getCards()[index].setVisible(true);
-            playerHandDisplay.getCardNumBacks()[index].setVisible(true);
-            playerHandDisplay.getCardNums()[index].setVisible(true);
-        }
-    }
-    private void resetHandDisplay() {
-        PlayerHandDisplay playerHandDisplay = controller.getPlayerHandDisplay();
-
-        for(int i=0; i<playerHandDisplay.getCards().length; i++) {
-            playerHandDisplay.getCards()[i].setVisible(false);
-            playerHandDisplay.getCardNumBacks()[i].setVisible(false);
-            playerHandDisplay.getCardNums()[i].setVisible(false);
-        }
-        cardsInDisplayOrder = new ArrayList<>();
     }
 
     public void buyFromCardSupply(String cardClicked) {
@@ -163,10 +97,21 @@ public class PlayerActionMediator {
             }
         }
 
-        if(player.getNumBuys()==0) {
-            endPhase();
-        }
+        displayHand();
+        checkNumBuys();
     }
+
+    public void playCard(String cardClicked) {
+        for(Card card: player.getHand().getCollection()) {
+            if(card.getName().equals(cardClicked)) {
+                player.playCard(card);
+                break;
+            }
+        }
+        displayHand();
+        checkNumActions();
+    }
+
     private void enableBuying(boolean enable) {
         CardSupplyDisplay cardSupplyDisplay = controller.getCardSupplyDisplay();
 
@@ -178,13 +123,80 @@ public class PlayerActionMediator {
             }
         }
     }
+    private void displayHand() {
+        resetHandDisplay();
 
-    public void playActionCard(String cardClicked) {
-        ActionCard card = (ActionCard) CardFactory.getCard(cardClicked);
-        player.performAction(card);
-        controller.getPlayerHandDisplay().setNamesOfCards(displayHand());
-        if(player.getNumActions()==0) {
+        int index = 0;
+        CardCollection hand = player.getHand();
+        String [] namesOfCardsForDisplay = new String[hand.getSize()];
+
+        List<ActionCard> actionCards = hand.getDistinctActionCards();
+        List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
+        List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
+
+        for(ActionCard actionCard: actionCards) {
+            int numCard = hand.numCardInCollection(actionCard);
+            displayCardInHand(actionCard,index,numCard);
+            cardsInDisplayOrder.add(actionCard);
+            namesOfCardsForDisplay[index] = actionCard.getName();
+            index++;
+        }
+        for(TreasureCard treasureCard: treasureCards) {
+            int numCard = hand.numCardInCollection(treasureCard);
+            displayCardInHand(treasureCard,index,numCard);
+            cardsInDisplayOrder.add(treasureCard);
+            namesOfCardsForDisplay[index] = treasureCard.getName();
+            index++;
+        }
+        for(VictoryCard victoryCard: victoryCards) {
+            int numCard = hand.numCardInCollection(victoryCard);
+            displayCardInHand(victoryCard,index,numCard);
+            cardsInDisplayOrder.add(victoryCard);
+            namesOfCardsForDisplay[index] = victoryCard.getName();
+            index++;
+        }
+        controller.getPlayerHandDisplay().setNamesOfCards(namesOfCardsForDisplay);
+
+        Text gameInfoText = controller.getGameInfoText();
+        StringBuilder gameInfoString = new StringBuilder();
+        gameInfoString.append("Number of Actions: " + player.getNumActions() + " ");
+        gameInfoString.append("Number of Buys: " + player.getNumBuys() + " ");
+        gameInfoString.append("Purchase Power: " + player.getHandPurchasePower());
+        gameInfoText.setText(String.valueOf(gameInfoString));
+
+    }
+    private void displayCardInHand(Card card, int index, int numCard) {
+        PlayerHandDisplay playerHandDisplay = controller.getPlayerHandDisplay();
+        if(numCard==1) {
+            playerHandDisplay.getCards()[index].setFill(new ImagePattern(card.getCardImage()));
+            playerHandDisplay.getCards()[index].setVisible(true);
+        } else if(numCard>1) {
+            playerHandDisplay.getCards()[index].setFill(new ImagePattern(card.getCardImage()));
+            playerHandDisplay.getCardNums()[index].setText(String.valueOf(numCard));
+            playerHandDisplay.getCards()[index].setVisible(true);
+            playerHandDisplay.getCardNumBacks()[index].setVisible(true);
+            playerHandDisplay.getCardNums()[index].setVisible(true);
+        }
+    }
+    private void resetHandDisplay() {
+        PlayerHandDisplay playerHandDisplay = controller.getPlayerHandDisplay();
+
+        for(int i=0; i<playerHandDisplay.getCards().length; i++) {
+            playerHandDisplay.getCards()[i].setVisible(false);
+            playerHandDisplay.getCards()[i].setStyle(null);
+            playerHandDisplay.getCardNumBacks()[i].setVisible(false);
+            playerHandDisplay.getCardNums()[i].setVisible(false);
+        }
+        cardsInDisplayOrder = new ArrayList<>();
+    }
+    private void checkNumActions() {
+        if (player.getNumActions()==0) {
             buyPhase();
+        }
+    }
+    private void checkNumBuys() {
+        if(player.getNumBuys()==0) {
+            endPhase();
         }
     }
 

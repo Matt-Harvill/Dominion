@@ -18,10 +18,13 @@ public class CardCollection {
     public void addCardToCollection(Card c){
         collection.add(c);
     }
-    public void removeCardFromCollection(Card c) {
+    public Card removeCardFromCollection(Card c) {
+        Card card = c;
         collection.remove(c);
+        return card;
     }
 
+    public List<Card> getCollection() {return collection;}
     public List<ActionCard> getDistinctActionCards(){
         List<ActionCard> actionCards = new LinkedList<>();
         for(Card card: collection) {

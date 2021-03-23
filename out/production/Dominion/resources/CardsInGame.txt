@@ -11,3 +11,11 @@ Duchy 10
 Estate 10
 
 ExtraCards
+
+ActionCards
+Village 4
+Woodcutter 10
+Smithy 10
+Festival 10
+Laboratory 10
+Market 10

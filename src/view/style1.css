@@ -16,3 +16,8 @@
     -fx-background-color: red;
 }
 
+.actionBar {
+    -fx-background-color: white;
+    -fx-border-color: black;
+}
+

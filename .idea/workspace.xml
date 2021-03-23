@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/CardsInGame.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/ActionCardsInGame.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/leftSupplyCardsInGame.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/ActionCardSupplyDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/LeftSupplyCardDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/PlayerHandDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/PlayerHandDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/style1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/ActionCardsInGame.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LeftSupplyCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CardSupplyDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerHandDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerHandDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/style1.css" afterDir="false" />
     </list>
@@ -83,15 +87,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,7 +119,8 @@
       <workItem from="1616352466417" duration="5809000" />
       <workItem from="1616435923791" duration="10695000" />
       <workItem from="1616457465304" duration="5515000" />
-      <workItem from="1616466714786" duration="5863000" />
+      <workItem from="1616466714786" duration="6054000" />
+      <workItem from="1616515662409" duration="5330000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -210,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616463017850</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="game can be played mostly normal although organization is weird because of lack of state-tracking. I will add that next to avoid confusion.">
+      <created>1616472793680</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1616472793680</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +252,7 @@
     <MESSAGE value="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion." />
     <MESSAGE value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
     <MESSAGE value="buys from the left card supply now work as well" />
-    <option name="LAST_COMMIT_MESSAGE" value="buys from the left card supply now work as well" />
+    <MESSAGE value="game can be played mostly normal although organization is weird because of lack of state-tracking. I will add that next to avoid confusion." />
+    <option name="LAST_COMMIT_MESSAGE" value="game can be played mostly normal although organization is weird because of lack of state-tracking. I will add that next to avoid confusion." />
   </component>
 </project>

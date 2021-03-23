@@ -7,6 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -94,7 +95,9 @@ public class GameController {
 
     //---------------Opponent and Player Deck------------------//
     @FXML private Rectangle playerDeck, opponentDeck;
-    @FXML private Button actionButton,buyPhaseButton;
+    @FXML private Button actionButton;
+    @FXML private Text gameInfoText;
+    @FXML private StackPane actionBar;
 
     public void initialize() throws FileNotFoundException {
         chatDisplayStrings = new ArrayList<>();
@@ -197,15 +200,13 @@ public class GameController {
                 cardInPlayNumBack6,cardInPlayNumBack7,cardInPlayNumBack8,cardInPlayNumBack9,cardInPlayNumBack10,cardInPlayNumBack11};
         cardsInPlayNums = new Text[]{cardInPlayNum1,cardInPlayNum2,cardInPlayNum3,cardInPlayNum4,cardInPlayNum5,cardInPlayNum6,
                 cardInPlayNum7,cardInPlayNum8,cardInPlayNum9,cardInPlayNum10,cardInPlayNum11};
-        //---------Initialize Buy Phase Button to not Visible-----//
-        buyPhaseButton.setVisible(false);
 
     }
 
     //-------------Getters----------------//
 
     public Button getActionButton() { return actionButton; }
-    public Button getBuyPhaseButton() {return buyPhaseButton;}
+    public Text getGameInfoText() {return gameInfoText;}
     public List<String> getChatDisplayStrings() {return chatDisplayStrings;}
     public List<String> getGameDisplayStrings() {return gameDisplayStrings;}
     public TextArea getChatLog() {
@@ -237,7 +238,7 @@ public class GameController {
                 //------------Temporary Fix---------------//
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
                     for(String s: playerHandDisplay.getNamesOfCards()) System.out.println(s);
-                    UserInterfaceHub.getPlayerActionMediator().playActionCard(playerHandDisplay.getNamesOfCards()[i]);
+                    UserInterfaceHub.getPlayerActionMediator().playCard(playerHandDisplay.getNamesOfCards()[i]);
                 }
                 //----------------------------------------//
 //                System.out.println(cardsInHand[i].toString() + " was clicked");
@@ -292,7 +293,10 @@ public class GameController {
     }
     public void actionButtonClicked(ActionEvent actionEvent) {
         if(actionButton.getText().equals("Start Turn")) {
-            UserInterfaceHub.getPlayerActionMediator().startPhase();
+            UserInterfaceHub.getPlayerActionMediator().startTurn();
+        }
+        else if(actionButton.getText().equals("Enter Buy Phase")) {
+            UserInterfaceHub.getPlayerActionMediator().buyPhase();
         }
         else if(actionButton.getText().equals("End Turn")) {
             UserInterfaceHub.getPlayerActionMediator().endPhase();
@@ -307,8 +311,5 @@ public class GameController {
                 UserInterfaceHub.getPlayerActionMediator().buyFromCardSupply(cardClicked);
             }
         }
-    }
-    public void buyPhaseButtonClicked(ActionEvent actionEvent) {
-        UserInterfaceHub.getPlayerActionMediator().buyPhase();
     }
 }

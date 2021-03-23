@@ -872,17 +872,21 @@
                   </Rectangle>
                </children>
             </StackPane>
-            <StackPane fx:id="actionBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
+            <StackPane fx:id="actionBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="500.0" styleClass="actionBar" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
-                  <Insets bottom="220.0" left="430.0" right="10.0" top="10.0" />
+                  <Insets bottom="215.0" left="430.0" right="10.0" top="10.0" />
                </StackPane.margin>
                <children>
                   <Button fx:id="actionButton" mnemonicParsing="false" onAction="#actionButtonClicked" text="Start Turn" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </StackPane.margin>
                   </Button>
-                  <Button fx:id="buyPhaseButton" mnemonicParsing="false" onAction="#buyPhaseButtonClicked" text="Enter Buy Phase" />
+                  <Text fx:id="gameInfoText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="380.0" StackPane.alignment="CENTER_LEFT">
+                     <StackPane.margin>
+                        <Insets left="120.0" right="5.0" />
+                     </StackPane.margin>
+                  </Text>
                </children>
             </StackPane>
             <StackPane fx:id="playersInfo" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" StackPane.alignment="BOTTOM_LEFT">
