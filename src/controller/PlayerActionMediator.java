@@ -10,13 +10,11 @@ import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
 import model.factory.CardFactory;
-import view.ActionCardSupplyDisplay;
-import view.LeftSupplyCardDisplay;
+import view.CardSupplyDisplay;
 import view.PlayerHandDisplay;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class PlayerActionMediator {
 
@@ -33,7 +31,7 @@ public class PlayerActionMediator {
 
     public void startPhase() {
         player.newTurn();
-        displayHand();
+        controller.getPlayerHandDisplay().setNamesOfCards(displayHand());
         controller.getActionButton().setText("End Turn");
         controller.getActionButton().setVisible(true);
         actionPhase();
@@ -48,11 +46,14 @@ public class PlayerActionMediator {
 //        while(player.getNumActions()>0 && player.getHand().getDistinctActionCards().size()>0) {
 //            //wait
 //        }
-
-        buyPhase();
+        controller.getBuyPhaseButton().setVisible(true);
+        if(actionCards.size()==0) buyPhase();
     }
     public void buyPhase() {
+        controller.getBuyPhaseButton().setVisible(false);
+        System.out.println("buy phase entered");
         enableBuying(true);
+
         //do buy phase stuff
 
         List<TreasureCard> treasureCards = player.getHand().getDistinctTreasureCards();
@@ -64,17 +65,19 @@ public class PlayerActionMediator {
 
     }
     public void endPhase() {
+        enableBuying(false);
         player.discardHand();
-        displayHand();
+        controller.getPlayerHandDisplay().setNamesOfCards(displayHand());
         controller.getActionButton().setText("Start Turn");
         controller.getActionButton().setVisible(true);
     }
 
-    public void displayHand() {
+    public String[] displayHand() {
         resetHandDisplay();
 
         int index = 0;
         CardCollection hand = player.getHand();
+        String [] namesOfCardsForDisplay = new String[hand.getSize()];
 
         List<ActionCard> actionCards = hand.getDistinctActionCards();
         List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
@@ -84,55 +87,26 @@ public class PlayerActionMediator {
             int numCard = hand.numCardInCollection(actionCard);
             displayCardInHand(actionCard,index,numCard);
             cardsInDisplayOrder.add(actionCard);
+            namesOfCardsForDisplay[index] = actionCard.getName();
             index++;
         }
         for(TreasureCard treasureCard: treasureCards) {
             int numCard = hand.numCardInCollection(treasureCard);
             displayCardInHand(treasureCard,index,numCard);
             cardsInDisplayOrder.add(treasureCard);
+            namesOfCardsForDisplay[index] = treasureCard.getName();
             index++;
         }
         for(VictoryCard victoryCard: victoryCards) {
             int numCard = hand.numCardInCollection(victoryCard);
             displayCardInHand(victoryCard,index,numCard);
             cardsInDisplayOrder.add(victoryCard);
+            namesOfCardsForDisplay[index] = victoryCard.getName();
             index++;
         }
-
-        /*
-        CardCollection hand = player.getHand();
-        List<Card> cards = hand.getAllCards();
-        Set<String> distinctCardsInHand = hand.getDistinctCards();
-
-
-
-        int countOfCard;
-
-        for(String s: distinctCardsInHand) {
-            Card cardToDisplay = null;
-            countOfCard = 0;
-            for(Card c: cards) {
-                if(c.getName().equals(s)) {
-                    countOfCard = hand.numCardInCollection(c);
-                    cardToDisplay = c;
-                    break;
-                }
-            }
-            if(countOfCard==1) {
-                controller.getCardsInHandDisplay()[index].setFill(new ImagePattern(cardToDisplay.getCardImage()));
-                controller.getCardsInHandDisplay()[index].setVisible(true);
-                index++;
-            } else if(countOfCard>1) {
-                controller.getCardsInHandDisplay()[index].setFill(new ImagePattern(cardToDisplay.getCardImage()));
-                controller.getCardInHandNumbers()[index].setText(String.valueOf(countOfCard));
-                controller.getCardsInHandDisplay()[index].setVisible(true);
-                controller.getCardsInHandNumBackground()[index].setVisible(true);
-                controller.getCardInHandNumbers()[index].setVisible(true);
-                index++;
-            }
-        }*/
+        return namesOfCardsForDisplay;
     }
-    public void displayCardInHand(Card card, int index, int numCard) {
+    private void displayCardInHand(Card card, int index, int numCard) {
         PlayerHandDisplay playerHandDisplay = controller.getPlayerHandDisplay();
         if(numCard==1) {
             playerHandDisplay.getCards()[index].setFill(new ImagePattern(card.getCardImage()));
@@ -145,7 +119,7 @@ public class PlayerActionMediator {
             playerHandDisplay.getCardNums()[index].setVisible(true);
         }
     }
-    public void resetHandDisplay() {
+    private void resetHandDisplay() {
         PlayerHandDisplay playerHandDisplay = controller.getPlayerHandDisplay();
 
         for(int i=0; i<playerHandDisplay.getCards().length; i++) {
@@ -156,18 +130,19 @@ public class PlayerActionMediator {
         cardsInDisplayOrder = new ArrayList<>();
     }
 
-    public void buyFromLeftCardSupply(String cardClicked) {
-        LeftSupplyCardDisplay display = controller.getLeftSupplyCardDisplay();
-        String[] names = display.getNamesOfCardsInSupply();
-        Text[] actionCardNumbers = display.getCardNums();
+    public void buyFromCardSupply(String cardClicked) {
+
+        CardSupplyDisplay display = controller.getCardSupplyDisplay();
+        String[] cardNames = display.getNamesOfCardsInSupply();
+        Text[] cardNumbers = display.getCardNums();
 
         int index = -1;
-        for(int i=0;i<names.length;i++) {
-            if(names[i] != null && names[i].equals(cardClicked)) index = i;
+        for(int i=0;i<cardNames.length;i++) {
+            if(cardNames[i] != null && cardNames[i].equals(cardClicked)) index = i;
         }
 
-        Text actionCardNumber = actionCardNumbers[index];
-        int numCardRemaining = Integer.parseInt(actionCardNumber.getText());
+        Text cardNumber = cardNumbers[index];
+        int numCardRemaining = Integer.parseInt(cardNumber.getText());
         int costOfCard = CardFactory.getCard(cardClicked).getCost();
 
 
@@ -182,74 +157,35 @@ public class PlayerActionMediator {
             player.buyCard(CardFactory.getCard(cardClicked));
 
             if(numCardRemaining==1) {
-                actionCardNumber.setText("0");
+                cardNumber.setText("0");
             } else {
-                actionCardNumber.setText(String.valueOf(numCardRemaining-1));
+                cardNumber.setText(String.valueOf(numCardRemaining-1));
             }
         }
 
         if(player.getNumBuys()==0) {
-            enableBuying(false);
             endPhase();
         }
     }
-    public void buyFromActionCardSupply(String actionCardClicked) {
+    private void enableBuying(boolean enable) {
+        CardSupplyDisplay cardSupplyDisplay = controller.getCardSupplyDisplay();
 
-        ActionCardSupplyDisplay display = controller.getActionCardSupplyDisplay();
-        String[] names = display.getNamesOfActionCardsInSupply();
-        Text[] actionCardNumbers = display.getActionCardNumbers();
-
-        int index = -1;
-        for(int i=0;i<names.length;i++) {
-            if(names[i] != null && names[i].equals(actionCardClicked)) index = i;
-        }
-
-        Text actionCardNumber = actionCardNumbers[index];
-        int numCardRemaining = Integer.parseInt(actionCardNumber.getText());
-        int costOfCard = CardFactory.getCard(actionCardClicked).getCost();
-
-
-        if(numCardRemaining==0) {
-            addMessageToGameLog("There aren't any " + actionCardClicked + "s left");
-        }
-        else if(player.getHandPurchasePower() < costOfCard) {
-            addMessageToGameLog("You don't have enough coins to purchase a " + actionCardClicked);
-        }
-        if(player.getHandPurchasePower() >= costOfCard && numCardRemaining>0 ) {
-            addMessageToGameLog("You purchased a " + actionCardClicked);
-            player.buyCard(CardFactory.getCard(actionCardClicked));
-
-            if(numCardRemaining==1) {
-                actionCardNumber.setText("0");
-            } else {
-                actionCardNumber.setText(String.valueOf(numCardRemaining-1));
+        Rectangle[] cardBuyButtons = cardSupplyDisplay.getCardBuyButtons();
+        Rectangle[] cards = cardSupplyDisplay.getCardsInSupply();
+        for(int i=0;i<cards.length;i++) {
+            if(cards[i].isVisible()) {
+                cardBuyButtons[i].setVisible(enable);
             }
-        }
-
-        if(player.getNumBuys()==0) {
-            enableBuying(false);
-            endPhase();
         }
     }
-    public void enableBuying(boolean enable) {
-        LeftSupplyCardDisplay leftSupplyCardDisplay = controller.getLeftSupplyCardDisplay();
-        ActionCardSupplyDisplay actionCardSupplyDisplay = controller.getActionCardSupplyDisplay();
 
-        Rectangle[] leftCardButtons = leftSupplyCardDisplay.getCardBuyButtons();
-        Rectangle[] leftCards = leftSupplyCardDisplay.getCardsInSupply();
-        Rectangle[] actionCardButtons = actionCardSupplyDisplay.getBuyActionCardButtons();
-        Rectangle[] actionCards = actionCardSupplyDisplay.getActionCardsInSupply();
-        for(int i=0;i<leftCardButtons.length;i++) {
-            if(leftCards[i].isVisible()) {
-                leftCardButtons[i].setVisible(enable);
-            }
+    public void playActionCard(String cardClicked) {
+        ActionCard card = (ActionCard) CardFactory.getCard(cardClicked);
+        player.performAction(card);
+        controller.getPlayerHandDisplay().setNamesOfCards(displayHand());
+        if(player.getNumActions()==0) {
+            buyPhase();
         }
-        for(int i=0; i< actionCards.length; i++) {
-            if(actionCards[i].isVisible()) {
-                actionCardButtons[i].setVisible(enable);
-            }
-        }
-
     }
 
     public void addMessageToChatLog(String msg) {

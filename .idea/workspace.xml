@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/LeftSupplyCardDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/CardsInGame.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/ActionCardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/ActionCardsInGame.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/TreasureVictoryExtraCardsInGame.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/ActionCardSupplyDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/ActionCardSupplyDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/TreasureVictoryExtraCardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/leftSupplyCardsInGame.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/ActionCardsInGame.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ActionCardSupplyDisplay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LeftSupplyCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CardSupplyDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlayerHandDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerHandDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/style1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +54,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../UTD Spring 2021/Java Coding/CardGameServer" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -83,13 +83,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,7 +116,8 @@
       <workItem from="1616331317819" duration="17313000" />
       <workItem from="1616352466417" duration="5809000" />
       <workItem from="1616435923791" duration="10695000" />
-      <workItem from="1616457465304" duration="5150000" />
+      <workItem from="1616457465304" duration="5515000" />
+      <workItem from="1616466714786" duration="5863000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -200,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616445566085</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="buys from the left card supply now work as well">
+      <created>1616463017850</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1616463017850</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +241,7 @@
     <MESSAGE value="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters." />
     <MESSAGE value="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion." />
     <MESSAGE value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
-    <option name="LAST_COMMIT_MESSAGE" value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
+    <MESSAGE value="buys from the left card supply now work as well" />
+    <option name="LAST_COMMIT_MESSAGE" value="buys from the left card supply now work as well" />
   </component>
 </project>

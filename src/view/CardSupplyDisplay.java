@@ -3,7 +3,7 @@ package view;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-public class LeftSupplyCardDisplay {
+public class CardSupplyDisplay {
 
     private final Rectangle[] cardsInSupply;
     private final Rectangle[] cardNumBacks;
@@ -11,8 +11,8 @@ public class LeftSupplyCardDisplay {
     private final Rectangle[] cardBuyButtons;
     private final String[] namesOfCardsInSupply;
 
-    public LeftSupplyCardDisplay(Rectangle[] cardsInSupply, Rectangle[] cardNumBacks,
-                                   Text[] cardNums, Rectangle[] cardBuyButtons, String[] namesOfCardsInSupply) {
+    public CardSupplyDisplay(Rectangle[] cardsInSupply, Rectangle[] cardNumBacks,
+                             Text[] cardNums, Rectangle[] cardBuyButtons, String[] namesOfCardsInSupply) {
             this.cardsInSupply = cardsInSupply;
             this.cardNumBacks = cardNumBacks;
             this.cardNums = cardNums;
