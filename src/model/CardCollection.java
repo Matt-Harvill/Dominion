@@ -19,9 +19,12 @@ public class CardCollection {
         collection.add(c);
     }
     public Card removeCardFromCollection(Card c) {
-        Card card = c;
+        System.out.println("collection before removing: ");
+        printCardNamesInCollection();
         collection.remove(c);
-        return card;
+        System.out.println("collection after removing: ");
+        printCardNamesInCollection();
+        return c;
     }
 
     public List<Card> getCollection() {return collection;}
@@ -66,6 +69,12 @@ public class CardCollection {
     }
     public int numCardInCollection(Card card) {
         return Collections.frequency(collection,card);
+    }
+    public void printCardNamesInCollection() {
+        for(Card c: collection) {
+            System.out.print(c.getName() + " ");
+        }
+        System.out.println();
     }
 
 }

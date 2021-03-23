@@ -22,7 +22,7 @@ public class Player {
 
     private String name;
     private CardCollection hand, deck, discardPile, inPlay;
-    private int handLimit, numActions, numBuys, handPurchasePower, amountSpentThisTurn, bonusPurchasePower;
+    private int handLimit, numActions, numBuys, purchasePower, amountSpentThisTurn, bonusPurchasePower;
 
     public Player() {
         hand = CardCollectionFactory.getCardCollection();
@@ -38,28 +38,13 @@ public class Player {
         handLimit = 5;
         numActions = 1;
         numBuys = 1;
-        handPurchasePower = 0;
+        purchasePower = 0;
         amountSpentThisTurn = 0;
         bonusPurchasePower = 0;
     }
 
     public CardCollection getHand() {
         return hand;
-    }
-    public void setHand(CardCollection hand) {
-        this.hand = hand;
-    }
-    public CardCollection getDeck() {
-        return deck;
-    }
-    public void setDeck(CardCollection deck) {
-        this.deck = deck;
-    }
-    public CardCollection getDiscardPile() {
-        return discardPile;
-    }
-    public void setDiscardPile(CardCollection discardPile) {
-        this.discardPile = discardPile;
     }
     public String getName() {
         return name;
@@ -72,7 +57,7 @@ public class Player {
         handLimit = 5;
         numActions = 1;
         numBuys = 1;
-        handPurchasePower = 0;
+        purchasePower = 0;
         amountSpentThisTurn = 0;
         bonusPurchasePower = 0;
         drawHand();
@@ -86,40 +71,23 @@ public class Player {
         numBuys--;
         amountSpentThisTurn+=card.getCost();
     }
-
-    public boolean drawCardFromDeck(){
-        if(deck.getSize()==0){
-            discardPileToDeck();
-            shuffleDeck();
-        }
-        if(hand.getSize()>=handLimit){
-            System.out.println("You already have a full hand");
-            return false;
-        }
-        else if(deck.getSize()==0) {
-            System.out.println("You have no more cards");
-            return false;
-        }
-        else{
-            hand.addCardToCollection(deck.drawTopCard());
-            return true;
+    public void playCard(Card card) {
+        inPlay.addCardToCollection(hand.removeCardFromCollection(card));
+        if(card instanceof ActionCard) {
+            playActionCard((ActionCard) card);
+        } else if(card instanceof TreasureCard) {
+            playTreasureCard((TreasureCard) card);
         }
     }
+
     public int getNumBuys(){
         return numBuys;
     }
     public int getNumActions() {
         return numActions;
     }
-    public int getHandPurchasePower(){
-        handPurchasePower = 0;
-        for(TreasureCard card: hand.getDistinctTreasureCards()){
-            int numCard = hand.numCardInCollection(card);
-            handPurchasePower+=card.getPurchasePower()*numCard;
-        }
-        handPurchasePower-=amountSpentThisTurn;
-        handPurchasePower+=bonusPurchasePower;
-        return handPurchasePower;
+    public int getPurchasePower(){
+        return purchasePower - amountSpentThisTurn + bonusPurchasePower;
     }
     public int getTotalPoints() {
         int points = 0;
@@ -138,6 +106,24 @@ public class Player {
         return points;
     }
 
+    private boolean drawCardFromDeck(){
+        if(deck.getSize()==0){
+            discardPileToDeck();
+            shuffleDeck();
+        }
+        if(hand.getSize()>=handLimit){
+            System.out.println("You already have a full hand");
+            return false;
+        }
+        else if(deck.getSize()==0) {
+            System.out.println("You have no more cards");
+            return false;
+        }
+        else{
+            hand.addCardToCollection(deck.drawTopCard());
+            return true;
+        }
+    }
     private void discardPileToDeck(){
         while(discardPile.getSize()>0) {
             deck.addCardToCollection(discardPile.drawTopCard());
@@ -188,20 +174,9 @@ public class Player {
             }
         }
         discardPile.addCardToCollection(actionCard);
-        hand.removeCardFromCollection(actionCard);
         numActions--;
     }
     private void playTreasureCard(TreasureCard treasureCard) {
-        handPurchasePower+=treasureCard.getPurchasePower();
+        purchasePower+=treasureCard.getPurchasePower();
     }
-
-    public void playCard(Card card) {
-        inPlay.addCardToCollection(hand.removeCardFromCollection(card));
-        if(card instanceof ActionCard) {
-            playActionCard((ActionCard) card);
-        } else if(card instanceof TreasureCard) {
-            playTreasureCard((TreasureCard) card);
-        }
-    }
-
 }

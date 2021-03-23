@@ -2,6 +2,9 @@ package view;
 
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import model.card.Card;
+
+import java.util.List;
 
 public class CardSupplyDisplay {
 
@@ -9,10 +12,10 @@ public class CardSupplyDisplay {
     private final Rectangle[] cardNumBacks;
     private final Text[] cardNums;
     private final Rectangle[] cardBuyButtons;
-    private final String[] namesOfCardsInSupply;
+    private final Card[] namesOfCardsInSupply;
 
     public CardSupplyDisplay(Rectangle[] cardsInSupply, Rectangle[] cardNumBacks,
-                             Text[] cardNums, Rectangle[] cardBuyButtons, String[] namesOfCardsInSupply) {
+                             Text[] cardNums, Rectangle[] cardBuyButtons, Card[] namesOfCardsInSupply) {
             this.cardsInSupply = cardsInSupply;
             this.cardNumBacks = cardNumBacks;
             this.cardNums = cardNums;
@@ -23,15 +26,15 @@ public class CardSupplyDisplay {
     public Rectangle[] getCardsInSupply() {
         return cardsInSupply;
     }
-    public Rectangle[] getCardNumBacks() { return cardNumBacks;
+    public Rectangle[] getCardInSupplyNumBacks() { return cardNumBacks;
     }
-    public Text[] getCardNums() {
+    public Text[] getCardInSupplyNums() {
         return cardNums;
     }
     public Rectangle[] getCardBuyButtons() {
         return cardBuyButtons;
     }
-    public String[] getNamesOfCardsInSupply() {
+    public Card[] getCardObjectsInSupply() {
         return namesOfCardsInSupply;
     }
 }
