@@ -15,6 +15,7 @@ import model.card.Card;
 import model.factory.CardFactory;
 import view.CardSupplyDisplay;
 import view.HandOrInPlayDisplay;
+import view.PlayerNamePointsDisplay;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -102,6 +103,17 @@ public class GameController {
     @FXML private Button actionButton;
     @FXML private Text gameInfoText;
     @FXML private StackPane actionBar;
+
+    //--------------PlayerName and Point Displays------------//
+    @FXML private Rectangle playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6;
+    @FXML private Text playerLabelName1,playerLabelName2,playerLabelName3,playerLabelName4,playerLabelName5,playerLabelName6;
+    @FXML private Rectangle playerLabelVictory1,playerLabelVictory2,playerLabelVictory3,playerLabelVictory4,playerLabelVictory5,playerLabelVictory6;
+    @FXML private Text playerLabelVictoryNum1,playerLabelVictoryNum2,playerLabelVictoryNum3,playerLabelVictoryNum4,playerLabelVictoryNum5,playerLabelVictoryNum6;
+    private Rectangle[] playerLabels;
+    private Text[] playerLabelNames;
+    private Rectangle[] playerLabelVictories;
+    private Text[] playerLabelVictoryNums;
+    PlayerNamePointsDisplay playerNamePointsDisplay;
 
     public void initialize() throws FileNotFoundException {
         chatDisplayStrings = new ArrayList<>();
@@ -212,6 +224,16 @@ public class GameController {
         playerDeck.setVisible(true);
         opponentDeck.setVisible(true);
 
+        //--------------Initialize Player labels----------------//
+        playerLabels = new Rectangle[]{playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6};
+        playerLabelNames = new Text[]{playerLabelName1,playerLabelName2,playerLabelName3,playerLabelName4,playerLabelName5,playerLabelName6};
+        playerLabelVictories = new Rectangle[]{playerLabelVictory1,playerLabelVictory2,playerLabelVictory3,playerLabelVictory4,playerLabelVictory5,playerLabelVictory6};
+        playerLabelVictoryNums = new Text[]{playerLabelVictoryNum1,playerLabelVictoryNum2,playerLabelVictoryNum3,playerLabelVictoryNum4,playerLabelVictoryNum5,playerLabelVictoryNum6};
+        imagePattern = new ImagePattern(new Image(new File("src/resources/Victory_Symbol.png").toURI().toString()));
+        for(Rectangle victoryImageSlot: playerLabelVictories) {
+            victoryImageSlot.setFill(imagePattern);
+        }
+        playerNamePointsDisplay = new PlayerNamePointsDisplay(playerLabels,playerLabelVictories,playerLabelNames,playerLabelVictoryNums);
     }
 
     //-------------Getters----------------//
@@ -232,6 +254,7 @@ public class GameController {
     public HandOrInPlayDisplay getPlayerHandDisplay() {return playerHandDisplay;}
     public HandOrInPlayDisplay getInPlayDisplay() {return inPlayDisplay;}
     public CardSupplyDisplay getCardSupplyDisplay() { return cardSupplyDisplay;}
+    public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
 
     //-------------------Internal Updates------------------------//

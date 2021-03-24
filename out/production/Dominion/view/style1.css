@@ -18,5 +18,7 @@
 
 .actionBar {
     -fx-background-color: black;
+    -fx-stroke-width: 1;
+    -fx-stroke: white;
 }
 

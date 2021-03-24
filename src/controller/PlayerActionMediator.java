@@ -12,6 +12,7 @@ import model.card.VictoryCard;
 import model.factory.CardFactory;
 import view.CardSupplyDisplay;
 import view.HandOrInPlayDisplay;
+import view.PlayerNamePointsDisplay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,8 @@ public class PlayerActionMediator {
         phase = "actionPhase";
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
-        checkNumActions();
         controller.getActionButton().setText("Enter Buy Phase");
+        checkCanDoAction();
     }
     public void buyPhase() {
         phase = "buyPhase";
@@ -61,17 +62,6 @@ public class PlayerActionMediator {
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         controller.getActionButton().setText("Start Turn");
-
-        //
-        System.out.println("deck: ");
-        player.getDeck().printCardNamesInCollection();
-        System.out.println("discard: ");
-        player.getDiscardPile().printCardNamesInCollection();
-        System.out.println("inplay: ");
-        player.getInPlay().printCardNamesInCollection();
-        System.out.println("hand: ");
-        player.getHand().printCardNamesInCollection();
-
     }
 
     public void buyFromCardSupply(Card cardClicked) {
@@ -89,25 +79,13 @@ public class PlayerActionMediator {
         int numCardRemaining = Integer.parseInt(cardNumber.getText());
         int costOfCard = cardClicked.getCost();
 
+        player.buyCard(cardClicked);
+        addMessageToGameLog("You purchased a " + cardClicked.getName());
 
-        if(numCardRemaining==0) {
-            addMessageToGameLog("There aren't any " + cardClicked.getName() + "s left");
-        }
-        else if(player.getPurchasePower() < costOfCard) {
-            addMessageToGameLog("You don't have enough coins to purchase a " + cardClicked.getName());
-        }
-        if(player.getPurchasePower() >= costOfCard && numCardRemaining>0 ) {
-            addMessageToGameLog("You purchased a " + cardClicked.getName());
-            player.buyCard(cardClicked);
-
-            if(numCardRemaining==1) {
-                cardNumber.setText("0");
-            } else {
-                cardNumber.setText(String.valueOf(numCardRemaining-1));
-            }
-        }
+        cardNumber.setText(String.valueOf(numCardRemaining-1));
 
         displayHandOrInPlay(controller.getPlayerHandDisplay());
+        displayPlayerLabel();
         checkNumBuys();
     }
 
@@ -118,9 +96,11 @@ public class PlayerActionMediator {
                 break;
             }
         }
+        addMessageToGameLog("You played a " + cardClicked.getName());
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
-        checkNumActions();
+        displayPlayerLabel();
+        checkCanDoAction();
     }
 
     private void enableBuying(boolean enable) {
@@ -128,9 +108,13 @@ public class PlayerActionMediator {
 
         Rectangle[] cardBuyButtons = cardSupplyDisplay.getCardBuyButtons();
         Rectangle[] cards = cardSupplyDisplay.getCardsInSupply();
+        Text[] cardNums = cardSupplyDisplay.getCardInSupplyNums();
         for(int i=0;i<cards.length;i++) {
-            if(cards[i].isVisible()) {
+            if(cards[i].isVisible() && cardSupplyDisplay.getCardObjectsInSupply()[i].getCost()<=player.getPurchasePower()
+            && Integer.parseInt(cardNums[i].getText())>0) {
                 cardBuyButtons[i].setVisible(enable);
+            } else {
+                cardBuyButtons[i].setVisible(false);
             }
         }
     }
@@ -190,9 +174,13 @@ public class PlayerActionMediator {
 
         Text gameInfoText = controller.getGameInfoText();
         StringBuilder gameInfoString = new StringBuilder();
-        gameInfoString.append("Number of Actions: " + player.getNumActions() + " ");
-        gameInfoString.append("Number of Buys: " + player.getNumBuys() + " ");
-        gameInfoString.append("Purchase Power: " + player.getPurchasePower());
+        if(phase.equals("actionPhase")) {
+            gameInfoString.append("Number of Actions: " + player.getNumActions() + "   ");
+        }
+        else if(phase.equals("buyPhase")) {
+            gameInfoString.append("Number of Buys Remaining : " + player.getNumBuys() + "   ");
+            gameInfoString.append("Purchase Power: " + player.getPurchasePower());
+        }
         gameInfoText.setText(String.valueOf(gameInfoString));
 
     }
@@ -222,9 +210,8 @@ public class PlayerActionMediator {
         }
     }
 
-
-    private void checkNumActions() {
-        if (player.getNumActions()==0) {
+    private void checkCanDoAction() {
+        if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
             buyPhase();
         }
     }
@@ -253,5 +240,24 @@ public class PlayerActionMediator {
             builder.append(s); builder.append("\n");
         }
         controller.getGameLog().setText(builder.toString());
+    }
+
+    public void displayPlayerLabel() {
+        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
+
+        Text[] playerLabelNames = display.getPlayerLabelNames();
+        Text[] playerPoints = display.getPlayerLabelVictoryNums();
+
+        for(int i=0; i<playerLabelNames.length; i++) {
+            if(player.getName().equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
+                playerLabelNames[i].setText(player.getName());
+                playerPoints[i].setText(String.valueOf(player.getTotalPoints()));
+                display.getPlayerLabels()[i].setVisible(true);
+                display.getPlayerLabelVictories()[i].setVisible(true);
+                playerLabelNames[i].setVisible(true);
+                playerPoints[i].setVisible(true);
+                break;
+            }
+        }
     }
 }

@@ -102,15 +102,19 @@ public class Player {
     public int getTotalPoints() {
         int points = 0;
         for (VictoryCard card : discardPile.getDistinctVictoryCards()) {
-            int numCard = hand.numCardInCollection(card);
+            int numCard = discardPile.numCardInCollection(card);
             points += card.getVictoryPoints()*numCard;
         }
         for (VictoryCard card : deck.getDistinctVictoryCards()) {
-            int numCard = hand.numCardInCollection(card);
+            int numCard = deck.numCardInCollection(card);
             points += card.getVictoryPoints()*numCard;
         }
         for (VictoryCard card : hand.getDistinctVictoryCards()) {
             int numCard = hand.numCardInCollection(card);
+            points += card.getVictoryPoints()*numCard;
+        }
+        for (VictoryCard card : inPlay.getDistinctVictoryCards()) {
+            int numCard = inPlay.numCardInCollection(card);
             points += card.getVictoryPoints()*numCard;
         }
         return points;

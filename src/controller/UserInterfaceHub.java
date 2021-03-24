@@ -23,12 +23,10 @@ public class UserInterfaceHub extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         window = primaryStage;
+        player = new Player();
 
         FXMLLoader gameUILoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
         gameUIScene = gameUILoader.load();
-
-
-        player = new Player();
         gameController = gameUILoader.getController();
         playerActionMediator = new PlayerActionMediator(player,gameController);
 
@@ -64,6 +62,9 @@ public class UserInterfaceHub extends Application {
     public static void switchToGameScene() {
         window.setTitle("Dominion");
         window.setScene(new Scene(gameUIScene));
+
+        playerActionMediator.displayPlayerLabel();
+
         window.setMaximized(true);
         window.setMinWidth(1296);
         window.setMinHeight(839);
