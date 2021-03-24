@@ -35,4 +35,5 @@ public class HandOrInPlayDisplay {
     public void setCardObjectsInHandOrInPlay(Card[] namesOfCards) {
         this.namesOfCards = namesOfCards;
     }
+    public String getNameOfDisplay() {return nameOfDisplay;}
 }

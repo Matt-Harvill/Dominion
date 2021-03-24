@@ -46,8 +46,18 @@ public class Player {
     public CardCollection getHand() {
         return hand;
     }
+    public CardCollection getDeck() {
+        return deck;
+    }
+    public CardCollection getDiscardPile() {
+        return discardPile;
+    }
+
     public String getName() {
         return name;
+    }
+    public CardCollection getInPlay() {
+        return inPlay;
     }
     public void setName(String name) {
         this.name = name;
@@ -110,6 +120,10 @@ public class Player {
         if(deck.getSize()==0){
             discardPileToDeck();
             shuffleDeck();
+            System.out.println("drawCardFromDeck\ndeck: ");
+            deck.printCardNamesInCollection();
+            System.out.println("discard: ");
+            discardPile.printCardNamesInCollection();
         }
         if(hand.getSize()>=handLimit){
             System.out.println("You already have a full hand");
@@ -151,7 +165,6 @@ public class Player {
         Scanner input = new Scanner(actionCard.getAction());
         String extractedString;
         int numAdds = 0;
-
         while(input.hasNext()){
             extractedString = input.next();
             if(extractedString.contains("+")){
@@ -173,7 +186,6 @@ public class Player {
                 bonusPurchasePower+=numAdds;
             }
         }
-        discardPile.addCardToCollection(actionCard);
         numActions--;
     }
     private void playTreasureCard(TreasureCard treasureCard) {

@@ -19,11 +19,7 @@ public class CardCollection {
         collection.add(c);
     }
     public Card removeCardFromCollection(Card c) {
-        System.out.println("collection before removing: ");
-        printCardNamesInCollection();
         collection.remove(c);
-        System.out.println("collection after removing: ");
-        printCardNamesInCollection();
         return c;
     }
 

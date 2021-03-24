@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/view/gameScene2.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/HandOrInPlayDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/HandOrInPlayDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/CardSupplyDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CardSupplyDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerHandDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HandOrInPlayDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/HandOrInPlayDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/HandOrInPlayDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/style1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,19 +83,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.UserInterfaceHub" />
@@ -120,7 +106,9 @@
       <workItem from="1616457465304" duration="5515000" />
       <workItem from="1616466714786" duration="6054000" />
       <workItem from="1616515662409" duration="5403000" />
-      <workItem from="1616528562585" duration="6462000" />
+      <workItem from="1616528562585" duration="8750000" />
+      <workItem from="1616550360531" duration="719000" />
+      <workItem from="1616551198270" duration="1741000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -227,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616521687924</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up">
+      <created>1616535234941</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1616535234941</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +256,7 @@
     <MESSAGE value="buys from the left card supply now work as well" />
     <MESSAGE value="game can be played mostly normal although organization is weird because of lack of state-tracking. I will add that next to avoid confusion." />
     <MESSAGE value="Doesn't work fully but I'm starting to implement playing treasure cards instead of auto using them so it's not far off from working well." />
-    <option name="LAST_COMMIT_MESSAGE" value="Doesn't work fully but I'm starting to implement playing treasure cards instead of auto using them so it's not far off from working well." />
+    <MESSAGE value="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up" />
   </component>
 </project>
