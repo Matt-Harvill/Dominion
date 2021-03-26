@@ -2,14 +2,8 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import model.Player;
-import model.ClientSideConnection;
-
-import java.io.IOException;
 
 public class ServerConnectController {
 
@@ -22,8 +16,11 @@ public class ServerConnectController {
         String portOfHost = portNumBox.getText();
 
         try {
-            UserInterfaceHub.setClientSideConnection(new ClientSideConnection(ipAddressOfHost,portOfHost));
-            UserInterfaceHub.switchToSetNameScene();
+            ClientSideConnection csc = new ClientSideConnection(ipAddressOfHost,portOfHost, Main.getPlayer().getName());
+            ServerSender serverSender = new ServerSender(csc, Main.getPlayer());
+            Main.setServerSender(serverSender);
+            Main.setClientSideConnection(csc);
+            Main.switchToGameScene();
         } catch (Exception ex) {
             errorMessage.setText("Incorrect Host IP and/or Port, Please Try Again");
         }

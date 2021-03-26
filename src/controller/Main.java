@@ -5,10 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.ClientSideConnection;
 import model.Player;
 
-public class UserInterfaceHub extends Application {
+public class Main extends Application {
 
     private static Parent gameUIScene, serverConnectScene, setNameScene;
     private static Stage window;
@@ -16,6 +15,8 @@ public class UserInterfaceHub extends Application {
     private static GameController gameController;
     private static Player player;
     private static ClientSideConnection clientSideConnection;
+
+    private static ServerSender serverSender;
 
     private static PlayerActionMediator playerActionMediator;
 
@@ -33,9 +34,7 @@ public class UserInterfaceHub extends Application {
         serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
         setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
 
-//        window.setTitle("Connect to Server");
-//        window.setScene(new Scene(serverConnectScene));
-//        window.show();
+
         switchToSetNameScene();
 
         //-------------Center Frame if resized--------------------//
@@ -56,7 +55,13 @@ public class UserInterfaceHub extends Application {
         return playerActionMediator;
     }
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
-        UserInterfaceHub.clientSideConnection = clientSideConnection;
+        Main.clientSideConnection = clientSideConnection;
+    }
+    public static ServerSender getServerSender() {
+        return serverSender;
+    }
+    public static void setServerSender(ServerSender serverSender) {
+        Main.serverSender = serverSender;
     }
 
     public static void switchToGameScene() {
@@ -73,6 +78,11 @@ public class UserInterfaceHub extends Application {
     public static void switchToSetNameScene() {
         window.setTitle("Select Name");
         window.setScene(new Scene(setNameScene));
+        window.show();
+    }
+    public static void switchToServerConnectScene() {
+        window.setTitle("Connect to Server");
+        window.setScene(new Scene(serverConnectScene));
         window.show();
     }
 

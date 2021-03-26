@@ -1,6 +1,4 @@
-package model;
-
-import controller.UserInterfaceHub;
+package controller;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,9 +10,11 @@ public class ClientSideConnection implements Runnable {
     private Socket socket;
     private DataOutputStream dataOut;
     private DataInputStream dataIn;
+    private String playerName;
 
-    public ClientSideConnection(String ipAddress, String portNum) throws IOException, NumberFormatException {
+    public ClientSideConnection(String ipAddress, String portNum, String playerName) throws IOException, NumberFormatException {
         socket = new Socket(ipAddress, Integer.parseInt(portNum));
+        this.playerName = playerName;
         try {
             dataIn = new DataInputStream(socket.getInputStream());
             dataOut = new DataOutputStream(socket.getOutputStream());
@@ -27,13 +27,32 @@ public class ClientSideConnection implements Runnable {
 
     public void run() {
         Scanner scanner;
+        send("setName " + playerName);
+
         while(true) {
             String receive = receive();
+
+            if(receive==null) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
             scanner = new Scanner(receive);
             String instruction = scanner.next();
-            receive = scanner.nextLine();
+            String playerName = scanner.next();
+            if(scanner.hasNext()) {
+                receive = scanner.nextLine();
+            }
+
             if(instruction.equals("chat")) {
-                UserInterfaceHub.getPlayerActionMediator().addMessageToChatLog(receive);
+                Main.getPlayerActionMediator().addMessageToChatLog(playerName + ":" + receive);
+            } else if(instruction.equals("connected")) {
+                Main.getPlayerActionMediator().addMessageToGameLog(playerName + " joined the game");
+            } else if(instruction.equals("startTurn") && playerName.equals(playerName)) {
+                Main.getPlayerActionMediator().actionPhase();
             }
         }
     }

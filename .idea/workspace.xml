@@ -2,21 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/resources/Victory Symbol.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Victory_Symbol.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/PlayerNamePointsDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/style1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ClientSideConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SetNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SetNameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/style1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +74,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="UserInterfaceHub" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.UserInterfaceHub" />
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.Main" />
       <module name="Dominion" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\mharv\.jdks\javafx-sdk-15.0.1\lib --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
@@ -100,7 +101,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserInterfaceHub" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -124,7 +125,10 @@
       <workItem from="1616528562585" duration="8750000" />
       <workItem from="1616550360531" duration="719000" />
       <workItem from="1616551198270" duration="3890000" />
-      <workItem from="1616596760652" duration="6553000" />
+      <workItem from="1616596760652" duration="6818000" />
+      <workItem from="1616614964652" duration="3577000" />
+      <workItem from="1616707880652" duration="154000" />
+      <workItem from="1616708836890" duration="6965000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -245,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616553148127</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Now added game labels that display player name and total points">
+      <created>1616613447432</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1616613447432</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +292,7 @@
     <MESSAGE value="Doesn't work fully but I'm starting to implement playing treasure cards instead of auto using them so it's not far off from working well." />
     <MESSAGE value="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up" />
     <MESSAGE value="fixed weird multiple card copies bug from previous code." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed weird multiple card copies bug from previous code." />
+    <MESSAGE value="Now added game labels that display player name and total points" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now added game labels that display player name and total points" />
   </component>
 </project>

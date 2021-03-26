@@ -1,10 +1,6 @@
 package model;
 
 
-import controller.UserInterfaceHub;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
@@ -12,11 +8,7 @@ import model.card.VictoryCard;
 import model.factory.CardCollectionFactory;
 import model.factory.CardFactory;
 
-import java.awt.*;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Player {
 
@@ -101,25 +93,21 @@ public class Player {
     }
     public int getTotalPoints() {
         int points = 0;
-        for (VictoryCard card : discardPile.getDistinctVictoryCards()) {
-            int numCard = discardPile.numCardInCollection(card);
-            points += card.getVictoryPoints()*numCard;
-        }
-        for (VictoryCard card : deck.getDistinctVictoryCards()) {
-            int numCard = deck.numCardInCollection(card);
-            points += card.getVictoryPoints()*numCard;
-        }
-        for (VictoryCard card : hand.getDistinctVictoryCards()) {
-            int numCard = hand.numCardInCollection(card);
-            points += card.getVictoryPoints()*numCard;
-        }
-        for (VictoryCard card : inPlay.getDistinctVictoryCards()) {
-            int numCard = inPlay.numCardInCollection(card);
+        points+=getVictoryPoints(discardPile);
+        points+=getVictoryPoints(deck);
+        points+=getVictoryPoints(hand);
+        points+=getVictoryPoints(inPlay);
+        return points;
+    }
+
+    private int getVictoryPoints(CardCollection collection) {
+        int points = 0;
+        for (VictoryCard card : collection.getDistinctVictoryCards()) {
+            int numCard = collection.numCardInCollection(card);
             points += card.getVictoryPoints()*numCard;
         }
         return points;
     }
-
     private boolean drawCardFromDeck(){
         if(deck.getSize()==0){
             discardPileToDeck();

@@ -13,7 +13,9 @@ public class SetNameController {
 
     public void nameEntered(ActionEvent actionEvent) throws InterruptedException {
         name = nameTextField.getText();
-        UserInterfaceHub.getPlayer().setName(name);
-        UserInterfaceHub.switchToGameScene();
+        Main.getPlayer().setName(name);
+        Main.switchToServerConnectScene();
+//        Main.switchToGameScene();
+
     }
 }

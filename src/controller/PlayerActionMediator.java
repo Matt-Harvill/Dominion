@@ -32,16 +32,19 @@ public class PlayerActionMediator {
         this.controller = controller;
         cardsInHandInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
         cardsInPlayInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
-        phase = "startPhase";
+        startPhase();
     }
+
 
     public void startPhase() {
         phase = "startPhase";
         player.newTurn();
 //        displayHand();
-        actionPhase();
+//        actionPhase();
+        displayHandOrInPlay(controller.getPlayerHandDisplay());
     }
     public void actionPhase() {
+        controller.getActionBar().setVisible(true);
         phase = "actionPhase";
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
@@ -62,6 +65,10 @@ public class PlayerActionMediator {
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         controller.getActionButton().setText("Start Turn");
+
+        controller.getActionBar().setVisible(false);
+        startPhase();
+        Main.getServerSender().endTurn();
     }
 
     public void buyFromCardSupply(Card cardClicked) {

@@ -234,6 +234,10 @@ public class GameController {
             victoryImageSlot.setFill(imagePattern);
         }
         playerNamePointsDisplay = new PlayerNamePointsDisplay(playerLabels,playerLabelVictories,playerLabelNames,playerLabelVictoryNums);
+
+        //-----------------ActionBar-------------------//
+        actionBar.setVisible(false);
+
     }
 
     //-------------Getters----------------//
@@ -256,15 +260,17 @@ public class GameController {
     public CardSupplyDisplay getCardSupplyDisplay() { return cardSupplyDisplay;}
     public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
+    public StackPane getActionBar() {return actionBar;}
 
     //-------------------Internal Updates------------------------//
 
     public void chatSend(ActionEvent actionEvent) {
         if(chatType.getText()==null) return;
-        String newChat = UserInterfaceHub.getPlayer().getName() + ": " + chatType.getText();
-        UserInterfaceHub.getPlayerActionMediator().addMessageToChatLog(newChat);
-//        UserInterfaceHub.getClientSideConnection().send("chat " + newChat);
+        String chatText = chatType.getText();
+        Main.getPlayerActionMediator().addMessageToChatLog(Main.getPlayer().getName() + ": " + chatText);
+        Main.getServerSender().chatSend(chatText);
     }
+
     public void cardInHandClicked(MouseEvent mouseEvent) {
         Rectangle cardClicked = (Rectangle) mouseEvent.getSource();
         for(int i=0; i<cardsInHand.length; i++) {
@@ -272,7 +278,7 @@ public class GameController {
 
                 //------------Temporary Fix---------------//
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    UserInterfaceHub.getPlayerActionMediator().playCard(playerHandDisplay.getCardObjectsInHandOrInPlay()[i]);
+                    Main.getPlayerActionMediator().playCard(playerHandDisplay.getCardObjectsInHandOrInPlay()[i]);
                 }
                 //----------------------------------------//
 //                System.out.println(cardsInHand[i].toString() + " was clicked");
@@ -340,9 +346,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn" -> UserInterfaceHub.getPlayerActionMediator().startPhase();
-            case "Enter Buy Phase" -> UserInterfaceHub.getPlayerActionMediator().buyPhase();
-            case "End Turn" -> UserInterfaceHub.getPlayerActionMediator().endPhase();
+            case "Start Turn" -> Main.getPlayerActionMediator().startPhase();
+            case "Enter Buy Phase" -> Main.getPlayerActionMediator().buyPhase();
+            case "End Turn" -> Main.getPlayerActionMediator().endPhase();
         }
 
     }
@@ -351,7 +357,7 @@ public class GameController {
         for(int i=0; i< cardsInSupplyBuyButtons.length; i++) {
             if(cardsInSupplyBuyButtons[i].equals(buyButtonClicked)) {
                 Card cardClicked = cardObjectsInSupply[i];
-                UserInterfaceHub.getPlayerActionMediator().buyFromCardSupply(cardClicked);
+                Main.getPlayerActionMediator().buyFromCardSupply(cardClicked);
             }
         }
     }
