@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Player {
 
-    private String name;
+    private String name, phase;
     private CardCollection hand, deck, discardPile, inPlay;
     private int handLimit, numActions, numBuys, purchasePower, amountSpentThisTurn, bonusPurchasePower;
 
@@ -53,6 +53,12 @@ public class Player {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getPhase() {
+        return phase;
+    }
+    public void setPhase(String phase) {
+        this.phase = phase;
     }
 
     public void newTurn(){

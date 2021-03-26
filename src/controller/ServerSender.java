@@ -2,20 +2,16 @@ package controller;
 
 import model.Player;
 
-public class ServerSender {
+public final class ServerSender {
 
-    private ClientSideConnection clientSideConnection;
-    private Player player;
+    private static final ClientSideConnection clientSideConnection = Main.getClientSideConnection();
+    private static final Player player = Main.getPlayer();
 
-    public ServerSender(ClientSideConnection clientSideConnection, Player player) {
-        this.clientSideConnection = clientSideConnection;
-        this.player = player;
-    }
-    public void chatSend(String chatText) {
+    public static void chatSend(String chatText) {
         clientSideConnection.send("chat " + player.getName() + " " + chatText);
     }
 
-    public void endTurn() {
+    public static void endTurn() {
         clientSideConnection.send("endTurn");
     }
 

@@ -16,10 +16,6 @@ public class Main extends Application {
     private static Player player;
     private static ClientSideConnection clientSideConnection;
 
-    private static ServerSender serverSender;
-
-    private static PlayerActionMediator playerActionMediator;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -29,7 +25,6 @@ public class Main extends Application {
         FXMLLoader gameUILoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
         gameUIScene = gameUILoader.load();
         gameController = gameUILoader.getController();
-        playerActionMediator = new PlayerActionMediator(player,gameController);
 
         serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
         setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
@@ -51,24 +46,16 @@ public class Main extends Application {
     public static GameController getGameController() {
         return gameController;
     }
-    public static PlayerActionMediator getPlayerActionMediator() {
-        return playerActionMediator;
-    }
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
         Main.clientSideConnection = clientSideConnection;
-    }
-    public static ServerSender getServerSender() {
-        return serverSender;
-    }
-    public static void setServerSender(ServerSender serverSender) {
-        Main.serverSender = serverSender;
     }
 
     public static void switchToGameScene() {
         window.setTitle("Dominion");
         window.setScene(new Scene(gameUIScene));
 
-        playerActionMediator.displayPlayerLabel();
+        PlayerActionMediator.startPhase();
+        PlayerActionMediator.displayPlayerLabel();
 
         window.setMaximized(true);
         window.setMinWidth(1296);

@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/UserInterfaceHub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ClientSideConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SetNameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SetNameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/UserInterfaceHub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,17 +80,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -128,7 +109,8 @@
       <workItem from="1616596760652" duration="6818000" />
       <workItem from="1616614964652" duration="3577000" />
       <workItem from="1616707880652" duration="154000" />
-      <workItem from="1616708836890" duration="6965000" />
+      <workItem from="1616708836890" duration="7589000" />
+      <workItem from="1616724975711" duration="3216000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -256,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616613447432</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object">
+      <created>1616717345683</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1616717345683</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +282,7 @@
     <MESSAGE value="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up" />
     <MESSAGE value="fixed weird multiple card copies bug from previous code." />
     <MESSAGE value="Now added game labels that display player name and total points" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now added game labels that display player name and total points" />
+    <MESSAGE value="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object" />
+    <option name="LAST_COMMIT_MESSAGE" value="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object" />
   </component>
 </project>

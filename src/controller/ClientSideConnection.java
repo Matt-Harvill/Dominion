@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.application.Platform;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -47,13 +49,20 @@ public class ClientSideConnection implements Runnable {
                 receive = scanner.nextLine();
             }
 
-            if(instruction.equals("chat")) {
-                Main.getPlayerActionMediator().addMessageToChatLog(playerName + ":" + receive);
-            } else if(instruction.equals("connected")) {
-                Main.getPlayerActionMediator().addMessageToGameLog(playerName + " joined the game");
-            } else if(instruction.equals("startTurn") && playerName.equals(playerName)) {
-                Main.getPlayerActionMediator().actionPhase();
-            }
+            String finalReceive = receive;
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    if(instruction.equals("chat")) {
+                        PlayerActionMediator.addMessageToChatLog(playerName + ":" + finalReceive);
+                    } else if(instruction.equals("connected")) {
+                        PlayerActionMediator.addMessageToGameLog(playerName + " joined the game");
+                    } else if(instruction.equals("startTurn") && playerName.equals(playerName)) {
+                        PlayerActionMediator.actionPhase();
+                    }
+                }
+            });
+
         }
     }
 

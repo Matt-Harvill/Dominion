@@ -267,8 +267,8 @@ public class GameController {
     public void chatSend(ActionEvent actionEvent) {
         if(chatType.getText()==null) return;
         String chatText = chatType.getText();
-        Main.getPlayerActionMediator().addMessageToChatLog(Main.getPlayer().getName() + ": " + chatText);
-        Main.getServerSender().chatSend(chatText);
+        PlayerActionMediator.addMessageToChatLog(Main.getPlayer().getName() + ": " + chatText);
+        ServerSender.chatSend(chatText);
     }
 
     public void cardInHandClicked(MouseEvent mouseEvent) {
@@ -278,7 +278,7 @@ public class GameController {
 
                 //------------Temporary Fix---------------//
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    Main.getPlayerActionMediator().playCard(playerHandDisplay.getCardObjectsInHandOrInPlay()[i]);
+                    PlayerActionMediator.playCard(playerHandDisplay.getCardObjectsInHandOrInPlay()[i]);
                 }
                 //----------------------------------------//
 //                System.out.println(cardsInHand[i].toString() + " was clicked");
@@ -346,9 +346,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn" -> Main.getPlayerActionMediator().startPhase();
-            case "Enter Buy Phase" -> Main.getPlayerActionMediator().buyPhase();
-            case "End Turn" -> Main.getPlayerActionMediator().endPhase();
+            case "Start Turn" -> PlayerActionMediator.startPhase();
+            case "Enter Buy Phase" -> PlayerActionMediator.buyPhase();
+            case "End Turn" -> PlayerActionMediator.endPhase();
         }
 
     }
@@ -357,7 +357,7 @@ public class GameController {
         for(int i=0; i< cardsInSupplyBuyButtons.length; i++) {
             if(cardsInSupplyBuyButtons[i].equals(buyButtonClicked)) {
                 Card cardClicked = cardObjectsInSupply[i];
-                Main.getPlayerActionMediator().buyFromCardSupply(cardClicked);
+                PlayerActionMediator.buyFromCardSupply(cardClicked);
             }
         }
     }

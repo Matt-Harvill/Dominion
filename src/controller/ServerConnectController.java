@@ -17,8 +17,6 @@ public class ServerConnectController {
 
         try {
             ClientSideConnection csc = new ClientSideConnection(ipAddressOfHost,portOfHost, Main.getPlayer().getName());
-            ServerSender serverSender = new ServerSender(csc, Main.getPlayer());
-            Main.setServerSender(serverSender);
             Main.setClientSideConnection(csc);
             Main.switchToGameScene();
         } catch (Exception ex) {
