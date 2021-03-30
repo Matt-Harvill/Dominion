@@ -29,6 +29,7 @@ public final class PlayerActionMediator {
         displayHandOrInPlay(controller.getPlayerHandDisplay());
     }
     public static void actionPhase() {
+        System.out.println("actionPhase was entered");
         controller.getActionBar().setVisible(true);
         player.setPhase("actionPhase");
         displayHandOrInPlay(controller.getPlayerHandDisplay());
@@ -77,7 +78,7 @@ public final class PlayerActionMediator {
         cardNumber.setText(String.valueOf(numCardRemaining-1));
 
         displayHandOrInPlay(controller.getPlayerHandDisplay());
-        displayPlayerLabel();
+        displayPlayerLabel(player.getName(), player.getPoints());
         checkNumBuys();
     }
 
@@ -91,7 +92,7 @@ public final class PlayerActionMediator {
         addMessageToGameLog("You played a " + cardClicked.getName());
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
-        displayPlayerLabel();
+        displayPlayerLabel(player.getName(), player.getPoints());
         checkCanDoAction();
     }
 
@@ -167,15 +168,15 @@ public final class PlayerActionMediator {
         }
 
         Text gameInfoText = controller.getGameInfoText();
-        StringBuilder gameInfoString = new StringBuilder();
+        String gameInfoString = "";
         if(player.getPhase().equals("actionPhase")) {
-            gameInfoString.append("Number of Actions: " + player.getNumActions() + "   ");
+            gameInfoString+="Number of Actions: " + player.getNumActions() + "   ";
         }
         else if(player.getPhase().equals("buyPhase")) {
-            gameInfoString.append("Number of Buys Remaining : " + player.getNumBuys() + "   ");
-            gameInfoString.append("Purchase Power: " + player.getPurchasePower());
+            gameInfoString+="Number of Buys Remaining : " + player.getNumBuys() + "   ";
+            gameInfoString+="Purchase Power: " + player.getPurchasePower();
         }
-        gameInfoText.setText(String.valueOf(gameInfoString));
+        gameInfoText.setText(gameInfoString);
 
     }
     private static void displayCardInHandOrInPlay(HandOrInPlayDisplay display,Card card, int index, int numCard) {
@@ -231,16 +232,16 @@ public final class PlayerActionMediator {
         controller.getGameLog().setText(builder.toString());
     }
 
-    public static void displayPlayerLabel() {
+    public static void displayPlayerLabel(String playerName, int points) {
         PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
 
         Text[] playerLabelNames = display.getPlayerLabelNames();
         Text[] playerPoints = display.getPlayerLabelVictoryNums();
 
         for(int i=0; i<playerLabelNames.length; i++) {
-            if(player.getName().equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
-                playerLabelNames[i].setText(player.getName());
-                playerPoints[i].setText(String.valueOf(player.getTotalPoints()));
+            if(playerName.equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
+                playerLabelNames[i].setText(playerName);
+                playerPoints[i].setText(String.valueOf(points));
                 display.getPlayerLabels()[i].setVisible(true);
                 display.getPlayerLabelVictories()[i].setVisible(true);
                 playerLabelNames[i].setVisible(true);

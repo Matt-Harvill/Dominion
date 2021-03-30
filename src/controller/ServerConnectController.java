@@ -16,7 +16,7 @@ public class ServerConnectController {
         String portOfHost = portNumBox.getText();
 
         try {
-            ClientSideConnection csc = new ClientSideConnection(ipAddressOfHost,portOfHost, Main.getPlayer().getName());
+            ClientSideConnection csc = new ClientSideConnection(ipAddressOfHost,portOfHost);
             Main.setClientSideConnection(csc);
             Main.switchToGameScene();
         } catch (Exception ex) {

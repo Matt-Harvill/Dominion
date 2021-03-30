@@ -97,7 +97,7 @@ public class Player {
     public int getPurchasePower(){
         return purchasePower - amountSpentThisTurn + bonusPurchasePower;
     }
-    public int getTotalPoints() {
+    public int getPoints() {
         int points = 0;
         points+=getVictoryPoints(discardPile);
         points+=getVictoryPoints(deck);

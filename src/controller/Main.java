@@ -55,7 +55,7 @@ public class Main extends Application {
         window.setScene(new Scene(gameUIScene));
 
         PlayerActionMediator.startPhase();
-        PlayerActionMediator.displayPlayerLabel();
+        PlayerActionMediator.displayPlayerLabel(player.getName(), player.getPoints());
 
         window.setMaximized(true);
         window.setMinWidth(1296);

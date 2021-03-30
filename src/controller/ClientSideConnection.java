@@ -1,22 +1,27 @@
 package controller;
 
 import javafx.application.Platform;
+import model.Player;
+import model.ServerPlayer;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ClientSideConnection implements Runnable {
     private Socket socket;
     private DataOutputStream dataOut;
     private DataInputStream dataIn;
-    private String playerName;
+    private static final Player player = Main.getPlayer();
+    private List<ServerPlayer> players;
 
-    public ClientSideConnection(String ipAddress, String portNum, String playerName) throws IOException, NumberFormatException {
+    public ClientSideConnection(String ipAddress, String portNum) throws IOException, NumberFormatException {
         socket = new Socket(ipAddress, Integer.parseInt(portNum));
-        this.playerName = playerName;
+        players = new ArrayList<>();
         try {
             dataIn = new DataInputStream(socket.getInputStream());
             dataOut = new DataOutputStream(socket.getOutputStream());
@@ -28,11 +33,11 @@ public class ClientSideConnection implements Runnable {
     }
 
     public void run() {
-        Scanner scanner;
-        send("setName " + playerName);
+        send("join " + player.getName() + " " + player.getPoints());
 
         while(true) {
             String receive = receive();
+            System.out.println(receive);
 
             if(receive==null) {
                 try {
@@ -40,30 +45,57 @@ public class ClientSideConnection implements Runnable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
             }
 
-            scanner = new Scanner(receive);
-            String instruction = scanner.next();
+            Scanner scanner = new Scanner(receive);
+            final String instruction = scanner.next();
             String playerName = scanner.next();
-            if(scanner.hasNext()) {
-                receive = scanner.nextLine();
+            int playerPoints = scanner.nextInt();
+
+            switch (instruction) {
+                case "inGame":
+                    inGame(playerName,playerPoints);
+                    break;
+                case "chat":
+                    chat(playerName,scanner.nextLine());
+                    break;
+                case "connected":
+                    connected(playerName,playerPoints);
+                    break;
+                case "startTurn":
+                    startTurn(playerName);
+                    break;
+                default:
+                    break;
             }
-
-            String finalReceive = receive;
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    if(instruction.equals("chat")) {
-                        PlayerActionMediator.addMessageToChatLog(playerName + ":" + finalReceive);
-                    } else if(instruction.equals("connected")) {
-                        PlayerActionMediator.addMessageToGameLog(playerName + " joined the game");
-                    } else if(instruction.equals("startTurn") && playerName.equals(playerName)) {
-                        PlayerActionMediator.actionPhase();
-                    }
-                }
-            });
-
         }
+    }
+
+    private void connected(String playerName, int playerPoints) {
+        Platform.runLater(() -> {
+            players.add(new ServerPlayer(playerName,playerPoints));
+            PlayerActionMediator.displayPlayerLabel(playerName,playerPoints);
+            PlayerActionMediator.addMessageToGameLog(playerName + " has joined the game");
+        });
+    }
+    private void inGame(String playerName, int playerPoints) {
+        ServerPlayer newPlayer = new ServerPlayer(playerName,playerPoints);
+        players.add(newPlayer);
+
+        Platform.runLater(() -> {
+            PlayerActionMediator.displayPlayerLabel(playerName,playerPoints);
+            PlayerActionMediator.addMessageToGameLog(playerName + " was already in the game");
+        });
+    }
+    private void chat(String playerName, String chatMessage) {
+        Platform.runLater(() -> PlayerActionMediator.addMessageToChatLog(playerName + ":" + chatMessage));
+    }
+    private void startTurn(String playerName) {
+        Platform.runLater(() -> {
+            if(player.getName().equals(playerName)) PlayerActionMediator.actionPhase();
+            else PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
+        });
     }
 
     public String receive() {
