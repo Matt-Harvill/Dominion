@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/ServerInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/ServerInfoScene.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/SelectCardsInGameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/selectCardsInGame.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SetNameController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/hostJoinScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/hostJoinScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/serverConnectScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/setPlayerNameScene.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/HostJoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HostJoinController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SetNameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/CardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/CardsInGame.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/serverConnectScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/setPlayerNameScene.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +131,8 @@
       <workItem from="1616724975711" duration="8544000" />
       <workItem from="1616768258683" duration="599000" />
       <workItem from="1617125153312" duration="14319000" />
+      <workItem from="1617161441117" duration="52000" />
+      <workItem from="1617204656007" duration="9865000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -296,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617158514417</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="can host and join with same UI. Now the backend is actually established as well">
+      <created>1617161484363</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1617161484363</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +336,7 @@
     <MESSAGE value="multiplayer works now without errors of IllegalStateExceptions from non JavaFX Threads updating the UI. Also, the PlayerActionMediator and ServerSender are now utility classes instead of objects." />
     <MESSAGE value="inGame, chat, connected, startTurn, endTurn, join all operate correctly" />
     <MESSAGE value="new intro scene that allows someone to host or join. actual backend not implemented yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="new intro scene that allows someone to host or join. actual backend not implemented yet" />
+    <MESSAGE value="can host and join with same UI. Now the backend is actually established as well" />
+    <option name="LAST_COMMIT_MESSAGE" value="can host and join with same UI. Now the backend is actually established as well" />
   </component>
 </project>

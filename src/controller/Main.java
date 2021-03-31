@@ -16,6 +16,7 @@ public class Main extends Application {
     private static Stage window;
 
     private static GameController gameController;
+    private static HostJoinController hostJoinController;
     private static Player player;
     private static ClientSideConnection clientSideConnection;
 
@@ -27,11 +28,13 @@ public class Main extends Application {
         window = primaryStage;
         player = new Player();
 
-        FXMLLoader gameUILoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
-        gameUIScene = gameUILoader.load();
-        gameController = gameUILoader.getController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
+        gameUIScene = loader.load();
+        gameController = loader.getController();
 
-        hostJoinScene = FXMLLoader.load(getClass().getResource("../view/hostJoinScene.fxml"));
+        loader = new FXMLLoader(getClass().getResource("../view/hostJoinScene.fxml"));
+        hostJoinScene = loader.load();
+        hostJoinController = loader.getController();
 
         window.setResizable(false);
         goToHostJoinScene();
@@ -51,10 +54,12 @@ public class Main extends Application {
     public static GameController getGameController() {
         return gameController;
     }
+    public static HostJoinController getHostJoinController() {return hostJoinController;}
     public static DominionServer getServer() {return server;}
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
         Main.clientSideConnection = clientSideConnection;
     }
+//    public static Stage getWindow() {return window;}
 
     public static void goToHostJoinScene() {
         window.setTitle("Dominion");
@@ -74,8 +79,27 @@ public class Main extends Application {
         window.setMinHeight(839);
         window.show();
     }
+
+    public static void selectCardsPopup() {
+        try {
+            Stage newStage = new Stage();
+            newStage.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
+            newStage.show();
+
+//            newStage.setOnCloseRequest(windowEvent -> {
+//            });
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void createServer() {
+        server = new DominionServer();
+    }
+
     public static void startServer(int maxNumPlayers) throws IOException {
-        server = new DominionServer(maxNumPlayers);
+        server.setMaxNumPlayers(maxNumPlayers);
 
         Thread serverAccepting = new Thread(() -> server.acceptConnections());
         serverAccepting.start();

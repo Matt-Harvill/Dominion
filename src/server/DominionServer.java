@@ -1,6 +1,8 @@
 package server;
 
 import controller.Main;
+import model.card.ActionCard;
+import model.card.Card;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -17,9 +19,10 @@ public class DominionServer {
 
     private List<ServerSideConnection> serverSideConnections;
 
-    public DominionServer(int maxNumPlayers){
+    private List<ActionCard> actionCardsInGame;
+
+    public DominionServer(){
         numClients = 0;
-        this.maxNumPlayers = maxNumPlayers;
         serverSideConnections = new ArrayList<>();
         try {
             serverSocket = new ServerSocket(0);
@@ -66,5 +69,14 @@ public class DominionServer {
     }
     public List<ServerSideConnection> getServerSideConnections() {
         return serverSideConnections;
+    }
+    public void setMaxNumPlayers(int maxNumPlayers) {
+        this.maxNumPlayers = maxNumPlayers;
+    }
+    public List<ActionCard> getActionCardsInGame() {
+        return actionCardsInGame;
+    }
+    public void setActionCardsInGame(List<ActionCard> actionCardsInGame) {
+        this.actionCardsInGame = actionCardsInGame;
     }
 }

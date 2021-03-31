@@ -6,9 +6,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import model.card.ActionCard;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.List;
 
 
 public class HostJoinController {
@@ -20,10 +23,13 @@ public class HostJoinController {
     TextField nameTextField, hostIPTextField, portTextField;
 
     @FXML
-    Text incorrectServerInfoAlert;
+    Text incorrectServerInfoAlert, selectNumPlayersError;
 
     @FXML
     ChoiceBox<Integer> numPlayersChoiceBox;
+
+    @FXML TextField cardSlot1,cardSlot2,cardSlot3,cardSlot4,cardSlot5,cardSlot6,cardSlot7,cardSlot8,cardSlot9,cardSlot10;
+    TextField[] cardSlots;
 
     private int maxNumPlayers;
 
@@ -31,12 +37,14 @@ public class HostJoinController {
         setGameDetails.setVisible(false);
         setName.setVisible(false);
         connectToServer.setVisible(false);
+        cardSlots = new TextField[]{cardSlot1,cardSlot2,cardSlot3,cardSlot4,cardSlot5,cardSlot6,cardSlot7,cardSlot8,cardSlot9,cardSlot10};
         for(int i=2;i<=6;i++) {
             numPlayersChoiceBox.getItems().add(i);
         }
     }
 
     public void hostGame(ActionEvent actionEvent) {
+        Main.createServer();
         setGameDetails.setVisible(true);
     }
     public void joinGame(ActionEvent actionEvent) {
@@ -62,13 +70,21 @@ public class HostJoinController {
         hostIPTextField.setText(null);
         portTextField.setText(null);
     }
+    public void selectActionCards(ActionEvent actionEvent) {
+        Main.selectCardsPopup();
+    }
 
     public void backSetGameDetails(ActionEvent actionEvent) {
         setGameDetails.setVisible(false);
     }
     public void nextSetGameDetails(ActionEvent actionEvent) {
-        setName.setVisible(true);
-        maxNumPlayers = numPlayersChoiceBox.getValue();
+        if(numPlayersChoiceBox.getValue()!=null) {
+            maxNumPlayers = numPlayersChoiceBox.getValue();
+            setName.setVisible(true);
+            selectNumPlayersError.setVisible(false);
+        } else {
+            selectNumPlayersError.setVisible(true);
+        }
     }
     public void backSetName(ActionEvent actionEvent) {
         setName.setVisible(false);
@@ -101,4 +117,16 @@ public class HostJoinController {
         }
     }
 
+    public void updateActionCardInGameSlots(List<ActionCard> cardsChosen) {
+        int index=0;
+        if(cardsChosen==null) return;
+        while(index < cardsChosen.size()) {
+            cardSlots[index].setText(cardsChosen.get(index).getName());
+            index++;
+        }
+        while(index < cardSlots.length) {
+            cardSlots[index].setText(null);
+            index++;
+        }
+    }
 }
