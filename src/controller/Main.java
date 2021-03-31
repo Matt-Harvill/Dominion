@@ -6,15 +6,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Player;
+import server.DominionServer;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
-    private static Parent gameUIScene, serverConnectScene, setNameScene, hostJoinScene;
+    private static Parent gameUIScene, hostJoinScene;
     private static Stage window;
 
     private static GameController gameController;
     private static Player player;
     private static ClientSideConnection clientSideConnection;
+
+    private static DominionServer server;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -26,8 +31,6 @@ public class Main extends Application {
         gameUIScene = gameUILoader.load();
         gameController = gameUILoader.getController();
 
-        serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
-        setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
         hostJoinScene = FXMLLoader.load(getClass().getResource("../view/hostJoinScene.fxml"));
 
         window.setResizable(false);
@@ -48,6 +51,7 @@ public class Main extends Application {
     public static GameController getGameController() {
         return gameController;
     }
+    public static DominionServer getServer() {return server;}
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
         Main.clientSideConnection = clientSideConnection;
     }
@@ -65,20 +69,20 @@ public class Main extends Application {
         PlayerActionMediator.startPhase();
         PlayerActionMediator.displayPlayerLabel(player.getName(), player.getPoints());
 
-        window.setMaximized(true);
+//        window.setMaximized(true);
         window.setMinWidth(1296);
         window.setMinHeight(839);
         window.show();
     }
-    public static void switchToSetNameScene() {
-        window.setTitle("Select Name");
-        window.setScene(new Scene(setNameScene));
-        window.show();
-    }
-    public static void switchToServerConnectScene() {
-        window.setTitle("Connect to Server");
-        window.setScene(new Scene(serverConnectScene));
-        window.show();
+    public static void startServer(int maxNumPlayers) throws IOException {
+        server = new DominionServer(maxNumPlayers);
+
+        Thread serverAccepting = new Thread(() -> server.acceptConnections());
+        serverAccepting.start();
+
+        Stage newStage = new Stage();
+        newStage.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/ServerInfoScene.fxml"))));
+        newStage.show();
     }
 
     public static void main(String[] args) {
