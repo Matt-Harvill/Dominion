@@ -9,7 +9,7 @@ import model.Player;
 
 public class Main extends Application {
 
-    private static Parent gameUIScene, serverConnectScene, setNameScene;
+    private static Parent gameUIScene, serverConnectScene, setNameScene, hostJoinScene;
     private static Stage window;
 
     private static GameController gameController;
@@ -28,9 +28,11 @@ public class Main extends Application {
 
         serverConnectScene = FXMLLoader.load(getClass().getResource("../view/serverConnectScene.fxml"));
         setNameScene = FXMLLoader.load(getClass().getResource("../view/setPlayerNameScene.fxml"));
+        hostJoinScene = FXMLLoader.load(getClass().getResource("../view/hostJoinScene.fxml"));
 
-
-        switchToSetNameScene();
+        window.setResizable(false);
+        goToHostJoinScene();
+//        switchToSetNameScene();
 
         //-------------Center Frame if resized--------------------//
         window.widthProperty().addListener((obs, oldVal, newVal) -> window.centerOnScreen());
@@ -50,6 +52,12 @@ public class Main extends Application {
         Main.clientSideConnection = clientSideConnection;
     }
 
+    public static void goToHostJoinScene() {
+        window.setTitle("Dominion");
+        window.setScene(new Scene(hostJoinScene));
+        window.show();
+
+    }
     public static void switchToGameScene() {
         window.setTitle("Dominion");
         window.setScene(new Scene(gameUIScene));

@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/ServerPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/HostJoinController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/dominionHeader.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/hostJoinBackground.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerConnectController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -87,6 +82,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -119,7 +125,7 @@
       <workItem from="1616708836890" duration="7589000" />
       <workItem from="1616724975711" duration="8544000" />
       <workItem from="1616768258683" duration="599000" />
-      <workItem from="1617125153312" duration="4766000" />
+      <workItem from="1617125153312" duration="10824000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -261,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616728452676</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="inGame, chat, connected, startTurn, endTurn, join all operate correctly">
+      <created>1617130211423</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1617130211423</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +313,7 @@
     <MESSAGE value="Now added game labels that display player name and total points" />
     <MESSAGE value="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object" />
     <MESSAGE value="multiplayer works now without errors of IllegalStateExceptions from non JavaFX Threads updating the UI. Also, the PlayerActionMediator and ServerSender are now utility classes instead of objects." />
-    <option name="LAST_COMMIT_MESSAGE" value="multiplayer works now without errors of IllegalStateExceptions from non JavaFX Threads updating the UI. Also, the PlayerActionMediator and ServerSender are now utility classes instead of objects." />
+    <MESSAGE value="inGame, chat, connected, startTurn, endTurn, join all operate correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="inGame, chat, connected, startTurn, endTurn, join all operate correctly" />
   </component>
 </project>
