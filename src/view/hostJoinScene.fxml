@@ -129,12 +129,12 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Your Name" />
-                  <TextField fx:id="nameTextField" maxWidth="-Infinity" minWidth="-Infinity" onAction="#submitName" prefWidth="150.0">
+                  <TextField fx:id="nameTextField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="150.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#submitName" text="Submit" />
+                  <Text fx:id="enterNameError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a Name To Continue" visible="false" />
                </children>
                <BorderPane.margin>
                   <Insets />

@@ -21,6 +21,7 @@ public class Main extends Application {
     private static ClientSideConnection clientSideConnection;
 
     private static DominionServer server;
+    private static Stage cardSelect;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -59,7 +60,9 @@ public class Main extends Application {
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
         Main.clientSideConnection = clientSideConnection;
     }
-//    public static Stage getWindow() {return window;}
+    public static void closeCardSelect() {
+        cardSelect.close();
+    }
 
     public static void goToHostJoinScene() {
         window.setTitle("Dominion");
@@ -82,19 +85,16 @@ public class Main extends Application {
 
     public static void selectCardsPopup() {
         try {
-            Stage newStage = new Stage();
-            newStage.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
-            newStage.show();
-
-//            newStage.setOnCloseRequest(windowEvent -> {
-//            });
-
+            cardSelect = new Stage();
+            cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
+            cardSelect.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
     public static void createServer() {
+        if (server==null)
         server = new DominionServer();
     }
 

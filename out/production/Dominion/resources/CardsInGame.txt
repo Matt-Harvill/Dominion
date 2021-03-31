@@ -13,7 +13,7 @@ Estate 10
 ExtraCards
 
 ActionCards
-Village 4
+Village 10
 Woodcutter 10
 Smithy 10
 Festival 10

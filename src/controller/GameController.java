@@ -173,11 +173,11 @@ public class GameController {
         Scanner scanner = new Scanner(cardsInGame);
         ImagePattern imagePattern;
         int index = 0;
-        String s = scanner.next();
+        String s;
         while (scanner.hasNext()) {
             s = scanner.next();
             if(s.contains("ActionCards")) {
-                index = 12;
+//                index = 12;
                 break;
             }
             if (s.contains("TreasureCards")) {
@@ -193,20 +193,6 @@ public class GameController {
             cardObjectsInSupply[index] = (CardFactory.getCard(s));
             int num = scanner.nextInt();
             imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + "_Small.jpg").toURI().toString()));
-            cardsInSupply[index].setFill(imagePattern);
-            imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
-            cardsInSupplyBuyButtons[index].setFill(imagePattern);
-            cardsInSupplyNums[index].setText(String.valueOf(num));
-            cardsInSupply[index].setVisible(true);
-            cardsInSupplyNumBacks[index].setVisible(true);
-            cardsInSupplyNums[index].setVisible(true);
-            index++;
-        }
-        while(scanner.hasNext()) {
-            s = scanner.next();
-            cardObjectsInSupply[index] = (CardFactory.getCard(s));
-            int num = scanner.nextInt();
-            imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + ".jpg").toURI().toString()));
             cardsInSupply[index].setFill(imagePattern);
             imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
             cardsInSupplyBuyButtons[index].setFill(imagePattern);
@@ -360,5 +346,26 @@ public class GameController {
                 PlayerActionMediator.buyFromCardSupply(cardClicked);
             }
         }
+    }
+
+    public void displayActionCardsInGame(String[] cardNames, int[] cardNums) {
+        int index = 12;
+        for(int i=0; i< cardNames.length; i++) {
+            String s = cardNames[i];
+            if(s==null) break;
+            int num = cardNums[i];
+            cardObjectsInSupply[index] = (CardFactory.getCard(s));
+            ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + ".jpg").toURI().toString()));
+            cardsInSupply[index].setFill(imagePattern);
+            imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
+            cardsInSupplyBuyButtons[index].setFill(imagePattern);
+            cardsInSupplyNums[index].setText(String.valueOf(num));
+            cardsInSupply[index].setVisible(true);
+            cardsInSupplyNumBacks[index].setVisible(true);
+            cardsInSupplyNums[index].setVisible(true);
+            index++;
+        }
+
+
     }
 }

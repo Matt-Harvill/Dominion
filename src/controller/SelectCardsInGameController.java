@@ -63,8 +63,6 @@ public class SelectCardsInGameController {
             cardsChosen = Main.getServer().getActionCardsInGame();
         }
 
-        System.out.println(cardsChosen.size());
-
         for(int i=0; i<cardsChosen.size(); i++) {
             int index = allActionCards.indexOf(cardsChosen.get(i));
             cardsSelected.set(index,true);
@@ -119,8 +117,6 @@ public class SelectCardsInGameController {
         }
         ActionCard cardObject = allActionCards.get(index + 25*(currentPageNum-1));
 
-        System.out.println(cardsSelected.get(index));
-
         if(cardsSelected.get(index)) {
             cardsSelected.set(index,false);
             card.setStyle(null);
@@ -130,8 +126,6 @@ public class SelectCardsInGameController {
             card.setStyle("-fx-stroke-width: 3; -fx-stroke: #54ff54;");
             cardsChosen.add(cardObject);
         }
-
-        System.out.println(cardsChosen.toString());
 
         Main.getServer().setActionCardsInGame(cardsChosen);
         Main.getHostJoinController().updateActionCardInGameSlots(cardsChosen);

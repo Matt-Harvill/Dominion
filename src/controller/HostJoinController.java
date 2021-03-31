@@ -23,7 +23,7 @@ public class HostJoinController {
     TextField nameTextField, hostIPTextField, portTextField;
 
     @FXML
-    Text incorrectServerInfoAlert, selectNumPlayersError;
+    Text incorrectServerInfoAlert, selectNumPlayersError, enterNameError;
 
     @FXML
     ChoiceBox<Integer> numPlayersChoiceBox;
@@ -41,21 +41,19 @@ public class HostJoinController {
         for(int i=2;i<=6;i++) {
             numPlayersChoiceBox.getItems().add(i);
         }
+
+        nameTextField.setText(null);
     }
 
     public void hostGame(ActionEvent actionEvent) {
         Main.createServer();
+
+        List<ActionCard> cardsChosen = Main.getServer().getActionCardsInGame();
+        updateActionCardInGameSlots(cardsChosen);
         setGameDetails.setVisible(true);
     }
     public void joinGame(ActionEvent actionEvent) {
         setName.setVisible(true);
-    }
-    public void submitName(ActionEvent actionEvent) {
-        String name = nameTextField.getText();
-        if(name!=null) {
-            Main.getPlayer().setName(name);
-        }
-        nameTextField.setText(null);
     }
     public void submitConnectRequest(ActionEvent actionEvent) {
         String ipAddress = hostIPTextField.getText();
@@ -76,12 +74,14 @@ public class HostJoinController {
 
     public void backSetGameDetails(ActionEvent actionEvent) {
         setGameDetails.setVisible(false);
+        Main.closeCardSelect();
     }
     public void nextSetGameDetails(ActionEvent actionEvent) {
         if(numPlayersChoiceBox.getValue()!=null) {
             maxNumPlayers = numPlayersChoiceBox.getValue();
             setName.setVisible(true);
             selectNumPlayersError.setVisible(false);
+            Main.closeCardSelect();
         } else {
             selectNumPlayersError.setVisible(true);
         }
@@ -90,18 +90,21 @@ public class HostJoinController {
         setName.setVisible(false);
     }
     public void nextSetName(ActionEvent actionEvent) {
-        if(setGameDetails.isVisible()) {
-            System.out.println("You hosted the game");
-            try {
-                Main.startServer(maxNumPlayers);
-                connectToServer(InetAddress.getLocalHost().getHostAddress(),String.valueOf(Main.getServer().getServerSocket().getLocalPort()));
-            } catch (Exception ex) {
-                System.out.println("Error starting/connecting to your own game!");
+        if(checkName(nameTextField.getText())) {
+            if(setGameDetails.isVisible()) {
+                System.out.println("You hosted the game");
+                try {
+                    Main.startServer(maxNumPlayers);
+                    connectToServer(InetAddress.getLocalHost().getHostAddress(),String.valueOf(Main.getServer().getServerSocket().getLocalPort()));
+                } catch (Exception ex) {
+                    System.out.println("Error starting/connecting to your own game!");
+                }
+            } else {
+                System.out.println("You joined the game");
+                connectToServer.setVisible(true);
             }
-        } else {
-            System.out.println("You joined the game");
-            connectToServer.setVisible(true);
         }
+
     }
     public void backConnectToServer(ActionEvent actionEvent) {
         connectToServer.setVisible(false);
@@ -114,6 +117,16 @@ public class HostJoinController {
             Main.switchToGameScene();
         } catch (Exception ex) {
             incorrectServerInfoAlert.setVisible(true);
+        }
+    }
+    private boolean checkName(String name) {
+        if(name==null) {
+            enterNameError.setVisible(true);
+            return false;
+        } else {
+            Main.getPlayer().setName(name);
+            enterNameError.setVisible(false);
+            return true;
         }
     }
 

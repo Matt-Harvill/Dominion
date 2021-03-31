@@ -1,6 +1,7 @@
 package server;
 
 import controller.Main;
+import model.card.ActionCard;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -55,6 +56,15 @@ public class ServerSideConnection implements Runnable {
                         individualSend(sendMessage);
                         sendMessage = "inGame ";
                     }
+
+                    List<ActionCard> actionCardsInGame = Main.getServer().getActionCardsInGame();
+                    sendMessage = "actionCardsInGame " + getPlayerInfoString();
+                    for(ActionCard card: actionCardsInGame) {
+                        sendMessage+= card.getName() + " ";
+                        sendMessage+= "10 ";
+                    }
+                    individualSend(sendMessage);
+
                     sendMessage = "connected " + getPlayerInfoString();
 
                     if(server.getNumClients()==server.getMaxNumPlayers()) {
