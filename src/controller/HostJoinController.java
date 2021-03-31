@@ -120,7 +120,7 @@ public class HostJoinController {
         }
     }
     private boolean checkName(String name) {
-        if(name==null) {
+        if(name==null || name=="") {
             enterNameError.setVisible(true);
             return false;
         } else {

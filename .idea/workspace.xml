@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/CardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/CardsInGame.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/hostJoinScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/hostJoinScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/HostJoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HostJoinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SelectCardsInGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SelectCardsInGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +122,7 @@
       <workItem from="1616768258683" duration="599000" />
       <workItem from="1617125153312" duration="14319000" />
       <workItem from="1617161441117" duration="52000" />
-      <workItem from="1617204656007" duration="13789000" />
+      <workItem from="1617204656007" duration="14087000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -306,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617216675022</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later.">
+      <created>1617222856624</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1617222856624</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,6 +342,7 @@
     <MESSAGE value="new intro scene that allows someone to host or join. actual backend not implemented yet" />
     <MESSAGE value="can host and join with same UI. Now the backend is actually established as well" />
     <MESSAGE value="can select from allcards the cards you want in the game. This is only for the the frontend. These cards aren't actually used in the game in backend yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="can select from allcards the cards you want in the game. This is only for the the frontend. These cards aren't actually used in the game in backend yet" />
+    <MESSAGE value="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later." />
+    <option name="LAST_COMMIT_MESSAGE" value="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later." />
   </component>
 </project>
