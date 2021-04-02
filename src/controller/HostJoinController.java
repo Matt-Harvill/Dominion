@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class HostJoinController {
@@ -121,8 +123,20 @@ public class HostJoinController {
         }
     }
     private boolean checkName(String name) {
-        if(name==null || name=="") {
+
+        if(name == null || name.equals("")) {
             enterNameError.setVisible(true);
+            nameTextField.setText(null);
+            return false;
+        }
+
+        Pattern p = Pattern.compile("[\\W]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(name);
+        boolean wrongChar = m.find();
+
+        if(wrongChar) {
+            enterNameError.setVisible(true);
+            nameTextField.setText(null);
             return false;
         } else {
             Main.getPlayer().setName(name);

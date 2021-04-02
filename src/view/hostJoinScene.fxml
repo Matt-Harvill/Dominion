@@ -134,7 +134,7 @@
                         <Insets />
                      </VBox.margin>
                   </TextField>
-                  <Text fx:id="enterNameError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a Name To Continue" visible="false" />
+                  <Text fx:id="enterNameError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a Valid Name (no symbols or spaces)" visible="false" />
                </children>
                <BorderPane.margin>
                   <Insets />
