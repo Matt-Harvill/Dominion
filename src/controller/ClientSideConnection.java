@@ -61,6 +61,7 @@ public class ClientSideConnection implements Runnable {
                 case "startTurn": startTurn(playerName); break;
                 case "actionCardsInGame": actionCardsInGame(scanner.nextLine()); break;
                 case "serverShutDown": serverShutDown(); break;
+                case "leaveGame": leftGame(playerName); break;
                 default: break;
             }
         }
@@ -109,7 +110,7 @@ public class ClientSideConnection implements Runnable {
         try {
             socket.close();
         } catch (IOException ex) {
-            System.out.println("IOException in serverShutDown in ClientSideConnection");
+            System.out.println("IOException @CSC_serverShutDown");
         }
     }
 
@@ -126,6 +127,19 @@ public class ClientSideConnection implements Runnable {
             return true;
         } catch (IOException ex) {
             return false;
+        }
+    }
+
+    public void leftGame(String playerName) {
+        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " left the game"));
+    }
+
+    public void leaveGame() {
+        send("leaveGame " + player.getName() + " " + player.getPoints() + " ");
+        try {
+            socket.close();
+        } catch (Exception ex) {
+            System.out.println("Exception @CSC_leaveGame");
         }
     }
 }

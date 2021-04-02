@@ -43,11 +43,11 @@ public class DominionServer {
                 serverSideConnections.add(new ServerSideConnection(s));
                 System.out.println("There are " + numClients + " clients connected");
             }
-            while (/*!Main.getServerController().getGameStart() &&*/ numClients<maxNumPlayers);
-            serverSocket.close();
-            System.out.println("No longer accepting connections");
+            while (numClients<maxNumPlayers);
+            System.out.println("Max players reached");
+            startGame();
         } catch (IOException ex) {
-            System.out.println("IOException from acceptConnections()");
+            System.out.println("IOException @DS_acceptConnections()");
         }
     }
 
@@ -83,5 +83,19 @@ public class DominionServer {
             ssc.shutDown();
         }
         serverSocket.close();
+    }
+    public void startGame() {
+        try {
+            serverSocket.close();
+            int firstPlayerTurn = (int) (Math.random()*serverSideConnections.size());
+
+            while(serverSideConnections.get(firstPlayerTurn).getName()==null) {
+                Thread.sleep(5);
+            }
+            serverSideConnections.get(firstPlayerTurn).broadcastAll("startTurn " + serverSideConnections.get(firstPlayerTurn).getPlayerInfoString());
+        } catch (Exception ex) {
+            System.out.println("Exception @DominionServer_startGame");
+        }
+        System.out.println("Game started");
     }
 }

@@ -3,10 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/HostJoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HostJoinController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
     </list>
@@ -51,7 +57,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../UTD Spring 2021/Java Coding/QueueChallenge" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -122,7 +128,10 @@
       <workItem from="1617125153312" duration="14319000" />
       <workItem from="1617161441117" duration="52000" />
       <workItem from="1617204656007" duration="15398000" />
-      <workItem from="1617332059497" duration="4676000" />
+      <workItem from="1617332059497" duration="4970000" />
+      <workItem from="1617377178444" duration="25000" />
+      <workItem from="1617383670961" duration="185000" />
+      <workItem from="1617391899661" duration="4574000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -306,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617223199212</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="finally fixed serverShutDown process. Now I catch the exceptions from closing the sockets. I also alert to clientsideconnections before doing so so they can close too">
+      <created>1617337052046</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1617337052046</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +342,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="commit with new server connect scene" />
     <MESSAGE value="commit with new server connect scene. minor updates" />
     <MESSAGE value="added a scene to input player name. Also have a static player object that is passed around controllers. lastly, this player has cardcollections (also added)" />
     <MESSAGE value="I have objects for components on the gameUI. Client has the gameController object so that it can update these components on the gameUI." />
@@ -351,6 +366,7 @@
     <MESSAGE value="can select from allcards the cards you want in the game. This is only for the the frontend. These cards aren't actually used in the game in backend yet" />
     <MESSAGE value="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later." />
     <MESSAGE value="minor update for entering name with enter key as well as next button" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor update for entering name with enter key as well as next button" />
+    <MESSAGE value="finally fixed serverShutDown process. Now I catch the exceptions from closing the sockets. I also alert to clientsideconnections before doing so so they can close too" />
+    <option name="LAST_COMMIT_MESSAGE" value="finally fixed serverShutDown process. Now I catch the exceptions from closing the sockets. I also alert to clientsideconnections before doing so so they can close too" />
   </component>
 </project>

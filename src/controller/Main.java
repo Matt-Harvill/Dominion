@@ -87,7 +87,10 @@ public class Main extends Application {
         gameStage.setMinWidth(1296);
         gameStage.setMinHeight(839);
         gameStage.show();
+        closingProcedures();
+    }
 
+    private static void closingProcedures() {
         gameStage.setOnCloseRequest(windowEvent ->  {
             if(server!=null) {
                 // do stuff to close connections
@@ -97,9 +100,10 @@ public class Main extends Application {
                     e.printStackTrace();
                 }
                 System.out.println("server shut down in switchToGameScene");
+            } else {
+                clientSideConnection.leaveGame();
             }
         });
-
     }
 
     public static void selectCardsPopup() {

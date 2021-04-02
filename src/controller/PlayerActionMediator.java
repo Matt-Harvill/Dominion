@@ -39,14 +39,14 @@ public final class PlayerActionMediator {
     }
     public static void buyPhase() {
         player.setPhase("buyPhase");
-        enableBuying(true);
+        showBuyableCards(true);
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         controller.getActionButton().setText("End Turn");
     }
     public static void endPhase() {
         player.setPhase("endPhase");
-        enableBuying(false);
+        showBuyableCards(false);
         player.endTurn();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
@@ -79,7 +79,9 @@ public final class PlayerActionMediator {
 
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
-        checkNumBuys();
+        if(checkNumBuys()) {
+            showBuyableCards(true);
+        }
     }
 
     public static void playCard(Card cardClicked) {
@@ -96,7 +98,7 @@ public final class PlayerActionMediator {
         checkCanDoAction();
     }
 
-    private static void enableBuying(boolean enable) {
+    private static void showBuyableCards(boolean enable) {
         CardSupplyDisplay cardSupplyDisplay = controller.getCardSupplyDisplay();
 
         Rectangle[] cardBuyButtons = cardSupplyDisplay.getCardBuyButtons();
@@ -205,10 +207,12 @@ public final class PlayerActionMediator {
             buyPhase();
         }
     }
-    private static void checkNumBuys() {
+    private static boolean checkNumBuys() {
         if(player.getNumBuys()==0) {
             endPhase();
+            return false;
         }
+        return true;
     }
 
     public static void addMessageToChatLog(String msg) {

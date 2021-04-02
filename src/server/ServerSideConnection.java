@@ -17,12 +17,14 @@ public class ServerSideConnection implements Runnable {
     private DataOutputStream dataOut;
     private DataInputStream dataIn;
     private SocketAddress clientIP;
-    private String name;
+    private String name, sendMessage;
     private int points;
     private String playerInfoString;
+    private boolean myTurn;
 
     public ServerSideConnection(Socket s) {
         socket = s;
+        myTurn = false;
         clientIP = s.getRemoteSocketAddress();
         try {
             dataIn = new DataInputStream(socket.getInputStream());
@@ -35,60 +37,45 @@ public class ServerSideConnection implements Runnable {
     }
 
     public void run() {
+        label:
         while(!socket.isClosed()) {
             try {
                 String receivedMessage = receive();
-                String sendMessage = receivedMessage;
+                sendMessage = receivedMessage;
                 Scanner scanner = new Scanner(receivedMessage);
                 String command = scanner.next();
 
-                if(command.equals("join")) {
-                    name = scanner.next();
-                    points = scanner.nextInt();
-                    sendMessage = "inGame ";
-
-                    DominionServer server = Main.getServer();
-                    List<ServerSideConnection> serverSideConnections = server.getServerSideConnections();
-
-                    for(ServerSideConnection ssc: serverSideConnections) {
-                        if(ssc.equals(this)) continue;
-                        sendMessage+=ssc.getPlayerInfoString();
-                        individualSend(sendMessage);
+                switch (command) {
+                    case "join" -> {
+                        name = scanner.next();
+                        points = scanner.nextInt();
                         sendMessage = "inGame ";
-                    }
-
-                    List<ActionCard> actionCardsInGame = Main.getServer().getActionCardsInGame();
-                    sendMessage = "actionCardsInGame " + getPlayerInfoString();
-                    for(ActionCard card: actionCardsInGame) {
-                        sendMessage+= card.getName() + " ";
-                        sendMessage+= "10 ";
-                    }
-                    individualSend(sendMessage);
-
-                    sendMessage = "connected " + getPlayerInfoString();
-
-                    if(server.getNumClients()==server.getMaxNumPlayers()) {
-                        int firstPlayerTurn = (int) (Math.random()*server.getMaxNumPlayers());
-                        if(serverSideConnections.get(firstPlayerTurn).getName()!=null) {
-                            serverSideConnections.get(firstPlayerTurn).broadcastAll(
-                                    "startTurn " + serverSideConnections.get(firstPlayerTurn).getPlayerInfoString());
-                        } else {
-                            serverSideConnections.get(0).broadcastAll(
-                                    "startTurn " + serverSideConnections.get(0).getPlayerInfoString());
-                            System.out.println("player0 selected");
+                        DominionServer server = Main.getServer();
+                        List<ServerSideConnection> serverSideConnections = server.getServerSideConnections();
+                        for (ServerSideConnection ssc : serverSideConnections) {
+                            if (ssc.equals(this)) continue;
+                            sendMessage += ssc.getPlayerInfoString();
+                            individualSend(sendMessage);
+                            sendMessage = "inGame ";
                         }
+                        List<ActionCard> actionCardsInGame = Main.getServer().getActionCardsInGame();
+                        sendMessage = "actionCardsInGame " + getPlayerInfoString();
+                        for (ActionCard card : actionCardsInGame) {
+                            sendMessage += card.getName() + " ";
+                            sendMessage += "10 ";
+                        }
+                        individualSend(sendMessage);
+                        sendMessage = "connected " + getPlayerInfoString();
                     }
-                }
-
-                else if(command.equals("endTurn")) {
-                    List<ServerSideConnection> connections = Main.getServer().getServerSideConnections();
-                    int indexOfThis = connections.indexOf(this);
-                    sendMessage = "startTurn ";
-                    if(indexOfThis==connections.size()-1) {
-                        sendMessage+=connections.get(0).getPlayerInfoString();
+                    case "endTurn" -> assignNewTurn();
+                    case "leaveGame" -> {
+                        broadcast(sendMessage);
+                        if(myTurn) {
+                            assignNewTurn();
+                        }
+                        Main.getServer().getServerSideConnections().remove(this);
+                        shutDown();
                     }
-                    else sendMessage+=connections.get(indexOfThis + 1).getPlayerInfoString();
-                    individualSend(sendMessage);
                 }
 
                 broadcast(sendMessage);
@@ -123,15 +110,37 @@ public class ServerSideConnection implements Runnable {
     public DataOutputStream getDataOut() {
         return dataOut;
     }
-
     public String getPlayerInfoString() {
         playerInfoString = name + " " + points + " ";
         return playerInfoString;
     }
-
     public String getName() {return name;}
     public int getPoints() {
         return points;
+    }
+
+    public void assignNewTurn() throws IOException {
+        List<ServerSideConnection> connections = Main.getServer().getServerSideConnections();
+
+        //---------------------------------------------------------//
+        System.out.println("List of SSCs @SSC_assignNewTurn");
+        for(ServerSideConnection ssc: connections) {
+            System.out.print(ssc.getName() + "   ");
+        }
+        //---------------------------------------------------------//
+
+        int indexOfThis = connections.indexOf(this);
+        sendMessage = "startTurn ";
+        setTurn(false);
+        if(indexOfThis==connections.size()-1) {
+            sendMessage+=connections.get(0).getPlayerInfoString();
+            connections.get(0).setTurn(true);
+        }
+        else {
+            sendMessage+=connections.get(indexOfThis + 1).getPlayerInfoString();
+            connections.get(indexOfThis + 1).setTurn(true);
+        }
+        individualSend(sendMessage);
     }
 
     public void shutDown() {
@@ -142,5 +151,8 @@ public class ServerSideConnection implements Runnable {
         } catch (Exception ex) {
             System.out.println("Exception @SSC_shutDown");
         }
+    }
+    private void setTurn(boolean b) {
+        myTurn = b;
     }
 }

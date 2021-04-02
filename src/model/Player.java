@@ -118,17 +118,13 @@ public class Player {
         if(deck.getSize()==0){
             discardPileToDeck();
             shuffleDeck();
-            System.out.println("drawCardFromDeck\ndeck: ");
-            deck.printCardNamesInCollection();
-            System.out.println("discard: ");
-            discardPile.printCardNamesInCollection();
         }
         if(hand.getSize()>=handLimit){
-            System.out.println("You already have a full hand");
+            //Full hand
             return false;
         }
         else if(deck.getSize()==0) {
-            System.out.println("You have no more cards");
+            //No more cards
             return false;
         }
         else{

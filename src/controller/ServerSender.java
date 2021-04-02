@@ -13,7 +13,6 @@ public final class ServerSender {
     public static void endTurn() {
         clientSideConnection.send("endTurn " + playerInfoString());
     }
-
     private static String playerInfoString() {
         return player.getName() + " " + player.getPoints() + " ";
     }

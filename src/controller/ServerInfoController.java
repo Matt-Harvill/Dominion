@@ -16,7 +16,6 @@ public class ServerInfoController {
     @FXML Button startGameButton;
 
     private String ipAddress; private int port;
-    private boolean gameStart = false;
 
     public void initialize() {
         ipAddress = Main.getServer().getIpAddress();
@@ -38,14 +37,8 @@ public class ServerInfoController {
         clipboard.setContent(content);
     }
 
-    public void startGame(ActionEvent actionEvent) throws IOException {
-        gameStart = true;
+    public void startGame(ActionEvent actionEvent) {
         startGameButton.setDisable(true);
-
-        Socket interruptSocket = new Socket(ipAddress,port);
-        interruptSocket.close();
-    }
-    public boolean getGameStart() {
-        return gameStart;
+        Main.getServer().startGame();
     }
 }
