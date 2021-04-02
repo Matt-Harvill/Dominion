@@ -35,13 +35,14 @@ public class ClientSideConnection implements Runnable {
     public void run() {
         send("join " + player.getName() + " " + player.getPoints());
 
-        while(true) {
+        while(!socket.isClosed()) {
             String receive = receive();
-            System.out.println(receive);
+            System.out.println(receive + " <---- received message");
 
             if(receive==null) {
                 try {
                     socket.close();
+                    System.out.println("receive==null entered in CSC run()");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -58,9 +59,9 @@ public class ClientSideConnection implements Runnable {
                 case "chat": chat(playerName,scanner.nextLine()); break;
                 case "connected": connected(playerName,playerPoints); break;
                 case "startTurn": startTurn(playerName); break;
-                case "actionCardsInGame": actionCardsInGame(scanner.nextLine());
-                default:
-                    break;
+                case "actionCardsInGame": actionCardsInGame(scanner.nextLine()); break;
+                case "serverShutDown": serverShutDown(); break;
+                default: break;
             }
         }
     }
@@ -101,6 +102,15 @@ public class ClientSideConnection implements Runnable {
             index++;
         }
         Platform.runLater(() -> Main.getGameController().displayActionCardsInGame(cardNames,cardNums));
+    }
+
+    private void serverShutDown() {
+        Main.closeOpenStages();
+        try {
+            socket.close();
+        } catch (IOException ex) {
+            System.out.println("IOException in serverShutDown in ClientSideConnection");
+        }
     }
 
     public String receive() {

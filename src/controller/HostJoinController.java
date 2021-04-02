@@ -61,6 +61,7 @@ public class HostJoinController {
         try {
             ClientSideConnection csc = new ClientSideConnection(ipAddress,port);
             Main.setClientSideConnection(csc);
+            Main.serverToNull();
             Main.switchToGameScene();
         } catch (Exception ex) {
             incorrectServerInfoAlert.setVisible(true);

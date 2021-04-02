@@ -35,7 +35,7 @@ public class ServerSideConnection implements Runnable {
     }
 
     public void run() {
-        while(true) {
+        while(!socket.isClosed()) {
             try {
                 String receivedMessage = receive();
                 String sendMessage = receivedMessage;
@@ -94,7 +94,7 @@ public class ServerSideConnection implements Runnable {
                 broadcast(sendMessage);
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("receive error @" + name + "'s SSC");
             }
         }
     }
@@ -132,5 +132,15 @@ public class ServerSideConnection implements Runnable {
     public String getName() {return name;}
     public int getPoints() {
         return points;
+    }
+
+    public void shutDown() {
+        try {
+            dataIn.close();
+            dataOut.close();
+            socket.close();
+        } catch (Exception ex) {
+            System.out.println("Exception @SSC_shutDown");
+        }
     }
 }

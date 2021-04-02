@@ -17,7 +17,7 @@ public class DominionServer {
     private int numClients, portNumber, maxNumPlayers;
     private String ipAddress;
 
-    private List<ServerSideConnection> serverSideConnections;
+    private final List<ServerSideConnection> serverSideConnections;
 
     private List<ActionCard> actionCardsInGame;
 
@@ -44,14 +44,11 @@ public class DominionServer {
                 System.out.println("There are " + numClients + " clients connected");
             }
             while (/*!Main.getServerController().getGameStart() &&*/ numClients<maxNumPlayers);
+            serverSocket.close();
             System.out.println("No longer accepting connections");
-
         } catch (IOException ex) {
             System.out.println("IOException from acceptConnections()");
         }
-    }
-    public void closeServerSocket() throws IOException {
-        serverSocket.close();
     }
 
     public ServerSocket getServerSocket() {
@@ -78,5 +75,13 @@ public class DominionServer {
     }
     public void setActionCardsInGame(List<ActionCard> actionCardsInGame) {
         this.actionCardsInGame = actionCardsInGame;
+    }
+
+    public void serverShutDown() throws IOException {
+        for(ServerSideConnection ssc: serverSideConnections) {
+            ssc.individualSend("serverShutDown " + ssc.getPlayerInfoString());
+            ssc.shutDown();
+        }
+        serverSocket.close();
     }
 }

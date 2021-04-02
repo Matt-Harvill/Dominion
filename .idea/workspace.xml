@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/HostJoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HostJoinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +62,8 @@
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\resources" />
+      <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\resources\images" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\view" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\controller" />
@@ -73,17 +83,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,7 +121,8 @@
       <workItem from="1616768258683" duration="599000" />
       <workItem from="1617125153312" duration="14319000" />
       <workItem from="1617161441117" duration="52000" />
-      <workItem from="1617204656007" duration="14087000" />
+      <workItem from="1617204656007" duration="15398000" />
+      <workItem from="1617332059497" duration="4676000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -299,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617222856624</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="minor update for entering name with enter key as well as next button">
+      <created>1617223199212</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1617223199212</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +350,7 @@
     <MESSAGE value="can host and join with same UI. Now the backend is actually established as well" />
     <MESSAGE value="can select from allcards the cards you want in the game. This is only for the the frontend. These cards aren't actually used in the game in backend yet" />
     <MESSAGE value="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later." />
-    <option name="LAST_COMMIT_MESSAGE" value="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later." />
+    <MESSAGE value="minor update for entering name with enter key as well as next button" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor update for entering name with enter key as well as next button" />
   </component>
 </project>
