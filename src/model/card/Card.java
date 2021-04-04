@@ -10,10 +10,13 @@ public abstract class Card implements Serializable {
     protected int cost;
     protected Image cardImage;
 
-    public Card(String name, int cost, Image cardImage) {
+    protected Image smallCardImage;
+
+    public Card(String name, int cost, Image cardImage, Image smallCardImage) {
         this.name = name;
         this.cost = cost;
         this.cardImage = cardImage;
+        this.smallCardImage = smallCardImage;
     }
 
     public Image getCardImage() {
@@ -21,6 +24,12 @@ public abstract class Card implements Serializable {
     }
     public void setCardImage(Image cardImage) {
         this.cardImage = cardImage;
+    }
+    public Image getSmallCardImage() {
+        return smallCardImage;
+    }
+    public void setSmallCardImage(Image smallCardImage) {
+        this.smallCardImage = smallCardImage;
     }
     public String getName() {
         return name;

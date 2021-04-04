@@ -8,8 +8,8 @@ public class ActionCard extends Card {
     protected boolean dependent = true;
     protected String dependencies;
 
-    public ActionCard(String name, int cost, String action, Image image, String dependencies) {
-        super(name, cost, image);
+    public ActionCard(String name, int cost, String action, Image image, Image smallCardImage, String dependencies) {
+        super(name, cost, image, smallCardImage);
         this.action = action;
         this.dependencies = dependencies;
         if(dependencies==null) dependent = false;

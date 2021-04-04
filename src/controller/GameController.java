@@ -198,7 +198,7 @@ public class GameController {
             if(s.contains("Cards")) continue;
             cardObjectsInSupply[index] = (CardFactory.getCard(s));
             int num = scanner.nextInt();
-            imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + "_Small.jpg").toURI().toString()));
+            imagePattern = new ImagePattern(cardObjectsInSupply[index].getSmallCardImage());
             cardsInSupply[index].setFill(imagePattern);
             imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
             cardsInSupplyBuyButtons[index].setFill(imagePattern);
@@ -367,7 +367,7 @@ public class GameController {
             if(s==null) break;
             int num = cardNums[i];
             cardObjectsInSupply[index] = (CardFactory.getCard(s));
-            ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/" + s + ".jpg").toURI().toString()));
+            ImagePattern imagePattern = new ImagePattern(cardObjectsInSupply[index].getSmallCardImage());
             cardsInSupply[index].setFill(imagePattern);
             imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
             cardsInSupplyBuyButtons[index].setFill(imagePattern);

@@ -2,18 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/gameSceneNew.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Festival_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Laboratory_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Market_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Smithy_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Village_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Woodcutter_Small.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/hostJoinScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/hostJoinScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/ActionCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/ActionCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/BlankCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/BlankCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/TreasureCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/TreasureCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/VictoryCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/VictoryCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/ActionCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/BlankCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/BlankCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/TreasureCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/TreasureCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/VictoryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/VictoryCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +152,7 @@
       <workItem from="1617383670961" duration="185000" />
       <workItem from="1617391899661" duration="6277000" />
       <workItem from="1617499403722" duration="598000" />
-      <workItem from="1617558331008" duration="6733000" />
+      <workItem from="1617558331008" duration="8116000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -348,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617398203915</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="resized my frame so it fits 1366x768 frames. Now I'm changing the cards so that they are all small in display but hovering over the card blows it up in a display to the side">
+      <created>1617565259749</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1617565259750</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +384,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="I have objects for components on the gameUI. Client has the gameController object so that it can update these components on the gameUI." />
     <MESSAGE value="commit with new gameScene structure" />
     <MESSAGE value="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that." />
     <MESSAGE value="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such." />
@@ -393,6 +408,7 @@
     <MESSAGE value="finally fixed serverShutDown process. Now I catch the exceptions from closing the sockets. I also alert to clientsideconnections before doing so so they can close too" />
     <MESSAGE value="Now start button and reaching max players both trigger startGame in server. Also, when a player leaves, it alerts everyone else and goes to the next player's turn if it was that player's turn." />
     <MESSAGE value="fixed naming with weird characters/spaces. Still need to fix it if two players joins with same name" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed naming with weird characters/spaces. Still need to fix it if two players joins with same name" />
+    <MESSAGE value="resized my frame so it fits 1366x768 frames. Now I'm changing the cards so that they are all small in display but hovering over the card blows it up in a display to the side" />
+    <option name="LAST_COMMIT_MESSAGE" value="resized my frame so it fits 1366x768 frames. Now I'm changing the cards so that they are all small in display but hovering over the card blows it up in a display to the side" />
   </component>
 </project>
