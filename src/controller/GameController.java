@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.card.Card;
 import model.factory.CardFactory;
+import org.w3c.dom.css.Rect;
 import view.CardSupplyDisplay;
 import view.HandOrInPlayDisplay;
 import view.PlayerNamePointsDisplay;
@@ -25,8 +26,9 @@ import java.util.Scanner;
 
 public class GameController {
 
-    //-------------List of Action Cards in the Game------------//
+    //-------------List of Cards in the Game------------//
     private final File cardsInGame = new File("src/resources/CardsInGame.txt");
+    private String[] actionCardNames;
 
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
@@ -58,6 +60,8 @@ public class GameController {
             actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10;
     @FXML private Rectangle actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
             actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10;
+    private Rectangle[] actionCardsInSupply,actionCardNumBacks,actionCardBuyButtons;
+    private Text[] actionCardNums;
 
     //---------------TreasureCards In Supply---------------//
     @ FXML private Rectangle treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4;
@@ -114,6 +118,8 @@ public class GameController {
     private Rectangle[] playerLabelVictories;
     private Text[] playerLabelVictoryNums;
     PlayerNamePointsDisplay playerNamePointsDisplay;
+
+    @FXML private Rectangle zoomActionCard;
 
     public void initialize() throws FileNotFoundException {
         chatDisplayStrings = new ArrayList<>();
@@ -203,6 +209,16 @@ public class GameController {
             index++;
         }
 
+        //--------------Initialize action cards in supply---------------//
+        actionCardsInSupply = new Rectangle[]{actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
+                actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10};
+        actionCardNumBacks = new Rectangle[]{actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,
+                actionCardNumBack6, actionCardNumBack7,actionCardNumBack8,actionCardNumBack9,actionCardNumBack10};
+        actionCardBuyButtons = new Rectangle[]{actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
+                actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10};
+        actionCardNums = new Text[]{actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
+                actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
+
         //--------------Initialize player Decks-----------------//
         imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
@@ -272,61 +288,56 @@ public class GameController {
         }
 
     }
+
     public void mouseOverCardInHand(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent, cardsInHand, cardsInHandNumBacks, cardsInHandNums);
+        mouseOverCard(mouseEvent, cardsInHand, cardsInHandNumBacks, cardsInHandNums,true);
     }
     public void mouseExitedCardInHand(MouseEvent mouseEvent) {
-        mouseExitedCard(mouseEvent, cardsInHand, cardsInHandNumBacks, cardsInHandNums);
+        mouseOverCard(mouseEvent, cardsInHand, cardsInHandNumBacks, cardsInHandNums,false);
     }
     public void mouseOverCardInPlay(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums);
+        mouseOverCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums,true);
     }
     public void mouseExitedCardInPlay(MouseEvent mouseEvent) {
-        mouseExitedCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums);
+        mouseOverCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums,false);
+    }
+    public void mouseOverActionCardInSupply(MouseEvent mouseEvent) {
+        mouseOverCard(mouseEvent,actionCardsInSupply,actionCardNumBacks,actionCardNums,true);
+    }
+    public void mouseExitedActionCardInSupply(MouseEvent mouseEvent) {
+        mouseOverCard(mouseEvent,actionCardsInSupply,actionCardNumBacks,actionCardNums,false);
     }
 
-    private void mouseOverCard(MouseEvent mouseEvent, Rectangle[] cards, Rectangle[] cardNumBacks, Text[] cardNums) {
+    private void mouseOverCard(MouseEvent mouseEvent, Rectangle[] cards, Rectangle[] cardNumBacks, Text[] cardNums, boolean entered) {
         Object cardClicked = mouseEvent.getSource();
-        if(cardClicked instanceof Rectangle) {
-            for(int i = 0; i< cardsInPlay.length; i++) {
-                if(cardsInPlay[i].equals(cardClicked) || cardsInPlayNumBacks[i].equals(cardClicked)) {
-                    cardsInPlay[i].setViewOrder(0.2);
-                    cardsInPlayNumBacks[i].setViewOrder(0.1);
-                    cardsInPlayNums[i].setViewOrder(0);
-                    break;
-                }
-            }
-        } else if(cardClicked instanceof Text) {
-            for(int i = 0; i< cardsInPlay.length; i++) {
-                if(cardsInPlayNums[i].equals(cardClicked)) {
-                    cardsInPlay[i].setViewOrder(0.2);
-                    cardsInPlayNumBacks[i].setViewOrder(0.1);
-                    cardsInPlayNums[i].setViewOrder(0);
-                    break;
-                }
+        for(int i = 0; i< cards.length; i++) {
+            if(cards[i].equals(cardClicked) || cardNumBacks[i].equals(cardClicked) || cardNums[i].equals(cardClicked)) {
+                if(cards.equals(actionCardsInSupply)) {
+                    showZoomActionCard(i,entered);
+                } else
+                setViewingOrder(cards[i],cardNumBacks[i],cardNums[i],cards.length,i,entered);
+                break;
             }
         }
     }
-    private void mouseExitedCard(MouseEvent mouseEvent, Rectangle[] cards, Rectangle[] cardNumBacks, Text[] cardNums) {
-        Object cardClicked = mouseEvent.getSource();
-        if(cardClicked instanceof Rectangle) {
-            for(int i = 0; i< cardsInPlay.length; i++) {
-                if(cardsInPlay[i].equals(cardClicked) || cardsInPlayNumBacks[i].equals(cardClicked)) {
-                    cardsInPlay[i].setViewOrder(cardsInPlay.length-i);
-                    cardsInPlayNumBacks[i].setViewOrder(cardsInPlay.length-i-0.1);
-                    cardsInPlayNums[i].setViewOrder(cardsInPlay.length-i-0.2);
-                    break;
-                }
-            }
-        } else if(cardClicked instanceof Text) {
-            for(int i = 0; i< cardsInPlay.length; i++) {
-                if(cardsInPlayNums[i].equals(cardClicked)) {
-                    cardsInPlay[i].setViewOrder(cardsInPlay.length-i);
-                    cardsInPlayNumBacks[i].setViewOrder(cardsInPlay.length-i-0.1);
-                    cardsInPlayNums[i].setViewOrder(cardsInPlay.length-i-0.2);
-                    break;
-                }
-            }
+    private void setViewingOrder(Rectangle card, Rectangle cardNumBack, Text cardNum, int cardsLength, int i, boolean entered) {
+        if(entered) {
+            card.setViewOrder(0.2);
+            cardNumBack.setViewOrder(0.1);
+            cardNum.setViewOrder(0);
+        } else {
+            card.setViewOrder(cardsLength-i);
+            cardNumBack.setViewOrder(cardsLength-i-0.1);
+            cardNum.setViewOrder(cardsLength-i-0.2);
+        }
+    }
+    private void showZoomActionCard(int i, boolean entered) {
+        if(entered) {
+            zoomActionCard.setFill(new ImagePattern(CardFactory.getCard(actionCardNames[i]).getCardImage()));
+            zoomActionCard.setStyle(greenCardGlowStyle);
+            zoomActionCard.setVisible(true);
+        } else {
+            zoomActionCard.setVisible(false);
         }
     }
 
@@ -349,6 +360,7 @@ public class GameController {
     }
 
     public void displayActionCardsInGame(String[] cardNames, int[] cardNums) {
+        actionCardNames = cardNames;
         int index = 12;
         for(int i=0; i< cardNames.length; i++) {
             String s = cardNames[i];

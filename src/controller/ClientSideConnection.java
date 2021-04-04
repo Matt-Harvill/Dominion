@@ -104,7 +104,6 @@ public class ClientSideConnection implements Runnable {
         }
         Platform.runLater(() -> Main.getGameController().displayActionCardsInGame(cardNames,cardNums));
     }
-
     private void serverShutDown() {
         Main.closeOpenStages();
         try {
@@ -112,6 +111,9 @@ public class ClientSideConnection implements Runnable {
         } catch (IOException ex) {
             System.out.println("IOException @CSC_serverShutDown");
         }
+    }
+    private void leftGame(String playerName) {
+        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " left the game"));
     }
 
     public String receive() {
@@ -129,11 +131,6 @@ public class ClientSideConnection implements Runnable {
             return false;
         }
     }
-
-    public void leftGame(String playerName) {
-        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " left the game"));
-    }
-
     public void leaveGame() {
         send("leaveGame " + player.getName() + " " + player.getPoints() + " ");
         try {

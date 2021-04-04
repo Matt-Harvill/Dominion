@@ -6,10 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Player;
 import server.DominionServer;
 import server.ServerSideConnection;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class Main extends Application {
@@ -38,9 +40,9 @@ public class Main extends Application {
         hostJoinScene = loader.load();
         hostJoinController = loader.getController();
 
-        gameStage.setResizable(false);
+//        gameStage.setResizable(false);
         goToHostJoinScene();
-//        switchToSetNameScene();
+//        switchToGameScene();
 
         //-------------Center Frame if resized--------------------//
         gameStage.widthProperty().addListener((obs, oldVal, newVal) -> gameStage.centerOnScreen());
@@ -77,20 +79,23 @@ public class Main extends Application {
 
     }
     public static void switchToGameScene() {
+
         gameStage.setTitle("Dominion");
         gameStage.setScene(new Scene(gameUIScene));
 
+//----------------------commenting out following two lines for testing---------------------//
         PlayerActionMediator.startPhase();
         PlayerActionMediator.displayPlayerLabel(player.getName(), player.getPoints());
 
-//        window.setMaximized(true);
-        gameStage.setMinWidth(1296);
-        gameStage.setMinHeight(839);
+//        gameStage.setMaximized(true);
+
         gameStage.show();
-        closingProcedures();
+        System.out.println("frame height " + (gameStage.getHeight()/* - gameStage.getScene().getHeight()*/));
+        System.out.println("frame width " + (gameStage.getWidth()/* - gameStage.getScene().getWidth()*/));
+        closedGameStage();
     }
 
-    private static void closingProcedures() {
+    private static void closedGameStage() {
         gameStage.setOnCloseRequest(windowEvent ->  {
             if(server!=null) {
                 // do stuff to close connections

@@ -8,12 +8,13 @@ public final class ServerSender {
     private static final Player player = Main.getPlayer();
 
     public static void chatSend(String chatText) {
-        clientSideConnection.send("chat " + playerInfoString() + chatText);
+        clientSideConnection.send("chat " + getPlayerInfoString() + chatText);
     }
     public static void endTurn() {
-        clientSideConnection.send("endTurn " + playerInfoString());
+        clientSideConnection.send("endTurn " + getPlayerInfoString());
     }
-    private static String playerInfoString() {
+
+    private static String getPlayerInfoString() {
         return player.getName() + " " + player.getPoints() + " ";
     }
 
