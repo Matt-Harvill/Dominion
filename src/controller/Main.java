@@ -87,7 +87,7 @@ public class Main extends Application {
         PlayerActionMediator.startPhase();
         PlayerActionMediator.displayPlayerLabel(player.getName(), player.getPoints());
 
-        gameStage.setMaximized(true);
+//        gameStage.setMaximized(true);
 //        gameStage.setFullScreen(true);
         gameStage.show();
         System.out.println("frame height " + (gameStage.getHeight()/* - gameStage.getScene().getHeight()*/));
