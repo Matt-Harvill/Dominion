@@ -23,6 +23,13 @@ public class CardCollection {
         return c;
     }
 
+    public Card peekLastCard() {
+        if(collection.size()>0) {
+            return collection.get(collection.size()-1);
+        } else {
+            return null;
+        }
+    }
     public List<Card> getCollection() {return collection;}
     public List<ActionCard> getDistinctActionCards(){
         List<ActionCard> actionCards = new LinkedList<>();

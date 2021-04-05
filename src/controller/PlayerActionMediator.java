@@ -25,12 +25,17 @@ public final class PlayerActionMediator {
     public static void startPhase() {
         player.setPhase("startPhase");
         player.newTurn();
+        displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
     }
     public static void actionPhase() {
         System.out.println("actionPhase was entered");
         controller.getActionBar().setVisible(true);
+
+        controller.getInPlayPlayerLabel().setVisible(false);
+
         player.setPhase("actionPhase");
+        displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         controller.getActionButton().setText("Enter Buy Phase");
@@ -39,6 +44,7 @@ public final class PlayerActionMediator {
     public static void buyPhase() {
         player.setPhase("buyPhase");
         showBuyableCards(true);
+        displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         controller.getActionButton().setText("End Turn");
@@ -47,6 +53,7 @@ public final class PlayerActionMediator {
         player.setPhase("endPhase");
         showBuyableCards(false);
         player.endTurn();
+        displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         controller.getActionButton().setText("Start Turn");
@@ -76,6 +83,7 @@ public final class PlayerActionMediator {
 
         ServerSender.buyCard(cardClicked.getName());
 
+        displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
         if(checkNumBuys()) {
@@ -93,6 +101,7 @@ public final class PlayerActionMediator {
         addMessageToGameLog("You played a " + cardClicked.getName());
         ServerSender.playCard(cardClicked.getName());
 
+        displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
@@ -201,6 +210,16 @@ public final class PlayerActionMediator {
             display.getCardInHandOrInPlayNums()[i].setVisible(false);
         }
     }
+    private static void displayPlayerDiscard() {
+        Card topDiscardCard = player.getDiscardPile().peekLastCard();
+        if(topDiscardCard==null) {
+            controller.getPlayerDiscard().setVisible(false);
+        } else {
+            controller.getPlayerDiscard().setFill(new ImagePattern(topDiscardCard.getCardImage()));
+            controller.getPlayerDiscard().setVisible(true);
+        }
+//        player.getDiscardPile().printCardNamesInCollection();
+    }
 
     private static void checkCanDoAction() {
         if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
@@ -235,6 +254,7 @@ public final class PlayerActionMediator {
         }
         controller.getGameLog().setText(builder.toString());
     }
+
     public static void displayPlayerLabel(String playerName, int points) {
         PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
 
@@ -253,6 +273,25 @@ public final class PlayerActionMediator {
             }
         }
     }
+    public static void displayPlayerLabel(ServerPlayer player) {
+        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
+
+        Text[] playerLabelNames = display.getPlayerLabelNames();
+        Text[] playerPoints = display.getPlayerLabelVictoryNums();
+
+        for(int i=0; i<playerLabelNames.length; i++) {
+            if(player.getName().equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
+                playerLabelNames[i].setText(player.getName());
+                playerPoints[i].setText(String.valueOf(player.getPoints()));
+                display.getPlayerLabels()[i].setVisible(true);
+                display.getPlayerLabelVictories()[i].setVisible(true);
+                playerLabelNames[i].setVisible(true);
+                playerPoints[i].setVisible(true);
+                break;
+            }
+        }
+    }
+
     public static void displayInPlay(ServerPlayer otherPlayer) {
         HandOrInPlayDisplay display = controller.getInPlayDisplay();
 
@@ -272,5 +311,10 @@ public final class PlayerActionMediator {
             freqOfCardInARow = 1;
         }
         controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
+    }
+
+    public static void displayInPlayPlayerLabel(String otherPlayerName) {
+        controller.getPlayerInPlayNameText().setText(otherPlayerName);
+        controller.getInPlayPlayerLabel().setVisible(true);
     }
 }

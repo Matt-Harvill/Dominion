@@ -3,7 +3,9 @@ package controller;
 import javafx.application.Platform;
 import model.Player;
 import model.ServerPlayer;
+import model.card.Card;
 import model.card.CardStack;
+import model.card.VictoryCard;
 import model.factory.CardFactory;
 
 import java.io.DataInputStream;
@@ -72,9 +74,10 @@ public class ClientSideConnection implements Runnable {
     }
 
     private void connected(String playerName, int playerPoints) {
+        ServerPlayer player = new ServerPlayer(playerName,playerPoints);
+        players.add(player);
         Platform.runLater(() -> {
-            players.add(new ServerPlayer(playerName,playerPoints));
-            PlayerActionMediator.displayPlayerLabel(playerName,playerPoints);
+            PlayerActionMediator.displayPlayerLabel(player);
             PlayerActionMediator.addMessageToGameLog(playerName + " has joined the game");
         });
     }
@@ -83,7 +86,7 @@ public class ClientSideConnection implements Runnable {
         players.add(newPlayer);
 
         Platform.runLater(() -> {
-            PlayerActionMediator.displayPlayerLabel(playerName,playerPoints);
+            PlayerActionMediator.displayPlayerLabel(newPlayer);
             PlayerActionMediator.addMessageToGameLog(playerName + " was already in the game");
         });
     }
@@ -110,7 +113,10 @@ public class ClientSideConnection implements Runnable {
 
         Platform.runLater(() -> {
             if(myTurn) PlayerActionMediator.actionPhase();
-            else PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
+            else {
+                PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
+                PlayerActionMediator.displayInPlayPlayerLabel(playerName);
+            }
         });
     }
     private void cardsInGame(String cardsString) {
@@ -173,7 +179,29 @@ public class ClientSideConnection implements Runnable {
         });
     }
     private void cardPurchased(String playerName, String cardName) {
-        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName));
+        Card card = CardFactory.getCard(cardName);
+        ServerPlayer otherPlayer = null;
+        if(card instanceof VictoryCard) {
+            for(ServerPlayer serverPlayer: players) {
+                if(serverPlayer.getName().equals(playerName)) {
+                    otherPlayer = serverPlayer;
+                    break;
+                }
+            }
+            if(otherPlayer==null) {
+                System.out.println("Error @CSC_cardPurchased");
+            }
+            else {
+                otherPlayer.setPoints(otherPlayer.getPoints()+((VictoryCard) card).getVictoryPoints());
+            }
+        }
+        ServerPlayer finalOtherPlayer = otherPlayer;
+        Platform.runLater(() -> {
+            PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName);
+            if(finalOtherPlayer !=null) {
+                PlayerActionMediator.displayPlayerLabel(finalOtherPlayer);
+            }
+        });
     }
 
     public String receive() {

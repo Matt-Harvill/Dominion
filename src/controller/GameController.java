@@ -39,6 +39,11 @@ public class GameController {
 
     private String ipAddress; private int port;
 
+    //--------------Player inPlay Label-----------------//
+//    @FXML private Rectangle playerInPlayNameBackground;
+    @FXML private Text playerInPlayNameText;
+    @FXML private StackPane inPlayPlayerLabel;
+
     //-------------List of Cards in the Game------------//
     private CardCollection cardsInGame;
     private List<CardStack> cardStacks;
@@ -116,7 +121,7 @@ public class GameController {
     private HandOrInPlayDisplay inPlayDisplay;
 
     //---------------Opponent and Player Deck------------------//
-    @FXML private Rectangle playerDeck, opponentDeck;
+    @FXML private Rectangle playerDeck, opponentDeck, playerDiscard;
     @FXML private Button actionButton;
     @FXML private Text gameInfoText;
     @FXML private StackPane actionBar;
@@ -246,6 +251,9 @@ public class GameController {
     public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
     public StackPane getActionBar() {return actionBar;}
+    public Text getPlayerInPlayNameText() {return  playerInPlayNameText;}
+    public StackPane getInPlayPlayerLabel() {return inPlayPlayerLabel;}
+    public Rectangle getPlayerDiscard() {return playerDiscard;}
 
     //-------------------Internal Updates------------------------//
 

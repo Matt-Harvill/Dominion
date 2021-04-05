@@ -923,32 +923,32 @@
                         <Insets top="200.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Text fx:id="playerLabelName6" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="120.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="playerLabelName6" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="180.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="10.0" top="7.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="playerLabelName5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="120.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="playerLabelName5" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="180.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="10.0" top="47.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="playerLabelName4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="120.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="playerLabelName4" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="180.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="10.0" top="87.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="playerLabelName3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="120.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="playerLabelName3" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="180.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="10.0" top="127.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="playerLabelName2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="120.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="playerLabelName2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="180.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="10.0" top="167.0" />
                      </StackPane.margin>
                   </Text>
-                  <Text fx:id="playerLabelName1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="120.0" StackPane.alignment="TOP_LEFT">
+                  <Text fx:id="playerLabelName1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" wrappingWidth="180.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="10.0" top="207.0" />
                      </StackPane.margin>
@@ -1911,6 +1911,19 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </Pane>
+            <StackPane fx:id="inPlayPlayerLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" visible="false" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets bottom="215.0" left="430.0" right="215.0" top="215.0" />
+               </StackPane.margin>
+               <children>
+                  <Rectangle fx:id="playerInPlayNameBackground" arcHeight="15.0" arcWidth="15.0" height="25.0" stroke="WHITE" strokeType="INSIDE" styleClass="actionBar" width="150.0" />
+                  <Text fx:id="playerInPlayNameText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="130.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+            </StackPane>
          </children>
       </StackPane>
    </center>
