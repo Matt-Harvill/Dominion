@@ -13,6 +13,12 @@ public final class ServerSender {
     public static void endTurn() {
         clientSideConnection.send("endTurn " + getPlayerInfoString());
     }
+    public static void playCard(String cardName) {
+        clientSideConnection.send("playCard " + getPlayerInfoString() + cardName);
+    }
+    public static void buyCard(String cardName) {
+        clientSideConnection.send("buyCard " + getPlayerInfoString() + cardName);
+    }
 
     private static String getPlayerInfoString() {
         return player.getName() + " " + player.getPoints() + " ";

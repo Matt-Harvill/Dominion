@@ -3,17 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerInfoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ServerInfoScene.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/ServerInfoScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ServerPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ServerPlayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,19 +89,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -146,7 +130,8 @@
       <workItem from="1617391899661" duration="6277000" />
       <workItem from="1617499403722" duration="598000" />
       <workItem from="1617558331008" duration="27710000" />
-      <workItem from="1617590428506" duration="3072000" />
+      <workItem from="1617590428506" duration="3366000" />
+      <workItem from="1617637657054" duration="3879000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -400,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617587143666</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed">
+      <created>1617593812073</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1617593812073</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +412,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
     <MESSAGE value="buys from the left card supply now work as well" />
     <MESSAGE value="game can be played mostly normal although organization is weird because of lack of state-tracking. I will add that next to avoid confusion." />
     <MESSAGE value="Doesn't work fully but I'm starting to implement playing treasure cards instead of auto using them so it's not far off from working well." />
@@ -445,6 +436,7 @@
     <MESSAGE value="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now" />
     <MESSAGE value="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC" />
     <MESSAGE value="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream" />
+    <MESSAGE value="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed" />
   </component>
 </project>

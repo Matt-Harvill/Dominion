@@ -5,16 +5,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.CardCollection;
 import model.Player;
+import model.ServerPlayer;
 import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
-import model.factory.CardFactory;
 import view.CardSupplyDisplay;
 import view.HandOrInPlayDisplay;
 import view.PlayerNamePointsDisplay;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class PlayerActionMediator {
@@ -70,12 +69,12 @@ public final class PlayerActionMediator {
 
         Text cardNumber = cardNumbers[index];
         int numCardRemaining = Integer.parseInt(cardNumber.getText());
-        int costOfCard = cardClicked.getCost();
 
         player.buyCard(cardClicked);
         addMessageToGameLog("You purchased a " + cardClicked.getName());
-
         cardNumber.setText(String.valueOf(numCardRemaining-1));
+
+        ServerSender.buyCard(cardClicked.getName());
 
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
@@ -83,7 +82,6 @@ public final class PlayerActionMediator {
             showBuyableCards(true);
         }
     }
-
     public static void playCard(Card cardClicked) {
         for(Card card: player.getHand().getCollection()) {
             if(card.equals(cardClicked)) {
@@ -91,7 +89,10 @@ public final class PlayerActionMediator {
                 break;
             }
         }
+
         addMessageToGameLog("You played a " + cardClicked.getName());
+        ServerSender.playCard(cardClicked.getName());
+
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
@@ -113,7 +114,6 @@ public final class PlayerActionMediator {
             }
         }
     }
-
     private static void displayHandOrInPlay(HandOrInPlayDisplay display) {
         resetHandOrInPlayDisplay(display);
 
@@ -235,7 +235,6 @@ public final class PlayerActionMediator {
         }
         controller.getGameLog().setText(builder.toString());
     }
-
     public static void displayPlayerLabel(String playerName, int points) {
         PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
 
@@ -253,5 +252,25 @@ public final class PlayerActionMediator {
                 break;
             }
         }
+    }
+    public static void displayInPlay(ServerPlayer otherPlayer) {
+        HandOrInPlayDisplay display = controller.getInPlayDisplay();
+
+        int index = 0;
+        int freqOfCardInARow = 1;
+        CardCollection inPlay = otherPlayer.getInPlay();
+        List<Card> cardList = inPlay.getCollection();
+        Card[] cardsInPlayInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
+        for(int i=0; i<cardList.size();i++) {
+            if (i != cardList.size() - 1 && cardList.get(i).equals(cardList.get(i + 1))) {
+                freqOfCardInARow++;
+                continue;
+            }
+            displayCardInHandOrInPlay(display, cardList.get(i), index, freqOfCardInARow);
+            cardsInPlayInDisplayOrder[index] = cardList.get(i);
+            index++;
+            freqOfCardInARow = 1;
+        }
+        controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
     }
 }

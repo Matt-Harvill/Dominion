@@ -64,6 +64,8 @@ public class ClientSideConnection implements Runnable {
                 case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
                 case "serverShutDown": serverShutDown(); break;
                 case "leaveGame": leftGame(playerName); break;
+                case "playCard": cardPlayed(playerName,scanner.next()); break;
+                case "buyCard": cardPurchased(playerName,scanner.next()); break;
                 default: break;
             }
         }
@@ -89,8 +91,25 @@ public class ClientSideConnection implements Runnable {
         Platform.runLater(() -> PlayerActionMediator.addMessageToChatLog(playerName + ":" + chatMessage));
     }
     private void startTurn(String playerName) {
+        boolean myTurn = (player.getName().equals(playerName));
+        if(!myTurn) {
+            ServerPlayer otherPlayer = null;
+            for(ServerPlayer serverPlayer: players) {
+                if(serverPlayer.getName().equals(playerName)) {
+                    otherPlayer = serverPlayer;
+                    break;
+                }
+            }
+            if(otherPlayer==null) {
+                System.out.println("Error @CSC_startTurn");
+            }
+            else {
+                otherPlayer.resetInPlay();
+            }
+        }
+
         Platform.runLater(() -> {
-            if(player.getName().equals(playerName)) PlayerActionMediator.actionPhase();
+            if(myTurn) PlayerActionMediator.actionPhase();
             else PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
         });
     }
@@ -130,6 +149,31 @@ public class ClientSideConnection implements Runnable {
     }
     private void leftGame(String playerName) {
         Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " left the game"));
+    }
+    private void cardPlayed(String playerName,String cardName) {
+        ServerPlayer otherPlayer = null;
+        for(ServerPlayer serverPlayer: players) {
+            if(serverPlayer.getName().equals(playerName)) {
+                otherPlayer = serverPlayer;
+                break;
+            }
+        }
+        if(otherPlayer==null) {
+            System.out.println("Error @CSC_cardPlayed");
+        }
+        else {
+            otherPlayer.addCardInPlay(CardFactory.getCard(cardName));
+        }
+
+        ServerPlayer finalOtherPlayer = otherPlayer;
+
+        Platform.runLater(() -> {
+            PlayerActionMediator.addMessageToGameLog(playerName + " played a " + cardName);
+            PlayerActionMediator.displayInPlay(finalOtherPlayer);
+        });
+    }
+    private void cardPurchased(String playerName, String cardName) {
+        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName));
     }
 
     public String receive() {
