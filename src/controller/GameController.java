@@ -68,6 +68,7 @@ public class GameController {
     private Text[] cardsInHandNums;
     private Card[] cardObjectsInHand;
     private HandOrInPlayDisplay playerHandDisplay;
+    @FXML StackPane playerHandStackPane;
 
     //---------------ActionCards In Supply---------------//
     @FXML private Rectangle actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
@@ -124,7 +125,7 @@ public class GameController {
     @FXML private Rectangle playerDeck, opponentDeck, playerDiscard;
     @FXML private Button actionButton;
     @FXML private Text gameInfoText;
-    @FXML private StackPane actionBar;
+    @FXML private StackPane actionBar, inPlayStackPane;
 
     //--------------PlayerName and Point Displays------------//
     @FXML private Rectangle playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6;
@@ -253,7 +254,22 @@ public class GameController {
     public StackPane getActionBar() {return actionBar;}
     public Text getPlayerInPlayNameText() {return  playerInPlayNameText;}
     public StackPane getInPlayPlayerLabel() {return inPlayPlayerLabel;}
-    public Rectangle getPlayerDiscard() {return playerDiscard;}
+    public Rectangle getPile(String pileName){
+        switch(pileName){
+            case "playerDiscard" -> {
+                return playerDiscard;
+            }
+            case "playerDeck" -> {
+                return playerDeck;
+            }
+            case "opponentDeck" -> {
+                return opponentDeck;
+            }
+        }
+        return null;
+    }
+    public StackPane getPlayerHandStackPane() {return playerHandStackPane;}
+    public StackPane getInPlayStackPane() {return inPlayStackPane;}
 
     //-------------------Internal Updates------------------------//
 

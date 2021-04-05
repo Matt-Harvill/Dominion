@@ -25,6 +25,7 @@ public final class PlayerActionMediator {
     public static void startPhase() {
         player.setPhase("startPhase");
         player.newTurn();
+
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
     }
@@ -43,6 +44,17 @@ public final class PlayerActionMediator {
     }
     public static void buyPhase() {
         player.setPhase("buyPhase");
+
+//        System.out.println(player);
+//        List<TreasureCard> treasureCardsInHand = player.getHand().getDistinctTreasureCards();
+//        for(TreasureCard treasureCard: treasureCardsInHand) {
+//            int numCard = player.getHand().numCardInCollection(treasureCard);
+//            for(int i=0; i<numCard; i++) {
+//                playCard(treasureCard);
+//            }
+//        }
+//        System.out.println(player);
+
         showBuyableCards(true);
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
@@ -92,7 +104,11 @@ public final class PlayerActionMediator {
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
-        checkCanDoAction();
+        if(cardClicked instanceof ActionCard) {
+            checkCanDoAction();
+        } else if(cardClicked instanceof TreasureCard) {
+            showBuyableCards(true);
+        }
     }
 
     private static void showBuyableCards(boolean enable) {
@@ -200,10 +216,10 @@ public final class PlayerActionMediator {
     private static void displayPlayerDiscard() {
         Card topDiscardCard = player.getDiscardPile().peekLastCard();
         if(topDiscardCard==null) {
-            controller.getPlayerDiscard().setVisible(false);
+            controller.getPile("playerDiscard").setVisible(false);
         } else {
-            controller.getPlayerDiscard().setFill(new ImagePattern(topDiscardCard.getCardImage()));
-            controller.getPlayerDiscard().setVisible(true);
+            controller.getPile("playerDiscard").setFill(new ImagePattern(topDiscardCard.getCardImage()));
+            controller.getPile("playerDiscard").setVisible(true);
         }
 //        player.getDiscardPile().printCardNamesInCollection();
     }
@@ -317,5 +333,14 @@ public final class PlayerActionMediator {
         Text cardNumber = cardNumbers[index];
         int numCardRemaining = Integer.parseInt(cardNumber.getText());
         cardNumber.setText(String.valueOf(numCardRemaining-1));
+    }
+    public static void gameOverDisplay() {
+        controller.getPile("playerDiscard").setVisible(false);
+        controller.getPile("playerDeck").setVisible(false);
+        controller.getPile("opponentDeck").setVisible(false);
+        controller.getPlayerHandStackPane().setVisible(false);
+        controller.getInPlayStackPane().setVisible(false);
+        controller.getGameInfoText().setText("Game Over");
+        controller.getActionButton().setVisible(false);
     }
 }

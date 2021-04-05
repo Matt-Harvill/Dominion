@@ -185,4 +185,15 @@ public class Player {
     private void playTreasureCard(TreasureCard treasureCard) {
         purchasePower+=treasureCard.getPurchasePower();
     }
+
+    public String toString() {
+        String playerInfo = name + " info:\n";
+        playerInfo+="handLimit: " + handLimit;
+        playerInfo+=" numActions: " + numActions;
+        playerInfo+=" numBuys: " + numBuys + "\n";
+        playerInfo+="purchasePower: " + purchasePower;
+        playerInfo+=" amountSpentThisTurn: " + amountSpentThisTurn;
+        playerInfo+=" bonusPurchasePower: " + bonusPurchasePower;
+        return playerInfo;
+    }
 }

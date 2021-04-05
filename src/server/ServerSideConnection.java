@@ -157,10 +157,10 @@ public class ServerSideConnection implements Runnable {
         List<ServerSideConnection> connections = Main.getServer().getServerSideConnections();
 
         //---------------------------------------------------------//
-        System.out.println("List of SSCs @SSC_assignNewTurn");
-        for(ServerSideConnection ssc: connections) {
-            System.out.print(ssc.getName() + "   ");
-        }
+//        System.out.println("List of SSCs @SSC_assignNewTurn");
+//        for(ServerSideConnection ssc: connections) {
+//            System.out.print(ssc.getName() + "   ");
+//        }
         //---------------------------------------------------------//
 
         int indexOfThis = connections.indexOf(this);
@@ -197,7 +197,7 @@ public class ServerSideConnection implements Runnable {
         boolean provinceFound = false;
         boolean threeStacksEmpty = true;
         for(CardStack cardStack: cardStacks) {
-            System.out.println(cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ");
+//            System.out.println(cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ");
             if(cardStack.getCard().getName().equals("Colony")) colonyFound = true;
             if(cardStack.getCard().getName().equals("Province")) provinceFound = true;
         }

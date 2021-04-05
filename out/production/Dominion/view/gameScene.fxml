@@ -1020,7 +1020,7 @@
                   <Insets bottom="10.0" left="830.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane fx:id="playerHand" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
+            <StackPane fx:id="playerHandStackPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
                <children>
                   <Rectangle fx:id="cardInHand1" arcHeight="10.0" arcWidth="10.0" height="160.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInHand" onMouseExited="#mouseExitedCardInHand" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
                      <fill>
@@ -1498,7 +1498,7 @@
                   <Insets bottom="50.0" left="940.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </Rectangle>
-            <StackPane fx:id="playerHand1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
+            <StackPane fx:id="inPlayStackPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
                <children>
                   <Rectangle fx:id="cardInPlay1" arcHeight="10.0" arcWidth="10.0" height="160.0" onMouseEntered="#mouseOverCardInPlay" onMouseExited="#mouseExitedCardInPlay" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
                      <fill>

@@ -208,6 +208,7 @@ public class ClientSideConnection implements Runnable {
     }
     private void gameOver() {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
+        Platform.runLater(PlayerActionMediator::gameOverDisplay);
     }
 
     public String receive() {
