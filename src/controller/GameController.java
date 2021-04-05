@@ -12,10 +12,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.CardCollection;
-import model.card.ActionCard;
-import model.card.Card;
-import model.card.TreasureCard;
-import model.card.VictoryCard;
+import model.card.*;
 import model.factory.CardFactory;
 import org.w3c.dom.css.Rect;
 import view.CardSupplyDisplay;
@@ -33,6 +30,7 @@ public class GameController {
 
     //-------------List of Cards in the Game------------//
     private CardCollection cardsInGame;
+    private List<CardStack> cardStacks;
 
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
@@ -336,6 +334,9 @@ public class GameController {
             this.cardsInGame.addCardToCollection(CardFactory.getCard(cardName));
         }
     }
+    public void setCardStacks(List<CardStack> cardStacks) {
+        this.cardStacks = cardStacks;
+    }
 
     public void displayCardsInGame() {
         int index = 3;
@@ -368,5 +369,18 @@ public class GameController {
             index++;
         }
     }
-
+    public void displayCardsInGameNums() {
+        for(CardStack cardStack: cardStacks) {
+            Card card = cardStack.getCard();
+            for(int i=0; i<cardObjectsInSupply.length; i++) {
+                if(cardObjectsInSupply[i]==null) continue;
+                if(cardObjectsInSupply[i].equals(card)) {
+                    cardsInSupplyNumBacks[i].setVisible(true);
+                    cardsInSupplyNums[i].setText(String.valueOf(cardStack.getNumCards()));
+                    cardsInSupplyNums[i].setVisible(true);
+                    break;
+                }
+            }
+        }
+    }
 }

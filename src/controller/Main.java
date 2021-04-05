@@ -107,6 +107,7 @@ public class Main extends Application {
                 System.out.println("server shut down in switchToGameScene");
             } else {
                 clientSideConnection.leaveGame();
+                System.out.println("clientSideConnection closed in \"closedGameStage\"");
             }
         });
     }

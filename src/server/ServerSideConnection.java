@@ -77,7 +77,6 @@ public class ServerSideConnection implements Runnable {
                         shutDown();
                     }
                 }
-
                 broadcast(sendMessage);
 
             } catch (IOException e) {
@@ -154,14 +153,10 @@ public class ServerSideConnection implements Runnable {
         }
         individualSend(sendMessage);
     }
-    public void shutDown() {
-        try {
-            dataIn.close();
-            dataOut.close();
-            socket.close();
-        } catch (Exception ex) {
-            System.out.println("Exception @SSC_shutDown");
-        }
+    public void shutDown() throws IOException {
+        dataIn.close();
+        dataOut.close();
+        socket.close();
     }
 
     private void setTurn(boolean b) {

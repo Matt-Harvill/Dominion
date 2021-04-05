@@ -10,6 +10,11 @@ public class CardStack {
      this.numCards = -1;
     }
 
+    public CardStack(Card card, int numCards) {
+        this.card = card;
+        this.numCards = numCards;
+    }
+
     public Card getCard() {
         return card;
     }

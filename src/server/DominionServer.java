@@ -21,12 +21,14 @@ public class DominionServer {
 
     private final List<ServerSideConnection> serverSideConnections;
     private final CardCollection cardsInGame;
+    private final List<CardStack> cardStacks;
     
     public DominionServer(){
         numClients = 0;
         serverSideConnections = new ArrayList<>();
         cardsInGame = new CardCollection();
         setTreasureVictoryCardsInGame();
+        cardStacks = new ArrayList<>();
 
         try {
             serverSocket = new ServerSocket(0);
@@ -91,12 +93,17 @@ public class DominionServer {
             serverSocket.close();
             int firstPlayerTurn = (int) (Math.random()*serverSideConnections.size());
 
-            while(serverSideConnections.get(firstPlayerTurn).getName()==null) {
+            ServerSideConnection firstPlayer = serverSideConnections.get(firstPlayerTurn);
+
+            while(firstPlayer.getName()==null) {
                 Thread.sleep(1);
             }
-            serverSideConnections.get(firstPlayerTurn).broadcastAll("startTurn " + serverSideConnections.get(firstPlayerTurn).getPlayerInfoString());
+            createCardStacks();
+            broadcastCardNums(firstPlayer);
+            firstPlayer.broadcastAll("startTurn " + firstPlayer.getPlayerInfoString());
         } catch (Exception ex) {
             System.out.println("Exception @DominionServer_startGame");
+            ex.printStackTrace();
         }
         System.out.println("Game started");
     }
@@ -111,12 +118,41 @@ public class DominionServer {
         cardsInGame.addCardToCollection(CardFactory.getCard("Province"));
         cardsInGame.addCardToCollection(CardFactory.getCard("Colony"));
     }
+
+    private void broadcastCardNums(ServerSideConnection ssc) throws IOException {
+        String sendMessage = "cardsInGameNums " + ssc.getPlayerInfoString();
+        for(CardStack cardStack: cardStacks) {
+            sendMessage += cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ";
+        }
+        ssc.broadcastAll(sendMessage);
+    }
+
+    private void createCardStacks() {
+        for(Card card: cardsInGame.getCollection()) {
+            cardStacks.add(new CardStack(card));
+        }
+        setCardStackNums();
+    }
+    private void setCardStackNums() {
+        for(CardStack cardStack: cardStacks) {
+            cardStack.setNumCards(parseNumCardString(cardStack.getCard().getNumCards()));
+        }
+    }
     private int parseNumCardString(String cardNum) {
         Scanner scanner = new Scanner(cardNum);
+        System.out.println(cardNum);
         while(scanner.hasNext()) {
             String s = scanner.next();
             if(s.equals("All")) {
                 return scanner.nextInt();
+            } else if(s.contains("player")) {
+                int numPlayerSpec = Integer.parseInt(s.substring(0,1));
+                boolean containsPlus = s.contains("+");
+                if(numPlayerSpec==serverSideConnections.size() || (containsPlus && serverSideConnections.size() > numPlayerSpec)) {
+                    return scanner.nextInt();
+                } else {
+                    scanner.next();
+                }
             }
 //            else if (s.contains("player")){
 //                int numPlayers = Integer.parseInt(s.substring(0,1));

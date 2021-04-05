@@ -3,6 +3,8 @@ package controller;
 import javafx.application.Platform;
 import model.Player;
 import model.ServerPlayer;
+import model.card.CardStack;
+import model.factory.CardFactory;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -60,6 +62,7 @@ public class ClientSideConnection implements Runnable {
                 case "connected": connected(playerName,playerPoints); break;
                 case "startTurn": startTurn(playerName); break;
                 case "cardsInGame": cardsInGame(scanner.nextLine()); break;
+                case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
                 case "serverShutDown": serverShutDown(); break;
                 case "leaveGame": leftGame(playerName); break;
                 default: break;
@@ -101,6 +104,20 @@ public class ClientSideConnection implements Runnable {
         Platform.runLater(() -> {
             Main.getGameController().setCardsInGame(cardNames);
             Main.getGameController().displayCardsInGame();
+        });
+
+    }
+    private void cardsInGameNums(String cardsString) {
+        Scanner scanner = new Scanner(cardsString);
+        List<CardStack> cardStacks = new ArrayList<>();
+        while (scanner.hasNext()) {
+            String cardName = scanner.next();
+            int cardNum = scanner.nextInt();
+            cardStacks.add(new CardStack(CardFactory.getCard(cardName),cardNum));
+        }
+        Platform.runLater(() -> {
+            Main.getGameController().setCardStacks(cardStacks);
+            Main.getGameController().displayCardsInGameNums();
         });
 
     }

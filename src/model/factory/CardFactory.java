@@ -11,7 +11,7 @@ public class CardFactory {
         return switch (cardType) {
             case "BackViewCard" -> new BlankCard(cardType, 0, new Image(new File("src/resources/BackViewCard.jpg").toURI().toString()));
             case "Copper" -> new TreasureCard(cardType, 0, 1, new Image(new File("src/resources/Copper.jpg").toURI().toString()),
-                    new Image(new File("src/resources/Copper_Small.jpg").toURI().toString()), "All 60-(#*7)");
+                    new Image(new File("src/resources/Copper_Small.jpg").toURI().toString()), "All 60");
             case "Silver" -> new TreasureCard(cardType, 3, 2, new Image(new File("src/resources/Silver.jpg").toURI().toString()),
                     new Image(new File("src/resources/Silver_Small.jpg").toURI().toString()), "All 40");
             case "Gold" -> new TreasureCard(cardType, 6, 3, new Image(new File("src/resources/Gold.jpg").toURI().toString()),
