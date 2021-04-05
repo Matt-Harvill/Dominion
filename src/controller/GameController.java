@@ -11,7 +11,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import model.CardCollection;
+import model.card.ActionCard;
 import model.card.Card;
+import model.card.TreasureCard;
+import model.card.VictoryCard;
 import model.factory.CardFactory;
 import org.w3c.dom.css.Rect;
 import view.CardSupplyDisplay;
@@ -21,14 +25,14 @@ import view.PlayerNamePointsDisplay;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class GameController {
 
     //-------------List of Cards in the Game------------//
-    private final File cardsInGame = new File("src/resources/CardsInGame.txt");
-    private String[] actionCardNames;
+    private CardCollection cardsInGame;
 
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
@@ -176,39 +180,6 @@ public class GameController {
         cardSupplyDisplay = new CardSupplyDisplay(cardsInSupply,cardsInSupplyNumBacks,cardsInSupplyNums,
                 cardsInSupplyBuyButtons,cardObjectsInSupply);
 
-        Scanner scanner = new Scanner(cardsInGame);
-        ImagePattern imagePattern;
-        int index = 0;
-        String s;
-        while (scanner.hasNext()) {
-            s = scanner.next();
-            if(s.contains("ActionCards")) {
-//                index = 12;
-                break;
-            }
-            if (s.contains("TreasureCards")) {
-                index = 0;
-            }
-            else if(s.contains("VictoryCards")) {
-                index = 4;
-            }
-            else if(s.contains("ExtraCards")) {
-                index = 8;
-            }
-            if(s.contains("Cards")) continue;
-            cardObjectsInSupply[index] = (CardFactory.getCard(s));
-            int num = scanner.nextInt();
-            imagePattern = new ImagePattern(cardObjectsInSupply[index].getSmallCardImage());
-            cardsInSupply[index].setFill(imagePattern);
-            imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
-            cardsInSupplyBuyButtons[index].setFill(imagePattern);
-            cardsInSupplyNums[index].setText(String.valueOf(num));
-            cardsInSupply[index].setVisible(true);
-            cardsInSupplyNumBacks[index].setVisible(true);
-            cardsInSupplyNums[index].setVisible(true);
-            index++;
-        }
-
         //--------------Initialize action cards in supply---------------//
         actionCardsInSupply = new Rectangle[]{actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
                 actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10};
@@ -220,7 +191,7 @@ public class GameController {
                 actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
 
         //--------------Initialize player Decks-----------------//
-        imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
+        ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
         opponentDeck.setFill(imagePattern);
         playerDeck.setVisible(true);
@@ -313,7 +284,7 @@ public class GameController {
         for(int i = 0; i< cards.length; i++) {
             if(cards[i].equals(cardClicked) || cardNumBacks[i].equals(cardClicked) || cardNums[i].equals(cardClicked)) {
                 if(cards.equals(actionCardsInSupply)) {
-                    showZoomActionCard(i,entered);
+                    showZoomActionCard(i+12,entered);
                 } else
                 setViewingOrder(cards[i],cardNumBacks[i],cardNums[i],cards.length,i,entered);
                 break;
@@ -333,7 +304,7 @@ public class GameController {
     }
     private void showZoomActionCard(int i, boolean entered) {
         if(entered) {
-            zoomActionCard.setFill(new ImagePattern(CardFactory.getCard(actionCardNames[i]).getCardImage()));
+            zoomActionCard.setFill(new ImagePattern(cardObjectsInSupply[i].getCardImage()));
             zoomActionCard.setStyle(greenCardGlowStyle);
             zoomActionCard.setVisible(true);
         } else {
@@ -359,25 +330,43 @@ public class GameController {
         }
     }
 
-    public void displayActionCardsInGame(String[] cardNames, int[] cardNums) {
-        actionCardNames = cardNames;
-        int index = 12;
-        for(int i=0; i< cardNames.length; i++) {
-            String s = cardNames[i];
-            if(s==null) break;
-            int num = cardNums[i];
-            cardObjectsInSupply[index] = (CardFactory.getCard(s));
-            ImagePattern imagePattern = new ImagePattern(cardObjectsInSupply[index].getSmallCardImage());
-            cardsInSupply[index].setFill(imagePattern);
-            imagePattern = new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
-            cardsInSupplyBuyButtons[index].setFill(imagePattern);
-            cardsInSupplyNums[index].setText(String.valueOf(num));
+    public void setCardsInGame(List<String> cardsInGame) {
+        this.cardsInGame = new CardCollection();
+        for(String cardName: cardsInGame) {
+            this.cardsInGame.addCardToCollection(CardFactory.getCard(cardName));
+        }
+    }
+
+    public void displayCardsInGame() {
+        int index = 3;
+
+        List<TreasureCard> treasureCardsInGame = cardsInGame.getDistinctTreasureCards();
+        List<VictoryCard> victoryCardsInGame = cardsInGame.getDistinctVictoryCards();
+        List<ActionCard> actionCardsInGame = cardsInGame.getDistinctActionCards();
+
+        for(TreasureCard card: treasureCardsInGame) {
+            cardObjectsInSupply[index] = card;
+            cardsInSupply[index].setFill(new ImagePattern(card.getSmallCardImage()));
+            cardsInSupplyBuyButtons[index].setFill(new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString())));
             cardsInSupply[index].setVisible(true);
-            cardsInSupplyNumBacks[index].setVisible(true);
-            cardsInSupplyNums[index].setVisible(true);
+            index--;
+        }
+        index = 7;
+        for(VictoryCard card: victoryCardsInGame) {
+            cardObjectsInSupply[index] = card;
+            cardsInSupply[index].setFill(new ImagePattern(card.getSmallCardImage()));
+            cardsInSupplyBuyButtons[index].setFill(new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString())));
+            cardsInSupply[index].setVisible(true);
+            index--;
+        }
+        index = 12;
+        for(ActionCard card: actionCardsInGame) {
+            cardObjectsInSupply[index] = card;
+            cardsInSupply[index].setFill(new ImagePattern(card.getSmallCardImage()));
+            cardsInSupplyBuyButtons[index].setFill(new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString())));
+            cardsInSupply[index].setVisible(true);
             index++;
         }
-
-
     }
+
 }

@@ -1,7 +1,10 @@
 package server;
 
 import controller.Main;
+import model.CardCollection;
 import model.card.ActionCard;
+import model.card.Card;
+import model.card.CardStack;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -58,12 +61,9 @@ public class ServerSideConnection implements Runnable {
                             individualSend(sendMessage);
                             sendMessage = "inGame ";
                         }
-                        List<ActionCard> actionCardsInGame = Main.getServer().getActionCardsInGame();
-                        sendMessage = "actionCardsInGame " + getPlayerInfoString();
-                        for (ActionCard card : actionCardsInGame) {
-                            sendMessage += card.getName() + " ";
-                            sendMessage += "10 ";
-                        }
+                        CardCollection cardsInGame = Main.getServer().getCardsInGame();
+                        sendMessage = "cardsInGame " + getPlayerInfoString();
+                        parseCardsInGame(cardsInGame);
                         individualSend(sendMessage);
                         sendMessage = "connected " + getPlayerInfoString();
                     }
@@ -107,6 +107,18 @@ public class ServerSideConnection implements Runnable {
         dataOut.flush();
     }
 
+    private void parseCardsInGame(CardCollection cardsInGame) {
+        for (Card card : cardsInGame.getDistinctTreasureCards()) {
+            sendMessage += card.getName() + " ";
+        }
+        for(Card card: cardsInGame.getDistinctVictoryCards()) {
+            sendMessage += card.getName() + " ";
+        }
+        for(Card card: cardsInGame.getDistinctActionCards()) {
+            sendMessage += card.getName() + " ";
+        }
+    }
+
     public DataOutputStream getDataOut() {
         return dataOut;
     }
@@ -142,7 +154,6 @@ public class ServerSideConnection implements Runnable {
         }
         individualSend(sendMessage);
     }
-
     public void shutDown() {
         try {
             dataIn.close();
@@ -152,6 +163,7 @@ public class ServerSideConnection implements Runnable {
             System.out.println("Exception @SSC_shutDown");
         }
     }
+
     private void setTurn(boolean b) {
         myTurn = b;
     }

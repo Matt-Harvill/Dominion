@@ -7,8 +7,8 @@ public class VictoryCard extends Card {
 
     private int victoryPoints;
 
-    public VictoryCard(String name, int cost, int points, Image image, Image smallCardImage) {
-        super(name,cost,image, smallCardImage);
+    public VictoryCard(String name, int cost, int points, Image image, Image smallCardImage, String numCards) {
+        super(name,cost,image, smallCardImage, numCards);
         this.victoryPoints = points;
     }
 

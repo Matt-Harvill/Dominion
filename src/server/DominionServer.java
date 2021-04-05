@@ -1,8 +1,9 @@
 package server;
 
-import controller.Main;
-import model.card.ActionCard;
+import model.CardCollection;
 import model.card.Card;
+import model.card.CardStack;
+import model.factory.CardFactory;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -10,6 +11,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class DominionServer {
 
@@ -18,12 +20,14 @@ public class DominionServer {
     private String ipAddress;
 
     private final List<ServerSideConnection> serverSideConnections;
-
-    private List<ActionCard> actionCardsInGame;
-
+    private final CardCollection cardsInGame;
+    
     public DominionServer(){
         numClients = 0;
         serverSideConnections = new ArrayList<>();
+        cardsInGame = new CardCollection();
+        setTreasureVictoryCardsInGame();
+
         try {
             serverSocket = new ServerSocket(0);
             ipAddress = InetAddress.getLocalHost().getHostAddress();
@@ -70,11 +74,9 @@ public class DominionServer {
     public void setMaxNumPlayers(int maxNumPlayers) {
         this.maxNumPlayers = maxNumPlayers;
     }
-    public List<ActionCard> getActionCardsInGame() {
-        return actionCardsInGame;
-    }
-    public void setActionCardsInGame(List<ActionCard> actionCardsInGame) {
-        this.actionCardsInGame = actionCardsInGame;
+
+    public CardCollection getCardsInGame() {
+        return cardsInGame;
     }
 
     public void serverShutDown() throws IOException {
@@ -90,12 +92,39 @@ public class DominionServer {
             int firstPlayerTurn = (int) (Math.random()*serverSideConnections.size());
 
             while(serverSideConnections.get(firstPlayerTurn).getName()==null) {
-                Thread.sleep(5);
+                Thread.sleep(1);
             }
             serverSideConnections.get(firstPlayerTurn).broadcastAll("startTurn " + serverSideConnections.get(firstPlayerTurn).getPlayerInfoString());
         } catch (Exception ex) {
             System.out.println("Exception @DominionServer_startGame");
         }
         System.out.println("Game started");
+    }
+
+    private void setTreasureVictoryCardsInGame() {
+        cardsInGame.addCardToCollection(CardFactory.getCard("Copper"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Silver"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Gold"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Platinum"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Estate"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Duchy"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Province"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Colony"));
+    }
+    private int parseNumCardString(String cardNum) {
+        Scanner scanner = new Scanner(cardNum);
+        while(scanner.hasNext()) {
+            String s = scanner.next();
+            if(s.equals("All")) {
+                return scanner.nextInt();
+            }
+//            else if (s.contains("player")){
+//                int numPlayers = Integer.parseInt(s.substring(0,1));
+//                if(s.contains("+")) {
+//
+//                }
+//            }
+        }
+        return -1;
     }
 }

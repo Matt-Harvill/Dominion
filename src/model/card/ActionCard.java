@@ -4,12 +4,11 @@ import javafx.scene.image.Image;
 
 public class ActionCard extends Card {
     protected String action;
-
     protected boolean dependent = true;
     protected String dependencies;
 
-    public ActionCard(String name, int cost, String action, Image image, Image smallCardImage, String dependencies) {
-        super(name, cost, image, smallCardImage);
+    public ActionCard(String name, int cost, String action, Image image, Image smallCardImage, String dependencies, String numCards) {
+        super(name, cost, image, smallCardImage, numCards);
         this.action = action;
         this.dependencies = dependencies;
         if(dependencies==null) dependent = false;

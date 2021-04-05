@@ -1,6 +1,6 @@
-Village 10
-Woodcutter 10
-Smithy 10
-Festival 10
-Laboratory 10
-Market 10
+Village
+Woodcutter
+Smithy
+Festival
+Laboratory
+Market

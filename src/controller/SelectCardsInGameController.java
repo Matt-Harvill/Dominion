@@ -44,7 +44,6 @@ public class SelectCardsInGameController {
         allActionCards = new ArrayList<>();
         while(scanner.hasNext()) {
             String cardName = scanner.next();
-            int numCard = scanner.nextInt();
             allActionCards.add((ActionCard) CardFactory.getCard(cardName));
         }
 
@@ -57,10 +56,10 @@ public class SelectCardsInGameController {
             cardsSelected.add(false);
         }
 
-        if(Main.getServer().getActionCardsInGame()==null) {
+        if(Main.getServer().getCardsInGame().getDistinctActionCards().size()==0) {
             cardsChosen = new ArrayList<>();
         } else {
-            cardsChosen = Main.getServer().getActionCardsInGame();
+            cardsChosen = Main.getServer().getCardsInGame().getDistinctActionCards();
         }
 
         for(int i=0; i<cardsChosen.size(); i++) {
@@ -115,19 +114,20 @@ public class SelectCardsInGameController {
                 index = i;
             }
         }
-        ActionCard cardObject = allActionCards.get(index + 25*(currentPageNum-1));
+        Card cardObject = allActionCards.get(index + 25*(currentPageNum-1));
 
         if(cardsSelected.get(index)) {
             cardsSelected.set(index,false);
             card.setStyle(null);
             cardsChosen.remove(cardObject);
+            Main.getServer().getCardsInGame().removeCardFromCollection(cardObject);
         } else {
             cardsSelected.set(index,true);
             card.setStyle("-fx-stroke-width: 3; -fx-stroke: #54ff54;");
-            cardsChosen.add(cardObject);
+            cardsChosen.add((ActionCard) cardObject);
+            Main.getServer().getCardsInGame().addCardToCollection(cardObject);
         }
 
-        Main.getServer().setActionCardsInGame(cardsChosen);
         Main.getHostJoinController().updateActionCardInGameSlots(cardsChosen);
     }
 }

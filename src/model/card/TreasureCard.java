@@ -7,8 +7,8 @@ public class TreasureCard extends Card {
 
     protected int purchasePower;
 
-    public TreasureCard(String name, int cost, int purchasePower, Image image, Image smallCardImage) {
-        super(name,cost,image, smallCardImage);
+    public TreasureCard(String name, int cost, int purchasePower, Image image, Image smallCardImage, String numCards) {
+        super(name,cost,image, smallCardImage, numCards);
         this.purchasePower = purchasePower;
     }
 

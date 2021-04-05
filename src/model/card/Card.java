@@ -7,16 +7,17 @@ import java.util.Objects;
 
 public abstract class Card implements Serializable {
     protected String name;
+
+    protected String numCards;
     protected int cost;
-    protected Image cardImage;
+    protected Image cardImage, smallCardImage;
 
-    protected Image smallCardImage;
-
-    public Card(String name, int cost, Image cardImage, Image smallCardImage) {
+    public Card(String name, int cost, Image cardImage, Image smallCardImage, String numCards) {
         this.name = name;
         this.cost = cost;
         this.cardImage = cardImage;
         this.smallCardImage = smallCardImage;
+        this.numCards = numCards;
     }
 
     public Image getCardImage() {
@@ -42,6 +43,9 @@ public abstract class Card implements Serializable {
     }
     public void setCost(int cost) {
         this.cost = cost;
+    }
+    public String getNumCards() {
+        return numCards;
     }
 
     @Override

@@ -32,6 +32,7 @@ public class CardCollection {
                 actionCards.add((ActionCard) card);
             }
         }
+        actionCards.sort(Comparator.comparing(Card::getCost));
         return actionCards;
     }
     public List<VictoryCard> getDistinctVictoryCards(){
@@ -42,6 +43,7 @@ public class CardCollection {
                 victoryCards.add((VictoryCard) card);
             }
         }
+        victoryCards.sort(Comparator.comparing(Card::getCost));
         return victoryCards;
     }
     public List<TreasureCard> getDistinctTreasureCards(){
@@ -52,6 +54,7 @@ public class CardCollection {
                 treasureCards.add((TreasureCard) card);
             }
         }
+        treasureCards.sort(Comparator.comparing(Card::getCost));
         return treasureCards;
     }
     public int getSize() {

@@ -8,9 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import model.card.ActionCard;
 
-import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,7 +48,7 @@ public class HostJoinController {
     public void hostGame(ActionEvent actionEvent) {
         Main.createServer();
 
-        List<ActionCard> cardsChosen = Main.getServer().getActionCardsInGame();
+        List<ActionCard> cardsChosen = Main.getServer().getCardsInGame().getDistinctActionCards();
         updateActionCardInGameSlots(cardsChosen);
         setGameDetails.setVisible(true);
     }

@@ -59,7 +59,7 @@ public class ClientSideConnection implements Runnable {
                 case "chat": chat(playerName,scanner.nextLine()); break;
                 case "connected": connected(playerName,playerPoints); break;
                 case "startTurn": startTurn(playerName); break;
-                case "actionCardsInGame": actionCardsInGame(scanner.nextLine()); break;
+                case "cardsInGame": cardsInGame(scanner.nextLine()); break;
                 case "serverShutDown": serverShutDown(); break;
                 case "leaveGame": leftGame(playerName); break;
                 default: break;
@@ -92,17 +92,17 @@ public class ClientSideConnection implements Runnable {
             else PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
         });
     }
-    private void actionCardsInGame(String cardsString) {
+    private void cardsInGame(String cardsString) {
         Scanner scanner = new Scanner(cardsString);
-        String[] cardNames = new String[10];
-        int[] cardNums = new int[10];
-        int index = 0;
-        while (scanner.hasNext() && index<cardNames.length) {
-            cardNames[index] = scanner.next();
-            cardNums[index] = scanner.nextInt();
-            index++;
+        List<String> cardNames = new ArrayList<>();
+        while (scanner.hasNext()) {
+            cardNames.add(scanner.next());
         }
-        Platform.runLater(() -> Main.getGameController().displayActionCardsInGame(cardNames,cardNums));
+        Platform.runLater(() -> {
+            Main.getGameController().setCardsInGame(cardNames);
+            Main.getGameController().displayCardsInGame();
+        });
+
     }
     private void serverShutDown() {
         Main.closeOpenStages();
