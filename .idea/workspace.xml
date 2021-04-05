@@ -4,22 +4,8 @@
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SelectCardsInGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/SelectCardsInGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/CardsInGame.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/CardsInGame.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card/CardStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/CardStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +136,7 @@
       <workItem from="1617383670961" duration="185000" />
       <workItem from="1617391899661" duration="6277000" />
       <workItem from="1617499403722" duration="598000" />
-      <workItem from="1617558331008" duration="26633000" />
+      <workItem from="1617558331008" duration="27494000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -390,7 +376,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617581825580</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC">
+      <created>1617586386869</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1617586386869</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +403,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters." />
     <MESSAGE value="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion." />
     <MESSAGE value="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game" />
     <MESSAGE value="buys from the left card supply now work as well" />
@@ -435,6 +427,7 @@
     <MESSAGE value="goes full screen on start" />
     <MESSAGE value="screen resolution for my laptop" />
     <MESSAGE value="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now" />
-    <option name="LAST_COMMIT_MESSAGE" value="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now" />
+    <MESSAGE value="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC" />
+    <option name="LAST_COMMIT_MESSAGE" value="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC" />
   </component>
 </project>

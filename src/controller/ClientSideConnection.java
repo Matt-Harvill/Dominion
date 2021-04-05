@@ -137,6 +137,7 @@ public class ClientSideConnection implements Runnable {
         try {
             return dataIn.readUTF();
         } catch (IOException ex) {
+            System.out.println("IOException @CSCS_receive");
             return null;
         }
     }

@@ -69,7 +69,6 @@ public class ServerSideConnection implements Runnable {
                     }
                     case "endTurn" -> assignNewTurn();
                     case "leaveGame" -> {
-                        broadcast(sendMessage);
                         if(myTurn) {
                             assignNewTurn();
                         }
