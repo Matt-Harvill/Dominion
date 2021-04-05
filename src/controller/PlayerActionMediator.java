@@ -342,5 +342,7 @@ public final class PlayerActionMediator {
         controller.getInPlayStackPane().setVisible(false);
         controller.getGameInfoText().setText("Game Over");
         controller.getActionButton().setVisible(false);
+        controller.getActionBar().setVisible(true);
+        controller.getInPlayPlayerLabel().setVisible(false);
     }
 }

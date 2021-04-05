@@ -19,11 +19,11 @@ public class CardFactory {
             case "Platinum" -> new TreasureCard(cardType, 9, 5, new Image(new File("src/resources/Platinum.jpg").toURI().toString()),
                     new Image(new File("src/resources/Platinum_Small.jpg").toURI().toString()), "All 12");
             case "Village" -> new ActionCard(cardType, 3, "+1 Card +2 Actions", new Image(new File("src/resources/Village.jpg").toURI().toString()),
-                    new Image(new File("src/resources/Village_Small.jpg").toURI().toString()), null,"All 10");
+                    new Image(new File("src/resources/Village_Small.jpg").toURI().toString()), null,"All 1");
             case "Woodcutter" -> new ActionCard(cardType, 3, "+1 Buy +2 Coins", new Image(new File("src/resources/Woodcutter.jpg").toURI().toString()),
-                    new Image(new File("src/resources/Woodcutter_Small.jpg").toURI().toString()), null, "All 10");
+                    new Image(new File("src/resources/Woodcutter_Small.jpg").toURI().toString()), null, "All 1");
             case "Smithy" -> new ActionCard(cardType, 4, "+3 Cards", new Image(new File("src/resources/Smithy.jpg").toURI().toString()),
-                    new Image(new File("src/resources/Smithy_Small.jpg").toURI().toString()), null, "All 10");
+                    new Image(new File("src/resources/Smithy_Small.jpg").toURI().toString()), null, "All 1");
             case "Festival" -> new ActionCard(cardType, 5, "+2 Actions +1 Buy +2 Coins", new Image(new File("src/resources/Festival.jpg").toURI().toString()),
                     new Image(new File("src/resources/Festival_Small.jpg").toURI().toString()), null, "All 10");
             case "Laboratory" -> new ActionCard(cardType, 5, "+2 Cards +1 Action", new Image(new File("src/resources/Laboratory.jpg").toURI().toString()),

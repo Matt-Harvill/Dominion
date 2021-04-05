@@ -41,7 +41,6 @@ public class ServerSideConnection implements Runnable {
     }
 
     public void run() {
-        label:
         while(!socket.isClosed()) {
             try {
                 String receivedMessage = receive();
@@ -69,16 +68,17 @@ public class ServerSideConnection implements Runnable {
                         sendMessage = "connected " + getPlayerInfoString();
                     }
                     case "endTurn" -> {
-                        sendMessage = assignNewTurn();
                         if(gameOver()) {
-                            broadcast(sendMessage);
+                            myTurn = false;
                             sendMessage = "gameOver " + getPlayerInfoString();
                             individualSend(sendMessage);
+                        } else {
+                            sendMessage = assignNewTurn();
                         }
                     }
                     case "leaveGame" -> {
-                        broadcast(sendMessage);
                         if(myTurn) {
+                            broadcast(sendMessage);
                             sendMessage = assignNewTurn();
                         }
                         Main.getServer().getServerSideConnections().remove(this);
