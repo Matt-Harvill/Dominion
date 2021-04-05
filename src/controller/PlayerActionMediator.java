@@ -64,23 +64,10 @@ public final class PlayerActionMediator {
     }
 
     public static void buyFromCardSupply(Card cardClicked) {
-
-        CardSupplyDisplay display = controller.getCardSupplyDisplay();
-        Card[] cards = display.getCardObjectsInSupply();
-        Text[] cardNumbers = display.getCardInSupplyNums();
-
-        int index = -1;
-        for(int i=0;i<cards.length;i++) {
-            if(cards[i] != null && cards[i].equals(cardClicked)) index = i;
-        }
-
-        Text cardNumber = cardNumbers[index];
-        int numCardRemaining = Integer.parseInt(cardNumber.getText());
-
         player.buyCard(cardClicked);
-        addMessageToGameLog("You purchased a " + cardClicked.getName());
-        cardNumber.setText(String.valueOf(numCardRemaining-1));
+        cardPurchased(cardClicked);
 
+        addMessageToGameLog("You purchased a " + cardClicked.getName());
         ServerSender.buyCard(cardClicked.getName());
 
         displayPlayerDiscard();
@@ -312,9 +299,23 @@ public final class PlayerActionMediator {
         }
         controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
     }
-
     public static void displayInPlayPlayerLabel(String otherPlayerName) {
         controller.getPlayerInPlayNameText().setText(otherPlayerName);
         controller.getInPlayPlayerLabel().setVisible(true);
+    }
+
+    public static void cardPurchased(Card card) {
+        CardSupplyDisplay display = controller.getCardSupplyDisplay();
+        Card[] cards = display.getCardObjectsInSupply();
+        Text[] cardNumbers = display.getCardInSupplyNums();
+
+        int index = -1;
+        for(int i=0;i<cards.length;i++) {
+            if(cards[i] != null && cards[i].equals(card)) index = i;
+        }
+
+        Text cardNumber = cardNumbers[index];
+        int numCardRemaining = Integer.parseInt(cardNumber.getText());
+        cardNumber.setText(String.valueOf(numCardRemaining-1));
     }
 }

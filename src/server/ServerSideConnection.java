@@ -21,9 +21,10 @@ public class ServerSideConnection implements Runnable {
     private DataInputStream dataIn;
     private SocketAddress clientIP;
     private String name;
-    private int points;
+    private int points, initialCardStacksNum;
     private String playerInfoString;
     private boolean myTurn;
+    private List<CardStack> cardStacks;
 
     public ServerSideConnection(Socket s) {
         socket = s;
@@ -67,7 +68,14 @@ public class ServerSideConnection implements Runnable {
                         individualSend(sendMessage);
                         sendMessage = "connected " + getPlayerInfoString();
                     }
-                    case "endTurn" -> sendMessage = assignNewTurn();
+                    case "endTurn" -> {
+                        sendMessage = assignNewTurn();
+                        if(gameOver()) {
+                            broadcast(sendMessage);
+                            sendMessage = "gameOver " + getPlayerInfoString();
+                            individualSend(sendMessage);
+                        }
+                    }
                     case "leaveGame" -> {
                         broadcast(sendMessage);
                         if(myTurn) {
@@ -75,6 +83,19 @@ public class ServerSideConnection implements Runnable {
                         }
                         Main.getServer().getServerSideConnections().remove(this);
                         shutDown();
+                    }
+                    case "buyCard" -> {
+                        //Get the name and points sorted out first
+                        scanner.next(); scanner.nextInt();
+
+                        String cardName = scanner.next();
+                        for (CardStack cardStack : cardStacks) {
+                            if (cardStack.getCard().getName().equals(cardName)) {
+                                cardStack.decrement();
+                                if(cardStack.getNumCards()==0) cardStacks.remove(cardStack);
+                                break;
+                            }
+                        }
                     }
                 }
                 broadcast(sendMessage);
@@ -164,5 +185,25 @@ public class ServerSideConnection implements Runnable {
 
     private void setTurn(boolean b) {
         myTurn = b;
+    }
+
+    public void setCardStacks(List<CardStack> cardStacks) {
+        this.cardStacks = cardStacks;
+        initialCardStacksNum = cardStacks.size();
+    }
+
+    private boolean gameOver() {
+        boolean colonyFound = false;
+        boolean provinceFound = false;
+        boolean threeStacksEmpty = true;
+        for(CardStack cardStack: cardStacks) {
+            System.out.println(cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ");
+            if(cardStack.getCard().getName().equals("Colony")) colonyFound = true;
+            if(cardStack.getCard().getName().equals("Province")) provinceFound = true;
+        }
+        if(initialCardStacksNum-3 < cardStacks.size()) {
+            threeStacksEmpty = false;
+        }
+        return (!colonyFound || !provinceFound || threeStacksEmpty);
     }
 }

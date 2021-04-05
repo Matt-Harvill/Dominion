@@ -68,6 +68,7 @@ public class ClientSideConnection implements Runnable {
                 case "leaveGame": leftGame(playerName); break;
                 case "playCard": cardPlayed(playerName,scanner.next()); break;
                 case "buyCard": cardPurchased(playerName,scanner.next()); break;
+                case "gameOver": gameOver(); break;
                 default: break;
             }
         }
@@ -195,13 +196,18 @@ public class ClientSideConnection implements Runnable {
                 otherPlayer.setPoints(otherPlayer.getPoints()+((VictoryCard) card).getVictoryPoints());
             }
         }
+
         ServerPlayer finalOtherPlayer = otherPlayer;
         Platform.runLater(() -> {
             PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName);
             if(finalOtherPlayer !=null) {
                 PlayerActionMediator.displayPlayerLabel(finalOtherPlayer);
             }
+            PlayerActionMediator.cardPurchased(card);
         });
+    }
+    private void gameOver() {
+        System.out.println("\n\n------------------Game Over--------------------\n\n");
     }
 
     public String receive() {

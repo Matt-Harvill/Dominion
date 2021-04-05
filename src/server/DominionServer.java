@@ -101,6 +101,9 @@ public class DominionServer {
             }
 
             createCardStacks();
+            for(ServerSideConnection ssc: serverSideConnections) {
+                ssc.setCardStacks(cardStacks);
+            }
 
             broadcastCardNums(firstPlayer);
             firstPlayer.broadcastAll("startTurn " + firstPlayer.getPlayerInfoString());

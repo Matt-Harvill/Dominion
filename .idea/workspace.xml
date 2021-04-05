@@ -4,14 +4,17 @@
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/CardStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/CardStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +146,7 @@
       <workItem from="1617499403722" duration="598000" />
       <workItem from="1617558331008" duration="27710000" />
       <workItem from="1617590428506" duration="3366000" />
-      <workItem from="1617637657054" duration="9316000" />
+      <workItem from="1617637657054" duration="13381000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -411,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617643349302</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added a player title and streched playerLabelName slot for long names">
+      <created>1617649969440</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1617649969440</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +441,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="game can be played mostly normal although organization is weird because of lack of state-tracking. I will add that next to avoid confusion." />
     <MESSAGE value="Doesn't work fully but I'm starting to implement playing treasure cards instead of auto using them so it's not far off from working well." />
     <MESSAGE value="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up" />
     <MESSAGE value="fixed weird multiple card copies bug from previous code." />
@@ -456,6 +465,7 @@
     <MESSAGE value="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream" />
     <MESSAGE value="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed" />
     <MESSAGE value="Now alerts players when someone plays a card or buys a card. Also displays current player's cards in play but doesn't have a nice title for it so I will add that. I also need to have the server keep track of the stacks and when the game is over." />
-    <option name="LAST_COMMIT_MESSAGE" value="Now alerts players when someone plays a card or buys a card. Also displays current player's cards in play but doesn't have a nice title for it so I will add that. I also need to have the server keep track of the stacks and when the game is over." />
+    <MESSAGE value="Added a player title and streched playerLabelName slot for long names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a player title and streched playerLabelName slot for long names" />
   </component>
 </project>

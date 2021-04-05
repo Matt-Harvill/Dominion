@@ -21,5 +21,10 @@ public class CardStack {
     public int getNumCards() {
         return numCards;
     }
-    public void setNumCards(int numCards) { this.numCards = numCards;}
+    public void setNumCards(int numCards) {
+        this.numCards = numCards;
+    }
+    public void decrement() {
+        numCards--;
+    }
 }
