@@ -39,18 +39,17 @@ public class ClientSideConnection implements Runnable {
 
         while(!socket.isClosed()) {
             String receive = receive();
-            System.out.println(receive + " <---- received message");
 
             if(receive==null) {
                 try {
                     socket.close();
-                    System.out.println("receive==null entered in CSC run()");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 break;
             }
 
+            System.out.println(receive + " <---- received message");
             Scanner scanner = new Scanner(receive);
             final String instruction = scanner.next();
             String playerName = scanner.next();

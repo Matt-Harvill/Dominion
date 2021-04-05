@@ -17,7 +17,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Parent gameUIScene, hostJoinScene;
-    private static Stage gameStage, cardSelect, serverInfo;
+    private static Stage gameStage, cardSelect;
 
     private static GameController gameController;
     private static HostJoinController hostJoinController;
@@ -132,16 +132,11 @@ public class Main extends Application {
         Thread serverAccepting = new Thread(() -> server.acceptConnections());
         serverAccepting.start();
 
-        serverInfo = new Stage();
-        serverInfo.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/ServerInfoScene.fxml"))));
-        serverInfo.show();
+        gameController.initializeServerInfoDisplay();
     }
     public static void closeOpenStages() {
         if(gameStage!=null) {
             Platform.runLater(() -> gameStage.close());
-        }
-        if(serverInfo!=null) {
-            Platform.runLater(() -> serverInfo.close());
         }
     }
 

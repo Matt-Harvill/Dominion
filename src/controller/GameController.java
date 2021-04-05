@@ -6,7 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -27,6 +30,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GameController {
+
+    //-----------------Info for ServerInfoDisplay------------//
+    @FXML private Text hostIP, portNum;
+    @FXML Rectangle serverInfoBackground;
+    @FXML Pane serverInfoPane;
+    @FXML Button startGameButton;
+
+    private String ipAddress; private int port;
 
     //-------------List of Cards in the Game------------//
     private CardCollection cardsInGame;
@@ -123,10 +134,13 @@ public class GameController {
 
     @FXML private Rectangle zoomActionCard;
 
-    public void initialize() throws FileNotFoundException {
+    public void initialize() {
         chatDisplayStrings = new ArrayList<>();
         gameDisplayStrings = new ArrayList<>();
         chatType.setText(null);
+
+        //---------------Set ServerInfoPane to notVisible----------//
+        serverInfoPane.setVisible(false);
 
         //--------------Initialize order of CardsInHand-----------------//
         cardsInHand = new Rectangle[]{cardInHand1, cardInHand2, cardInHand3, cardInHand4, cardInHand5, cardInHand6, cardInHand7, cardInHand8, cardInHand9, cardInHand10, cardInHand11};
@@ -303,7 +317,7 @@ public class GameController {
     private void showZoomActionCard(int i, boolean entered) {
         if(entered) {
             zoomActionCard.setFill(new ImagePattern(cardObjectsInSupply[i].getCardImage()));
-            zoomActionCard.setStyle(greenCardGlowStyle);
+//            zoomActionCard.setStyle(greenCardGlowStyle);
             zoomActionCard.setVisible(true);
         } else {
             zoomActionCard.setVisible(false);
@@ -382,5 +396,33 @@ public class GameController {
                 }
             }
         }
+    }
+
+    public void initializeServerInfoDisplay() {
+        ipAddress = Main.getServer().getIpAddress();
+        hostIP.setText(ipAddress);
+        port = Main.getServer().getPortNumber();
+        portNum.setText(String.valueOf(port));
+        serverInfoBackground.setViewOrder(Integer.MAX_VALUE);
+        serverInfoPane.setVisible(true);
+    }
+    public void hostIPCopyToClipboard(ActionEvent actionEvent) {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(hostIP.getText());
+        clipboard.setContent(content);
+    }
+    public void portNumCopyToClipboard(ActionEvent actionEvent) {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(portNum.getText());
+        clipboard.setContent(content);
+    }
+    public void startGame(ActionEvent actionEvent) {
+        Main.getServer().startGame();
+    }
+
+    public void hideServerInfoPane() {
+        serverInfoPane.setVisible(false);
     }
 }

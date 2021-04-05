@@ -1,5 +1,6 @@
 package server;
 
+import controller.Main;
 import model.CardCollection;
 import model.card.Card;
 import model.card.CardStack;
@@ -98,9 +99,14 @@ public class DominionServer {
             while(firstPlayer.getName()==null) {
                 Thread.sleep(1);
             }
+
             createCardStacks();
+
             broadcastCardNums(firstPlayer);
             firstPlayer.broadcastAll("startTurn " + firstPlayer.getPlayerInfoString());
+
+            Main.getGameController().hideServerInfoPane();
+
         } catch (Exception ex) {
             System.out.println("Exception @DominionServer_startGame");
             ex.printStackTrace();

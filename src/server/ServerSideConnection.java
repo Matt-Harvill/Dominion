@@ -20,7 +20,7 @@ public class ServerSideConnection implements Runnable {
     private DataOutputStream dataOut;
     private DataInputStream dataIn;
     private SocketAddress clientIP;
-    private String name, sendMessage;
+    private String name;
     private int points;
     private String playerInfoString;
     private boolean myTurn;
@@ -44,7 +44,7 @@ public class ServerSideConnection implements Runnable {
         while(!socket.isClosed()) {
             try {
                 String receivedMessage = receive();
-                sendMessage = receivedMessage;
+                String sendMessage = receivedMessage;
                 Scanner scanner = new Scanner(receivedMessage);
                 String command = scanner.next();
 
@@ -63,14 +63,15 @@ public class ServerSideConnection implements Runnable {
                         }
                         CardCollection cardsInGame = Main.getServer().getCardsInGame();
                         sendMessage = "cardsInGame " + getPlayerInfoString();
-                        parseCardsInGame(cardsInGame);
+                        sendMessage+= parseCardsInGame(cardsInGame);
                         individualSend(sendMessage);
                         sendMessage = "connected " + getPlayerInfoString();
                     }
-                    case "endTurn" -> assignNewTurn();
+                    case "endTurn" -> sendMessage = assignNewTurn();
                     case "leaveGame" -> {
+                        broadcast(sendMessage);
                         if(myTurn) {
-                            assignNewTurn();
+                            sendMessage = assignNewTurn();
                         }
                         Main.getServer().getServerSideConnections().remove(this);
                         shutDown();
@@ -105,7 +106,8 @@ public class ServerSideConnection implements Runnable {
         dataOut.flush();
     }
 
-    private void parseCardsInGame(CardCollection cardsInGame) {
+    private String parseCardsInGame(CardCollection cardsInGame) {
+        String sendMessage = "";
         for (Card card : cardsInGame.getDistinctTreasureCards()) {
             sendMessage += card.getName() + " ";
         }
@@ -115,6 +117,7 @@ public class ServerSideConnection implements Runnable {
         for(Card card: cardsInGame.getDistinctActionCards()) {
             sendMessage += card.getName() + " ";
         }
+        return sendMessage;
     }
 
     public DataOutputStream getDataOut() {
@@ -129,7 +132,7 @@ public class ServerSideConnection implements Runnable {
         return points;
     }
 
-    public void assignNewTurn() throws IOException {
+    public String assignNewTurn() throws IOException {
         List<ServerSideConnection> connections = Main.getServer().getServerSideConnections();
 
         //---------------------------------------------------------//
@@ -140,7 +143,7 @@ public class ServerSideConnection implements Runnable {
         //---------------------------------------------------------//
 
         int indexOfThis = connections.indexOf(this);
-        sendMessage = "startTurn ";
+        String sendMessage = "startTurn ";
         setTurn(false);
         if(indexOfThis==connections.size()-1) {
             sendMessage+=connections.get(0).getPlayerInfoString();
@@ -151,6 +154,7 @@ public class ServerSideConnection implements Runnable {
             connections.get(indexOfThis + 1).setTurn(true);
         }
         individualSend(sendMessage);
+        return sendMessage;
     }
     public void shutDown() throws IOException {
         dataIn.close();
