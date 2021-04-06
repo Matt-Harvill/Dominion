@@ -75,14 +75,14 @@ public class SelectCardsInGameController {
 
         switch (Integer.parseInt(button.getText())) {
             case 1: displayPage1(); currentPageNum = 1; break;
-            case 2: displayPage2(); currentPageNum = 2; break;
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
+//            case 2: displayPage2(); currentPageNum = 2; break;
+//            case 3:
+//            case 4:
+//            case 5:
+//            case 6:
+//            case 7:
+//            case 8:
+//            case 9:
         }
 
     }
@@ -100,9 +100,6 @@ public class SelectCardsInGameController {
                 cards[i].setVisible(false);
             }
         }
-    }
-    private void displayPage2() {
-
     }
 
     public void cardClicked(MouseEvent mouseEvent) {

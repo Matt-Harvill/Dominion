@@ -6,47 +6,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.Player;
 import server.DominionServer;
-import server.ServerSideConnection;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class Main extends Application {
 
     private static Parent gameUIScene, hostJoinScene;
-    private static Stage gameStage, cardSelect;
-
+    private static Stage mainStage, cardSelect;
     private static GameController gameController;
     private static HostJoinController hostJoinController;
     private static Player player;
     private static ClientSideConnection clientSideConnection;
-
     private static DominionServer server;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        gameStage = primaryStage;
+        mainStage = primaryStage;
         player = new Player();
+        FXMLLoader gameSceneLoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
+        gameUIScene = gameSceneLoader.load();
+        gameController = gameSceneLoader.getController();
+        FXMLLoader hostJoinSceneLoader = new FXMLLoader(getClass().getResource("../view/hostJoinScene.fxml"));
+        hostJoinScene = hostJoinSceneLoader.load();
+        hostJoinController = hostJoinSceneLoader.getController();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
-        gameUIScene = loader.load();
-        gameController = loader.getController();
-
-        loader = new FXMLLoader(getClass().getResource("../view/hostJoinScene.fxml"));
-        hostJoinScene = loader.load();
-        hostJoinController = loader.getController();
-
-//        gameStage.setResizable(false);
+        mainStage.setResizable(false);
         goToHostJoinScene();
-//        switchToGameScene();
 
         //-------------Center Frame if resized--------------------//
-        gameStage.widthProperty().addListener((obs, oldVal, newVal) -> gameStage.centerOnScreen());
-        gameStage.heightProperty().addListener((obs, oldVal, newVal) -> gameStage.centerOnScreen());
+        mainStage.widthProperty().addListener((obs, oldVal, newVal) -> mainStage.centerOnScreen());
+        mainStage.heightProperty().addListener((obs, oldVal, newVal) -> mainStage.centerOnScreen());
+
+        //-----(ShutDown Server if Host or Leave Game if Client) when Stage Closed-----//
+        mainStage.setOnCloseRequest(windowEvent ->  {
+            if(server!=null) {
+                try {
+                    server.serverShutDown();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                if(clientSideConnection!=null) clientSideConnection.leaveGame();
+            }
+        });
     }
 
     public static Player getPlayer() {
@@ -60,84 +64,60 @@ public class Main extends Application {
     }
     public static HostJoinController getHostJoinController() {return hostJoinController;}
     public static DominionServer getServer() {return server;}
-    public static Stage getGameStage() {return gameStage;}
-    public static void serverToNull() {
+    public static void setServerToNull() {
         server = null;
     }
     public static void setClientSideConnection(ClientSideConnection clientSideConnection) {
         Main.clientSideConnection = clientSideConnection;
     }
-    public static void closeCardSelect() {
-        if(cardSelect!=null)
-        cardSelect.close();
-    }
 
     public static void goToHostJoinScene() {
-        gameStage.setTitle("Dominion");
-        gameStage.setScene(new Scene(hostJoinScene));
-        gameStage.show();
-
+        mainStage.setTitle("Dominion");
+        mainStage.setScene(new Scene(hostJoinScene));
+        mainStage.show();
     }
-    public static void switchToGameScene() {
+    public static void goToGameScene() {
+        mainStage.setTitle("Dominion");
+        mainStage.setScene(new Scene(gameUIScene));
 
-        gameStage.setTitle("Dominion");
-        gameStage.setScene(new Scene(gameUIScene));
-
-//----------------------commenting out following two lines for testing---------------------//
         PlayerActionMediator.startPhase();
         PlayerActionMediator.displayPlayerLabel(player.getName(), player.getPoints());
 
-//        gameStage.setMaximized(true);
-//        gameStage.setFullScreen(true);
-        gameStage.show();
-        System.out.println("frame height " + (gameStage.getHeight()/* - gameStage.getScene().getHeight()*/));
-        System.out.println("frame width " + (gameStage.getWidth()/* - gameStage.getScene().getWidth()*/));
-        closedGameStage();
+        mainStage.show();
     }
-
-    private static void closedGameStage() {
-        gameStage.setOnCloseRequest(windowEvent ->  {
-            if(server!=null) {
-                // do stuff to close connections
-                try {
-                    server.serverShutDown();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("server shut down in switchToGameScene");
-            } else {
-                clientSideConnection.leaveGame();
-                System.out.println("clientSideConnection closed in \"closedGameStage\"");
+    public static void openCardSelectStage() {
+        if(cardSelect==null) {
+            try {
+                cardSelect = new Stage();
+                cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
+                cardSelect.show();
+                cardSelect.setOnCloseRequest(windowEvent -> {
+                    cardSelect=null;
+                });
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-        });
-    }
-
-    public static void selectCardsPopup() {
-        try {
-            cardSelect = new Stage();
-            cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
-            cardSelect.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
+    }
+    public static void closeCardSelectStage() {
+        if(cardSelect!=null) {
+            cardSelect.close();
+            cardSelect=null;
+        }
+    }
+    public static void closeMainStage() {
+        Platform.runLater(() -> mainStage.close());
     }
 
     public static void createServer() {
-        if (server==null)
-        server = new DominionServer();
+        if (server==null) server = new DominionServer();
     }
-    public static void startServer(int maxNumPlayers) throws IOException {
+    public static void startServer(int maxNumPlayers) {
         server.setMaxNumPlayers(maxNumPlayers);
-
-        Thread serverAccepting = new Thread(() -> server.acceptConnections());
-        serverAccepting.start();
-
         gameController.initializeServerInfoDisplay();
-    }
-    public static void closeOpenStages() {
-        if(gameStage!=null) {
-            Platform.runLater(() -> gameStage.close());
-        }
+
+        Thread thread = new Thread(server::acceptConnections);
+        thread.start();
     }
 
     public static void main(String[] args) {

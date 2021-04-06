@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class DominionServer {
 
     private ServerSocket serverSocket;
-    private int numClients, portNumber, maxNumPlayers;
+    private int portNumber, maxNumPlayers;
     private String ipAddress;
 
     private final List<ServerSideConnection> serverSideConnections;
@@ -25,32 +25,28 @@ public class DominionServer {
     private final List<CardStack> cardStacks;
     
     public DominionServer(){
-        numClients = 0;
         serverSideConnections = new ArrayList<>();
         cardsInGame = new CardCollection();
-        setTreasureVictoryCardsInGame();
         cardStacks = new ArrayList<>();
-
+        setTreasureVictoryCardsInGame();
         try {
             serverSocket = new ServerSocket(0);
             ipAddress = InetAddress.getLocalHost().getHostAddress();
             portNumber = serverSocket.getLocalPort();
         } catch (Exception ex) {
-            System.out.println("IOException from DominionServer()");
+            System.out.println("Exception @DS()");
         }
     }
 
     public void acceptConnections() {
         try {
             System.out.println("Accepting connections...");
-
             do {
                 Socket s = serverSocket.accept();
-                numClients++;
                 serverSideConnections.add(new ServerSideConnection(s));
-                System.out.println("There are " + numClients + " clients connected");
+                System.out.println("There are " + serverSideConnections.size() + " clients connected");
             }
-            while (numClients<maxNumPlayers);
+            while (serverSideConnections.size()<maxNumPlayers);
             System.out.println("Max players reached");
             startGame();
         } catch (IOException ex) {
@@ -61,10 +57,6 @@ public class DominionServer {
     public ServerSocket getServerSocket() {
         return serverSocket;
     }
-    public int getNumClients() {
-        return numClients;
-    }
-    public int getMaxNumPlayers() {return maxNumPlayers;}
     public int getPortNumber() {
         return portNumber;
     }
@@ -77,7 +69,6 @@ public class DominionServer {
     public void setMaxNumPlayers(int maxNumPlayers) {
         this.maxNumPlayers = maxNumPlayers;
     }
-
     public CardCollection getCardsInGame() {
         return cardsInGame;
     }
@@ -93,49 +84,38 @@ public class DominionServer {
         try {
             serverSocket.close();
             int firstPlayerTurn = (int) (Math.random()*serverSideConnections.size());
-
             ServerSideConnection firstPlayer = serverSideConnections.get(firstPlayerTurn);
-
+            //Wait until player name has been setup in SSC
             while(firstPlayer.getName()==null) {
                 Thread.sleep(1);
             }
 
             createCardStacks();
-            for(ServerSideConnection ssc: serverSideConnections) {
-                ssc.setCardStacks(cardStacks);
-            }
+            setSSCCardStacks();
+            broadcastCardNums();
 
-            broadcastCardNums(firstPlayer);
             firstPlayer.broadcastAll("startTurn " + firstPlayer.getPlayerInfoString());
-
             Main.getGameController().hideServerInfoPane();
 
         } catch (Exception ex) {
-            System.out.println("Exception @DominionServer_startGame");
-            ex.printStackTrace();
+            System.out.println("Exception @DS_startGame");
         }
-        System.out.println("Game started");
     }
 
-    private void setTreasureVictoryCardsInGame() {
-        cardsInGame.addCardToCollection(CardFactory.getCard("Copper"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Silver"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Gold"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Platinum"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Estate"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Duchy"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Province"));
-        cardsInGame.addCardToCollection(CardFactory.getCard("Colony"));
-    }
-
-    private void broadcastCardNums(ServerSideConnection ssc) throws IOException {
-        String sendMessage = "cardsInGameNums " + ssc.getPlayerInfoString();
-        for(CardStack cardStack: cardStacks) {
-            sendMessage += cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ";
+    private void broadcastCardNums() throws IOException {
+        for(ServerSideConnection ssc: serverSideConnections) {
+            String sendMessage = "cardsInGameNums " + ssc.getPlayerInfoString();
+            for(CardStack cardStack: cardStacks) {
+                sendMessage += cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ";
+            }
+            ssc.individualSend(sendMessage);
         }
-        ssc.broadcastAll(sendMessage);
     }
-
+    private void setSSCCardStacks() {
+        for(ServerSideConnection ssc: serverSideConnections) {
+            ssc.setCardStacks(cardStacks);
+        }
+    }
     private void createCardStacks() {
         for(Card card: cardsInGame.getCollection()) {
             cardStacks.add(new CardStack(card));
@@ -171,5 +151,16 @@ public class DominionServer {
 //            }
         }
         return -1;
+    }
+
+    private void setTreasureVictoryCardsInGame() {
+        cardsInGame.addCardToCollection(CardFactory.getCard("Copper"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Silver"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Gold"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Platinum"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Estate"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Duchy"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Province"));
+        cardsInGame.addCardToCollection(CardFactory.getCard("Colony"));
     }
 }

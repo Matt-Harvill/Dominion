@@ -61,8 +61,8 @@ public class HostJoinController {
         try {
             ClientSideConnection csc = new ClientSideConnection(ipAddress,port);
             Main.setClientSideConnection(csc);
-            Main.serverToNull();
-            Main.switchToGameScene();
+            Main.setServerToNull();
+            Main.goToGameScene();
         } catch (Exception ex) {
             incorrectServerInfoAlert.setVisible(true);
         }
@@ -70,25 +70,26 @@ public class HostJoinController {
         portTextField.setText(null);
     }
     public void selectActionCards(ActionEvent actionEvent) {
-        Main.selectCardsPopup();
+        Main.openCardSelectStage();
     }
 
     public void backSetGameDetails(ActionEvent actionEvent) {
         setGameDetails.setVisible(false);
-        Main.closeCardSelect();
+        Main.closeCardSelectStage();
     }
     public void nextSetGameDetails(ActionEvent actionEvent) {
         if(numPlayersChoiceBox.getValue()!=null) {
             maxNumPlayers = numPlayersChoiceBox.getValue();
             setName.setVisible(true);
             selectNumPlayersError.setVisible(false);
-            Main.closeCardSelect();
+            Main.closeCardSelectStage();
         } else {
             selectNumPlayersError.setVisible(true);
         }
     }
     public void backSetName(ActionEvent actionEvent) {
         setName.setVisible(false);
+        enterNameError.setVisible(false);
     }
     public void nextSetName(ActionEvent actionEvent) {
         if(checkName(nameTextField.getText())) {
@@ -115,7 +116,7 @@ public class HostJoinController {
         try {
             ClientSideConnection csc = new ClientSideConnection(ipAddress,port);
             Main.setClientSideConnection(csc);
-            Main.switchToGameScene();
+            Main.goToGameScene();
         } catch (Exception ex) {
             incorrectServerInfoAlert.setVisible(true);
         }

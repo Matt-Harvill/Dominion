@@ -163,7 +163,7 @@ public class ClientSideConnection implements Runnable {
 
     }
     private void serverShutDown() {
-        Main.closeOpenStages();
+        Main.closeMainStage();
         try {
             socket.close();
         } catch (IOException ex) {
