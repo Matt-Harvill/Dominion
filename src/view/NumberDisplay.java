@@ -23,4 +23,8 @@ public class NumberDisplay {
         numBack.setVisible(show);
         num.setVisible(show);
     }
+
+    public boolean contains(Object obj) {
+        return obj.equals(num) || obj.equals(numBack);
+    }
 }

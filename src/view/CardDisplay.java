@@ -31,11 +31,15 @@ public class CardDisplay {
     }
     public void show() {
         cardRect.setVisible(true);
-        numberDisplay.setVisible(true);
+        numberDisplay.setVisible(getNum()>0);
     }
     public void hide() {
         cardRect.setVisible(false);
         numberDisplay.setVisible(false);
+    }
+
+    public boolean contains(Object obj) {
+        return obj.equals(cardRect) || numberDisplay.contains(obj);
     }
 
     protected void setImage() {

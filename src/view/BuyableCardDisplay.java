@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -17,6 +18,20 @@ public class BuyableCardDisplay extends CardDisplay {
     }
     public void hideBuyButton() {
         buyButton.setVisible(false);
+    }
+    public void setBuyButtonImage(Image image) {
+        buyButton.setFill(new ImagePattern(image));
+    }
+
+    @Override
+    public void hide() {
+        super.hide();
+        hideBuyButton();
+    }
+
+    @Override
+    public boolean contains(Object obj) {
+        return super.contains(obj) || obj.equals(buyButton);
     }
 
     @Override

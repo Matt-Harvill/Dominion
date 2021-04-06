@@ -10,10 +10,7 @@ import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
-import view.CardSupplyDisplay;
-import view.DeckDisplay;
-import view.HandOrInPlayDisplay;
-import view.PlayerNamePointsDisplay;
+import view.*;
 
 import java.util.List;
 
@@ -182,18 +179,14 @@ public final class PlayerActionMediator {
         controller.getInPlayPlayerLabel().setVisible(true);
     }
     public static void cardPurchased(Card card) {
-        CardSupplyDisplay display = controller.getCardSupplyDisplay();
-        Card[] cards = display.getCardObjectsInSupply();
-        Text[] cardNumbers = display.getCardInSupplyNums();
+        List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
 
-        int index = -1;
-        for(int i=0;i<cards.length;i++) {
-            if(cards[i] != null && cards[i].equals(card)) index = i;
+        for(BuyableCardDisplay cardDisplay: cardDisplays) {
+            if(cardDisplay.getCard()!=null && cardDisplay.getCard().equals(card)) {
+                int prevNum = cardDisplay.getNum();
+                cardDisplay.setNum(prevNum-1);
+            }
         }
-
-        Text cardNumber = cardNumbers[index];
-        int numCardRemaining = Integer.parseInt(cardNumber.getText());
-        cardNumber.setText(String.valueOf(numCardRemaining-1));
     }
     public static void gameOverDisplay() {
         controller.getPlayerHandStackPane().setVisible(false);
@@ -225,18 +218,16 @@ public final class PlayerActionMediator {
         display.getDeckNum().setText(String.valueOf(numCards));
         controller.getPlayerDeckDisplay().setVisible(show);
     }
-    private static void showBuyableCards(boolean enable) {
-        CardSupplyDisplay cardSupplyDisplay = controller.getCardSupplyDisplay();
+    private static void showBuyableCards(boolean show) {
+        List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
 
-        Rectangle[] cardBuyButtons = cardSupplyDisplay.getCardBuyButtons();
-        Rectangle[] cards = cardSupplyDisplay.getCardsInSupply();
-        Text[] cardNums = cardSupplyDisplay.getCardInSupplyNums();
-        for(int i=0;i<cards.length;i++) {
-            if(cards[i].isVisible() && cardSupplyDisplay.getCardObjectsInSupply()[i].getCost()<=player.getPurchasePower()
-            && Integer.parseInt(cardNums[i].getText())>0) {
-                cardBuyButtons[i].setVisible(enable);
+        for(BuyableCardDisplay cardDisplay: cardDisplays) {
+            Card card = cardDisplay.getCard();
+            int cardNum = cardDisplay.getNum();
+            if(card!=null && card.getCost()<=player.getPurchasePower() && cardNum>0 && show) {
+                cardDisplay.showBuyButton();
             } else {
-                cardBuyButtons[i].setVisible(false);
+                cardDisplay.hideBuyButton();
             }
         }
     }

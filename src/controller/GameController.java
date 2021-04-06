@@ -21,6 +21,7 @@ import view.*;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameController {
@@ -71,10 +72,7 @@ public class GameController {
             actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10;
     @FXML private Rectangle actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
             actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10;
-    private Rectangle[] actionCardsInSupply,actionCardNumBacks,actionCardBuyButtons;
-    private Text[] actionCardNums;
-    private BuyableCardDisplay ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,
-            ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10;
+    private BuyableCardDisplay ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6, ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10;
     private BuyableCardDisplay[] ACISDisplays;
 
     //---------------TreasureCards In Supply---------------//
@@ -82,26 +80,25 @@ public class GameController {
     @FXML private Rectangle treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4;
     @FXML private Text treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4;
     @FXML private Rectangle treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4;
+    private BuyableCardDisplay TCISDisplay1,TCISDisplay2,TCISDisplay3,TCISDisplay4;
+    private BuyableCardDisplay[] TCISDisplays;
 
     //---------------VictoryCards In Supply---------------//
     @ FXML private Rectangle victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4;
     @FXML private Rectangle victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4;
     @FXML private Text victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4;
     @FXML private Rectangle victoryCardBuyButton1,victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4;
+    private BuyableCardDisplay VCISDisplay1,VCISDisplay2,VCISDisplay3,VCISDisplay4;
+    private BuyableCardDisplay[] VCISDisplays;
 
     //---------------Extra Cards In Supply---------------//
-    @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
-    @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
-    @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
-    @FXML private Rectangle extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4;
+//    @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
+//    @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
+//    @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
+//    @FXML private Rectangle extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4;
 
-    //-------------All Cards In Supply-----------//
-    private Rectangle[] cardsInSupply;
-    private Rectangle[] cardsInSupplyNumBacks;
-    private Text[] cardsInSupplyNums;
-    private Rectangle[] cardsInSupplyBuyButtons;
-    private Card[] cardObjectsInSupply;
-    private CardSupplyDisplay cardSupplyDisplay;
+    //-----------------All Cards In Supply-----------------//
+    private List<BuyableCardDisplay> allCISDisplays;
 
     //---------------Cards in Play---------------//
     @FXML private Rectangle cardInPlay1,cardInPlay2,cardInPlay3,cardInPlay4,cardInPlay5,cardInPlay6,
@@ -182,37 +179,7 @@ public class GameController {
         }
         inPlayDisplay = new HandOrInPlayDisplay(cardsInPlay,cardsInPlayNumBacks,cardsInPlayNums,cardObjectsInPlay,"inPlayDisplay");
 
-        //--------------Initialize all CardsInSupply-----------------//
-        cardsInSupply = new Rectangle[]{treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4,victoryCardInSupply1,
-                victoryCardInSupply2, victoryCardInSupply3,victoryCardInSupply4,extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4,
-                actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
-                actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10};
-        cardsInSupplyNumBacks = new Rectangle[]{treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4, victoryCardNumBack1,
-                victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4,extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4,
-                actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,
-                actionCardNumBack6, actionCardNumBack7,actionCardNumBack8,actionCardNumBack9,actionCardNumBack10};
-        cardsInSupplyNums = new Text[]{treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4, victoryCardNum1,victoryCardNum2,
-                victoryCardNum3,victoryCardNum4,extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4,
-                actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
-                actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
-        cardsInSupplyBuyButtons = new Rectangle[]{treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4, victoryCardBuyButton1,
-                victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4,extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4,
-                actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
-                actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10};
-        cardObjectsInSupply = new Card[cardsInSupply.length];
-        cardSupplyDisplay = new CardSupplyDisplay(cardsInSupply,cardsInSupplyNumBacks,cardsInSupplyNums,
-                cardsInSupplyBuyButtons,cardObjectsInSupply);
-
-        //--------------Initialize action cards in supply---------------//
-        actionCardsInSupply = new Rectangle[]{actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
-                actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10};
-        actionCardNumBacks = new Rectangle[]{actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,
-                actionCardNumBack6, actionCardNumBack7,actionCardNumBack8,actionCardNumBack9,actionCardNumBack10};
-        actionCardBuyButtons = new Rectangle[]{actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
-                actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10};
-        actionCardNums = new Text[]{actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
-                actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
-
+        //--------------Initialize cards in supply---------------//
         ACISDisplay1 = new BuyableCardDisplay(actionCardInSupply1,new NumberDisplay(actionCardNumBack1,actionCardNum1),actionCardBuyButton1);
         ACISDisplay2 = new BuyableCardDisplay(actionCardInSupply2,new NumberDisplay(actionCardNumBack2,actionCardNum2),actionCardBuyButton2);
         ACISDisplay3 = new BuyableCardDisplay(actionCardInSupply3,new NumberDisplay(actionCardNumBack3,actionCardNum3),actionCardBuyButton3);
@@ -223,9 +190,29 @@ public class GameController {
         ACISDisplay8 = new BuyableCardDisplay(actionCardInSupply8,new NumberDisplay(actionCardNumBack8,actionCardNum8),actionCardBuyButton8);
         ACISDisplay9 = new BuyableCardDisplay(actionCardInSupply9,new NumberDisplay(actionCardNumBack9,actionCardNum9),actionCardBuyButton9);
         ACISDisplay10 = new BuyableCardDisplay(actionCardInSupply10,new NumberDisplay(actionCardNumBack10,actionCardNum10),actionCardBuyButton10);
-        ACISDisplays = new BuyableCardDisplay[]{ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,
-                ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10};
 
+        TCISDisplay1 = new BuyableCardDisplay(treasureCardInSupply1,new NumberDisplay(treasureCardNumBack1,treasureCardNum1),treasureCardBuyButton1);
+        TCISDisplay2 = new BuyableCardDisplay(treasureCardInSupply2,new NumberDisplay(treasureCardNumBack2,treasureCardNum2),treasureCardBuyButton2);
+        TCISDisplay3 = new BuyableCardDisplay(treasureCardInSupply3,new NumberDisplay(treasureCardNumBack3,treasureCardNum3),treasureCardBuyButton3);
+        TCISDisplay4 = new BuyableCardDisplay(treasureCardInSupply4,new NumberDisplay(treasureCardNumBack4,treasureCardNum4),treasureCardBuyButton4);
+
+        VCISDisplay1 = new BuyableCardDisplay(victoryCardInSupply1,new NumberDisplay(victoryCardNumBack1,victoryCardNum1),victoryCardBuyButton1);
+        VCISDisplay2 = new BuyableCardDisplay(victoryCardInSupply2,new NumberDisplay(victoryCardNumBack2,victoryCardNum2),victoryCardBuyButton2);
+        VCISDisplay3 = new BuyableCardDisplay(victoryCardInSupply3,new NumberDisplay(victoryCardNumBack3,victoryCardNum3),victoryCardBuyButton3);
+        VCISDisplay4 = new BuyableCardDisplay(victoryCardInSupply4,new NumberDisplay(victoryCardNumBack4,victoryCardNum4),victoryCardBuyButton4);
+
+        ACISDisplays = new BuyableCardDisplay[]{ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10};
+        TCISDisplays = new BuyableCardDisplay[]{TCISDisplay1,TCISDisplay2,TCISDisplay3,TCISDisplay4};
+        VCISDisplays = new BuyableCardDisplay[]{VCISDisplay1,VCISDisplay2,VCISDisplay3,VCISDisplay4};
+
+        initializeCardsInSupply(ACISDisplays);
+        initializeCardsInSupply(TCISDisplays);
+        initializeCardsInSupply(VCISDisplays);
+
+        allCISDisplays = new ArrayList<>();
+        Collections.addAll(allCISDisplays, ACISDisplays);
+        Collections.addAll(allCISDisplays, TCISDisplays);
+        Collections.addAll(allCISDisplays, VCISDisplays);
 
         //--------------Initialize player Decks and Discard-----------------//
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
@@ -272,7 +259,6 @@ public class GameController {
     }
     public HandOrInPlayDisplay getPlayerHandDisplay() {return playerHandDisplay;}
     public HandOrInPlayDisplay getInPlayDisplay() {return inPlayDisplay;}
-    public CardSupplyDisplay getCardSupplyDisplay() { return cardSupplyDisplay;}
     public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
     public StackPane getActionBar() {return actionBar;}
@@ -283,6 +269,11 @@ public class GameController {
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
     public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}
     public DeckDisplay getPlayerDiscardDisplay() {return playerDiscardDisplay;}
+
+    public List<BuyableCardDisplay> getAllCISDisplays() {return allCISDisplays;}
+    public BuyableCardDisplay[] getACISDisplays() {return ACISDisplays;}
+    public BuyableCardDisplay[] getTCISDisplays() {return TCISDisplays;}
+    public BuyableCardDisplay[] getVCISDisplays() {return VCISDisplays;}
 
     //-------------------Internal Updates------------------------//
 
@@ -322,19 +313,26 @@ public class GameController {
         mouseOverCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums,false);
     }
     public void mouseOverActionCardInSupply(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent,actionCardsInSupply,actionCardNumBacks,actionCardNums,true);
+        Object objectClicked = mouseEvent.getSource();
+        for(BuyableCardDisplay cardDisplay: ACISDisplays) {
+            if(cardDisplay.contains(objectClicked)) {
+                showZoomActionCard(cardDisplay.getCard(),true);
+            }
+        }
     }
     public void mouseExitedActionCardInSupply(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent,actionCardsInSupply,actionCardNumBacks,actionCardNums,false);
+        Object objectClicked = mouseEvent.getSource();
+        for(BuyableCardDisplay cardDisplay: ACISDisplays) {
+            if(cardDisplay.contains(objectClicked)) {
+                showZoomActionCard(cardDisplay.getCard(),false);
+            }
+        }
     }
 
     private void mouseOverCard(MouseEvent mouseEvent, Rectangle[] cards, Rectangle[] cardNumBacks, Text[] cardNums, boolean entered) {
         Object cardClicked = mouseEvent.getSource();
         for(int i = 0; i< cards.length; i++) {
             if(cards[i].equals(cardClicked) || cardNumBacks[i].equals(cardClicked) || cardNums[i].equals(cardClicked)) {
-                if(cards.equals(actionCardsInSupply)) {
-                    showZoomActionCard(i+12,entered);
-                } else
                 setViewingOrder(cards[i],cardNumBacks[i],cardNums[i],cards.length,i,entered);
                 break;
             }
@@ -351,10 +349,9 @@ public class GameController {
             cardNum.setViewOrder(cardsLength-i-0.2);
         }
     }
-    private void showZoomActionCard(int i, boolean entered) {
+    private void showZoomActionCard(Card card, boolean entered) {
         if(entered) {
-            zoomActionCard.setFill(new ImagePattern(cardObjectsInSupply[i].getCardImage()));
-//            zoomActionCard.setStyle(greenCardGlowStyle);
+            zoomActionCard.setFill(new ImagePattern(card.getCardImage()));
             zoomActionCard.setVisible(true);
         } else {
             zoomActionCard.setVisible(false);
@@ -370,13 +367,13 @@ public class GameController {
 
     }
     public void buyButtonClicked(MouseEvent mouseEvent) {
-        Rectangle buyButtonClicked = (Rectangle) mouseEvent.getSource();
-        for(int i=0; i< cardsInSupplyBuyButtons.length; i++) {
-            if(cardsInSupplyBuyButtons[i].equals(buyButtonClicked)) {
-                Card cardClicked = cardObjectsInSupply[i];
-                PlayerActionMediator.buyFromCardSupply(cardClicked);
+        Object buyButtonClicked = mouseEvent.getSource();
+        for(BuyableCardDisplay cardDisplay: allCISDisplays) {
+            if(cardDisplay.contains(buyButtonClicked)) {
+                PlayerActionMediator.buyFromCardSupply(cardDisplay.getCard());
             }
         }
+        System.out.println("buyButtonClicked");
     }
 
     public void setCardsInGame(List<String> cardsInGame) {
@@ -390,45 +387,37 @@ public class GameController {
     }
 
     public void displayCardsInGame() {
-        int index = 3;
-
         List<TreasureCard> treasureCardsInGame = cardsInGame.getDistinctTreasureCards();
         List<VictoryCard> victoryCardsInGame = cardsInGame.getDistinctVictoryCards();
         List<ActionCard> actionCardsInGame = cardsInGame.getDistinctActionCards();
 
-        for(TreasureCard card: treasureCardsInGame) {
-            cardObjectsInSupply[index] = card;
-            cardsInSupply[index].setFill(new ImagePattern(card.getSmallCardImage()));
-            cardsInSupplyBuyButtons[index].setFill(new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString())));
-            cardsInSupply[index].setVisible(true);
-            index--;
+        for(int i=0; i<treasureCardsInGame.size(); i++) {
+            TreasureCard card = treasureCardsInGame.get(i);
+            BuyableCardDisplay cardDisplay = TCISDisplays[i];
+            cardDisplay.setCard(card);
+            cardDisplay.show();
         }
-        index = 7;
-        for(VictoryCard card: victoryCardsInGame) {
-            cardObjectsInSupply[index] = card;
-            cardsInSupply[index].setFill(new ImagePattern(card.getSmallCardImage()));
-            cardsInSupplyBuyButtons[index].setFill(new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString())));
-            cardsInSupply[index].setVisible(true);
-            index--;
+        for(int i=0; i<victoryCardsInGame.size(); i++) {
+            VictoryCard card = victoryCardsInGame.get(i);
+            BuyableCardDisplay cardDisplay = VCISDisplays[i];
+            cardDisplay.setCard(card);
+            cardDisplay.show();
         }
-        index = 12;
-        for(ActionCard card: actionCardsInGame) {
-            cardObjectsInSupply[index] = card;
-            cardsInSupply[index].setFill(new ImagePattern(card.getSmallCardImage()));
-            cardsInSupplyBuyButtons[index].setFill(new ImagePattern(new Image(new File("src/resources/Plus Sign.png").toURI().toString())));
-            cardsInSupply[index].setVisible(true);
-            index++;
+        for(int i=0; i<actionCardsInGame.size(); i++) {
+            ActionCard card = actionCardsInGame.get(i);
+            BuyableCardDisplay cardDisplay = ACISDisplays[i];
+            cardDisplay.setCard(card);
+            cardDisplay.show();
         }
     }
     public void displayCardsInGameNums() {
         for(CardStack cardStack: cardStacks) {
             Card card = cardStack.getCard();
-            for(int i=0; i<cardObjectsInSupply.length; i++) {
-                if(cardObjectsInSupply[i]==null) continue;
-                if(cardObjectsInSupply[i].equals(card)) {
-                    cardsInSupplyNumBacks[i].setVisible(true);
-                    cardsInSupplyNums[i].setText(String.valueOf(cardStack.getNumCards()));
-                    cardsInSupplyNums[i].setVisible(true);
+            for(BuyableCardDisplay cardDisplay: allCISDisplays) {
+                Card cardInSupply = cardDisplay.getCard();
+                if(cardInSupply!=null && cardInSupply.equals(card)) {
+                    cardDisplay.setNum(cardStack.getNumCards());
+                    cardDisplay.show();
                     break;
                 }
             }
@@ -461,5 +450,12 @@ public class GameController {
 
     public void hideServerInfoPane() {
         serverInfoPane.setVisible(false);
+    }
+
+    private void initializeCardsInSupply(BuyableCardDisplay[] cardDisplays) {
+        for(BuyableCardDisplay cardDisplay: cardDisplays) {
+            cardDisplay.setBuyButtonImage(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
+            cardDisplay.hide();
+        }
     }
 }
