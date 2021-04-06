@@ -8,20 +8,18 @@ public final class ServerSender {
     private static final Player player = Main.getPlayer();
 
     public static void chatSend(String chatText) {
-        clientSideConnection.send("chat " + getPlayerInfoString() + chatText);
+        clientSideConnection.send("chat " + player.getInfoString() + chatText);
     }
     public static void endTurn() {
-        clientSideConnection.send("endTurn " + getPlayerInfoString());
+        clientSideConnection.send("endTurn " + player.getInfoString());
     }
     public static void playCard(String cardName) {
-        clientSideConnection.send("playCard " + getPlayerInfoString() + cardName);
+        clientSideConnection.send("playCard " + player.getInfoString() + cardName);
     }
     public static void buyCard(String cardName) {
-        clientSideConnection.send("buyCard " + getPlayerInfoString() + cardName);
+        clientSideConnection.send("buyCard " + player.getInfoString() + cardName);
     }
-
-    private static String getPlayerInfoString() {
-        return player.getName() + " " + player.getPoints() + " ";
+    public static void updateInfo() {
+        clientSideConnection.send("updateInfo " + player.getInfoString());
     }
-
 }

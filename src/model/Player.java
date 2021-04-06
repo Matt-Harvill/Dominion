@@ -196,4 +196,7 @@ public class Player {
         playerInfo+=" bonusPurchasePower: " + bonusPurchasePower;
         return playerInfo;
     }
+    public String getInfoString() {
+        return name + " " + getPoints() + " " + (deck.getSize()+hand.getSize()+ discardPile.getSize()) + " ";
+    }
 }

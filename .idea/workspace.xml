@@ -2,14 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/view/DeckDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ServerPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ServerPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +151,7 @@
       <workItem from="1617499403722" duration="598000" />
       <workItem from="1617558331008" duration="27710000" />
       <workItem from="1617590428506" duration="3366000" />
-      <workItem from="1617637657054" duration="17711000" />
+      <workItem from="1617637657054" duration="26746000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -430,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617658916935</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Game Over works as expected. Fixed bug where player turns are assigned after game is ended.">
+      <created>1617660336450</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1617660336450</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,7 +467,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed weird multiple card copies bug from previous code." />
     <MESSAGE value="Now added game labels that display player name and total points" />
     <MESSAGE value="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object" />
     <MESSAGE value="multiplayer works now without errors of IllegalStateExceptions from non JavaFX Threads updating the UI. Also, the PlayerActionMediator and ServerSender are now utility classes instead of objects." />
@@ -475,6 +491,7 @@
     <MESSAGE value="Added a player title and streched playerLabelName slot for long names" />
     <MESSAGE value="Cards among players are now synced." />
     <MESSAGE value="Fixed a bug where going to buy phase immeadiately wouldn't show cards that could now be bought" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug where going to buy phase immeadiately wouldn't show cards that could now be bought" />
+    <MESSAGE value="Game Over works as expected. Fixed bug where player turns are assigned after game is ended." />
+    <option name="LAST_COMMIT_MESSAGE" value="Game Over works as expected. Fixed bug where player turns are assigned after game is ended." />
   </component>
 </project>

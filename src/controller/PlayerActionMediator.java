@@ -11,6 +11,7 @@ import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
 import view.CardSupplyDisplay;
+import view.DeckDisplay;
 import view.HandOrInPlayDisplay;
 import view.PlayerNamePointsDisplay;
 
@@ -28,17 +29,21 @@ public final class PlayerActionMediator {
 
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
+        displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
     }
     public static void actionPhase() {
+        ServerSender.updateInfo();
         System.out.println("actionPhase was entered");
         controller.getActionBar().setVisible(true);
 
         controller.getInPlayPlayerLabel().setVisible(false);
+        displayOpponentDeckDisplay(-1,false);
 
         player.setPhase("actionPhase");
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
+        displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         controller.getActionButton().setText("Enter Buy Phase");
         checkCanDoAction();
     }
@@ -59,6 +64,7 @@ public final class PlayerActionMediator {
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
+        displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         controller.getActionButton().setText("End Turn");
     }
     public static void endPhase() {
@@ -68,6 +74,7 @@ public final class PlayerActionMediator {
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
+        displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         controller.getActionButton().setText("Start Turn");
 
         controller.getActionBar().setVisible(false);
@@ -85,6 +92,7 @@ public final class PlayerActionMediator {
         displayPlayerDiscard();
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
+        displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         if(checkNumBuys()) {
             showBuyableCards(true);
         }
@@ -104,6 +112,7 @@ public final class PlayerActionMediator {
         displayHandOrInPlay(controller.getPlayerHandDisplay());
         displayHandOrInPlay(controller.getInPlayDisplay());
         displayPlayerLabel(player.getName(), player.getPoints());
+        displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         if(cardClicked instanceof ActionCard) {
             checkCanDoAction();
         } else if(cardClicked instanceof TreasureCard) {
@@ -111,6 +120,106 @@ public final class PlayerActionMediator {
         }
     }
 
+    public static void displayPlayerLabel(String playerName, int points) {
+        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
+
+        Text[] playerLabelNames = display.getPlayerLabelNames();
+        Text[] playerPoints = display.getPlayerLabelVictoryNums();
+
+        for(int i=0; i<playerLabelNames.length; i++) {
+            if(playerName.equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
+                playerLabelNames[i].setText(playerName);
+                playerPoints[i].setText(String.valueOf(points));
+                display.getPlayerLabels()[i].setVisible(true);
+                display.getPlayerLabelVictories()[i].setVisible(true);
+                playerLabelNames[i].setVisible(true);
+                playerPoints[i].setVisible(true);
+                break;
+            }
+        }
+    }
+    public static void displayPlayerLabel(ServerPlayer player) {
+        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
+
+        Text[] playerLabelNames = display.getPlayerLabelNames();
+        Text[] playerPoints = display.getPlayerLabelVictoryNums();
+
+        for(int i=0; i<playerLabelNames.length; i++) {
+            if(player.getName().equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
+                playerLabelNames[i].setText(player.getName());
+                playerPoints[i].setText(String.valueOf(player.getPoints()));
+                display.getPlayerLabels()[i].setVisible(true);
+                display.getPlayerLabelVictories()[i].setVisible(true);
+                playerLabelNames[i].setVisible(true);
+                playerPoints[i].setVisible(true);
+                break;
+            }
+        }
+    }
+    public static void displayInPlay(ServerPlayer otherPlayer) {
+        HandOrInPlayDisplay display = controller.getInPlayDisplay();
+        resetHandOrInPlayDisplay(display);
+
+        int index = 0;
+        int freqOfCardInARow = 1;
+        CardCollection inPlay = otherPlayer.getInPlay();
+        List<Card> cardList = inPlay.getCollection();
+        Card[] cardsInPlayInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
+        for(int i=0; i<cardList.size();i++) {
+            if (i != cardList.size() - 1 && cardList.get(i).equals(cardList.get(i + 1))) {
+                freqOfCardInARow++;
+                continue;
+            }
+            displayCardInHandOrInPlay(display, cardList.get(i), index, freqOfCardInARow);
+            cardsInPlayInDisplayOrder[index] = cardList.get(i);
+            index++;
+            freqOfCardInARow = 1;
+        }
+        controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
+    }
+    public static void displayInPlayPlayerLabel(String otherPlayerName) {
+        controller.getPlayerInPlayNameText().setText(otherPlayerName);
+        controller.getInPlayPlayerLabel().setVisible(true);
+    }
+    public static void cardPurchased(Card card) {
+        CardSupplyDisplay display = controller.getCardSupplyDisplay();
+        Card[] cards = display.getCardObjectsInSupply();
+        Text[] cardNumbers = display.getCardInSupplyNums();
+
+        int index = -1;
+        for(int i=0;i<cards.length;i++) {
+            if(cards[i] != null && cards[i].equals(card)) index = i;
+        }
+
+        Text cardNumber = cardNumbers[index];
+        int numCardRemaining = Integer.parseInt(cardNumber.getText());
+        cardNumber.setText(String.valueOf(numCardRemaining-1));
+    }
+    public static void gameOverDisplay() {
+        controller.getPile("playerDiscard").setVisible(false);
+        controller.getPile("playerDeck").setVisible(false);
+        controller.getPile("opponentDeck").setVisible(false);
+        controller.getPlayerHandStackPane().setVisible(false);
+        controller.getInPlayStackPane().setVisible(false);
+        controller.getGameInfoText().setText("Game Over");
+        controller.getActionButton().setVisible(false);
+        controller.getActionBar().setVisible(true);
+        controller.getInPlayPlayerLabel().setVisible(false);
+        controller.getPlayerDeckStackPane().setVisible(false);
+        controller.getOpponentDeckStackPane().setVisible(false);
+    }
+    public static void displayOpponentDeckDisplay(int numCards, boolean show) {
+        DeckDisplay display = controller.getOpponentDeckDisplay();
+        display.getDeckNum().setText(String.valueOf(numCards));
+        System.out.println("display.getDeckNum().getText(): " + display.getDeckNum().getText() + " @PAM_displayOpponentDeckDisplay");
+        controller.getOpponentDeckStackPane().setVisible(show);
+    }
+
+    private static void displayPlayerDeckDisplay(DeckDisplay display, boolean show) {
+        int numCards = player.getDeck().getSize();
+        display.getDeckNum().setText(String.valueOf(numCards));
+        controller.getPlayerDeckStackPane().setVisible(show);
+    }
     private static void showBuyableCards(boolean enable) {
         CardSupplyDisplay cardSupplyDisplay = controller.getCardSupplyDisplay();
 
@@ -223,7 +332,6 @@ public final class PlayerActionMediator {
         }
 //        player.getDiscardPile().printCardNamesInCollection();
     }
-
     private static void checkCanDoAction() {
         if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
             buyPhase();
@@ -256,93 +364,5 @@ public final class PlayerActionMediator {
             builder.append(s); builder.append("\n");
         }
         controller.getGameLog().setText(builder.toString());
-    }
-
-    public static void displayPlayerLabel(String playerName, int points) {
-        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
-
-        Text[] playerLabelNames = display.getPlayerLabelNames();
-        Text[] playerPoints = display.getPlayerLabelVictoryNums();
-
-        for(int i=0; i<playerLabelNames.length; i++) {
-            if(playerName.equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
-                playerLabelNames[i].setText(playerName);
-                playerPoints[i].setText(String.valueOf(points));
-                display.getPlayerLabels()[i].setVisible(true);
-                display.getPlayerLabelVictories()[i].setVisible(true);
-                playerLabelNames[i].setVisible(true);
-                playerPoints[i].setVisible(true);
-                break;
-            }
-        }
-    }
-    public static void displayPlayerLabel(ServerPlayer player) {
-        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
-
-        Text[] playerLabelNames = display.getPlayerLabelNames();
-        Text[] playerPoints = display.getPlayerLabelVictoryNums();
-
-        for(int i=0; i<playerLabelNames.length; i++) {
-            if(player.getName().equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
-                playerLabelNames[i].setText(player.getName());
-                playerPoints[i].setText(String.valueOf(player.getPoints()));
-                display.getPlayerLabels()[i].setVisible(true);
-                display.getPlayerLabelVictories()[i].setVisible(true);
-                playerLabelNames[i].setVisible(true);
-                playerPoints[i].setVisible(true);
-                break;
-            }
-        }
-    }
-
-    public static void displayInPlay(ServerPlayer otherPlayer) {
-        HandOrInPlayDisplay display = controller.getInPlayDisplay();
-
-        int index = 0;
-        int freqOfCardInARow = 1;
-        CardCollection inPlay = otherPlayer.getInPlay();
-        List<Card> cardList = inPlay.getCollection();
-        Card[] cardsInPlayInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
-        for(int i=0; i<cardList.size();i++) {
-            if (i != cardList.size() - 1 && cardList.get(i).equals(cardList.get(i + 1))) {
-                freqOfCardInARow++;
-                continue;
-            }
-            displayCardInHandOrInPlay(display, cardList.get(i), index, freqOfCardInARow);
-            cardsInPlayInDisplayOrder[index] = cardList.get(i);
-            index++;
-            freqOfCardInARow = 1;
-        }
-        controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
-    }
-    public static void displayInPlayPlayerLabel(String otherPlayerName) {
-        controller.getPlayerInPlayNameText().setText(otherPlayerName);
-        controller.getInPlayPlayerLabel().setVisible(true);
-    }
-
-    public static void cardPurchased(Card card) {
-        CardSupplyDisplay display = controller.getCardSupplyDisplay();
-        Card[] cards = display.getCardObjectsInSupply();
-        Text[] cardNumbers = display.getCardInSupplyNums();
-
-        int index = -1;
-        for(int i=0;i<cards.length;i++) {
-            if(cards[i] != null && cards[i].equals(card)) index = i;
-        }
-
-        Text cardNumber = cardNumbers[index];
-        int numCardRemaining = Integer.parseInt(cardNumber.getText());
-        cardNumber.setText(String.valueOf(numCardRemaining-1));
-    }
-    public static void gameOverDisplay() {
-        controller.getPile("playerDiscard").setVisible(false);
-        controller.getPile("playerDeck").setVisible(false);
-        controller.getPile("opponentDeck").setVisible(false);
-        controller.getPlayerHandStackPane().setVisible(false);
-        controller.getInPlayStackPane().setVisible(false);
-        controller.getGameInfoText().setText("Game Over");
-        controller.getActionButton().setVisible(false);
-        controller.getActionBar().setVisible(true);
-        controller.getInPlayPlayerLabel().setVisible(false);
     }
 }

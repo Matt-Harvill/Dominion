@@ -21,7 +21,7 @@ public class ServerSideConnection implements Runnable {
     private DataInputStream dataIn;
     private SocketAddress clientIP;
     private String name;
-    private int points, initialCardStacksNum;
+    private int points, numCardsInDeck, initialCardStacksNum;
     private String playerInfoString;
     private boolean myTurn;
     private List<CardStack> cardStacks;
@@ -52,6 +52,7 @@ public class ServerSideConnection implements Runnable {
                     case "join" -> {
                         name = scanner.next();
                         points = scanner.nextInt();
+                        numCardsInDeck = scanner.nextInt();
                         sendMessage = "inGame ";
                         DominionServer server = Main.getServer();
                         List<ServerSideConnection> serverSideConnections = server.getServerSideConnections();
@@ -85,8 +86,8 @@ public class ServerSideConnection implements Runnable {
                         shutDown();
                     }
                     case "buyCard" -> {
-                        //Get the name and points sorted out first
-                        scanner.next(); scanner.nextInt();
+                        //Get the name, points, numCardsInDeck sorted out first
+                        scanner.next(); scanner.nextInt(); scanner.nextInt();
 
                         String cardName = scanner.next();
                         for (CardStack cardStack : cardStacks) {
@@ -145,7 +146,7 @@ public class ServerSideConnection implements Runnable {
         return dataOut;
     }
     public String getPlayerInfoString() {
-        playerInfoString = name + " " + points + " ";
+        playerInfoString = name + " " + points + " " + numCardsInDeck + " ";
         return playerInfoString;
     }
     public String getName() {return name;}

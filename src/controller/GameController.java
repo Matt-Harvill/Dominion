@@ -19,6 +19,7 @@ import model.card.*;
 import model.factory.CardFactory;
 import org.w3c.dom.css.Rect;
 import view.CardSupplyDisplay;
+import view.DeckDisplay;
 import view.HandOrInPlayDisplay;
 import view.PlayerNamePointsDisplay;
 
@@ -122,10 +123,11 @@ public class GameController {
     private HandOrInPlayDisplay inPlayDisplay;
 
     //---------------Opponent and Player Deck------------------//
-    @FXML private Rectangle playerDeck, opponentDeck, playerDiscard;
+    @FXML private Rectangle playerDeck, playerDeckNumBack, opponentDeck, opponentDeckNumBack, playerDiscard;
     @FXML private Button actionButton;
-    @FXML private Text gameInfoText;
-    @FXML private StackPane actionBar, inPlayStackPane;
+    @FXML private Text gameInfoText, playerDeckNum, opponentDeckNum;
+    @FXML private StackPane actionBar, inPlayStackPane, playerDeckStackPane, opponentDeckStackPane;
+    private DeckDisplay playerDeckDisplay, opponentDeckDisplay;
 
     //--------------PlayerName and Point Displays------------//
     @FXML private Rectangle playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6;
@@ -212,8 +214,8 @@ public class GameController {
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
         opponentDeck.setFill(imagePattern);
-        playerDeck.setVisible(true);
-        opponentDeck.setVisible(true);
+        playerDeckDisplay = new DeckDisplay(playerDeck,playerDeckNumBack,playerDeckNum);
+        opponentDeckDisplay = new DeckDisplay(opponentDeck,opponentDeckNumBack,opponentDeckNum);
 
         //--------------Initialize Player labels----------------//
         playerLabels = new Rectangle[]{playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6};
@@ -270,6 +272,10 @@ public class GameController {
     }
     public StackPane getPlayerHandStackPane() {return playerHandStackPane;}
     public StackPane getInPlayStackPane() {return inPlayStackPane;}
+    public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
+    public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}
+    public StackPane getPlayerDeckStackPane() {return playerDeckStackPane;}
+    public StackPane getOpponentDeckStackPane() {return opponentDeckStackPane;}
 
     //-------------------Internal Updates------------------------//
 

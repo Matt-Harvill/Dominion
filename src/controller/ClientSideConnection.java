@@ -37,7 +37,7 @@ public class ClientSideConnection implements Runnable {
     }
 
     public void run() {
-        send("join " + player.getName() + " " + player.getPoints());
+        send("join " + player.getInfoString());
 
         while(!socket.isClosed()) {
             String receive = receive();
@@ -56,34 +56,36 @@ public class ClientSideConnection implements Runnable {
             final String instruction = scanner.next();
             String playerName = scanner.next();
             int playerPoints = scanner.nextInt();
+            int numCardsInDeck = scanner.nextInt();
 
             switch (instruction) {
-                case "inGame": inGame(playerName,playerPoints); break;
+                case "inGame": inGame(playerName,playerPoints,numCardsInDeck); break;
                 case "chat": chat(playerName,scanner.nextLine()); break;
-                case "connected": connected(playerName,playerPoints); break;
+                case "connected": connected(playerName,playerPoints,numCardsInDeck); break;
                 case "startTurn": startTurn(playerName); break;
                 case "cardsInGame": cardsInGame(scanner.nextLine()); break;
                 case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
                 case "serverShutDown": serverShutDown(); break;
                 case "leaveGame": leftGame(playerName); break;
-                case "playCard": cardPlayed(playerName,scanner.next()); break;
-                case "buyCard": cardPurchased(playerName,scanner.next()); break;
+                case "playCard": cardPlayed(playerName,scanner.next(),numCardsInDeck); break;
+                case "buyCard": cardPurchased(playerName,scanner.next(),numCardsInDeck); break;
                 case "gameOver": gameOver(); break;
+                case "updateInfo": updateInfo(playerName,playerPoints,numCardsInDeck); break;
                 default: break;
             }
         }
     }
 
-    private void connected(String playerName, int playerPoints) {
-        ServerPlayer player = new ServerPlayer(playerName,playerPoints);
+    private void connected(String playerName, int playerPoints, int numCardsInDeck) {
+        ServerPlayer player = new ServerPlayer(playerName,playerPoints,numCardsInDeck);
         players.add(player);
         Platform.runLater(() -> {
             PlayerActionMediator.displayPlayerLabel(player);
             PlayerActionMediator.addMessageToGameLog(playerName + " has joined the game");
         });
     }
-    private void inGame(String playerName, int playerPoints) {
-        ServerPlayer newPlayer = new ServerPlayer(playerName,playerPoints);
+    private void inGame(String playerName, int playerPoints, int numCardsInDeck) {
+        ServerPlayer newPlayer = new ServerPlayer(playerName,playerPoints,numCardsInDeck);
         players.add(newPlayer);
 
         Platform.runLater(() -> {
@@ -96,9 +98,15 @@ public class ClientSideConnection implements Runnable {
     }
     private void startTurn(String playerName) {
         boolean myTurn = (player.getName().equals(playerName));
+        ServerPlayer otherPlayer = null;
         if(!myTurn) {
-            ServerPlayer otherPlayer = null;
+
+//            System.out.println("playerName: " + playerName);
+
             for(ServerPlayer serverPlayer: players) {
+
+//                System.out.println("serverPlayer.getName(): " + serverPlayer.getName());
+
                 if(serverPlayer.getName().equals(playerName)) {
                     otherPlayer = serverPlayer;
                     break;
@@ -112,10 +120,12 @@ public class ClientSideConnection implements Runnable {
             }
         }
 
+        ServerPlayer finalOtherPlayer = otherPlayer;
         Platform.runLater(() -> {
             if(myTurn) PlayerActionMediator.actionPhase();
             else {
                 PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
+                PlayerActionMediator.displayInPlay(finalOtherPlayer);
                 PlayerActionMediator.displayInPlayPlayerLabel(playerName);
             }
         });
@@ -157,11 +167,12 @@ public class ClientSideConnection implements Runnable {
     private void leftGame(String playerName) {
         Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " left the game"));
     }
-    private void cardPlayed(String playerName,String cardName) {
+    private void cardPlayed(String playerName,String cardName,int numCardsInDeck) {
         ServerPlayer otherPlayer = null;
         for(ServerPlayer serverPlayer: players) {
             if(serverPlayer.getName().equals(playerName)) {
                 otherPlayer = serverPlayer;
+                serverPlayer.setNumCardsInDeck(numCardsInDeck);
                 break;
             }
         }
@@ -177,38 +188,50 @@ public class ClientSideConnection implements Runnable {
         Platform.runLater(() -> {
             PlayerActionMediator.addMessageToGameLog(playerName + " played a " + cardName);
             PlayerActionMediator.displayInPlay(finalOtherPlayer);
+            PlayerActionMediator.displayOpponentDeckDisplay(numCardsInDeck,true);
         });
     }
-    private void cardPurchased(String playerName, String cardName) {
+    private void cardPurchased(String playerName, String cardName, int numCardsInDeck) {
         Card card = CardFactory.getCard(cardName);
         ServerPlayer otherPlayer = null;
-        if(card instanceof VictoryCard) {
-            for(ServerPlayer serverPlayer: players) {
-                if(serverPlayer.getName().equals(playerName)) {
-                    otherPlayer = serverPlayer;
-                    break;
-                }
+        for(ServerPlayer serverPlayer: players) {
+            if(serverPlayer.getName().equals(playerName)) {
+                otherPlayer = serverPlayer;
+                serverPlayer.setNumCardsInDeck(numCardsInDeck);
+                break;
             }
-            if(otherPlayer==null) {
-                System.out.println("Error @CSC_cardPurchased");
-            }
-            else {
-                otherPlayer.setPoints(otherPlayer.getPoints()+((VictoryCard) card).getVictoryPoints());
-            }
+        }
+        if(otherPlayer==null) {
+            System.out.println("Error @CSC_cardPurchased");
+        }
+        else if(card instanceof VictoryCard) {
+            otherPlayer.setPoints(otherPlayer.getPoints()+((VictoryCard) card).getVictoryPoints());
         }
 
         ServerPlayer finalOtherPlayer = otherPlayer;
         Platform.runLater(() -> {
             PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName);
-            if(finalOtherPlayer !=null) {
-                PlayerActionMediator.displayPlayerLabel(finalOtherPlayer);
-            }
+            PlayerActionMediator.displayPlayerLabel(finalOtherPlayer);
+            PlayerActionMediator.displayOpponentDeckDisplay(numCardsInDeck,true);
+            System.out.println("displayOpponentDeckDisplay is reached @CSC_cardPurchased ---> " + "numCardsInDeck: " + numCardsInDeck);
             PlayerActionMediator.cardPurchased(card);
         });
     }
     private void gameOver() {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
         Platform.runLater(PlayerActionMediator::gameOverDisplay);
+    }
+    private void updateInfo(String playerName,int playerPoints,int numCardsInDeck) {
+        for(ServerPlayer serverPlayer: players) {
+            if(serverPlayer.getName().equals(playerName)) {
+                serverPlayer.setNumCardsInDeck(numCardsInDeck);
+                serverPlayer.setPoints(playerPoints);
+                break;
+            }
+        }
+        Platform.runLater(() -> {
+            PlayerActionMediator.displayOpponentDeckDisplay(numCardsInDeck,true);
+        });
     }
 
     public String receive() {
@@ -228,7 +251,7 @@ public class ClientSideConnection implements Runnable {
         }
     }
     public void leaveGame() {
-        send("leaveGame " + player.getName() + " " + player.getPoints() + " ");
+        send("leaveGame " + player.getInfoString());
         try {
             socket.close();
         } catch (Exception ex) {

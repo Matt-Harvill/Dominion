@@ -874,18 +874,18 @@
                   </Rectangle>
                </children>
             </StackPane>
-            <StackPane fx:id="actionBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
+            <StackPane fx:id="actionBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="500.0" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets bottom="215.0" left="430.0" right="10.0" top="10.0" />
                </StackPane.margin>
                <children>
-                  <Rectangle arcHeight="15.0" arcWidth="15.0" height="35.0" stroke="WHITE" strokeType="INSIDE" styleClass="actionBar" width="505.0" />
+                  <Rectangle arcHeight="15.0" arcWidth="15.0" height="35.0" stroke="WHITE" strokeType="INSIDE" styleClass="actionBar" width="500.0" StackPane.alignment="TOP_LEFT" />
                   <Button fx:id="actionButton" mnemonicParsing="false" onAction="#actionButtonClicked" text="Start Turn" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                      </StackPane.margin>
                   </Button>
-                  <Text fx:id="gameInfoText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="380.0" StackPane.alignment="CENTER_LEFT">
+                  <Text fx:id="gameInfoText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
                         <Insets left="120.0" right="5.0" />
                      </StackPane.margin>
@@ -1435,27 +1435,40 @@
                   <Insets bottom="10.0" left="320.0" right="10.0" top="245.0" />
                </StackPane.margin>
             </Rectangle>
-            <Rectangle fx:id="opponentDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
+            <StackPane fx:id="opponentDeckStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="100.0" visible="false" StackPane.alignment="TOP_LEFT">
                <StackPane.margin>
                   <Insets bottom="10.0" left="940.0" right="10.0" top="245.0" />
                </StackPane.margin>
-            </Rectangle>
+               <children>
+                  <Rectangle fx:id="opponentDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="opponentDeckNumBack" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInPlay" onMouseExited="#mouseExitedCardInPlay" stroke="WHITE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT" />
+                  <Text fx:id="opponentDeckNum" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInPlay" onMouseExited="#mouseExitedCardInPlay" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+            </StackPane>
             <Rectangle fx:id="playerDiscard" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -1477,27 +1490,40 @@
                   <Insets bottom="50.0" left="320.0" right="10.0" top="10.0" />
                </StackPane.margin>
             </Rectangle>
-            <Rectangle fx:id="playerDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="BOTTOM_LEFT">
-               <fill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </LinearGradient>
-               </fill>
+            <StackPane fx:id="playerDeckStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="100.0" visible="false" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets bottom="50.0" left="940.0" right="10.0" top="10.0" />
                </StackPane.margin>
-            </Rectangle>
+               <children>
+                  <Rectangle fx:id="playerDeck" arcHeight="10.0" arcWidth="10.0" height="160.0" stroke="BLACK" strokeType="INSIDE" width="100.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle fx:id="playerDeckNumBack" arcHeight="15.0" arcWidth="15.0" fill="RED" height="20.0" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInPlay" onMouseExited="#mouseExitedCardInPlay" stroke="WHITE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT" />
+                  <Text fx:id="playerDeckNum" fill="WHITE" onMouseClicked="#cardInHandClicked" onMouseEntered="#mouseOverCardInPlay" onMouseExited="#mouseExitedCardInPlay" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="21.0" StackPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets top="2.0" />
+                     </StackPane.margin>
+                  </Text>
+               </children>
+            </StackPane>
             <StackPane fx:id="inPlayStackPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
                <children>
                   <Rectangle fx:id="cardInPlay1" arcHeight="10.0" arcWidth="10.0" height="160.0" onMouseEntered="#mouseOverCardInPlay" onMouseExited="#mouseExitedCardInPlay" stroke="BLACK" strokeType="INSIDE" visible="false" width="100.0" StackPane.alignment="TOP_LEFT">
@@ -1896,13 +1922,13 @@
             <Pane fx:id="serverInfoPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="284.0" StackPane.alignment="TOP_RIGHT">
                <children>
                   <Rectangle fx:id="serverInfoBackground" arcHeight="5.0" arcWidth="15.0" height="115.0" stroke="WHITE" strokeType="INSIDE" styleClass="actionBar" width="284.0" />
-                  <Label layoutX="21.0" layoutY="14.0" text="IP of Host:" textFill="WHITE" />
-                  <Label layoutX="36.0" layoutY="49.0" text="Port:" textFill="WHITE" />
-                  <Button layoutX="216.0" layoutY="10.0" mnemonicParsing="false" onAction="#hostIPCopyToClipboard" prefHeight="25.0" prefWidth="47.0" text="Copy " />
-                  <Text fx:id="hostIP" fill="WHITE" layoutX="85.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="123.0" />
-                  <Text fx:id="portNum" fill="WHITE" layoutX="76.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="102.0" />
-                  <Button layoutX="185.0" layoutY="45.0" mnemonicParsing="false" onAction="#portNumCopyToClipboard" prefHeight="25.0" prefWidth="47.0" text="Copy " />
-                  <Button fx:id="startGameButton" layoutX="104.0" layoutY="77.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
+                  <Label layoutX="41.0" layoutY="17.0" text="Host IP:" textAlignment="CENTER" textFill="WHITE" />
+                  <Label layoutX="82.0" layoutY="49.0" text="Port:" textAlignment="CENTER" textFill="WHITE" />
+                  <Button layoutX="203.0" layoutY="13.0" mnemonicParsing="false" onAction="#hostIPCopyToClipboard" prefHeight="25.0" prefWidth="47.0" text="Copy " />
+                  <Text fx:id="hostIP" fill="WHITE" layoutX="94.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="95.0" />
+                  <Text fx:id="portNum" fill="WHITE" layoutX="118.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="47.0" />
+                  <Button layoutX="179.0" layoutY="45.0" mnemonicParsing="false" onAction="#portNumCopyToClipboard" prefHeight="25.0" prefWidth="47.0" text="Copy " />
+                  <Button fx:id="startGameButton" layoutX="104.0" layoutY="76.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
