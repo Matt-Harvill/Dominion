@@ -335,12 +335,11 @@ public final class PlayerActionMediator {
         discardDisplay.getDeckNum().setText(String.valueOf(numCardsInDiscardPile));
 
         if(topDiscardCard==null) {
-            discardDisplay.getDeckStackPane().setVisible(false);
+            discardDisplay.setVisible(false);
         } else {
             discardDisplay.getDeck().setFill(new ImagePattern(topDiscardCard.getCardImage()));
-            discardDisplay.getDeckStackPane().setVisible(true);
+            discardDisplay.setVisible(true);
         }
-//        player.getDiscardPile().printCardNamesInCollection();
     }
     private static void checkCanDoAction() {
         if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
