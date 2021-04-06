@@ -53,9 +53,24 @@ public class ServerSideConnection implements Runnable {
                         name = scanner.next();
                         points = scanner.nextInt();
                         numCardsInDeck = scanner.nextInt();
+
+                        int numTimesNameTaken = nameAlreadyTaken(name);
+                        if(numTimesNameTaken > 0) {
+                            name = name + "(" + numTimesNameTaken + ")";
+                            individualSend("nameChanged " + getPlayerInfoString());
+                        }
+
                         sendMessage = "inGame ";
                         DominionServer server = Main.getServer();
                         List<ServerSideConnection> serverSideConnections = server.getServerSideConnections();
+
+                        //Test
+                        for(ServerSideConnection ssc: serverSideConnections) {
+                            System.out.print("ssc name: " + ssc.getName());
+                        }
+                        System.out.println("@" + name + "'s ssc join");
+                        //
+
                         for (ServerSideConnection ssc : serverSideConnections) {
                             if (ssc.equals(this)) continue;
                             sendMessage += ssc.getPlayerInfoString();
@@ -126,6 +141,17 @@ public class ServerSideConnection implements Runnable {
     public void individualSend(String s) throws IOException {
         dataOut.writeUTF(s);
         dataOut.flush();
+    }
+
+    private int nameAlreadyTaken(String name) {
+        int nameLength = name.length();
+        int numTimesTaken = 0;
+
+        for(ServerSideConnection ssc: Main.getServer().getServerSideConnections()) {
+            if(ssc.equals(this)) continue;
+            if(name.equals(ssc.getName().substring(0,nameLength))) numTimesTaken++;
+        }
+        return numTimesTaken;
     }
 
     private String parseCardsInGame(CardCollection cardsInGame) {

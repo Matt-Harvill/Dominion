@@ -71,6 +71,7 @@ public class ClientSideConnection implements Runnable {
                 case "buyCard": cardPurchased(playerName,scanner.next(),numCardsInDeck); break;
                 case "gameOver": gameOver(); break;
                 case "updateInfo": updateInfo(playerName,playerPoints,numCardsInDeck); break;
+                case "nameChanged": nameChanged(playerName); break;
                 default: break;
             }
         }
@@ -109,6 +110,7 @@ public class ClientSideConnection implements Runnable {
 
                 if(serverPlayer.getName().equals(playerName)) {
                     otherPlayer = serverPlayer;
+                    System.out.println("serverPlayer name: " + serverPlayer.getName());
                     break;
                 }
             }
@@ -120,9 +122,13 @@ public class ClientSideConnection implements Runnable {
             }
         }
 
+
+
         ServerPlayer finalOtherPlayer = otherPlayer;
         Platform.runLater(() -> {
-            if(myTurn) PlayerActionMediator.actionPhase();
+            if(myTurn) {
+                PlayerActionMediator.actionPhase();
+            }
             else {
                 PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
                 PlayerActionMediator.displayInPlay(finalOtherPlayer);
@@ -232,6 +238,9 @@ public class ClientSideConnection implements Runnable {
         Platform.runLater(() -> {
             PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
         });
+    }
+    private void nameChanged(String playerName) {
+        player.setName(playerName);
     }
 
     public String receive() {
