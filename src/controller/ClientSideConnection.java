@@ -188,7 +188,7 @@ public class ClientSideConnection implements Runnable {
         Platform.runLater(() -> {
             PlayerActionMediator.addMessageToGameLog(playerName + " played a " + cardName);
             PlayerActionMediator.displayInPlay(finalOtherPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(numCardsInDeck,true);
+            PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
         });
     }
     private void cardPurchased(String playerName, String cardName, int numCardsInDeck) {
@@ -212,7 +212,7 @@ public class ClientSideConnection implements Runnable {
         Platform.runLater(() -> {
             PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName);
             PlayerActionMediator.displayPlayerLabel(finalOtherPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(numCardsInDeck,true);
+            PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
             System.out.println("displayOpponentDeckDisplay is reached @CSC_cardPurchased ---> " + "numCardsInDeck: " + numCardsInDeck);
             PlayerActionMediator.cardPurchased(card);
         });
@@ -230,7 +230,7 @@ public class ClientSideConnection implements Runnable {
             }
         }
         Platform.runLater(() -> {
-            PlayerActionMediator.displayOpponentDeckDisplay(numCardsInDeck,true);
+            PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
         });
     }
 

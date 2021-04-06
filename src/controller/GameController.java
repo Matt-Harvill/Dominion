@@ -122,12 +122,21 @@ public class GameController {
     private Card[] cardObjectsInPlay;
     private HandOrInPlayDisplay inPlayDisplay;
 
-    //---------------Opponent and Player Deck------------------//
-    @FXML private Rectangle playerDeck, playerDeckNumBack, opponentDeck, opponentDeckNumBack, playerDiscard;
+    //---------------ActionBar and gameInfoText------------------//
     @FXML private Button actionButton;
-    @FXML private Text gameInfoText, playerDeckNum, opponentDeckNum;
-    @FXML private StackPane actionBar, inPlayStackPane, playerDeckStackPane, opponentDeckStackPane;
-    private DeckDisplay playerDeckDisplay, opponentDeckDisplay;
+    @FXML private Text gameInfoText;
+    @FXML private StackPane actionBar, inPlayStackPane;
+
+    //---------------discardPile, playerDeck, opponentDeck Labels------------//
+    @FXML private StackPane discardPileLabelStackPane, opponentDeckLabelStackPane, playerDeckLabelStackPane;
+    @FXML private Rectangle discardPileLabel, opponentDeckLabel, playerDeckLabel;
+    @FXML private Text discardPileLabelText, opponentDeckLabelText, playerDeckLabelText;
+
+    //---------------discardPile, playerDeck, opponentDeck-------------------//
+    @FXML private StackPane playerDiscardStackPane, playerDeckStackPane, opponentDeckStackPane;
+    @FXML private Rectangle playerDiscard, playerDeck, opponentDeck, playerDiscardNumBack, playerDeckNumBack, opponentDeckNumBack;
+    @FXML private Text playerDiscardNum, playerDeckNum, opponentDeckNum;
+    private DeckDisplay playerDeckDisplay, opponentDeckDisplay, playerDiscardDisplay;
 
     //--------------PlayerName and Point Displays------------//
     @FXML private Rectangle playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6;
@@ -210,12 +219,17 @@ public class GameController {
         actionCardNums = new Text[]{actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
                 actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
 
-        //--------------Initialize player Decks-----------------//
+        //--------------Initialize player Decks and Discard-----------------//
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
         opponentDeck.setFill(imagePattern);
-        playerDeckDisplay = new DeckDisplay(playerDeck,playerDeckNumBack,playerDeckNum);
-        opponentDeckDisplay = new DeckDisplay(opponentDeck,opponentDeckNumBack,opponentDeckNum);
+        discardPileLabelStackPane.setVisible(true);
+        playerDeckDisplay = new DeckDisplay(playerDeckStackPane,playerDeckLabelStackPane,playerDeck,playerDeckNumBack,playerDeckLabel,
+                playerDeckNum,playerDeckLabelText);
+        opponentDeckDisplay = new DeckDisplay(opponentDeckStackPane,opponentDeckLabelStackPane,opponentDeck,opponentDeckNumBack,opponentDeckLabel,
+                opponentDeckNum,opponentDeckLabelText);
+        playerDiscardDisplay = new DeckDisplay(playerDiscardStackPane,discardPileLabelStackPane,playerDiscard,playerDiscardNumBack,
+                discardPileLabel,playerDiscardNum,discardPileLabelText);
 
         //--------------Initialize Player labels----------------//
         playerLabels = new Rectangle[]{playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6};
@@ -256,26 +270,12 @@ public class GameController {
     public StackPane getActionBar() {return actionBar;}
     public Text getPlayerInPlayNameText() {return  playerInPlayNameText;}
     public StackPane getInPlayPlayerLabel() {return inPlayPlayerLabel;}
-    public Rectangle getPile(String pileName){
-        switch(pileName){
-            case "playerDiscard" -> {
-                return playerDiscard;
-            }
-            case "playerDeck" -> {
-                return playerDeck;
-            }
-            case "opponentDeck" -> {
-                return opponentDeck;
-            }
-        }
-        return null;
-    }
     public StackPane getPlayerHandStackPane() {return playerHandStackPane;}
     public StackPane getInPlayStackPane() {return inPlayStackPane;}
+
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
     public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}
-    public StackPane getPlayerDeckStackPane() {return playerDeckStackPane;}
-    public StackPane getOpponentDeckStackPane() {return opponentDeckStackPane;}
+    public DeckDisplay getPlayerDiscardDisplay() {return playerDiscardDisplay;}
 
     //-------------------Internal Updates------------------------//
 

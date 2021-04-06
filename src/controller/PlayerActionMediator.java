@@ -37,7 +37,7 @@ public final class PlayerActionMediator {
         controller.getActionBar().setVisible(true);
 
         controller.getInPlayPlayerLabel().setVisible(false);
-        displayOpponentDeckDisplay(-1,false);
+        controller.getOpponentDeckDisplay().setVisible(false);
 
         player.setPhase("actionPhase");
         displayPlayerDiscard();
@@ -196,29 +196,34 @@ public final class PlayerActionMediator {
         cardNumber.setText(String.valueOf(numCardRemaining-1));
     }
     public static void gameOverDisplay() {
-        controller.getPile("playerDiscard").setVisible(false);
-        controller.getPile("playerDeck").setVisible(false);
-        controller.getPile("opponentDeck").setVisible(false);
         controller.getPlayerHandStackPane().setVisible(false);
         controller.getInPlayStackPane().setVisible(false);
         controller.getGameInfoText().setText("Game Over");
         controller.getActionButton().setVisible(false);
         controller.getActionBar().setVisible(true);
         controller.getInPlayPlayerLabel().setVisible(false);
-        controller.getPlayerDeckStackPane().setVisible(false);
-        controller.getOpponentDeckStackPane().setVisible(false);
+
+        controller.getPlayerDiscardDisplay().setVisible(false);
+        controller.getPlayerDeckDisplay().setVisible(false);
+        controller.getOpponentDeckDisplay().setVisible(false);
     }
-    public static void displayOpponentDeckDisplay(int numCards, boolean show) {
+    public static void displayOpponentDeckDisplay(String playerName, int numCards) {
         DeckDisplay display = controller.getOpponentDeckDisplay();
         display.getDeckNum().setText(String.valueOf(numCards));
-        System.out.println("display.getDeckNum().getText(): " + display.getDeckNum().getText() + " @PAM_displayOpponentDeckDisplay");
-        controller.getOpponentDeckStackPane().setVisible(show);
+//        if(playerName.length() > 9) {
+//            display.getDeckLabelText().setText(playerName.substring(0,10) + "...'s Cards");
+//        } else {
+//            display.getDeckLabelText().setText(playerName + "'s Cards");
+//        }
+        display.getDeckLabelText().setText("Cards");
+
+        controller.getOpponentDeckDisplay().setVisible(true);
     }
 
     private static void displayPlayerDeckDisplay(DeckDisplay display, boolean show) {
         int numCards = player.getDeck().getSize();
         display.getDeckNum().setText(String.valueOf(numCards));
-        controller.getPlayerDeckStackPane().setVisible(show);
+        controller.getPlayerDeckDisplay().setVisible(show);
     }
     private static void showBuyableCards(boolean enable) {
         CardSupplyDisplay cardSupplyDisplay = controller.getCardSupplyDisplay();
@@ -324,11 +329,16 @@ public final class PlayerActionMediator {
     }
     private static void displayPlayerDiscard() {
         Card topDiscardCard = player.getDiscardPile().peekLastCard();
+        int numCardsInDiscardPile = player.getDiscardPile().getSize();
+
+        DeckDisplay discardDisplay = controller.getPlayerDiscardDisplay();
+        discardDisplay.getDeckNum().setText(String.valueOf(numCardsInDiscardPile));
+
         if(topDiscardCard==null) {
-            controller.getPile("playerDiscard").setVisible(false);
+            discardDisplay.getDeckStackPane().setVisible(false);
         } else {
-            controller.getPile("playerDiscard").setFill(new ImagePattern(topDiscardCard.getCardImage()));
-            controller.getPile("playerDiscard").setVisible(true);
+            discardDisplay.getDeck().setFill(new ImagePattern(topDiscardCard.getCardImage()));
+            discardDisplay.getDeckStackPane().setVisible(true);
         }
 //        player.getDiscardPile().printCardNamesInCollection();
     }
