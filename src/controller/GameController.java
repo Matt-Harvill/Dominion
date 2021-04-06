@@ -17,18 +17,11 @@ import javafx.scene.text.Text;
 import model.CardCollection;
 import model.card.*;
 import model.factory.CardFactory;
-import org.w3c.dom.css.Rect;
-import view.CardSupplyDisplay;
-import view.DeckDisplay;
-import view.HandOrInPlayDisplay;
-import view.PlayerNamePointsDisplay;
+import view.*;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class GameController {
 
@@ -37,7 +30,6 @@ public class GameController {
     @FXML Rectangle serverInfoBackground;
     @FXML Pane serverInfoPane;
     @FXML Button startGameButton;
-
     private String ipAddress; private int port;
 
     //--------------Player inPlay Label-----------------//
@@ -51,7 +43,6 @@ public class GameController {
 
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
-    private final String redCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #ff0101;";
 
     //---------------Chat Log and Game Log--------------//
     @FXML private TextArea chatLog, gameLog;
@@ -82,6 +73,9 @@ public class GameController {
             actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10;
     private Rectangle[] actionCardsInSupply,actionCardNumBacks,actionCardBuyButtons;
     private Text[] actionCardNums;
+    private BuyableCardDisplay ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,
+            ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10;
+    private BuyableCardDisplay[] ACISDisplays;
 
     //---------------TreasureCards In Supply---------------//
     @ FXML private Rectangle treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4;
@@ -219,6 +213,20 @@ public class GameController {
         actionCardNums = new Text[]{actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
                 actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
 
+        ACISDisplay1 = new BuyableCardDisplay(actionCardInSupply1,new NumberDisplay(actionCardNumBack1,actionCardNum1),actionCardBuyButton1);
+        ACISDisplay2 = new BuyableCardDisplay(actionCardInSupply2,new NumberDisplay(actionCardNumBack2,actionCardNum2),actionCardBuyButton2);
+        ACISDisplay3 = new BuyableCardDisplay(actionCardInSupply3,new NumberDisplay(actionCardNumBack3,actionCardNum3),actionCardBuyButton3);
+        ACISDisplay4 = new BuyableCardDisplay(actionCardInSupply4,new NumberDisplay(actionCardNumBack4,actionCardNum4),actionCardBuyButton4);
+        ACISDisplay5 = new BuyableCardDisplay(actionCardInSupply5,new NumberDisplay(actionCardNumBack5,actionCardNum5),actionCardBuyButton5);
+        ACISDisplay6 = new BuyableCardDisplay(actionCardInSupply6,new NumberDisplay(actionCardNumBack6,actionCardNum6),actionCardBuyButton6);
+        ACISDisplay7 = new BuyableCardDisplay(actionCardInSupply7,new NumberDisplay(actionCardNumBack7,actionCardNum7),actionCardBuyButton7);
+        ACISDisplay8 = new BuyableCardDisplay(actionCardInSupply8,new NumberDisplay(actionCardNumBack8,actionCardNum8),actionCardBuyButton8);
+        ACISDisplay9 = new BuyableCardDisplay(actionCardInSupply9,new NumberDisplay(actionCardNumBack9,actionCardNum9),actionCardBuyButton9);
+        ACISDisplay10 = new BuyableCardDisplay(actionCardInSupply10,new NumberDisplay(actionCardNumBack10,actionCardNum10),actionCardBuyButton10);
+        ACISDisplays = new BuyableCardDisplay[]{ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,
+                ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10};
+
+
         //--------------Initialize player Decks and Discard-----------------//
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
@@ -272,7 +280,6 @@ public class GameController {
     public StackPane getInPlayPlayerLabel() {return inPlayPlayerLabel;}
     public StackPane getPlayerHandStackPane() {return playerHandStackPane;}
     public StackPane getInPlayStackPane() {return inPlayStackPane;}
-
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
     public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}
     public DeckDisplay getPlayerDiscardDisplay() {return playerDiscardDisplay;}

@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/CardDisplay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/NumberDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +53,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -137,7 +142,7 @@
       <workItem from="1617558331008" duration="27710000" />
       <workItem from="1617590428506" duration="3366000" />
       <workItem from="1617637657054" duration="27088000" />
-      <workItem from="1617722183615" duration="11316000" />
+      <workItem from="1617722183615" duration="15265000" />
     </task>
     <task id="LOCAL-00001" summary="commit with new server connect scene">
       <created>1616102080070</created>
@@ -461,7 +466,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617734690243</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Discard Pile no longer shows if it is empty">
+      <created>1617734828211</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1617734828211</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +493,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="new intro scene that allows someone to host or join. actual backend not implemented yet" />
     <MESSAGE value="can host and join with same UI. Now the backend is actually established as well" />
     <MESSAGE value="can select from allcards the cards you want in the game. This is only for the the frontend. These cards aren't actually used in the game in backend yet" />
     <MESSAGE value="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later." />
@@ -506,6 +517,7 @@
     <MESSAGE value="all of the piles (playerDiscard, opponentDeck, and playerDeck) are how I wanted them" />
     <MESSAGE value="Now multiple players can join with the same name and they will be assigned a new name with (#of copies of that name)&#10;&#10;Ex: if &quot;host&quot; is already taken -&gt; &quot;host(1)&quot;" />
     <MESSAGE value="cleaning up Main, GameServer, and HostJoinScene.&#10;&#10;HostJoinScene can be closed with no csc errors, name error is erased when back is pressed, and can't type in actioncard in game name slots." />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning up Main, GameServer, and HostJoinScene.&#10;&#10;HostJoinScene can be closed with no csc errors, name error is erased when back is pressed, and can't type in actioncard in game name slots." />
+    <MESSAGE value="Discard Pile no longer shows if it is empty" />
+    <option name="LAST_COMMIT_MESSAGE" value="Discard Pile no longer shows if it is empty" />
   </component>
 </project>
