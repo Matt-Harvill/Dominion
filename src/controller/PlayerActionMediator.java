@@ -103,7 +103,7 @@ public final class PlayerActionMediator {
             }
         }
 
-        addMessageToGameLog("You played a " + cardClicked.getName());
+//        addMessageToGameLog("You played a " + cardClicked.getName());
         ServerSender.playCard(cardClicked.getName());
 
         displayPlayerDiscard();
@@ -379,7 +379,7 @@ public final class PlayerActionMediator {
     }
 
     public static void addMessageToChatLog(String msg) {
-        if(controller.getChatDisplayStrings().size()>=9) controller.getChatDisplayStrings().remove(0);
+        if(controller.getChatDisplayStrings().size()>=15) controller.getChatDisplayStrings().remove(0);
         controller.getChatDisplayStrings().add(msg);
         controller.getChatType().setText(null);
         StringBuilder builder = new StringBuilder();
@@ -389,7 +389,7 @@ public final class PlayerActionMediator {
         controller.getChatLog().setText(builder.toString());
     }
     public static void addMessageToGameLog(String msg) {
-        if(controller.getGameDisplayStrings().size()>=9) controller.getGameDisplayStrings().remove(0);
+        if(controller.getGameDisplayStrings().size()>=15) controller.getGameDisplayStrings().remove(0);
         controller.getGameDisplayStrings().add(msg);
         controller.getGameLog().setText(null);
         StringBuilder builder = new StringBuilder();

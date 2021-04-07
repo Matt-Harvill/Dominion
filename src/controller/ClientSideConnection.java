@@ -126,6 +126,7 @@ public class ClientSideConnection implements Runnable {
                 if(player.equals(serverPlayer)) {
                     player.updateInfo(serverPlayer);
                     player.resetInPlay();
+                    serverPlayer = player;
                     playerNotFound = false;
                     break;
                 }
@@ -138,14 +139,15 @@ public class ClientSideConnection implements Runnable {
 
 //        printPlayers();
 
+        ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
             if(myTurn) {
                 PlayerActionMediator.actionPhase();
             }
             else {
-                PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " has started their turn");
-                PlayerActionMediator.displayInPlay(serverPlayer);
-                PlayerActionMediator.displayInPlayPlayerLabel(serverPlayer.getName());
+                PlayerActionMediator.addMessageToGameLog(finalServerPlayer.getName() + " has started their turn");
+                PlayerActionMediator.displayInPlay(finalServerPlayer);
+                PlayerActionMediator.displayInPlayPlayerLabel(finalServerPlayer.getName());
             }
         });
     }
@@ -196,6 +198,7 @@ public class ClientSideConnection implements Runnable {
                 player.updateInfo(serverPlayer);
                 player.addCardInPlay(CardFactory.getCard(cardName));
                 playerNotFound = false;
+                serverPlayer = player;
                 break;
             }
         }
@@ -206,10 +209,11 @@ public class ClientSideConnection implements Runnable {
 
 //        printPlayers();
 
+        ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
-            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " played a " + cardName);
-            PlayerActionMediator.displayInPlay(serverPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(),serverPlayer.getNumCardsInDeck());
+//            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " played a " + cardName);
+            PlayerActionMediator.displayInPlay(finalServerPlayer);
+            PlayerActionMediator.displayOpponentDeckDisplay(finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck());
         });
     }
     private void cardPurchased(ServerPlayer serverPlayer, String cardName) {
@@ -218,9 +222,7 @@ public class ClientSideConnection implements Runnable {
         for(ServerPlayer player: players) {
             if(player.equals(serverPlayer)) {
                 player.updateInfo(serverPlayer);
-//                if(card instanceof VictoryCard) {
-//                    player.incrementPoints(((VictoryCard) card).getVictoryPoints());
-//                }
+                serverPlayer = player;
                 playerNotFound = false;
                 break;
             }
@@ -232,10 +234,11 @@ public class ClientSideConnection implements Runnable {
 
 //        printPlayers();
 
+        ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
-            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " purchased a " + cardName);
-            PlayerActionMediator.displayPlayerLabel(serverPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(),serverPlayer.getNumCardsInDeck());
+            PlayerActionMediator.addMessageToGameLog(finalServerPlayer.getName() + " purchased a " + cardName);
+            PlayerActionMediator.displayPlayerLabel(finalServerPlayer);
+            PlayerActionMediator.displayOpponentDeckDisplay(finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck());
             PlayerActionMediator.cardPurchased(card);
         });
     }
@@ -247,12 +250,14 @@ public class ClientSideConnection implements Runnable {
         for(ServerPlayer player: players) {
             if(player.equals(serverPlayer)) {
                 player.updateInfo(serverPlayer);
+                serverPlayer = player;
             }
         }
 
 //        printPlayers();
 
-        Platform.runLater(() -> PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(), serverPlayer.getNumCardsInDeck()));
+        ServerPlayer finalServerPlayer = serverPlayer;
+        Platform.runLater(() -> PlayerActionMediator.displayOpponentDeckDisplay(finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck()));
     }
     private void nameChanged(String playerName) {
         player.setName(playerName);
