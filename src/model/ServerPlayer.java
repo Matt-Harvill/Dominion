@@ -15,11 +15,13 @@ public class ServerPlayer {
         resetInPlay();
     }
 
+    public void updateInfo(ServerPlayer serverPlayer) {
+        this.name = serverPlayer.getName();
+        this.points = serverPlayer.getPoints();
+        this.numCardsInDeck = serverPlayer.getNumCardsInDeck();
+    }
     public int getPoints() {
         return points;
-    }
-    public void setPoints(int points) {
-        this.points = points;
     }
     public String getName() {
         return name;
@@ -34,7 +36,16 @@ public class ServerPlayer {
     public int getNumCardsInDeck() {
         return numCardsInDeck;
     }
-    public void setNumCardsInDeck(int numCardsInDeck) {
-        this.numCardsInDeck = numCardsInDeck;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+        final ServerPlayer other = (ServerPlayer) obj;
+        return name.equals(other.getName());
     }
 }

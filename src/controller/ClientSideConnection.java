@@ -8,6 +8,7 @@ import model.card.CardStack;
 import model.card.VictoryCard;
 import model.factory.CardFactory;
 
+import javax.naming.NameNotFoundException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -57,82 +58,92 @@ public class ClientSideConnection implements Runnable {
             String playerName = scanner.next();
             int playerPoints = scanner.nextInt();
             int numCardsInDeck = scanner.nextInt();
+            ServerPlayer tempPlayer = new ServerPlayer(playerName,playerPoints,numCardsInDeck);
 
-            switch (instruction) {
-                case "inGame": inGame(playerName,playerPoints,numCardsInDeck); break;
-                case "chat": chat(playerName,scanner.nextLine()); break;
-                case "connected": connected(playerName,playerPoints,numCardsInDeck); break;
-                case "startTurn": startTurn(playerName); break;
-                case "cardsInGame": cardsInGame(scanner.nextLine()); break;
-                case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
-                case "serverShutDown": serverShutDown(); break;
-                case "leaveGame": leftGame(playerName); break;
-                case "playCard": cardPlayed(playerName,scanner.next(),numCardsInDeck); break;
-                case "buyCard": cardPurchased(playerName,scanner.next(),numCardsInDeck); break;
-                case "gameOver": gameOver(); break;
-                case "updateInfo": updateInfo(playerName,playerPoints,numCardsInDeck); break;
-                case "nameChanged": nameChanged(playerName); break;
-                default: break;
+            try {
+                switch (instruction) {
+                    case "inGame": inGame(tempPlayer); break;
+                    case "chat": chat(tempPlayer,scanner.nextLine()); break;
+                    case "connected": connected(tempPlayer); break;
+                    case "startTurn": startTurn(tempPlayer); break;
+                    case "cardsInGame": cardsInGame(scanner.nextLine()); break;
+                    case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
+                    case "serverShutDown": serverShutDown(); break;
+                    case "leaveGame": leftGame(tempPlayer); break;
+                    case "playCard": cardPlayed(tempPlayer,scanner.next()); break;
+                    case "buyCard": cardPurchased(tempPlayer,scanner.next()); break;
+                    case "gameOver": gameOver(); break;
+                    case "updateInfo": updateInfo(tempPlayer); break;
+                    case "nameChanged": nameChanged(playerName); break;
+                    default: break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
 
-    private void connected(String playerName, int playerPoints, int numCardsInDeck) {
-        ServerPlayer player = new ServerPlayer(playerName,playerPoints,numCardsInDeck);
-        players.add(player);
-        Platform.runLater(() -> {
-            PlayerActionMediator.displayPlayerLabel(player);
-            PlayerActionMediator.addMessageToGameLog(playerName + " has joined the game");
-        });
-    }
-    private void inGame(String playerName, int playerPoints, int numCardsInDeck) {
-        ServerPlayer newPlayer = new ServerPlayer(playerName,playerPoints,numCardsInDeck);
-        players.add(newPlayer);
+    private void connected(ServerPlayer serverPlayer) {
+        if(!players.contains(serverPlayer)) {
+            players.add(serverPlayer);
+        }
+
+//        printPlayers();
 
         Platform.runLater(() -> {
-            PlayerActionMediator.displayPlayerLabel(newPlayer);
-            PlayerActionMediator.addMessageToGameLog(playerName + " was already in the game");
+            PlayerActionMediator.displayPlayerLabel(serverPlayer);
+            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " has joined the game");
         });
     }
-    private void chat(String playerName, String chatMessage) {
-        Platform.runLater(() -> PlayerActionMediator.addMessageToChatLog(playerName + ":" + chatMessage));
+    private void inGame(ServerPlayer serverPlayer) {
+        if(!players.contains(serverPlayer)) {
+            players.add(serverPlayer);
+        }
+
+//        printPlayers();
+
+        Platform.runLater(() -> {
+            PlayerActionMediator.displayPlayerLabel(serverPlayer);
+            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " was already in the game");
+        });
     }
-    private void startTurn(String playerName) {
-        boolean myTurn = (player.getName().equals(playerName));
-        ServerPlayer otherPlayer = null;
+    private void chat(ServerPlayer serverPlayer, String chatMessage) {
+        if(!players.contains(serverPlayer)) {
+            players.add(serverPlayer);
+        }
+
+//        printPlayers();
+
+        Platform.runLater(() -> PlayerActionMediator.addMessageToChatLog(serverPlayer.getName() + ":" + chatMessage));
+    }
+    private void startTurn(ServerPlayer serverPlayer) {
+        boolean myTurn = (player.getName().equals(serverPlayer.getName()));
         if(!myTurn) {
-
-//            System.out.println("playerName: " + playerName);
-
-            for(ServerPlayer serverPlayer: players) {
-
-//                System.out.println("serverPlayer.getName(): " + serverPlayer.getName());
-
-                if(serverPlayer.getName().equals(playerName)) {
-                    otherPlayer = serverPlayer;
-                    System.out.println("serverPlayer name: " + serverPlayer.getName());
+            boolean playerNotFound = true;
+            for(ServerPlayer player: players) {
+                if(player.equals(serverPlayer)) {
+                    player.updateInfo(serverPlayer);
+                    player.resetInPlay();
+                    playerNotFound = false;
                     break;
                 }
             }
-            if(otherPlayer==null) {
-                System.out.println("Error @CSC_startTurn");
-            }
-            else {
-                otherPlayer.resetInPlay();
+
+            if(playerNotFound) {
+                players.add(serverPlayer);
             }
         }
 
+//        printPlayers();
 
-
-        ServerPlayer finalOtherPlayer = otherPlayer;
         Platform.runLater(() -> {
             if(myTurn) {
                 PlayerActionMediator.actionPhase();
             }
             else {
-                PlayerActionMediator.addMessageToGameLog(playerName + " has started their turn");
-                PlayerActionMediator.displayInPlay(finalOtherPlayer);
-                PlayerActionMediator.displayInPlayPlayerLabel(playerName);
+                PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " has started their turn");
+                PlayerActionMediator.displayInPlay(serverPlayer);
+                PlayerActionMediator.displayInPlayPlayerLabel(serverPlayer.getName());
             }
         });
     }
@@ -146,7 +157,6 @@ public class ClientSideConnection implements Runnable {
             Main.getGameController().setCardsInGame(cardNames);
             Main.getGameController().displayCardsInGame();
         });
-
     }
     private void cardsInGameNums(String cardsString) {
         Scanner scanner = new Scanner(cardsString);
@@ -170,56 +180,60 @@ public class ClientSideConnection implements Runnable {
             System.out.println("IOException @CSC_serverShutDown");
         }
     }
-    private void leftGame(String playerName) {
-        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(playerName + " left the game"));
+    private void leftGame(ServerPlayer serverPlayer) {
+        players.removeIf(player -> player.equals(serverPlayer));
+
+//        printPlayers();
+
+        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " left the game"));
     }
-    private void cardPlayed(String playerName,String cardName,int numCardsInDeck) {
-        ServerPlayer otherPlayer = null;
-        for(ServerPlayer serverPlayer: players) {
-            if(serverPlayer.getName().equals(playerName)) {
-                otherPlayer = serverPlayer;
-                serverPlayer.setNumCardsInDeck(numCardsInDeck);
+    private void cardPlayed(ServerPlayer serverPlayer,String cardName) {
+        boolean playerNotFound = true;
+        for(ServerPlayer player: players) {
+            if(player.equals(serverPlayer)) {
+                player.updateInfo(serverPlayer);
+                player.addCardInPlay(CardFactory.getCard(cardName));
+                playerNotFound = false;
                 break;
             }
         }
-        if(otherPlayer==null) {
-            System.out.println("Error @CSC_cardPlayed");
-        }
-        else {
-            otherPlayer.addCardInPlay(CardFactory.getCard(cardName));
+
+        if(playerNotFound) {
+            players.add(serverPlayer);
         }
 
-        ServerPlayer finalOtherPlayer = otherPlayer;
+//        printPlayers();
 
         Platform.runLater(() -> {
-            PlayerActionMediator.addMessageToGameLog(playerName + " played a " + cardName);
-            PlayerActionMediator.displayInPlay(finalOtherPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
+            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " played a " + cardName);
+            PlayerActionMediator.displayInPlay(serverPlayer);
+            PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(),serverPlayer.getNumCardsInDeck());
         });
     }
-    private void cardPurchased(String playerName, String cardName, int numCardsInDeck) {
+    private void cardPurchased(ServerPlayer serverPlayer, String cardName) {
         Card card = CardFactory.getCard(cardName);
-        ServerPlayer otherPlayer = null;
-        for(ServerPlayer serverPlayer: players) {
-            if(serverPlayer.getName().equals(playerName)) {
-                otherPlayer = serverPlayer;
-                serverPlayer.setNumCardsInDeck(numCardsInDeck);
+        boolean playerNotFound = true;
+        for(ServerPlayer player: players) {
+            if(player.equals(serverPlayer)) {
+                player.updateInfo(serverPlayer);
+//                if(card instanceof VictoryCard) {
+//                    player.incrementPoints(((VictoryCard) card).getVictoryPoints());
+//                }
+                playerNotFound = false;
                 break;
             }
         }
-        if(otherPlayer==null) {
-            System.out.println("Error @CSC_cardPurchased");
-        }
-        else if(card instanceof VictoryCard) {
-            otherPlayer.setPoints(otherPlayer.getPoints()+((VictoryCard) card).getVictoryPoints());
+
+        if(playerNotFound) {
+            players.add(serverPlayer);
         }
 
-        ServerPlayer finalOtherPlayer = otherPlayer;
+//        printPlayers();
+
         Platform.runLater(() -> {
-            PlayerActionMediator.addMessageToGameLog(playerName + " purchased a " + cardName);
-            PlayerActionMediator.displayPlayerLabel(finalOtherPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
-            System.out.println("displayOpponentDeckDisplay is reached @CSC_cardPurchased ---> " + "numCardsInDeck: " + numCardsInDeck);
+            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " purchased a " + cardName);
+            PlayerActionMediator.displayPlayerLabel(serverPlayer);
+            PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(),serverPlayer.getNumCardsInDeck());
             PlayerActionMediator.cardPurchased(card);
         });
     }
@@ -227,16 +241,17 @@ public class ClientSideConnection implements Runnable {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
         Platform.runLater(PlayerActionMediator::gameOverDisplay);
     }
-    private void updateInfo(String playerName,int playerPoints,int numCardsInDeck) {
-        for(ServerPlayer serverPlayer: players) {
-            if(serverPlayer.getName().equals(playerName)) {
-                serverPlayer.setNumCardsInDeck(numCardsInDeck);
-                serverPlayer.setPoints(playerPoints);
-                break;
+    private void updateInfo(ServerPlayer serverPlayer) {
+        for(ServerPlayer player: players) {
+            if(player.equals(serverPlayer)) {
+                player.updateInfo(serverPlayer);
             }
         }
+
+//        printPlayers();
+
         Platform.runLater(() -> {
-            PlayerActionMediator.displayOpponentDeckDisplay(playerName,numCardsInDeck);
+            PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(), serverPlayer.getNumCardsInDeck());
         });
     }
     private void nameChanged(String playerName) {
@@ -265,6 +280,13 @@ public class ClientSideConnection implements Runnable {
             socket.close();
         } catch (Exception ex) {
             System.out.println("Exception @CSC_leaveGame");
+        }
+    }
+
+    private void printPlayers() {
+        System.out.println("ServerPlayers: ");
+        for(ServerPlayer player: players) {
+            System.out.println("name: " + player.getName() + " points: " + player.getPoints() + " numCardsInDeck: " + player.getNumCardsInDeck());
         }
     }
 }

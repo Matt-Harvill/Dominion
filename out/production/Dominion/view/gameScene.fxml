@@ -832,52 +832,52 @@
                         <Insets left="400.0" top="102.0" />
                      </StackPane.margin>
                   </Text>
-                  <Rectangle fx:id="actionCardBuyButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="80.0" top="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="180.0" top="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="280.0" top="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="380.0" top="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton5" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton5" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="480.0" top="80.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton6" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton6" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="80.0" top="180.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton7" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton7" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="180.0" top="180.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton8" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton8" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="280.0" top="180.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton9" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton9" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="380.0" top="180.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Rectangle fx:id="actionCardBuyButton10" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                  <Rectangle fx:id="actionCardBuyButton10" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#buyButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
                      <StackPane.margin>
                         <Insets left="480.0" top="180.0" />
                      </StackPane.margin>

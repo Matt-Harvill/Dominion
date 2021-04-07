@@ -144,12 +144,13 @@ public class ServerSideConnection implements Runnable {
     }
 
     private int nameAlreadyTaken(String name) {
-        int nameLength = name.length();
         int numTimesTaken = 0;
 
         for(ServerSideConnection ssc: Main.getServer().getServerSideConnections()) {
             if(ssc.equals(this)) continue;
-            if(name.equals(ssc.getName().substring(0,nameLength))) numTimesTaken++;
+            if((ssc.getName().contains(name) && ssc.getName().contains("(")) || ssc.getName().equals(name)) {
+                numTimesTaken++;
+            }
         }
         return numTimesTaken;
     }
