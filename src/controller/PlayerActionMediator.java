@@ -367,12 +367,12 @@ public final class PlayerActionMediator {
         int maxPoints = player.getPoints();
         winners.add(player.getName());
 
-        for(ServerPlayer player: players) {
-            if(player.getPoints() > maxPoints) {
+        for(ServerPlayer serverPlayer: players) {
+            if(serverPlayer.getPoints() > maxPoints) {
                 winners = new ArrayList<>();
-                winners.add(player.getName());
-            } else if (player.getPoints()==maxPoints) {
-                winners.add(player.getName());
+                winners.add(serverPlayer.getName());
+            } else if (serverPlayer.getPoints()==maxPoints) {
+                winners.add(serverPlayer.getName());
             }
         }
         return winners;

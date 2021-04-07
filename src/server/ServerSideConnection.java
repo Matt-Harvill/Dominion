@@ -48,12 +48,12 @@ public class ServerSideConnection implements Runnable {
                 Scanner scanner = new Scanner(receivedMessage);
                 String command = scanner.next();
 
+                name = scanner.next();
+                points = scanner.nextInt();
+                numCardsInDeck = scanner.nextInt();
+
                 switch (command) {
                     case "join" -> {
-                        name = scanner.next();
-                        points = scanner.nextInt();
-                        numCardsInDeck = scanner.nextInt();
-
                         int numTimesNameTaken = nameAlreadyTaken(name);
                         if(numTimesNameTaken > 0) {
                             name = name + "(" + numTimesNameTaken + ")";
@@ -101,9 +101,6 @@ public class ServerSideConnection implements Runnable {
                         shutDown();
                     }
                     case "buyCard" -> {
-                        //Get the name, points, numCardsInDeck sorted out first
-                        scanner.next(); scanner.nextInt(); scanner.nextInt();
-
                         String cardName = scanner.next();
                         for (CardStack cardStack : cardStacks) {
                             if (cardStack.getCard().getName().equals(cardName)) {
