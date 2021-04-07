@@ -12,6 +12,7 @@ import model.card.TreasureCard;
 import model.card.VictoryCard;
 import view.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class PlayerActionMediator {
@@ -191,7 +192,23 @@ public final class PlayerActionMediator {
     public static void gameOverDisplay() {
         controller.getPlayerHandStackPane().setVisible(false);
         controller.getInPlayStackPane().setVisible(false);
-        controller.getGameInfoText().setText("Game Over");
+
+        String gameOverText = "Game Over -> ";
+        List<String> winners = calcWinners(Main.getClientSideConnection().getPlayers());
+        if(winners.size()==1) {
+            if(winners.get(0).equals(player.getName())) {
+                gameOverText += "You won";
+            } else {
+                gameOverText += winners.get(0) + " won";
+            }
+        } else {
+            for(int i=0; i<winners.size()-1; i++) {
+                gameOverText += winners.get(i) + " and ";
+            }
+            gameOverText += winners.get(winners.size()-1) + " tied";
+        }
+        controller.getGameInfoText().setText(gameOverText);
+
         controller.getActionButton().setVisible(false);
         controller.getActionBar().setVisible(true);
         controller.getInPlayPlayerLabel().setVisible(false);
@@ -343,6 +360,22 @@ public final class PlayerActionMediator {
             return false;
         }
         return true;
+    }
+    private static List<String> calcWinners(List<ServerPlayer> players) {
+        List<String> winners = new ArrayList<>();
+
+        int maxPoints = player.getPoints();
+        winners.add(player.getName());
+
+        for(ServerPlayer player: players) {
+            if(player.getPoints() > maxPoints) {
+                winners = new ArrayList<>();
+                winners.add(player.getName());
+            } else if (player.getPoints()==maxPoints) {
+                winners.add(player.getName());
+            }
+        }
+        return winners;
     }
 
     public static void addMessageToChatLog(String msg) {

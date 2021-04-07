@@ -92,10 +92,12 @@ public class GameController {
     private BuyableCardDisplay[] VCISDisplays;
 
     //---------------Extra Cards In Supply---------------//
-//    @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
-//    @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
-//    @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
-//    @FXML private Rectangle extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4;
+    @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
+    @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
+    @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
+    @FXML private Rectangle extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4;
+    private BuyableCardDisplay ECISDisplay1,ECISDisplay2,ECISDisplay3,ECISDisplay4;
+    private BuyableCardDisplay[] ECISDisplays;
 
     //-----------------All Cards In Supply-----------------//
     private List<BuyableCardDisplay> allCISDisplays;
@@ -201,18 +203,26 @@ public class GameController {
         VCISDisplay3 = new BuyableCardDisplay(victoryCardInSupply3,new NumberDisplay(victoryCardNumBack3,victoryCardNum3),victoryCardBuyButton3);
         VCISDisplay4 = new BuyableCardDisplay(victoryCardInSupply4,new NumberDisplay(victoryCardNumBack4,victoryCardNum4),victoryCardBuyButton4);
 
+        ECISDisplay1 = new BuyableCardDisplay(extraCardInSupply1,new NumberDisplay(extraCardNumBack1,extraCardNum1),extraCardBuyButton1);
+        ECISDisplay2 = new BuyableCardDisplay(extraCardInSupply2,new NumberDisplay(extraCardNumBack2,extraCardNum2),extraCardBuyButton2);
+        ECISDisplay3 = new BuyableCardDisplay(extraCardInSupply3,new NumberDisplay(extraCardNumBack3,extraCardNum3),extraCardBuyButton3);
+        ECISDisplay4 = new BuyableCardDisplay(extraCardInSupply4,new NumberDisplay(extraCardNumBack4,extraCardNum4),extraCardBuyButton4);
+
         ACISDisplays = new BuyableCardDisplay[]{ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10};
         TCISDisplays = new BuyableCardDisplay[]{TCISDisplay1,TCISDisplay2,TCISDisplay3,TCISDisplay4};
         VCISDisplays = new BuyableCardDisplay[]{VCISDisplay1,VCISDisplay2,VCISDisplay3,VCISDisplay4};
+        ECISDisplays = new BuyableCardDisplay[]{ECISDisplay1,ECISDisplay2,ECISDisplay3,ECISDisplay4};
 
         initializeCardsInSupply(ACISDisplays);
         initializeCardsInSupply(TCISDisplays);
         initializeCardsInSupply(VCISDisplays);
+        initializeCardsInSupply(ECISDisplays);
 
         allCISDisplays = new ArrayList<>();
         Collections.addAll(allCISDisplays, ACISDisplays);
         Collections.addAll(allCISDisplays, TCISDisplays);
         Collections.addAll(allCISDisplays, VCISDisplays);
+        Collections.addAll(allCISDisplays, ECISDisplays);
 
         //--------------Initialize player Decks and Discard-----------------//
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));

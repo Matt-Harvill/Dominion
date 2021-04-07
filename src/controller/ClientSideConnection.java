@@ -60,27 +60,29 @@ public class ClientSideConnection implements Runnable {
             int numCardsInDeck = scanner.nextInt();
             ServerPlayer tempPlayer = new ServerPlayer(playerName,playerPoints,numCardsInDeck);
 
-            try {
-                switch (instruction) {
-                    case "inGame": inGame(tempPlayer); break;
-                    case "chat": chat(tempPlayer,scanner.nextLine()); break;
-                    case "connected": connected(tempPlayer); break;
-                    case "startTurn": startTurn(tempPlayer); break;
-                    case "cardsInGame": cardsInGame(scanner.nextLine()); break;
-                    case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
-                    case "serverShutDown": serverShutDown(); break;
-                    case "leaveGame": leftGame(tempPlayer); break;
-                    case "playCard": cardPlayed(tempPlayer,scanner.next()); break;
-                    case "buyCard": cardPurchased(tempPlayer,scanner.next()); break;
-                    case "gameOver": gameOver(); break;
-                    case "updateInfo": updateInfo(tempPlayer); break;
-                    case "nameChanged": nameChanged(playerName); break;
-                    default: break;
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            switch (instruction) {
+                //----------Other Players-----------//
+                case "inGame": inGame(tempPlayer); break;
+                case "chat": chat(tempPlayer,scanner.nextLine()); break;
+                case "connected": connected(tempPlayer); break;
+                case "cardsInGame": cardsInGame(scanner.nextLine()); break;
+                case "cardsInGameNums": cardsInGameNums(scanner.nextLine()); break;
+                case "serverShutDown": serverShutDown(); break;
+                case "leaveGame": leftGame(tempPlayer); break;
+                case "playCard": cardPlayed(tempPlayer,scanner.next()); break;
+                case "buyCard": cardPurchased(tempPlayer,scanner.next()); break;
+                case "gameOver": gameOver(); break;
+                case "updateInfo": updateInfo(tempPlayer); break;
+                //-----------Self-----------//
+                case "startTurn": startTurn(tempPlayer); break;
+                case "nameChanged": nameChanged(playerName); break;
+                default: break;
             }
         }
+    }
+
+    public List<ServerPlayer> getPlayers() {
+        return players;
     }
 
     private void connected(ServerPlayer serverPlayer) {
@@ -250,9 +252,7 @@ public class ClientSideConnection implements Runnable {
 
 //        printPlayers();
 
-        Platform.runLater(() -> {
-            PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(), serverPlayer.getNumCardsInDeck());
-        });
+        Platform.runLater(() -> PlayerActionMediator.displayOpponentDeckDisplay(serverPlayer.getName(), serverPlayer.getNumCardsInDeck()));
     }
     private void nameChanged(String playerName) {
         player.setName(playerName);

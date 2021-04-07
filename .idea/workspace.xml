@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ServerPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ServerPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,15 +86,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -145,14 +140,8 @@
       <workItem from="1617558331008" duration="27710000" />
       <workItem from="1617590428506" duration="3366000" />
       <workItem from="1617637657054" duration="27088000" />
-      <workItem from="1617722183615" duration="27098000" />
-    </task>
-    <task id="LOCAL-00002" summary="commit with new server connect scene. minor updates">
-      <created>1616102280830</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1616102280830</updated>
+      <workItem from="1617722183615" duration="27341000" />
+      <workItem from="1617765015379" duration="1555000" />
     </task>
     <task id="LOCAL-00003" summary="commit with new server connect scene. minor updates">
       <created>1616102421679</created>
@@ -490,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617750842869</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Fixed ServerPlayers and fixed exceptions thrown when ServerPlayers didn't already exist because &quot;startTurn&quot; was sent before &quot;inGame&quot;">
+      <created>1617760276842</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1617760276843</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +506,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="minor update for entering name with enter key as well as next button" />
     <MESSAGE value="finally fixed serverShutDown process. Now I catch the exceptions from closing the sockets. I also alert to clientsideconnections before doing so so they can close too" />
     <MESSAGE value="Now start button and reaching max players both trigger startGame in server. Also, when a player leaves, it alerts everyone else and goes to the next player's turn if it was that player's turn." />
     <MESSAGE value="fixed naming with weird characters/spaces. Still need to fix it if two players joins with same name" />
@@ -535,6 +530,7 @@
     <MESSAGE value="Created New Objects for CardDisplays" />
     <MESSAGE value="CardDisplay Objects have been implemented somewhat to make code more readable;" />
     <MESSAGE value="Fixed ordering of treasure cards and victory cards in supply" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed ordering of treasure cards and victory cards in supply" />
+    <MESSAGE value="Fixed ServerPlayers and fixed exceptions thrown when ServerPlayers didn't already exist because &quot;startTurn&quot; was sent before &quot;inGame&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed ServerPlayers and fixed exceptions thrown when ServerPlayers didn't already exist because &quot;startTurn&quot; was sent before &quot;inGame&quot;" />
   </component>
 </project>
