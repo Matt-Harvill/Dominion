@@ -16,9 +16,9 @@
 
 <StackPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HostJoinController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: silver;">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css">
          <top>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dominion" BorderPane.alignment="CENTER">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneTitle" text="Dominion" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </BorderPane.margin>
@@ -44,7 +44,7 @@
             </VBox>
          </center>
       </BorderPane>
-      <BorderPane fx:id="setGameDetails" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: silver;">
+      <BorderPane fx:id="setGameDetails" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css">
          <center>
             <VBox alignment="CENTER" prefHeight="359.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
@@ -63,12 +63,12 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </ChoiceBox>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Players" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneRegular" text="Number of Players" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cards In The Game" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneRegular" text="Cards In The Game" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>
@@ -116,7 +116,7 @@
             </Pane>
          </bottom>
       </BorderPane>
-      <BorderPane fx:id="setName" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: silver;">
+      <BorderPane fx:id="setName" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css">
          <bottom>
             <Pane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -128,7 +128,7 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Your Name" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneRegular" text="Enter Your Name" />
                   <TextField fx:id="nameTextField" maxWidth="-Infinity" minWidth="-Infinity" onAction="#nextSetName" prefWidth="150.0">
                      <VBox.margin>
                         <Insets />
@@ -142,7 +142,7 @@
             </VBox>
          </center>
       </BorderPane>
-      <BorderPane fx:id="connectToServer" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: silver;">
+      <BorderPane fx:id="connectToServer" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css">
          <bottom>
             <Pane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -153,10 +153,10 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Connect To Server" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneRegular" text="Connect To Server" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Host IP" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneRegular" text="Host IP" />
                         <TextField fx:id="hostIPTextField" maxWidth="-Infinity" minWidth="-Infinity" onAction="#submitConnectRequest" prefWidth="150.0" />
                      </children>
                      <VBox.margin>
@@ -165,7 +165,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Port" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="hostJoinSceneRegular" text="Port" />
                         <TextField fx:id="portTextField" maxWidth="-Infinity" minWidth="-Infinity" onAction="#submitConnectRequest" prefWidth="150.0" />
                      </children>
                      <VBox.margin>

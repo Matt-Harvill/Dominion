@@ -2,22 +2,28 @@
     -fx-background-image: url("../resources/BackgroundLarger.jpg");
     -fx-background-size: auto;
 }
-
 .mainStackPaneBackground {
     -fx-background-image: url("../resources/Background.jpg");
     -fx-border-width: 2;
     -fx-border-color: white;
 }
-
-.numberLabel {
-    -fx-text-fill: white;
-    -fx-border-width: 1;
-    -fx-border-color: white;
-    -fx-background-color: red;
+.labelDisplay {
+    -fx-fill: black;
+    -fx-border-radius: 15;
+    -fx-stroke-width: 1;
+    -fx-stroke: white;
 }
-
-.actionBar {
-    -fx-background-color: black;
+.hostJoinSceneTitle {
+    -fx-font-size: 32;
+    -fx-font-style: italic;
+    -fx-fill: white;
+}
+.hostJoinSceneRegular {
+    -fx-fill: white;
+}
+.numBack {
+    -fx-fill: red;
+    -fx-border-radius: 15;
     -fx-stroke-width: 1;
     -fx-stroke: white;
 }
