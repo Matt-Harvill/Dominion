@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="fixed bug of updating inPlay display">
-      <change afterPath="$PROJECT_DIR$/src/view/DeckCardDisplay.java" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="deck disappears if empty now. chats no longer editable. cardselect no longer resizable.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,14 +143,7 @@
       <workItem from="1617833783017" duration="992000" />
       <workItem from="1617939363974" duration="12504000" />
       <workItem from="1617982604947" duration="233000" />
-      <workItem from="1617982958920" duration="6686000" />
-    </task>
-    <task id="LOCAL-00011" summary="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion.">
-      <created>1616357218278</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1616357218278</updated>
+      <workItem from="1617982958920" duration="7890000" />
     </task>
     <task id="LOCAL-00012" summary="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game">
       <created>1616445566085</created>
@@ -488,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617997267118</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="deck disappears if empty now. chats no longer editable. cardselect no longer resizable.">
+      <created>1617997986447</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1617997986447</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +508,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC" />
     <MESSAGE value="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream" />
     <MESSAGE value="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed" />
     <MESSAGE value="Now alerts players when someone plays a card or buys a card. Also displays current player's cards in play but doesn't have a nice title for it so I will add that. I also need to have the server keep track of the stacks and when the game is over." />
@@ -533,6 +532,7 @@
     <MESSAGE value="renamed PlayerActionMediator to ActionHandler. Also finally separated out all display actions into DisplayUpdater" />
     <MESSAGE value="Reimplemented the PlayerInfoDisplay with new LabelDisplay and NumberDisplay objects. Having bug with updating of inPlay display of previous player coming after the new update for the current player on their turn" />
     <MESSAGE value="fixed bug of updating inPlay display" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug of updating inPlay display" />
+    <MESSAGE value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
+    <option name="LAST_COMMIT_MESSAGE" value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
   </component>
 </project>

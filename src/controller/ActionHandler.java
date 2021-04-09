@@ -41,10 +41,10 @@ public final class ActionHandler {
         player.endTurn();
 
         DisplayUpdater.showBuyableCards(false);
-        DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-
+//        DisplayUpdater.updateHandDisplay();
+//        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         startPhase();
+
         ServerSender.endTurn();
     }
 
