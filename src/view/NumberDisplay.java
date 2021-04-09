@@ -27,4 +27,9 @@ public class NumberDisplay {
     public boolean contains(Object obj) {
         return obj.equals(num) || obj.equals(numBack);
     }
+
+    public void setViewOrder(double order) {
+        numBack.setViewOrder(order);
+        num.setViewOrder(order-0.1);
+    }
 }

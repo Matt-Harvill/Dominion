@@ -26,7 +26,7 @@ public final class PlayerActionMediator {
         player.newTurn();
 
         displayPlayerDiscard();
-        displayHandOrInPlay(controller.getPlayerHandDisplay());
+        displayCards(controller.getCIHDisplays());
         displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
     }
     public static void actionPhase() {
@@ -39,8 +39,8 @@ public final class PlayerActionMediator {
 
         player.setPhase("actionPhase");
         displayPlayerDiscard();
-        displayHandOrInPlay(controller.getPlayerHandDisplay());
-        displayHandOrInPlay(controller.getInPlayDisplay());
+        displayCards(controller.getCIPDisplays());
+        displayCards(controller.getCIHDisplays());
         displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         controller.getActionButton().setText("Enter Buy Phase");
         checkCanDoAction();
@@ -60,8 +60,8 @@ public final class PlayerActionMediator {
 
         showBuyableCards(true);
         displayPlayerDiscard();
-        displayHandOrInPlay(controller.getPlayerHandDisplay());
-        displayHandOrInPlay(controller.getInPlayDisplay());
+        displayCards(controller.getCIPDisplays());
+        displayCards(controller.getCIHDisplays());
         displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         controller.getActionButton().setText("End Turn");
     }
@@ -70,8 +70,8 @@ public final class PlayerActionMediator {
         showBuyableCards(false);
         player.endTurn();
         displayPlayerDiscard();
-        displayHandOrInPlay(controller.getPlayerHandDisplay());
-        displayHandOrInPlay(controller.getInPlayDisplay());
+        displayCards(controller.getCIPDisplays());
+        displayCards(controller.getCIHDisplays());
         displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         controller.getActionButton().setText("Start Turn");
 
@@ -88,7 +88,8 @@ public final class PlayerActionMediator {
         ServerSender.buyCard(cardClicked.getName());
 
         displayPlayerDiscard();
-        displayHandOrInPlay(controller.getPlayerHandDisplay());
+//        displayCards(controller.getCIPDisplays());
+        displayCards(controller.getCIHDisplays());
         displayPlayerLabel(player.getName(), player.getPoints());
         displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         if(checkNumBuys()) {
@@ -107,8 +108,8 @@ public final class PlayerActionMediator {
         ServerSender.playCard(cardClicked.getName());
 
         displayPlayerDiscard();
-        displayHandOrInPlay(controller.getPlayerHandDisplay());
-        displayHandOrInPlay(controller.getInPlayDisplay());
+        displayCards(controller.getCIPDisplays());
+        displayCards(controller.getCIHDisplays());
         displayPlayerLabel(player.getName(), player.getPoints());
         displayPlayerDeckDisplay(controller.getPlayerDeckDisplay(), true);
         if(cardClicked instanceof ActionCard) {
@@ -155,25 +156,23 @@ public final class PlayerActionMediator {
         }
     }
     public static void displayInPlay(ServerPlayer otherPlayer) {
-        HandOrInPlayDisplay display = controller.getInPlayDisplay();
-        resetHandOrInPlayDisplay(display);
+        CardDisplay[] display = controller.getCIHDisplays();
+        resetCardDisplays(display);
 
         int index = 0;
         int freqOfCardInARow = 1;
         CardCollection inPlay = otherPlayer.getInPlay();
         List<Card> cardList = inPlay.getCollection();
-        Card[] cardsInPlayInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
+
         for(int i=0; i<cardList.size();i++) {
             if (i != cardList.size() - 1 && cardList.get(i).equals(cardList.get(i + 1))) {
                 freqOfCardInARow++;
                 continue;
             }
-            displayCardInHandOrInPlay(display, cardList.get(i), index, freqOfCardInARow);
-            cardsInPlayInDisplayOrder[index] = cardList.get(i);
+            setCardDisplay(display[index], cardList.get(i),freqOfCardInARow);
             index++;
             freqOfCardInARow = 1;
         }
-        controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
     }
     public static void displayInPlayPlayerLabel(String otherPlayerName) {
         controller.getPlayerInPlayNameText().setText(otherPlayerName);
@@ -248,59 +247,48 @@ public final class PlayerActionMediator {
             }
         }
     }
-    private static void displayHandOrInPlay(HandOrInPlayDisplay display) {
-        resetHandOrInPlayDisplay(display);
+    private static void displayCards(CardDisplay[] cardDisplays) {
+        resetCardDisplays(cardDisplays);
 
-        if(display.getNameOfDisplay().equals("playerHandDisplay")) {
+        CardCollection hand = player.getHand();
+        List<ActionCard> actionCards = hand.getDistinctActionCards();
+        List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
+        List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
+
+        if(cardDisplays.equals(controller.getCIHDisplays())) {
             int index = 0;
-            CardCollection hand = player.getHand();
-            List<ActionCard> actionCards = hand.getDistinctActionCards();
-            List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
-            List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
-            Rectangle[] cardsInHand = controller.getPlayerHandDisplay().getCardsInHandOrInPlay();
-            Card[] cardsInHandInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
             for(ActionCard actionCard: actionCards) {
-                int numCard = hand.numCardInCollection(actionCard);
-                displayCardInHandOrInPlay(display,actionCard,index,numCard);
+                setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
                 if(player.getPhase().equals("actionPhase")) {
-                    cardsInHand[index].setStyle(controller.getGreenCardGlowStyle());
+                    cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
                 }
-                cardsInHandInDisplayOrder[index] = actionCard;
                 index++;
             }
             for(TreasureCard treasureCard: treasureCards) {
-                int numCard = hand.numCardInCollection(treasureCard);
-                displayCardInHandOrInPlay(display,treasureCard,index,numCard);
+                setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
                 if(player.getPhase().equals("buyPhase")) {
-                    cardsInHand[index].setStyle(controller.getGreenCardGlowStyle());
+                    cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
                 }
-                cardsInHandInDisplayOrder[index] = treasureCard;
                 index++;
             }
             for(VictoryCard victoryCard: victoryCards) {
-                int numCard = hand.numCardInCollection(victoryCard);
-                displayCardInHandOrInPlay(display,victoryCard,index,numCard);
-                cardsInHandInDisplayOrder[index] = victoryCard;
+                setCardDisplay(cardDisplays[index],victoryCard,hand.numCardInCollection(victoryCard));
                 index++;
             }
-            controller.getPlayerHandDisplay().setCardObjectsInHandOrInPlay(cardsInHandInDisplayOrder);
-        } else if(display.getNameOfDisplay().equals("inPlayDisplay")) {
+        } else if(cardDisplays.equals(controller.getCIPDisplays())) {
             int index = 0;
             int freqOfCardInARow = 1;
             CardCollection inPlay = player.getInPlay();
             List<Card> cardList = inPlay.getCollection();
-            Card[] cardsInPlayInDisplayOrder = new Card[maxNumCardsInHandOrPlayDisplay];
 
             for(int i=0; i<cardList.size();i++) {
                 if(i!=cardList.size()-1 && cardList.get(i).equals(cardList.get(i+1))) {
                     freqOfCardInARow++; continue;
                 }
-                displayCardInHandOrInPlay(display,cardList.get(i),index,freqOfCardInARow);
-                cardsInPlayInDisplayOrder[index] = cardList.get(i);
+                setCardDisplay(cardDisplays[index],cardList.get(i),freqOfCardInARow);
                 index++;
                 freqOfCardInARow=1;
             }
-            controller.getInPlayDisplay().setCardObjectsInHandOrInPlay(cardsInPlayInDisplayOrder);
         }
 
         Text gameInfoText = controller.getGameInfoText();
@@ -315,24 +303,16 @@ public final class PlayerActionMediator {
         gameInfoText.setText(gameInfoString);
 
     }
-    private static void displayCardInHandOrInPlay(HandOrInPlayDisplay display,Card card, int index, int numCard) {
-        if(numCard==1) {
-            display.getCardsInHandOrInPlay()[index].setFill(new ImagePattern(card.getCardImage()));
-            display.getCardsInHandOrInPlay()[index].setVisible(true);
-        } else if(numCard>1) {
-            display.getCardsInHandOrInPlay()[index].setFill(new ImagePattern(card.getCardImage()));
-            display.getCardInHandOrInPlayNums()[index].setText(String.valueOf(numCard));
-            display.getCardsInHandOrInPlay()[index].setVisible(true);
-            display.getCardInHandOrInPlayNumBacks()[index].setVisible(true);
-            display.getCardInHandOrInPlayNums()[index].setVisible(true);
-        }
+    private static void setCardDisplay(CardDisplay cardDisplay,Card card, int numCard) {
+        cardDisplay.setCard(card);
+        cardDisplay.setNum(numCard);
+        cardDisplay.show();
     }
-    private static void resetHandOrInPlayDisplay(HandOrInPlayDisplay display) {
-        for(int i=0; i<display.getCardsInHandOrInPlay().length; i++) {
-            display.getCardsInHandOrInPlay()[i].setVisible(false);
-            display.getCardsInHandOrInPlay()[i].setStyle(null);
-            display.getCardInHandOrInPlayNumBacks()[i].setVisible(false);
-            display.getCardInHandOrInPlayNums()[i].setVisible(false);
+    private static void resetCardDisplays(CardDisplay[] cardDisplays) {
+        for(CardDisplay cardDisplay: cardDisplays) {
+            cardDisplay.setCard(null);
+            cardDisplay.setStyle(null);
+            cardDisplay.hide();
         }
     }
     private static void displayPlayerDiscard() {

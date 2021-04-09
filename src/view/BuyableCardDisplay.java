@@ -24,6 +24,12 @@ public class BuyableCardDisplay extends CardDisplay {
     }
 
     @Override
+    public void show() {
+        cardRect.setVisible(true);
+        numberDisplay.setVisible(getNum()>=0);
+    }
+
+    @Override
     public void hide() {
         super.hide();
         hideBuyButton();

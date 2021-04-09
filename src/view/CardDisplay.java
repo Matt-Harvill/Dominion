@@ -18,7 +18,9 @@ public class CardDisplay {
 
     public void setCard(Card card) {
         this.card = card;
-        setImage();
+        if(card!=null) {
+            setImage();
+        }
     }
     public Card getCard() {
         return card;
@@ -31,7 +33,7 @@ public class CardDisplay {
     }
     public void show() {
         cardRect.setVisible(true);
-        numberDisplay.setVisible(getNum()>0);
+        numberDisplay.setVisible(getNum()>1);
     }
     public void hide() {
         cardRect.setVisible(false);
@@ -44,5 +46,14 @@ public class CardDisplay {
 
     protected void setImage() {
         cardRect.setFill(new ImagePattern(card.getCardImage()));
+    }
+
+    public void setStyle(String style) {
+        cardRect.setStyle(style);
+    }
+
+    public void setViewOrder(double order) {
+        cardRect.setViewOrder(order);
+        numberDisplay.setViewOrder(order-0.1);
     }
 }

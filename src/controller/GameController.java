@@ -52,16 +52,13 @@ public class GameController {
 
     //---------------Cards In Hand---------------//
     @FXML private Rectangle cardInHand1,cardInHand2,cardInHand3,cardInHand4,cardInHand5,cardInHand6,cardInHand7,cardInHand8,cardInHand9,cardInHand10,cardInHand11;
-    private Rectangle[] cardsInHand;
     @FXML private Rectangle cardInHandNumBack1,cardInHandNumBack2,cardInHandNumBack3,cardInHandNumBack4,cardInHandNumBack5,cardInHandNumBack6,
             cardInHandNumBack7,cardInHandNumBack8,cardInHandNumBack9,cardInHandNumBack10,cardInHandNumBack11;
-    private Rectangle[] cardsInHandNumBacks;
     @FXML private Text cardInHandNum1,cardInHandNum2,cardInHandNum3,cardInHandNum4,cardInHandNum5,cardInHandNum6,cardInHandNum7,
             cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11;
-    private Text[] cardsInHandNums;
-    private Card[] cardObjectsInHand;
-    private HandOrInPlayDisplay playerHandDisplay;
     @FXML StackPane playerHandStackPane;
+    private CardDisplay CIHDisplay1,CIHDisplay2,CIHDisplay3,CIHDisplay4,CIHDisplay5,CIHDisplay6,CIHDisplay7,CIHDisplay8,CIHDisplay9,CIHDisplay10,CIHDisplay11;
+    private CardDisplay[] CIHDisplays;
 
     //---------------ActionCards In Supply---------------//
     @FXML private Rectangle actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
@@ -105,15 +102,12 @@ public class GameController {
     //---------------Cards in Play---------------//
     @FXML private Rectangle cardInPlay1,cardInPlay2,cardInPlay3,cardInPlay4,cardInPlay5,cardInPlay6,
             cardInPlay7,cardInPlay8,cardInPlay9,cardInPlay10,cardInPlay11;
-    private Rectangle[] cardsInPlay;
     @FXML private Rectangle cardInPlayNumBack1,cardInPlayNumBack2,cardInPlayNumBack3,cardInPlayNumBack4,cardInPlayNumBack5,
             cardInPlayNumBack6,cardInPlayNumBack7,cardInPlayNumBack8,cardInPlayNumBack9,cardInPlayNumBack10,cardInPlayNumBack11;
-    private Rectangle[] cardsInPlayNumBacks;
     @FXML private Text cardInPlayNum1,cardInPlayNum2,cardInPlayNum3,cardInPlayNum4,cardInPlayNum5,cardInPlayNum6,
             cardInPlayNum7,cardInPlayNum8,cardInPlayNum9,cardInPlayNum10,cardInPlayNum11;
-    private Text[] cardsInPlayNums;
-    private Card[] cardObjectsInPlay;
-    private HandOrInPlayDisplay inPlayDisplay;
+    private CardDisplay CIPDisplay1,CIPDisplay2,CIPDisplay3,CIPDisplay4,CIPDisplay5,CIPDisplay6,CIPDisplay7,CIPDisplay8,CIPDisplay9,CIPDisplay10,CIPDisplay11;
+    private CardDisplay[] CIPDisplays;
 
     //---------------ActionBar and gameInfoText------------------//
     @FXML private Button actionButton;
@@ -153,35 +147,39 @@ public class GameController {
         serverInfoPane.setVisible(false);
 
         //--------------Initialize order of CardsInHand-----------------//
-        cardsInHand = new Rectangle[]{cardInHand1, cardInHand2, cardInHand3, cardInHand4, cardInHand5, cardInHand6, cardInHand7, cardInHand8, cardInHand9, cardInHand10, cardInHand11};
-        cardsInHandNumBacks = new Rectangle[]{cardInHandNumBack1,cardInHandNumBack2,cardInHandNumBack3,cardInHandNumBack4,cardInHandNumBack5,cardInHandNumBack6,
-                cardInHandNumBack7,cardInHandNumBack9,cardInHandNumBack8,cardInHandNumBack10,cardInHandNumBack11};
-        cardsInHandNums = new Text[]{cardInHandNum1,cardInHandNum2,cardInHandNum3,cardInHandNum4,cardInHandNum5,cardInHandNum6,cardInHandNum7,
-                cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11};
-        cardObjectsInHand = new Card[cardsInHand.length];
-        for(int i=0; i<cardsInHand.length; i++) {
-            cardsInHand[i].setViewOrder(cardsInHand.length-i);
-            cardsInHandNumBacks[i].setViewOrder(cardsInHand.length-i-0.1);
-            cardsInHandNums[i].setViewOrder(cardsInHand.length-i-0.2);
-        }
-        playerHandDisplay = new HandOrInPlayDisplay(cardsInHand, cardsInHandNumBacks, cardsInHandNums, cardObjectsInHand,"playerHandDisplay");
+        CIHDisplay1 = new CardDisplay(cardInHand1,new NumberDisplay(cardInHandNumBack1,cardInHandNum1));
+        CIHDisplay2 = new CardDisplay(cardInHand2,new NumberDisplay(cardInHandNumBack2,cardInHandNum2));
+        CIHDisplay3 = new CardDisplay(cardInHand3,new NumberDisplay(cardInHandNumBack3,cardInHandNum3));
+        CIHDisplay4 = new CardDisplay(cardInHand4,new NumberDisplay(cardInHandNumBack4,cardInHandNum4));
+        CIHDisplay5 = new CardDisplay(cardInHand5,new NumberDisplay(cardInHandNumBack5,cardInHandNum5));
+        CIHDisplay6 = new CardDisplay(cardInHand6,new NumberDisplay(cardInHandNumBack6,cardInHandNum6));
+        CIHDisplay7 = new CardDisplay(cardInHand7,new NumberDisplay(cardInHandNumBack7,cardInHandNum7));
+        CIHDisplay8 = new CardDisplay(cardInHand8,new NumberDisplay(cardInHandNumBack8,cardInHandNum8));
+        CIHDisplay9 = new CardDisplay(cardInHand9,new NumberDisplay(cardInHandNumBack9,cardInHandNum9));
+        CIHDisplay10 = new CardDisplay(cardInHand10,new NumberDisplay(cardInHandNumBack10,cardInHandNum10));
+        CIHDisplay11 = new CardDisplay(cardInHand11,new NumberDisplay(cardInHandNumBack11,cardInHandNum11));
+        CIHDisplays = new CardDisplay[]{CIHDisplay1,CIHDisplay2,CIHDisplay3,CIHDisplay4,CIHDisplay5,CIHDisplay6,CIHDisplay7,CIHDisplay8,CIHDisplay9,CIHDisplay10,CIHDisplay11};
+
+        setInitialViewOrder(CIHDisplays);
+
 
         //------------------Initialize Cards In Play--------------//
-        cardsInPlay = new Rectangle[]{cardInPlay1,cardInPlay2,cardInPlay3,cardInPlay4,cardInPlay5,cardInPlay6,
-                cardInPlay7,cardInPlay8,cardInPlay9,cardInPlay10,cardInPlay11};
-        cardsInPlayNumBacks = new Rectangle[]{cardInPlayNumBack1,cardInPlayNumBack2,cardInPlayNumBack3,cardInPlayNumBack4,cardInPlayNumBack5,
-                cardInPlayNumBack6,cardInPlayNumBack7,cardInPlayNumBack8,cardInPlayNumBack9,cardInPlayNumBack10,cardInPlayNumBack11};
-        cardsInPlayNums = new Text[]{cardInPlayNum1,cardInPlayNum2,cardInPlayNum3,cardInPlayNum4,cardInPlayNum5,cardInPlayNum6,
-                cardInPlayNum7,cardInPlayNum8,cardInPlayNum9,cardInPlayNum10,cardInPlayNum11};
-        cardObjectsInPlay = new Card[cardsInPlay.length];
-        for(int i=0; i<cardsInPlay.length; i++) {
-            cardsInPlay[i].setViewOrder(cardsInPlay.length-i);
-            cardsInPlayNumBacks[i].setViewOrder(cardsInPlay.length-i-0.1);
-            cardsInPlayNums[i].setViewOrder(cardsInPlay.length-i-0.2);
-        }
-        inPlayDisplay = new HandOrInPlayDisplay(cardsInPlay,cardsInPlayNumBacks,cardsInPlayNums,cardObjectsInPlay,"inPlayDisplay");
+        CIPDisplay1 = new CardDisplay(cardInPlay1,new NumberDisplay(cardInPlayNumBack1,cardInPlayNum1));
+        CIPDisplay2 = new CardDisplay(cardInPlay2,new NumberDisplay(cardInPlayNumBack2,cardInPlayNum2));
+        CIPDisplay3 = new CardDisplay(cardInPlay3,new NumberDisplay(cardInPlayNumBack3,cardInPlayNum3));
+        CIPDisplay4 = new CardDisplay(cardInPlay4,new NumberDisplay(cardInPlayNumBack4,cardInPlayNum4));
+        CIPDisplay5 = new CardDisplay(cardInPlay5,new NumberDisplay(cardInPlayNumBack5,cardInPlayNum5));
+        CIPDisplay6 = new CardDisplay(cardInPlay6,new NumberDisplay(cardInPlayNumBack6,cardInPlayNum6));
+        CIPDisplay7 = new CardDisplay(cardInPlay7,new NumberDisplay(cardInPlayNumBack7,cardInPlayNum7));
+        CIPDisplay8 = new CardDisplay(cardInPlay8,new NumberDisplay(cardInPlayNumBack8,cardInPlayNum8));
+        CIPDisplay9 = new CardDisplay(cardInPlay9,new NumberDisplay(cardInPlayNumBack9,cardInPlayNum9));
+        CIPDisplay10 = new CardDisplay(cardInPlay10,new NumberDisplay(cardInPlayNumBack10,cardInPlayNum10));
+        CIPDisplay11 = new CardDisplay(cardInPlay11,new NumberDisplay(cardInPlayNumBack11,cardInPlayNum11));
+        CIPDisplays = new CardDisplay[]{CIPDisplay1,CIPDisplay2,CIPDisplay3,CIPDisplay4,CIPDisplay5,CIPDisplay6,CIPDisplay7,CIPDisplay8,CIPDisplay9,CIPDisplay10,CIPDisplay11};
 
-        //--------------Initialize cards in supply---------------//
+        setInitialViewOrder(CIPDisplays);
+
+        //--------------Initialize Cards in Supply---------------//
         ACISDisplay1 = new BuyableCardDisplay(actionCardInSupply1,new NumberDisplay(actionCardNumBack1,actionCardNum1),actionCardBuyButton1);
         ACISDisplay2 = new BuyableCardDisplay(actionCardInSupply2,new NumberDisplay(actionCardNumBack2,actionCardNum2),actionCardBuyButton2);
         ACISDisplay3 = new BuyableCardDisplay(actionCardInSupply3,new NumberDisplay(actionCardNumBack3,actionCardNum3),actionCardBuyButton3);
@@ -267,8 +265,6 @@ public class GameController {
     public TextField getChatType() {
         return chatType;
     }
-    public HandOrInPlayDisplay getPlayerHandDisplay() {return playerHandDisplay;}
-    public HandOrInPlayDisplay getInPlayDisplay() {return inPlayDisplay;}
     public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
     public StackPane getActionBar() {return actionBar;}
@@ -284,6 +280,8 @@ public class GameController {
     public BuyableCardDisplay[] getACISDisplays() {return ACISDisplays;}
     public BuyableCardDisplay[] getTCISDisplays() {return TCISDisplays;}
     public BuyableCardDisplay[] getVCISDisplays() {return VCISDisplays;}
+    public CardDisplay[] getCIHDisplays() {return CIHDisplays;}
+    public CardDisplay[] getCIPDisplays() {return CIPDisplays;}
 
     //-------------------Internal Updates------------------------//
 
@@ -296,31 +294,26 @@ public class GameController {
 
     public void cardInHandClicked(MouseEvent mouseEvent) {
         Rectangle cardClicked = (Rectangle) mouseEvent.getSource();
-        for(int i=0; i<cardsInHand.length; i++) {
-            if(cardsInHand[i].equals(cardClicked)) {
-
-                //------------Temporary Fix---------------//
+        for(CardDisplay cardDisplay: CIHDisplays) {
+            if(cardDisplay.contains(cardClicked)) {
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    PlayerActionMediator.playCard(playerHandDisplay.getCardObjectsInHandOrInPlay()[i]);
+                    PlayerActionMediator.playCard(cardDisplay.getCard());
                 }
-                //----------------------------------------//
-//                System.out.println(cardsInHand[i].toString() + " was clicked");
             }
         }
-
     }
 
     public void mouseOverCardInHand(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent, cardsInHand, cardsInHandNumBacks, cardsInHandNums,true);
+        bringToFront(mouseEvent, CIHDisplays, true);
     }
     public void mouseExitedCardInHand(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent, cardsInHand, cardsInHandNumBacks, cardsInHandNums,false);
+        bringToFront(mouseEvent, CIHDisplays, false);
     }
     public void mouseOverCardInPlay(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums,true);
+        bringToFront(mouseEvent,CIPDisplays,true);
     }
     public void mouseExitedCardInPlay(MouseEvent mouseEvent) {
-        mouseOverCard(mouseEvent, cardsInPlay, cardsInPlayNumBacks, cardsInPlayNums,false);
+        bringToFront(mouseEvent,CIPDisplays,false);
     }
     public void mouseOverActionCardInSupply(MouseEvent mouseEvent) {
         Object objectClicked = mouseEvent.getSource();
@@ -339,24 +332,17 @@ public class GameController {
         }
     }
 
-    private void mouseOverCard(MouseEvent mouseEvent, Rectangle[] cards, Rectangle[] cardNumBacks, Text[] cardNums, boolean entered) {
+    private void bringToFront(MouseEvent mouseEvent, CardDisplay[] cardDisplays, boolean entered) {
         Object cardClicked = mouseEvent.getSource();
-        for(int i = 0; i< cards.length; i++) {
-            if(cards[i].equals(cardClicked) || cardNumBacks[i].equals(cardClicked) || cardNums[i].equals(cardClicked)) {
-                setViewingOrder(cards[i],cardNumBacks[i],cardNums[i],cards.length,i,entered);
+        for(int i = 0; i< cardDisplays.length;i++) {
+            if(cardDisplays[i].contains(cardClicked)) {
+                if(entered) {
+                    cardDisplays[i].setViewOrder(0.2);
+                } else {
+                    cardDisplays[i].setViewOrder(cardDisplays.length-i);
+                }
                 break;
             }
-        }
-    }
-    private void setViewingOrder(Rectangle card, Rectangle cardNumBack, Text cardNum, int cardsLength, int i, boolean entered) {
-        if(entered) {
-            card.setViewOrder(0.2);
-            cardNumBack.setViewOrder(0.1);
-            cardNum.setViewOrder(0);
-        } else {
-            card.setViewOrder(cardsLength-i);
-            cardNumBack.setViewOrder(cardsLength-i-0.1);
-            cardNum.setViewOrder(cardsLength-i-0.2);
         }
     }
     private void showZoomActionCard(Card card, boolean entered) {
@@ -466,6 +452,11 @@ public class GameController {
         for(BuyableCardDisplay cardDisplay: cardDisplays) {
             cardDisplay.setBuyButtonImage(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
             cardDisplay.hide();
+        }
+    }
+    private void setInitialViewOrder(CardDisplay[] cardDisplays) {
+        for(int i=0; i < cardDisplays.length; i++) {
+            cardDisplays[i].setViewOrder(cardDisplays.length-i);
         }
     }
 }
