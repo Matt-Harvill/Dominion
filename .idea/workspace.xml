@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="deck disappears if empty now. chats no longer editable. cardselect no longer resizable.">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/hostJoinScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/style1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,14 +145,7 @@
       <workItem from="1617833783017" duration="992000" />
       <workItem from="1617939363974" duration="12504000" />
       <workItem from="1617982604947" duration="233000" />
-      <workItem from="1617982958920" duration="7890000" />
-    </task>
-    <task id="LOCAL-00012" summary="can now buy cards and starting to implement card features. I am getting really close to having the game be a one player game">
-      <created>1616445566085</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1616445566085</updated>
+      <workItem from="1617982958920" duration="9112000" />
     </task>
     <task id="LOCAL-00013" summary="buys from the left card supply now work as well">
       <created>1616463017850</created>
@@ -488,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617997986447</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways">
+      <created>1617999121317</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1617999121317</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +510,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream" />
     <MESSAGE value="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed" />
     <MESSAGE value="Now alerts players when someone plays a card or buys a card. Also displays current player's cards in play but doesn't have a nice title for it so I will add that. I also need to have the server keep track of the stacks and when the game is over." />
     <MESSAGE value="Added a player title and streched playerLabelName slot for long names" />
@@ -533,6 +534,7 @@
     <MESSAGE value="Reimplemented the PlayerInfoDisplay with new LabelDisplay and NumberDisplay objects. Having bug with updating of inPlay display of previous player coming after the new update for the current player on their turn" />
     <MESSAGE value="fixed bug of updating inPlay display" />
     <MESSAGE value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
-    <option name="LAST_COMMIT_MESSAGE" value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
+    <MESSAGE value="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways" />
+    <option name="LAST_COMMIT_MESSAGE" value="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways" />
   </component>
 </project>

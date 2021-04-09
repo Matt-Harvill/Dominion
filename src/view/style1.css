@@ -9,16 +9,19 @@
     -fx-border-color: white;
 }
 
-.numberLabel {
-    -fx-text-fill: white;
-    -fx-border-width: 1;
-    -fx-border-color: white;
-    -fx-background-color: red;
-}
-
 .actionBar {
     -fx-background-color: black;
     -fx-stroke-width: 1;
     -fx-stroke: white;
+}
+
+.hostJoinSceneTitle {
+    -fx-font-size: 32;
+    -fx-font-style: italic;
+    -fx-fill: white;
+}
+
+.hostJoinSceneRegular {
+    -fx-fill: white;
 }
 
