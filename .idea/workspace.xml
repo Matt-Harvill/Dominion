@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/LabelDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/LabelDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/PlayerNamePointsDisplay.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="fixed bug of updating inPlay display">
+      <change afterPath="$PROJECT_DIR$/src/view/DeckCardDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LabelDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LabelDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerNamePointsDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerInfoDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,21 +143,7 @@
       <workItem from="1617833783017" duration="992000" />
       <workItem from="1617939363974" duration="12504000" />
       <workItem from="1617982604947" duration="233000" />
-      <workItem from="1617982958920" duration="5772000" />
-    </task>
-    <task id="LOCAL-00009" summary="numCards in hand works correctly now">
-      <created>1616342467306</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1616342467307</updated>
-    </task>
-    <task id="LOCAL-00010" summary="all the initial cards are loaded in now. can click on action cards in supply to decrement their counters.">
-      <created>1616351453175</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1616351453175</updated>
+      <workItem from="1617982958920" duration="6686000" />
     </task>
     <task id="LOCAL-00011" summary="I am starting to get into the actual functionality of buying cards and such. Haven't implemented the full effects but I have started and I can &quot;buy&quot; a card correctly for now. I need to work on the organization of my objects though because I'm headed on a path of confusion.">
       <created>1616357218278</created>
@@ -501,7 +474,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617981675116</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Reimplemented the PlayerInfoDisplay with new LabelDisplay and NumberDisplay objects. Having bug with updating of inPlay display of previous player coming after the new update for the current player on their turn">
+      <created>1617996784270</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1617996784270</updated>
+    </task>
+    <task id="LOCAL-00059" summary="fixed bug of updating inPlay display">
+      <created>1617997267118</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1617997267118</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,8 +508,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="screen resolution for my laptop" />
-    <MESSAGE value="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now" />
     <MESSAGE value="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC" />
     <MESSAGE value="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream" />
     <MESSAGE value="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed" />
@@ -546,6 +531,8 @@
     <MESSAGE value="It appears that I've fixed all of the confusing card display code. We will see" />
     <MESSAGE value="Updated my code with new display structuring and a DisplayUpdater utility class. Seems to work well" />
     <MESSAGE value="renamed PlayerActionMediator to ActionHandler. Also finally separated out all display actions into DisplayUpdater" />
-    <option name="LAST_COMMIT_MESSAGE" value="renamed PlayerActionMediator to ActionHandler. Also finally separated out all display actions into DisplayUpdater" />
+    <MESSAGE value="Reimplemented the PlayerInfoDisplay with new LabelDisplay and NumberDisplay objects. Having bug with updating of inPlay display of previous player coming after the new update for the current player on their turn" />
+    <MESSAGE value="fixed bug of updating inPlay display" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug of updating inPlay display" />
   </component>
 </project>

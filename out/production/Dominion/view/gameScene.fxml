@@ -1933,12 +1933,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </StackPane.margin>
             </Pane>
-            <TextArea fx:id="gameLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="262.0" prefWidth="285.0" wrapText="true" StackPane.alignment="TOP_RIGHT">
+            <TextArea fx:id="gameLog" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="262.0" prefWidth="285.0" wrapText="true" StackPane.alignment="TOP_RIGHT">
                <StackPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="130.0" />
                </StackPane.margin>
             </TextArea>
-            <TextArea fx:id="chatLog" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="254.0" prefWidth="285.0" wrapText="true" StackPane.alignment="BOTTOM_RIGHT">
+            <TextArea fx:id="chatLog" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="254.0" prefWidth="285.0" wrapText="true" StackPane.alignment="BOTTOM_RIGHT">
                <StackPane.margin>
                   <Insets bottom="45.0" left="5.0" right="5.0" top="5.0" />
                </StackPane.margin>

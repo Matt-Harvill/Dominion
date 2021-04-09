@@ -90,6 +90,7 @@ public class Main extends Application {
             try {
                 cardSelect = new Stage();
                 cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
+                cardSelect.setResizable(false);
                 cardSelect.show();
                 cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);
             } catch (IOException ex) {

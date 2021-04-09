@@ -214,9 +214,9 @@ public class GameController {
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
         opponentDeck.setFill(imagePattern);
-        playerDeckDisplay = new DeckDisplay(new CardDisplay(playerDeck,new NumberDisplay(playerDeckNumBack,playerDeckNum)),new LabelDisplay(playerDeckLabel,playerDeckLabelText));
-        opponentDeckDisplay = new DeckDisplay(new CardDisplay(opponentDeck,new NumberDisplay(opponentDeckNumBack,opponentDeckNum)),new LabelDisplay(opponentDeckLabel,opponentDeckLabelText));
-        playerDiscardDisplay = new DeckDisplay(new CardDisplay(playerDiscard,new NumberDisplay(playerDiscardNumBack,playerDiscardNum)),new LabelDisplay(discardPileLabel,discardPileLabelText));
+        playerDeckDisplay = new DeckDisplay(new DeckCardDisplay(playerDeck,new NumberDisplay(playerDeckNumBack,playerDeckNum)),new LabelDisplay(playerDeckLabel,playerDeckLabelText));
+        opponentDeckDisplay = new DeckDisplay(new DeckCardDisplay(opponentDeck,new NumberDisplay(opponentDeckNumBack,opponentDeckNum)),new LabelDisplay(opponentDeckLabel,opponentDeckLabelText));
+        playerDiscardDisplay = new DeckDisplay(new DeckCardDisplay(playerDiscard,new NumberDisplay(playerDiscardNumBack,playerDiscardNum)),new LabelDisplay(discardPileLabel,discardPileLabelText));
 
         playerDeckDisplay.hide();
         opponentDeckDisplay.hide();
