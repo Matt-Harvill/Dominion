@@ -1,7 +1,5 @@
 package view;
 
-import javafx.scene.text.Text;
-
 public class PlayerInfoDisplay {
 
     private LabelDisplay labelDisplay;

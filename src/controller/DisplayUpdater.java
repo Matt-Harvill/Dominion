@@ -133,20 +133,17 @@ public class DisplayUpdater {
         Text gameInfoText = controller.getGameInfoText();
         String gameInfoString = "";
         switch (player.getPhase()) {
-            case "actionPhase" -> {
+            case "actionPhase":
                 gameInfoString += "Number of Actions: " + player.getNumActions() + "   ";
                 updateActionButtonText("Enter Buy Phase");
-            }
-            case "buyPhase" -> {
+            case "buyPhase":
                 gameInfoString += "Number of Buys Remaining : " + player.getNumBuys() + "   ";
                 gameInfoString += "Purchase Power: " + player.getPurchasePower();
                 updateActionButtonText("End Turn");
-            }
-            case "endPhase" -> controller.getActionButton().setVisible(false);
-            case "startPhase" -> {
+            case "endPhase": controller.getActionButton().setVisible(false);
+            case "startPhase":
                 updateGameInfoText("Wait for you turn");
                 gameInfoString += "Here is your hand";
-            }
         }
         gameInfoText.setText(gameInfoString);
     }

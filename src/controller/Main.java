@@ -25,10 +25,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         mainStage = primaryStage;
         player = new Player();
-        FXMLLoader gameSceneLoader = new FXMLLoader(getClass().getResource("../view/gameScene.fxml"));
+        FXMLLoader gameSceneLoader = new FXMLLoader(getClass().getResource("/view/gameScene.fxml"));
         gameUIScene = gameSceneLoader.load();
         gameController = gameSceneLoader.getController();
-        FXMLLoader hostJoinSceneLoader = new FXMLLoader(getClass().getResource("../view/hostJoinScene.fxml"));
+        FXMLLoader hostJoinSceneLoader = new FXMLLoader(getClass().getResource("/view/hostJoinScene.fxml"));
         hostJoinScene = hostJoinSceneLoader.load();
         hostJoinController = hostJoinSceneLoader.getController();
 
@@ -89,7 +89,7 @@ public class Main extends Application {
         if(cardSelect==null) {
             try {
                 cardSelect = new Stage();
-                cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
+                cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("/view/selectCardsInGame.fxml"))));
                 cardSelect.setResizable(false);
                 cardSelect.show();
                 cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);

@@ -335,9 +335,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn" -> ActionHandler.startPhase();
-            case "Enter Buy Phase" -> ActionHandler.buyPhase();
-            case "End Turn" -> ActionHandler.endPhase();
+            case "Start Turn": ActionHandler.startPhase();
+            case "Enter Buy Phase": ActionHandler.buyPhase();
+            case "End Turn": ActionHandler.endPhase();
         }
 
     }

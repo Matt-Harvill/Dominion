@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Dominion:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="updating background of cardNums and labelDisplays in style1.css file">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="all background are now forest image">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Dominion_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/FakeMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/HostJoinController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/SelectCardsInGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/SelectCardsInGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/CardCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/ServerPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/ServerSideConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/BuyableCardDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/BuyableCardDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/CardDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/CardDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/DeckCardDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/DeckCardDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/DeckDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/DeckDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/LabelDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/LabelDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/NumberDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/NumberDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/PlayerInfoDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/PlayerInfoDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/selectCardsInGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/selectCardsInGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlayerInfoDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerInfoDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +81,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../UTD Spring 2021/Java Coding/QueueChallenge" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.jdks/javafx-sdk-15.0.1/bin/api-ms-win-crt-private-l1-1-0.dll" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -68,7 +103,7 @@
       <recent name="controller" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JAR Application.Dominion.jar">
     <configuration name="Main" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.Main" />
       <module name="Dominion" />
@@ -83,19 +118,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Dominion.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.Dominion.jar" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -143,14 +185,8 @@
       <workItem from="1617833783017" duration="992000" />
       <workItem from="1617939363974" duration="12504000" />
       <workItem from="1617982604947" duration="233000" />
-      <workItem from="1617982958920" duration="10098000" />
-    </task>
-    <task id="LOCAL-00015" summary="Doesn't work fully but I'm starting to implement playing treasure cards instead of auto using them so it's not far off from working well.">
-      <created>1616521687924</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1616521687924</updated>
+      <workItem from="1617982958920" duration="11030000" />
+      <workItem from="1618002094696" duration="3079000" />
     </task>
     <task id="LOCAL-00016" summary="almost done with playing cards. Just need to update the playing area now. I will commit this first in case I mess something up">
       <created>1616535234941</created>
@@ -488,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618000771167</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="all background are now forest image">
+      <created>1618001240691</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1618001240691</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added a player title and streched playerLabelName slot for long names" />
     <MESSAGE value="Cards among players are now synced." />
     <MESSAGE value="Fixed a bug where going to buy phase immeadiately wouldn't show cards that could now be bought" />
     <MESSAGE value="Game Over works as expected. Fixed bug where player turns are assigned after game is ended." />
@@ -533,6 +575,7 @@
     <MESSAGE value="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways" />
     <MESSAGE value="updating background of hostJoinScene and style of fonts." />
     <MESSAGE value="updating background of cardNums and labelDisplays in style1.css file" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating background of cardNums and labelDisplays in style1.css file" />
+    <MESSAGE value="all background are now forest image" />
+    <option name="LAST_COMMIT_MESSAGE" value="all background are now forest image" />
   </component>
 </project>

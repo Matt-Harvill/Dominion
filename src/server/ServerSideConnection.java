@@ -2,7 +2,6 @@ package server;
 
 import controller.Main;
 import model.CardCollection;
-import model.card.ActionCard;
 import model.card.Card;
 import model.card.CardStack;
 
@@ -10,26 +9,22 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.List;
 import java.util.Scanner;
 
 public class ServerSideConnection implements Runnable {
 
-    private Socket socket;
+    private final Socket socket;
     private DataOutputStream dataOut;
     private DataInputStream dataIn;
-    private SocketAddress clientIP;
     private String name;
     private int points, numCardsInDeck, initialCardStacksNum;
-    private String playerInfoString;
     private boolean myTurn;
     private List<CardStack> cardStacks;
 
     public ServerSideConnection(Socket s) {
         socket = s;
         myTurn = false;
-        clientIP = s.getRemoteSocketAddress();
         try {
             dataIn = new DataInputStream(socket.getInputStream());
             dataOut = new DataOutputStream(socket.getOutputStream());
@@ -53,7 +48,7 @@ public class ServerSideConnection implements Runnable {
                 numCardsInDeck = scanner.nextInt();
 
                 switch (command) {
-                    case "join" -> {
+                    case "join":
                         int numTimesNameTaken = nameAlreadyTaken(name);
                         if(numTimesNameTaken > 0) {
                             name = name + "(" + numTimesNameTaken + ")";
@@ -75,8 +70,8 @@ public class ServerSideConnection implements Runnable {
                         sendMessage+= parseCardsInGame(cardsInGame);
                         individualSend(sendMessage);
                         sendMessage = "connected " + getPlayerInfoString();
-                    }
-                    case "endTurn" -> {
+
+                    case "endTurn":
                         if(gameOver()) {
                             myTurn = false;
                             sendMessage = "gameOver " + getPlayerInfoString();
@@ -84,16 +79,16 @@ public class ServerSideConnection implements Runnable {
                         } else {
                             sendMessage = assignNewTurn();
                         }
-                    }
-                    case "leaveGame" -> {
+
+                    case "leaveGame":
                         if(myTurn) {
                             broadcast(sendMessage);
                             sendMessage = assignNewTurn();
                         }
                         Main.getServer().getServerSideConnections().remove(this);
                         shutDown();
-                    }
-                    case "buyCard" -> {
+
+                    case "buyCard":
                         String cardName = scanner.next();
                         for (CardStack cardStack : cardStacks) {
                             if (cardStack.getCard().getName().equals(cardName)) {
@@ -102,7 +97,6 @@ public class ServerSideConnection implements Runnable {
                                 break;
                             }
                         }
-                    }
                 }
                 broadcast(sendMessage);
 
@@ -163,8 +157,7 @@ public class ServerSideConnection implements Runnable {
         return dataOut;
     }
     public String getPlayerInfoString() {
-        playerInfoString = name + " " + points + " " + numCardsInDeck + " ";
-        return playerInfoString;
+        return name + " " + points + " " + numCardsInDeck + " ";
     }
     public String getName() {return name;}
     public int getPoints() {
