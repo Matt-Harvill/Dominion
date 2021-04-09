@@ -6,46 +6,25 @@ import javafx.scene.text.Text;
 
 public class DeckDisplay {
 
-    private StackPane deckStackPane, deckLabelStackPane;
-
-    private Rectangle deck, deckNumBack, deckLabel;
-    private Text deckNum, deckLabelText;
-
-    public DeckDisplay(StackPane deckStackPane, StackPane deckLabelStackPane, Rectangle deck, Rectangle deckNumBack,
-                       Rectangle deckLabel, Text deckNum, Text deckLabelText) {
-        this.deckStackPane = deckStackPane;
-        this.deckLabelStackPane = deckLabelStackPane;
-        this.deck = deck;
-        this.deckNumBack = deckNumBack;
-        this.deckLabel = deckLabel;
-        this.deckNum = deckNum;
-        this.deckLabelText = deckLabelText;
+    private CardDisplay cardDisplay;
+    private LabelDisplay labelDisplay;
+    public DeckDisplay(CardDisplay cardDisplay, LabelDisplay labelDisplay) {
+        this.cardDisplay = cardDisplay;
+        this.labelDisplay = labelDisplay;
     }
 
-    public StackPane getDeckStackPane() {
-        return deckStackPane;
+    public void show() {
+        cardDisplay.show();
+        labelDisplay.show();
     }
-    public StackPane getDeckLabelStackPane() {
-        return deckLabelStackPane;
+    public void hide() {
+        cardDisplay.hide();
+        labelDisplay.hide();
     }
-    public Rectangle getDeck() {
-        return deck;
+    public CardDisplay getCardDisplay() {
+        return cardDisplay;
     }
-    public Rectangle getDeckNumBack() {
-        return deckNumBack;
-    }
-    public Rectangle getDeckLabel() {
-        return deckLabel;
-    }
-    public Text getDeckNum() {
-        return deckNum;
-    }
-    public Text getDeckLabelText() {
-        return deckLabelText;
-    }
-
-    public void setVisible(boolean b) {
-        deckStackPane.setVisible(b);
-        deckLabelStackPane.setVisible(b);
+    public LabelDisplay getLabelDisplay() {
+        return labelDisplay;
     }
 }

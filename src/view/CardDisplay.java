@@ -40,18 +40,16 @@ public class CardDisplay {
         numberDisplay.setVisible(false);
     }
 
-    public boolean contains(Object obj) {
-        return obj.equals(cardRect) || numberDisplay.contains(obj);
-    }
-
     protected void setImage() {
         cardRect.setFill(new ImagePattern(card.getCardImage()));
     }
 
+    public boolean contains(Object obj) {
+        return obj.equals(cardRect) || numberDisplay.contains(obj);
+    }
     public void setStyle(String style) {
         cardRect.setStyle(style);
     }
-
     public void setViewOrder(double order) {
         cardRect.setViewOrder(order);
         numberDisplay.setViewOrder(order-0.1);

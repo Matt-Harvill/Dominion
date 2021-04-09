@@ -34,9 +34,9 @@ public class GameController {
     private String ipAddress; private int port;
 
     //--------------Player inPlay Label-----------------//
-//    @FXML private Rectangle playerInPlayNameBackground;
-    @FXML private Text playerInPlayNameText;
-    @FXML private StackPane inPlayPlayerLabel;
+    @FXML private Rectangle inPlayPlayerLabelBack;
+    @FXML private Text inPlayPlayerLabelText;
+    private LabelDisplay inPlayPlayerLabel;
 
     //-------------List of Cards in the Game------------//
     private CardCollection cardsInGame;
@@ -56,7 +56,6 @@ public class GameController {
             cardInHandNumBack7,cardInHandNumBack8,cardInHandNumBack9,cardInHandNumBack10,cardInHandNumBack11;
     @FXML private Text cardInHandNum1,cardInHandNum2,cardInHandNum3,cardInHandNum4,cardInHandNum5,cardInHandNum6,cardInHandNum7,
             cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11;
-    @FXML StackPane playerHandStackPane;
     private CardDisplay CIHDisplay1,CIHDisplay2,CIHDisplay3,CIHDisplay4,CIHDisplay5,CIHDisplay6,CIHDisplay7,CIHDisplay8,CIHDisplay9,CIHDisplay10,CIHDisplay11;
     private CardDisplay[] CIHDisplays;
 
@@ -112,15 +111,13 @@ public class GameController {
     //---------------ActionBar and gameInfoText------------------//
     @FXML private Button actionButton;
     @FXML private Text gameInfoText;
-    @FXML private StackPane actionBar, inPlayStackPane;
+    @FXML private StackPane actionBar;
 
     //---------------discardPile, playerDeck, opponentDeck Labels------------//
-    @FXML private StackPane discardPileLabelStackPane, opponentDeckLabelStackPane, playerDeckLabelStackPane;
     @FXML private Rectangle discardPileLabel, opponentDeckLabel, playerDeckLabel;
     @FXML private Text discardPileLabelText, opponentDeckLabelText, playerDeckLabelText;
 
     //---------------discardPile, playerDeck, opponentDeck-------------------//
-    @FXML private StackPane playerDiscardStackPane, playerDeckStackPane, opponentDeckStackPane;
     @FXML private Rectangle playerDiscard, playerDeck, opponentDeck, playerDiscardNumBack, playerDeckNumBack, opponentDeckNumBack;
     @FXML private Text playerDiscardNum, playerDeckNum, opponentDeckNum;
     private DeckDisplay playerDeckDisplay, opponentDeckDisplay, playerDiscardDisplay;
@@ -179,6 +176,8 @@ public class GameController {
 
         setInitialViewOrder(CIPDisplays);
 
+        inPlayPlayerLabel = new LabelDisplay(inPlayPlayerLabelBack,inPlayPlayerLabelText);
+
         //--------------Initialize Cards in Supply---------------//
         ACISDisplay1 = new BuyableCardDisplay(actionCardInSupply1,new NumberDisplay(actionCardNumBack1,actionCardNum1),actionCardBuyButton1);
         ACISDisplay2 = new BuyableCardDisplay(actionCardInSupply2,new NumberDisplay(actionCardNumBack2,actionCardNum2),actionCardBuyButton2);
@@ -226,13 +225,13 @@ public class GameController {
         ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
         playerDeck.setFill(imagePattern);
         opponentDeck.setFill(imagePattern);
-        discardPileLabelStackPane.setVisible(true);
-        playerDeckDisplay = new DeckDisplay(playerDeckStackPane,playerDeckLabelStackPane,playerDeck,playerDeckNumBack,playerDeckLabel,
-                playerDeckNum,playerDeckLabelText);
-        opponentDeckDisplay = new DeckDisplay(opponentDeckStackPane,opponentDeckLabelStackPane,opponentDeck,opponentDeckNumBack,opponentDeckLabel,
-                opponentDeckNum,opponentDeckLabelText);
-        playerDiscardDisplay = new DeckDisplay(playerDiscardStackPane,discardPileLabelStackPane,playerDiscard,playerDiscardNumBack,
-                discardPileLabel,playerDiscardNum,discardPileLabelText);
+        playerDeckDisplay = new DeckDisplay(new CardDisplay(playerDeck,new NumberDisplay(playerDeckNumBack,playerDeckNum)),new LabelDisplay(playerDeckLabel,playerDeckLabelText));
+        opponentDeckDisplay = new DeckDisplay(new CardDisplay(opponentDeck,new NumberDisplay(opponentDeckNumBack,opponentDeckNum)),new LabelDisplay(opponentDeckLabel,opponentDeckLabelText));
+        playerDiscardDisplay = new DeckDisplay(new CardDisplay(playerDiscard,new NumberDisplay(playerDiscardNumBack,playerDiscardNum)),new LabelDisplay(discardPileLabel,discardPileLabelText));
+
+        playerDeckDisplay.hide();
+        opponentDeckDisplay.hide();
+        playerDiscardDisplay.hide();
 
         //--------------Initialize Player labels----------------//
         playerLabels = new Rectangle[]{playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6};
@@ -245,8 +244,7 @@ public class GameController {
         }
         playerNamePointsDisplay = new PlayerNamePointsDisplay(playerLabels,playerLabelVictories,playerLabelNames,playerLabelVictoryNums);
 
-        //-----------------ActionBar-------------------//
-        actionBar.setVisible(false);
+        actionButton.setVisible(false);
 
     }
 
@@ -267,19 +265,12 @@ public class GameController {
     }
     public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
-    public StackPane getActionBar() {return actionBar;}
-    public Text getPlayerInPlayNameText() {return  playerInPlayNameText;}
-    public StackPane getInPlayPlayerLabel() {return inPlayPlayerLabel;}
-    public StackPane getPlayerHandStackPane() {return playerHandStackPane;}
-    public StackPane getInPlayStackPane() {return inPlayStackPane;}
+    public LabelDisplay getInPlayPlayerLabel() {return inPlayPlayerLabel;}
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
     public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}
     public DeckDisplay getPlayerDiscardDisplay() {return playerDiscardDisplay;}
 
     public List<BuyableCardDisplay> getAllCISDisplays() {return allCISDisplays;}
-    public BuyableCardDisplay[] getACISDisplays() {return ACISDisplays;}
-    public BuyableCardDisplay[] getTCISDisplays() {return TCISDisplays;}
-    public BuyableCardDisplay[] getVCISDisplays() {return VCISDisplays;}
     public CardDisplay[] getCIHDisplays() {return CIHDisplays;}
     public CardDisplay[] getCIPDisplays() {return CIPDisplays;}
 
@@ -288,7 +279,7 @@ public class GameController {
     public void chatSend(ActionEvent actionEvent) {
         if(chatType.getText()==null) return;
         String chatText = chatType.getText();
-        PlayerActionMediator.addMessageToChatLog(Main.getPlayer().getName() + ": " + chatText);
+        DisplayUpdater.addMsgToChatLog(Main.getPlayer().getName() + ": " + chatText);
         ServerSender.chatSend(chatText);
     }
 

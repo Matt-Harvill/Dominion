@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/LabelDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/CardDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/CardDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/CardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CardDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/HandOrInPlayDisplay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/NumberDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/NumberDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/DeckDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DeckDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +94,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -135,14 +154,7 @@
       <workItem from="1617765015379" duration="1808000" />
       <workItem from="1617766852607" duration="1916000" />
       <workItem from="1617833783017" duration="992000" />
-      <workItem from="1617939363974" duration="3002000" />
-    </task>
-    <task id="LOCAL-00006" summary="commit with new gameScene structure">
-      <created>1616265697487</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1616265697487</updated>
+      <workItem from="1617939363974" duration="11516000" />
     </task>
     <task id="LOCAL-00007" summary="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that.">
       <created>1616291522748</created>
@@ -480,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617768769336</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="It appears that I've fixed all of the confusing card display code. We will see">
+      <created>1617942555147</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1617942555147</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,8 +519,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="resized my frame so it fits 1366x768 frames. Now I'm changing the cards so that they are all small in display but hovering over the card blows it up in a display to the side" />
-    <MESSAGE value="added in small card property for cards with all small card versioned images" />
     <MESSAGE value="goes full screen on start" />
     <MESSAGE value="screen resolution for my laptop" />
     <MESSAGE value="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now" />
@@ -525,6 +542,8 @@
     <MESSAGE value="Set a message for who won @GameOver. Also created CardDisplays for extra cards in game even though they aren't used. Everything should be working much better and is way more organized." />
     <MESSAGE value="Fixed error with SSCs not updating player info" />
     <MESSAGE value="Fixed error with CSC serverPlayers not being updated correctly so the cards weren't being shown" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed error with CSC serverPlayers not being updated correctly so the cards weren't being shown" />
+    <MESSAGE value="It appears that I've fixed all of the confusing card display code. We will see" />
+    <MESSAGE value="Updated my code with new display structuring and a DisplayUpdater utility class. Seems to work well" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated my code with new display structuring and a DisplayUpdater utility class. Seems to work well" />
   </component>
 </project>

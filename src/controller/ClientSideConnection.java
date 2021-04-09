@@ -94,7 +94,7 @@ public class ClientSideConnection implements Runnable {
 
         Platform.runLater(() -> {
             PlayerActionMediator.displayPlayerLabel(serverPlayer);
-            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " has joined the game");
+            DisplayUpdater.addMsgToGameLog(serverPlayer.getName() + " has joined the game");
         });
     }
     private void inGame(ServerPlayer serverPlayer) {
@@ -106,7 +106,7 @@ public class ClientSideConnection implements Runnable {
 
         Platform.runLater(() -> {
             PlayerActionMediator.displayPlayerLabel(serverPlayer);
-            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " was already in the game");
+            DisplayUpdater.addMsgToGameLog(serverPlayer.getName() + " was already in the game");
         });
     }
     private void chat(ServerPlayer serverPlayer, String chatMessage) {
@@ -116,7 +116,7 @@ public class ClientSideConnection implements Runnable {
 
 //        printPlayers();
 
-        Platform.runLater(() -> PlayerActionMediator.addMessageToChatLog(serverPlayer.getName() + ":" + chatMessage));
+        Platform.runLater(() -> DisplayUpdater.addMsgToChatLog(serverPlayer.getName() + ":" + chatMessage));
     }
     private void startTurn(ServerPlayer serverPlayer) {
         boolean myTurn = (player.getName().equals(serverPlayer.getName()));
@@ -145,9 +145,8 @@ public class ClientSideConnection implements Runnable {
                 PlayerActionMediator.actionPhase();
             }
             else {
-                PlayerActionMediator.addMessageToGameLog(finalServerPlayer.getName() + " has started their turn");
-                PlayerActionMediator.displayInPlay(finalServerPlayer);
-                PlayerActionMediator.displayInPlayPlayerLabel(finalServerPlayer.getName());
+                DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " has started their turn");
+                DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false);
             }
         });
     }
@@ -189,7 +188,7 @@ public class ClientSideConnection implements Runnable {
 
 //        printPlayers();
 
-        Platform.runLater(() -> PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " left the game"));
+        Platform.runLater(() -> DisplayUpdater.addMsgToGameLog(serverPlayer.getName() + " left the game"));
     }
     private void cardPlayed(ServerPlayer serverPlayer,String cardName) {
         boolean playerNotFound = true;
@@ -210,11 +209,7 @@ public class ClientSideConnection implements Runnable {
 //        printPlayers();
 
         ServerPlayer finalServerPlayer = serverPlayer;
-        Platform.runLater(() -> {
-//            PlayerActionMediator.addMessageToGameLog(serverPlayer.getName() + " played a " + cardName);
-            PlayerActionMediator.displayInPlay(finalServerPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck());
-        });
+        Platform.runLater(() -> DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false));
     }
     private void cardPurchased(ServerPlayer serverPlayer, String cardName) {
         Card card = CardFactory.getCard(cardName);
@@ -236,15 +231,15 @@ public class ClientSideConnection implements Runnable {
 
         ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
-            PlayerActionMediator.addMessageToGameLog(finalServerPlayer.getName() + " purchased a " + cardName);
+            DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " purchased a " + cardName);
             PlayerActionMediator.displayPlayerLabel(finalServerPlayer);
-            PlayerActionMediator.displayOpponentDeckDisplay(finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck());
-            PlayerActionMediator.cardPurchased(card);
+            DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false);
+            DisplayUpdater.updateCardSupply(card);
         });
     }
     private void gameOver() {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
-        Platform.runLater(PlayerActionMediator::gameOverDisplay);
+        Platform.runLater(PlayerActionMediator::gameOver);
     }
     private void updateInfo(ServerPlayer serverPlayer) {
         for(ServerPlayer player: players) {
@@ -257,7 +252,7 @@ public class ClientSideConnection implements Runnable {
 //        printPlayers();
 
         ServerPlayer finalServerPlayer = serverPlayer;
-        Platform.runLater(() -> PlayerActionMediator.displayOpponentDeckDisplay(finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck()));
+        Platform.runLater(() -> DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false));
     }
     private void nameChanged(String playerName) {
         player.setName(playerName);
