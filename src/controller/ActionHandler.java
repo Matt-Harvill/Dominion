@@ -51,6 +51,8 @@ public final class ActionHandler {
     public static void buyCard(Card cardClicked) {
         player.buyCard(cardClicked);
 
+        ServerSender.buyCard(cardClicked.getName());
+
         DisplayUpdater.updateCardSupply(cardClicked);
         DisplayUpdater.addMsgToGameLog("You purchased a " + cardClicked.getName());
         DisplayUpdater.updateHandDisplay();
@@ -58,8 +60,6 @@ public final class ActionHandler {
         if(checkNumBuys()) {
             DisplayUpdater.showBuyableCards(true);
         }
-
-        ServerSender.buyCard(cardClicked.getName());
     }
     public static void playCard(Card cardClicked) {
         for(Card card: player.getHand().getCollection()) {
