@@ -1890,7 +1890,7 @@
                            </StackPane.margin>
                         </Text>
                         <Rectangle fx:id="opponentDeckLabel" arcHeight="15.0" arcWidth="15.0" height="25.0" stroke="WHITE" strokeType="INSIDE" styleClass="labelDisplay" width="100.0" StackPane.alignment="TOP_CENTER" />
-                        <Text fx:id="opponentDeckLabelText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Deck" textAlignment="CENTER" wrappingWidth="86.0" StackPane.alignment="TOP_LEFT">
+                        <Text fx:id="opponentDeckLabelText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cards" textAlignment="CENTER" wrappingWidth="86.0" StackPane.alignment="TOP_LEFT">
                            <StackPane.margin>
                               <Insets left="7.0" top="4.0" />
                            </StackPane.margin>

@@ -64,13 +64,6 @@ public class ServerSideConnection implements Runnable {
                         DominionServer server = Main.getServer();
                         List<ServerSideConnection> serverSideConnections = server.getServerSideConnections();
 
-                        //Test
-                        for(ServerSideConnection ssc: serverSideConnections) {
-                            System.out.print("ssc name: " + ssc.getName());
-                        }
-                        System.out.println("@" + name + "'s ssc join");
-                        //
-
                         for (ServerSideConnection ssc : serverSideConnections) {
                             if (ssc.equals(this)) continue;
                             sendMessage += ssc.getPlayerInfoString();

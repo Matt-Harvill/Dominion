@@ -33,7 +33,7 @@
    <right>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="515.0" BorderPane.alignment="CENTER">
          <content>
-            <Pane prefHeight="800.0" prefWidth="500.0" style="-fx-background-color: silver;">
+            <Pane prefHeight="800.0" prefWidth="500.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css">
                <children>
                   <Rectangle fx:id="card1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
                   <Rectangle fx:id="card2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" layoutX="100.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
