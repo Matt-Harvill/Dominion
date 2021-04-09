@@ -31,6 +31,7 @@ public class DisplayUpdater {
     }
 
     public static void updateInPlayDisplay(CardCollection inPlay, String playerName, int numCards, boolean myTurn) {
+        System.out.println("updateInPlayDisplay called on " + playerName);
         updateCardsInPlay(inPlay);
         updateOpponentDeck(numCards, myTurn);
         updateInPlayPlayerLabel(playerName,myTurn);
@@ -63,7 +64,7 @@ public class DisplayUpdater {
     }
     private static void updateInPlayPlayerLabel(String otherPlayerName, boolean myTurn) {
         LabelDisplay labelDisplay = controller.getInPlayPlayerLabel();
-        labelDisplay.setLabel(otherPlayerName);
+        labelDisplay.setText(otherPlayerName);
         if(myTurn) {
             labelDisplay.hide();
         } else {
@@ -83,19 +84,14 @@ public class DisplayUpdater {
         }
     }
     public static void updatePlayerLabel(String playerName, int points) {
-        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
+        PlayerInfoDisplay[] displays = controller.getPlayerInfoDisplays();
 
-        Text[] playerLabelNames = display.getPlayerLabelNames();
-        Text[] playerPoints = display.getPlayerLabelVictoryNums();
-
-        for(int i=0; i<playerLabelNames.length; i++) {
-            if(playerName.equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
-                playerLabelNames[i].setText(playerName);
-                playerPoints[i].setText(String.valueOf(points));
-                display.getPlayerLabels()[i].setVisible(true);
-                display.getPlayerLabelVictories()[i].setVisible(true);
-                playerLabelNames[i].setVisible(true);
-                playerPoints[i].setVisible(true);
+        for (PlayerInfoDisplay display : displays) {
+            System.out.println("playerLabel name: " + display.getName());
+            if (playerName.equals(display.getName()) || display.getName().equals("")) {
+                display.setName(playerName);
+                display.setNum(points);
+                display.show();
                 break;
             }
         }

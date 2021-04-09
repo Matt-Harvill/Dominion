@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/LabelDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/LabelDisplay.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/PlayerNamePointsDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/CardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CardDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/DeckDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DeckDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LabelDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LabelDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlayerNamePointsDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerInfoDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,15 +96,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -149,14 +154,9 @@
       <workItem from="1617765015379" duration="1808000" />
       <workItem from="1617766852607" duration="1916000" />
       <workItem from="1617833783017" duration="992000" />
-      <workItem from="1617939363974" duration="11905000" />
-    </task>
-    <task id="LOCAL-00008" summary="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such.">
-      <created>1616305042597</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1616305042597</updated>
+      <workItem from="1617939363974" duration="12504000" />
+      <workItem from="1617982604947" duration="233000" />
+      <workItem from="1617982958920" duration="5772000" />
     </task>
     <task id="LOCAL-00009" summary="numCards in hand works correctly now">
       <created>1616342467306</created>
@@ -494,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617980971968</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="renamed PlayerActionMediator to ActionHandler. Also finally separated out all display actions into DisplayUpdater">
+      <created>1617981675116</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1617981675116</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +521,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="goes full screen on start" />
     <MESSAGE value="screen resolution for my laptop" />
     <MESSAGE value="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now" />
     <MESSAGE value="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC" />
@@ -539,6 +545,7 @@
     <MESSAGE value="Fixed error with CSC serverPlayers not being updated correctly so the cards weren't being shown" />
     <MESSAGE value="It appears that I've fixed all of the confusing card display code. We will see" />
     <MESSAGE value="Updated my code with new display structuring and a DisplayUpdater utility class. Seems to work well" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated my code with new display structuring and a DisplayUpdater utility class. Seems to work well" />
+    <MESSAGE value="renamed PlayerActionMediator to ActionHandler. Also finally separated out all display actions into DisplayUpdater" />
+    <option name="LAST_COMMIT_MESSAGE" value="renamed PlayerActionMediator to ActionHandler. Also finally separated out all display actions into DisplayUpdater" />
   </component>
 </project>

@@ -22,7 +22,10 @@ public class LabelDisplay {
         labelText.setVisible(false);
     }
 
-    public void setLabel(String s) {
+    public void setText(String s) {
         labelText.setText(s);
+    }
+    public String getText() {
+        return labelText.getText();
     }
 }

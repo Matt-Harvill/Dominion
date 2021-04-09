@@ -24,8 +24,8 @@ public final class ActionHandler {
         ServerSender.updateInfo();
         player.setPhase("actionPhase");
 
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
 
         checkCanDoAction();
     }
@@ -38,9 +38,9 @@ public final class ActionHandler {
     }
     public static void endPhase() {
         player.setPhase("endPhase");
-        DisplayUpdater.showBuyableCards(false);
         player.endTurn();
 
+        DisplayUpdater.showBuyableCards(false);
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
 
@@ -50,17 +50,16 @@ public final class ActionHandler {
 
     public static void buyCard(Card cardClicked) {
         player.buyCard(cardClicked);
+
         DisplayUpdater.updateCardSupply(cardClicked);
-
         DisplayUpdater.addMsgToGameLog("You purchased a " + cardClicked.getName());
-        ServerSender.buyCard(cardClicked.getName());
-
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-
         if(checkNumBuys()) {
             DisplayUpdater.showBuyableCards(true);
         }
+
+        ServerSender.buyCard(cardClicked.getName());
     }
     public static void playCard(Card cardClicked) {
         for(Card card: player.getHand().getCollection()) {
@@ -75,7 +74,6 @@ public final class ActionHandler {
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-
         if(cardClicked instanceof ActionCard) {
             checkCanDoAction();
         } else if(cardClicked instanceof TreasureCard) {

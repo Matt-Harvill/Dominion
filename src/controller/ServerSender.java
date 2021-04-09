@@ -22,4 +22,5 @@ public final class ServerSender {
     public static void updateInfo() {
         clientSideConnection.send("updateInfo " + player.getInfoString());
     }
+
 }

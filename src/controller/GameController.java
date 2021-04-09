@@ -10,7 +10,6 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -26,24 +25,19 @@ import java.util.List;
 
 public class GameController {
 
-    //-----------------Info for ServerInfoDisplay------------//
-    @FXML private Text hostIP, portNum;
-    @FXML Rectangle serverInfoBackground;
-    @FXML Pane serverInfoPane;
-    @FXML Button startGameButton;
-    private String ipAddress; private int port;
-
-    //--------------Player inPlay Label-----------------//
-    @FXML private Rectangle inPlayPlayerLabelBack;
-    @FXML private Text inPlayPlayerLabelText;
-    private LabelDisplay inPlayPlayerLabel;
-
     //-------------List of Cards in the Game------------//
     private CardCollection cardsInGame;
     private List<CardStack> cardStacks;
 
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
+
+    //-----------------Info for ServerInfoDisplay------------//
+    @FXML private Text hostIP, portNum;
+    @FXML Rectangle serverInfoBackground;
+    @FXML Pane serverInfoPane;
+    @FXML Button startGameButton;
+    private String ipAddress; private int port;
 
     //---------------Chat Log and Game Log--------------//
     @FXML private TextArea chatLog, gameLog;
@@ -59,7 +53,10 @@ public class GameController {
     private CardDisplay CIHDisplay1,CIHDisplay2,CIHDisplay3,CIHDisplay4,CIHDisplay5,CIHDisplay6,CIHDisplay7,CIHDisplay8,CIHDisplay9,CIHDisplay10,CIHDisplay11;
     private CardDisplay[] CIHDisplays;
 
-    //---------------ActionCards In Supply---------------//
+    @FXML private Button actionButton;
+    @FXML private Text gameInfoText;
+
+    //---------------Cards In Supply---------------//
     @FXML private Rectangle actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
             actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10;
     @FXML private Rectangle actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,actionCardNumBack6,
@@ -71,7 +68,6 @@ public class GameController {
     private BuyableCardDisplay ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6, ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10;
     private BuyableCardDisplay[] ACISDisplays;
 
-    //---------------TreasureCards In Supply---------------//
     @ FXML private Rectangle treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4;
     @FXML private Rectangle treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4;
     @FXML private Text treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4;
@@ -79,7 +75,6 @@ public class GameController {
     private BuyableCardDisplay TCISDisplay1,TCISDisplay2,TCISDisplay3,TCISDisplay4;
     private BuyableCardDisplay[] TCISDisplays;
 
-    //---------------VictoryCards In Supply---------------//
     @ FXML private Rectangle victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4;
     @FXML private Rectangle victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4;
     @FXML private Text victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4;
@@ -87,7 +82,6 @@ public class GameController {
     private BuyableCardDisplay VCISDisplay1,VCISDisplay2,VCISDisplay3,VCISDisplay4;
     private BuyableCardDisplay[] VCISDisplays;
 
-    //---------------Extra Cards In Supply---------------//
     @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
     @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
     @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
@@ -95,7 +89,6 @@ public class GameController {
     private BuyableCardDisplay ECISDisplay1,ECISDisplay2,ECISDisplay3,ECISDisplay4;
     private BuyableCardDisplay[] ECISDisplays;
 
-    //-----------------All Cards In Supply-----------------//
     private List<BuyableCardDisplay> allCISDisplays;
 
     //---------------Cards in Play---------------//
@@ -108,16 +101,13 @@ public class GameController {
     private CardDisplay CIPDisplay1,CIPDisplay2,CIPDisplay3,CIPDisplay4,CIPDisplay5,CIPDisplay6,CIPDisplay7,CIPDisplay8,CIPDisplay9,CIPDisplay10,CIPDisplay11;
     private CardDisplay[] CIPDisplays;
 
-    //---------------ActionBar and gameInfoText------------------//
-    @FXML private Button actionButton;
-    @FXML private Text gameInfoText;
-    @FXML private StackPane actionBar;
+    @FXML private Rectangle inPlayPlayerLabelBack;
+    @FXML private Text inPlayPlayerLabelText;
+    private LabelDisplay inPlayPlayerLabel;
 
-    //---------------discardPile, playerDeck, opponentDeck Labels------------//
+    //---------------Decks------------//
     @FXML private Rectangle discardPileLabel, opponentDeckLabel, playerDeckLabel;
     @FXML private Text discardPileLabelText, opponentDeckLabelText, playerDeckLabelText;
-
-    //---------------discardPile, playerDeck, opponentDeck-------------------//
     @FXML private Rectangle playerDiscard, playerDeck, opponentDeck, playerDiscardNumBack, playerDeckNumBack, opponentDeckNumBack;
     @FXML private Text playerDiscardNum, playerDeckNum, opponentDeckNum;
     private DeckDisplay playerDeckDisplay, opponentDeckDisplay, playerDiscardDisplay;
@@ -127,12 +117,11 @@ public class GameController {
     @FXML private Text playerLabelName1,playerLabelName2,playerLabelName3,playerLabelName4,playerLabelName5,playerLabelName6;
     @FXML private Rectangle playerLabelVictory1,playerLabelVictory2,playerLabelVictory3,playerLabelVictory4,playerLabelVictory5,playerLabelVictory6;
     @FXML private Text playerLabelVictoryNum1,playerLabelVictoryNum2,playerLabelVictoryNum3,playerLabelVictoryNum4,playerLabelVictoryNum5,playerLabelVictoryNum6;
-    private Rectangle[] playerLabels;
-    private Text[] playerLabelNames;
     private Rectangle[] playerLabelVictories;
-    private Text[] playerLabelVictoryNums;
-    PlayerNamePointsDisplay playerNamePointsDisplay;
+    private PlayerInfoDisplay playerInfoDisplay1,playerInfoDisplay2,playerInfoDisplay3,playerInfoDisplay4,playerInfoDisplay5,playerInfoDisplay6;
+    private PlayerInfoDisplay[] playerInfoDisplays;
 
+    //-------------ZoomActionCard------------//
     @FXML private Rectangle zoomActionCard;
 
     public void initialize() {
@@ -234,16 +223,25 @@ public class GameController {
         playerDiscardDisplay.hide();
 
         //--------------Initialize Player labels----------------//
-        playerLabels = new Rectangle[]{playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6};
-        playerLabelNames = new Text[]{playerLabelName1,playerLabelName2,playerLabelName3,playerLabelName4,playerLabelName5,playerLabelName6};
         playerLabelVictories = new Rectangle[]{playerLabelVictory1,playerLabelVictory2,playerLabelVictory3,playerLabelVictory4,playerLabelVictory5,playerLabelVictory6};
-        playerLabelVictoryNums = new Text[]{playerLabelVictoryNum1,playerLabelVictoryNum2,playerLabelVictoryNum3,playerLabelVictoryNum4,playerLabelVictoryNum5,playerLabelVictoryNum6};
         imagePattern = new ImagePattern(new Image(new File("src/resources/Victory_Symbol.png").toURI().toString()));
         for(Rectangle victoryImageSlot: playerLabelVictories) {
             victoryImageSlot.setFill(imagePattern);
         }
-        playerNamePointsDisplay = new PlayerNamePointsDisplay(playerLabels,playerLabelVictories,playerLabelNames,playerLabelVictoryNums);
 
+        playerInfoDisplay1 = new PlayerInfoDisplay(new LabelDisplay(playerLabel1,playerLabelName1),new NumberDisplay(playerLabelVictory1,playerLabelVictoryNum1));
+        playerInfoDisplay2 = new PlayerInfoDisplay(new LabelDisplay(playerLabel2,playerLabelName2),new NumberDisplay(playerLabelVictory2,playerLabelVictoryNum2));
+        playerInfoDisplay3 = new PlayerInfoDisplay(new LabelDisplay(playerLabel3,playerLabelName3),new NumberDisplay(playerLabelVictory3,playerLabelVictoryNum3));
+        playerInfoDisplay4 = new PlayerInfoDisplay(new LabelDisplay(playerLabel4,playerLabelName4),new NumberDisplay(playerLabelVictory4,playerLabelVictoryNum4));
+        playerInfoDisplay5 = new PlayerInfoDisplay(new LabelDisplay(playerLabel5,playerLabelName5),new NumberDisplay(playerLabelVictory5,playerLabelVictoryNum5));
+        playerInfoDisplay6 = new PlayerInfoDisplay(new LabelDisplay(playerLabel6,playerLabelName6),new NumberDisplay(playerLabelVictory6,playerLabelVictoryNum6));
+
+        playerInfoDisplays = new PlayerInfoDisplay[]{playerInfoDisplay1,playerInfoDisplay2,playerInfoDisplay3,playerInfoDisplay4,playerInfoDisplay5,playerInfoDisplay6};
+        for(PlayerInfoDisplay display: playerInfoDisplays) {
+            display.hide();
+        }
+
+        //-------------Set ActionButton to not visible------------//
         actionButton.setVisible(false);
 
     }
@@ -263,7 +261,7 @@ public class GameController {
     public TextField getChatType() {
         return chatType;
     }
-    public PlayerNamePointsDisplay getPlayerNamePointsDisplay() {return playerNamePointsDisplay;}
+    public PlayerInfoDisplay[] getPlayerInfoDisplays() {return playerInfoDisplays;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
     public LabelDisplay getInPlayPlayerLabel() {return inPlayPlayerLabel;}
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
