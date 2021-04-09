@@ -5,8 +5,8 @@ import javafx.scene.text.Text;
 
 public class LabelDisplay {
 
-    private Rectangle labelBack;
-    private Text labelText;
+    private final Rectangle labelBack;
+    private final Text labelText;
 
     public LabelDisplay(Rectangle labelBack, Text labelText) {
         this.labelBack = labelBack;

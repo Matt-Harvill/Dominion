@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 
 public class BuyableCardDisplay extends CardDisplay {
 
-    private Rectangle buyButton;
+    private final Rectangle buyButton;
 
     public BuyableCardDisplay(Rectangle card, NumberDisplay numberDisplay, Rectangle buyButton) {
         super(card,numberDisplay);

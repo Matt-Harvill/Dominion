@@ -1,20 +1,17 @@
 package controller;
 
-import javafx.scene.text.Text;
 import model.Player;
 import model.ServerPlayer;
 import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
-import view.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class PlayerActionMediator {
+public final class ActionHandler {
 
     private static final Player player = Main.getPlayer();
-    private static final GameController controller = Main.getGameController();
 
     public static void startPhase() {
         player.setPhase("startPhase");
@@ -51,7 +48,7 @@ public final class PlayerActionMediator {
         ServerSender.endTurn();
     }
 
-    public static void buyFromCardSupply(Card cardClicked) {
+    public static void buyCard(Card cardClicked) {
         player.buyCard(cardClicked);
         DisplayUpdater.updateCardSupply(cardClicked);
 
@@ -59,7 +56,7 @@ public final class PlayerActionMediator {
         ServerSender.buyCard(cardClicked.getName());
 
         DisplayUpdater.updateHandDisplay();
-        displayPlayerLabel(player.getName(), player.getPoints());
+        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
 
         if(checkNumBuys()) {
             DisplayUpdater.showBuyableCards(true);
@@ -77,49 +74,12 @@ public final class PlayerActionMediator {
 
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-        displayPlayerLabel(player.getName(), player.getPoints());
+        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
 
         if(cardClicked instanceof ActionCard) {
             checkCanDoAction();
         } else if(cardClicked instanceof TreasureCard) {
             DisplayUpdater.showBuyableCards(true);
-        }
-    }
-
-    public static void displayPlayerLabel(String playerName, int points) {
-        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
-
-        Text[] playerLabelNames = display.getPlayerLabelNames();
-        Text[] playerPoints = display.getPlayerLabelVictoryNums();
-
-        for(int i=0; i<playerLabelNames.length; i++) {
-            if(playerName.equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
-                playerLabelNames[i].setText(playerName);
-                playerPoints[i].setText(String.valueOf(points));
-                display.getPlayerLabels()[i].setVisible(true);
-                display.getPlayerLabelVictories()[i].setVisible(true);
-                playerLabelNames[i].setVisible(true);
-                playerPoints[i].setVisible(true);
-                break;
-            }
-        }
-    }
-    public static void displayPlayerLabel(ServerPlayer player) {
-        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
-
-        Text[] playerLabelNames = display.getPlayerLabelNames();
-        Text[] playerPoints = display.getPlayerLabelVictoryNums();
-
-        for(int i=0; i<playerLabelNames.length; i++) {
-            if(player.getName().equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
-                playerLabelNames[i].setText(player.getName());
-                playerPoints[i].setText(String.valueOf(player.getPoints()));
-                display.getPlayerLabels()[i].setVisible(true);
-                display.getPlayerLabelVictories()[i].setVisible(true);
-                playerLabelNames[i].setVisible(true);
-                playerPoints[i].setVisible(true);
-                break;
-            }
         }
     }
 

@@ -8,10 +8,7 @@ import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
-import view.BuyableCardDisplay;
-import view.CardDisplay;
-import view.DeckDisplay;
-import view.LabelDisplay;
+import view.*;
 
 import java.util.List;
 
@@ -85,6 +82,24 @@ public class DisplayUpdater {
             }
         }
     }
+    public static void updatePlayerLabel(String playerName, int points) {
+        PlayerNamePointsDisplay display = controller.getPlayerNamePointsDisplay();
+
+        Text[] playerLabelNames = display.getPlayerLabelNames();
+        Text[] playerPoints = display.getPlayerLabelVictoryNums();
+
+        for(int i=0; i<playerLabelNames.length; i++) {
+            if(playerName.equals(playerLabelNames[i].getText()) || playerLabelNames[i].getText().equals("")) {
+                playerLabelNames[i].setText(playerName);
+                playerPoints[i].setText(String.valueOf(points));
+                display.getPlayerLabels()[i].setVisible(true);
+                display.getPlayerLabelVictories()[i].setVisible(true);
+                playerLabelNames[i].setVisible(true);
+                playerPoints[i].setVisible(true);
+                break;
+            }
+        }
+    }
     public static void gameOver(String gameOverText) {
         updateGameInfoText(gameOverText);
 
@@ -131,9 +146,7 @@ public class DisplayUpdater {
                 gameInfoString += "Purchase Power: " + player.getPurchasePower();
                 updateActionButtonText("End Turn");
             }
-            case "endPhase" -> {
-                controller.getActionButton().setVisible(false);
-            }
+            case "endPhase" -> controller.getActionButton().setVisible(false);
             case "startPhase" -> {
                 updateGameInfoText("Wait for you turn");
                 gameInfoString += "Here is your hand";

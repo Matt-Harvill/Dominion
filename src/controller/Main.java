@@ -80,8 +80,8 @@ public class Main extends Application {
         mainStage.setTitle("Dominion");
         mainStage.setScene(new Scene(gameUIScene));
 
-        PlayerActionMediator.startPhase();
-        PlayerActionMediator.displayPlayerLabel(player.getName(), player.getPoints());
+        ActionHandler.startPhase();
+        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
 
         mainStage.show();
     }
@@ -91,9 +91,7 @@ public class Main extends Application {
                 cardSelect = new Stage();
                 cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("../view/selectCardsInGame.fxml"))));
                 cardSelect.show();
-                cardSelect.setOnCloseRequest(windowEvent -> {
-                    cardSelect=null;
-                });
+                cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

@@ -288,7 +288,7 @@ public class GameController {
         for(CardDisplay cardDisplay: CIHDisplays) {
             if(cardDisplay.contains(cardClicked)) {
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    PlayerActionMediator.playCard(cardDisplay.getCard());
+                    ActionHandler.playCard(cardDisplay.getCard());
                 }
             }
         }
@@ -347,9 +347,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn" -> PlayerActionMediator.startPhase();
-            case "Enter Buy Phase" -> PlayerActionMediator.buyPhase();
-            case "End Turn" -> PlayerActionMediator.endPhase();
+            case "Start Turn" -> ActionHandler.startPhase();
+            case "Enter Buy Phase" -> ActionHandler.buyPhase();
+            case "End Turn" -> ActionHandler.endPhase();
         }
 
     }
@@ -357,7 +357,7 @@ public class GameController {
         Object buyButtonClicked = mouseEvent.getSource();
         for(BuyableCardDisplay cardDisplay: allCISDisplays) {
             if(cardDisplay.contains(buyButtonClicked)) {
-                PlayerActionMediator.buyFromCardSupply(cardDisplay.getCard());
+                ActionHandler.buyCard(cardDisplay.getCard());
             }
         }
         System.out.println("buyButtonClicked");

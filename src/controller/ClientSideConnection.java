@@ -5,10 +5,8 @@ import model.Player;
 import model.ServerPlayer;
 import model.card.Card;
 import model.card.CardStack;
-import model.card.VictoryCard;
 import model.factory.CardFactory;
 
-import javax.naming.NameNotFoundException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -18,11 +16,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ClientSideConnection implements Runnable {
-    private Socket socket;
+    private final Socket socket;
     private DataOutputStream dataOut;
     private DataInputStream dataIn;
     private static final Player player = Main.getPlayer();
-    private List<ServerPlayer> players;
+    private final List<ServerPlayer> players;
 
     public ClientSideConnection(String ipAddress, String portNum) throws IOException, NumberFormatException {
         socket = new Socket(ipAddress, Integer.parseInt(portNum));
@@ -93,7 +91,7 @@ public class ClientSideConnection implements Runnable {
 //        printPlayers();
 
         Platform.runLater(() -> {
-            PlayerActionMediator.displayPlayerLabel(serverPlayer);
+            DisplayUpdater.updatePlayerLabel(serverPlayer.getName(), serverPlayer.getPoints());
             DisplayUpdater.addMsgToGameLog(serverPlayer.getName() + " has joined the game");
         });
     }
@@ -105,7 +103,7 @@ public class ClientSideConnection implements Runnable {
 //        printPlayers();
 
         Platform.runLater(() -> {
-            PlayerActionMediator.displayPlayerLabel(serverPlayer);
+            DisplayUpdater.updatePlayerLabel(serverPlayer.getName(), serverPlayer.getPoints());
             DisplayUpdater.addMsgToGameLog(serverPlayer.getName() + " was already in the game");
         });
     }
@@ -142,7 +140,7 @@ public class ClientSideConnection implements Runnable {
         ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
             if(myTurn) {
-                PlayerActionMediator.actionPhase();
+                ActionHandler.actionPhase();
             }
             else {
                 DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " has started their turn");
@@ -232,14 +230,14 @@ public class ClientSideConnection implements Runnable {
         ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
             DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " purchased a " + cardName);
-            PlayerActionMediator.displayPlayerLabel(finalServerPlayer);
+            DisplayUpdater.updatePlayerLabel(finalServerPlayer.getName(), finalServerPlayer.getPoints());
             DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false);
             DisplayUpdater.updateCardSupply(card);
         });
     }
     private void gameOver() {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
-        Platform.runLater(PlayerActionMediator::gameOver);
+        Platform.runLater(ActionHandler::gameOver);
     }
     private void updateInfo(ServerPlayer serverPlayer) {
         for(ServerPlayer player: players) {
@@ -266,12 +264,11 @@ public class ClientSideConnection implements Runnable {
             return null;
         }
     }
-    public boolean send(String s) {
+    public void send(String s) {
         try {
             dataOut.writeUTF(s);
-            return true;
         } catch (IOException ex) {
-            return false;
+            ex.printStackTrace();
         }
     }
     public void leaveGame() {
@@ -283,10 +280,10 @@ public class ClientSideConnection implements Runnable {
         }
     }
 
-    private void printPlayers() {
-        System.out.println("ServerPlayers: ");
-        for(ServerPlayer player: players) {
-            System.out.println("name: " + player.getName() + " points: " + player.getPoints() + " numCardsInDeck: " + player.getNumCardsInDeck());
-        }
-    }
+//    private void printPlayers() {
+//        System.out.println("ServerPlayers: ");
+//        for(ServerPlayer player: players) {
+//            System.out.println("name: " + player.getName() + " points: " + player.getPoints() + " numCardsInDeck: " + player.getNumCardsInDeck());
+//        }
+//    }
 }

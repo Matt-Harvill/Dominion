@@ -1,13 +1,10 @@
 package view;
 
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-
 public class DeckDisplay {
 
-    private CardDisplay cardDisplay;
-    private LabelDisplay labelDisplay;
+    private final CardDisplay cardDisplay;
+    private final LabelDisplay labelDisplay;
+
     public DeckDisplay(CardDisplay cardDisplay, LabelDisplay labelDisplay) {
         this.cardDisplay = cardDisplay;
         this.labelDisplay = labelDisplay;
@@ -23,8 +20,5 @@ public class DeckDisplay {
     }
     public CardDisplay getCardDisplay() {
         return cardDisplay;
-    }
-    public LabelDisplay getLabelDisplay() {
-        return labelDisplay;
     }
 }

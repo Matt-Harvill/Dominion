@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/LabelDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/PlayerActionMediator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/CardDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/CardDisplay.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerActionMediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/CardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CardDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/DeckDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/DeckDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LabelDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LabelDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,14 +149,7 @@
       <workItem from="1617765015379" duration="1808000" />
       <workItem from="1617766852607" duration="1916000" />
       <workItem from="1617833783017" duration="992000" />
-      <workItem from="1617939363974" duration="11516000" />
-    </task>
-    <task id="LOCAL-00007" summary="new Display shows card arrangement on StackPanes. css file used for labels, backgrounds, etc... when hovering mouse over a card, the card pops to the front and then back to original position after that.">
-      <created>1616291522748</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1616291522748</updated>
+      <workItem from="1617939363974" duration="11905000" />
     </task>
     <task id="LOCAL-00008" summary="reimplemented all imageviews with rectangles so that I can easily apply styles to borders and such.">
       <created>1616305042597</created>
@@ -499,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617942555147</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Updated my code with new display structuring and a DisplayUpdater utility class. Seems to work well">
+      <created>1617980971967</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1617980971968</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
