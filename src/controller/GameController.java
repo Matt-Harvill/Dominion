@@ -312,7 +312,7 @@ public class GameController {
         for(CardDisplay cardDisplay: CIHDisplays) {
             if(cardDisplay.contains(cardClicked)) {
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    ActionHandler.playCard(cardDisplay.getCard());
+                    ActionHandler.greenCardInHandClicked(cardDisplay.getCard());
                 }
             }
         }

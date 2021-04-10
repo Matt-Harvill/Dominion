@@ -1,5 +1,6 @@
 package controller;
 
+import model.CardCollection;
 import model.Player;
 import model.ServerPlayer;
 import model.card.ActionCard;
@@ -71,19 +72,33 @@ public final class ActionHandler {
 
         ServerSender.playCard(cardClicked.getName());
 
-        DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-//        if(cardClicked instanceof ActionCard) {
-//            checkCanDoAction();
-//        } else
         if(cardClicked instanceof TreasureCard) {
             DisplayUpdater.showBuyableCards(true);
         }
     }
 
-    public static void actionCardCompleted(ActionCard card) {
-        checkCanDoAction();
+    public static void moveToSelect(Card cardClicked) {
+        CardCollection select = player.getSelect();
+        CardCollection hand = player.getHand();
+
+        select.addCardToCollection(hand.removeCardFromCollection(cardClicked));
+    }
+
+    public static void greenCardInHandClicked(Card card) {
+        switch (player.getPhase()) {
+            case "actionPhase":
+            case "buyPhase": {
+                playCard(card);
+                break;
+            }
+            case "discardPhase": {
+                moveToSelect(card);
+                break;
+            }
+        }
+        DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
+        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
     }
 
     public static void gameOver() {

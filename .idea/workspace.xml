@@ -9,9 +9,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar.">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="Cleaned up gameController initialize">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,13 +160,7 @@
       <workItem from="1617982958920" duration="11030000" />
       <workItem from="1618002094696" duration="11512000" />
       <workItem from="1618019616994" duration="23585000" />
-    </task>
-    <task id="LOCAL-00019" summary="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object">
-      <created>1616717345683</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1616717345683</updated>
+      <workItem from="1618091250134" duration="2351000" />
     </task>
     <task id="LOCAL-00020" summary="multiplayer works now without errors of IllegalStateExceptions from non JavaFX Threads updating the UI. Also, the PlayerActionMediator and ServerSender are now utility classes instead of objects.">
       <created>1616728452676</created>
@@ -496,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618089128093</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Cleaned up gameController initialize">
+      <created>1618092205301</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1618092205301</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +525,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Display number of cards in opponent deck+hand+discard. Also show number of cards in playerDeck (might do this for discard pile as well).&#10;&#10;I can still get some bugs occasionally but I think for the most part things are working well." />
     <MESSAGE value="all of the piles (playerDiscard, opponentDeck, and playerDeck) are how I wanted them" />
     <MESSAGE value="Now multiple players can join with the same name and they will be assigned a new name with (#of copies of that name)&#10;&#10;Ex: if &quot;host&quot; is already taken -&gt; &quot;host(1)&quot;" />
     <MESSAGE value="cleaning up Main, GameServer, and HostJoinScene.&#10;&#10;HostJoinScene can be closed with no csc errors, name error is erased when back is pressed, and can't type in actioncard in game name slots." />
@@ -541,6 +549,7 @@
     <MESSAGE value="This version has turned the project into a runnable jar file with Java version 11" />
     <MESSAGE value="Now the JAR file actually opens all the files as expected. Runs nicely" />
     <MESSAGE value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
+    <MESSAGE value="Cleaned up gameController initialize" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up gameController initialize" />
   </component>
 </project>

@@ -57,6 +57,7 @@ public class ActionCardPerformer {
                 case "discard": {
                     player.setPhase("discardPhase");
                     DisplayUpdater.updateHandDisplay();
+                    break;
                 }
             }
         }

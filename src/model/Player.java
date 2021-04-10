@@ -12,7 +12,7 @@ import newActionStuff.ActionCardPerformer;
 public class Player {
 
     private String name, phase;
-    private CardCollection hand, deck, discardPile, inPlay;
+    private CardCollection hand, deck, discardPile, inPlay, select;
     private int handLimit, numActions, numBuys, purchasePower, amountSpentThisTurn, bonusPurchasePower;
     private ActionCard actionCardInPlay;
 
@@ -21,6 +21,8 @@ public class Player {
         deck = CardCollectionFactory.getCardCollection();
         discardPile = CardCollectionFactory.getCardCollection();
         inPlay = CardCollectionFactory.getCardCollection();
+        select = CardCollectionFactory.getCardCollection();
+
         for(int i=0; i<7; i++)
             deck.addCardToCollection(CardFactory.getCard("Copper"));
         for(int i=0; i<3; i++)
@@ -44,6 +46,7 @@ public class Player {
     public CardCollection getDiscardPile() {
         return discardPile;
     }
+    public CardCollection getSelect() {return select;}
 
     public String getName() {
         return name;

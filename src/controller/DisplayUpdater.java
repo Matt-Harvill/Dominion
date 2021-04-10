@@ -10,6 +10,7 @@ import model.card.TreasureCard;
 import model.card.VictoryCard;
 import view.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayUpdater {
@@ -124,11 +125,7 @@ public class DisplayUpdater {
     }
 
     public static void updateHandDisplay() {
-        if(player.getPhase().equals("discardPhase")) {
-            showDiscardableCardsInHand();
-        } else {
-            updateCardsInHand();
-        }
+        updateCardsInHand();
         updateDeck();
         updateDiscard();
         updateActionBar();
@@ -178,65 +175,67 @@ public class DisplayUpdater {
         List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
         List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
 
+        Boolean[] cardsTypesToHighlight = calcCardTypesToHighlight();
 
-        String phase = player.getPhase();
         int index = 0;
         for(ActionCard actionCard: actionCards) {
             setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
-            if(phase.equals("actionPhase")) {
+            if(cardsTypesToHighlight[0]) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(TreasureCard treasureCard: treasureCards) {
             setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
-            if(phase.equals("buyPhase")) {
+            if(cardsTypesToHighlight[1]) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(VictoryCard victoryCard: victoryCards) {
             setCardDisplay(cardDisplays[index],victoryCard,hand.numCardInCollection(victoryCard));
+            if(cardsTypesToHighlight[2]) {
+                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
+            }
             index++;
         }
     }
-    private static void showDiscardableCardsInHand() {
-        CardDisplay[] cardDisplays = controller.getCIHDisplays();
-        resetCardDisplays(cardDisplays);
 
-        CardCollection hand = player.getHand();
-        List<ActionCard> actionCards = hand.getDistinctActionCards();
-        List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
-        List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
+    private static Boolean[] calcCardTypesToHighlight() {
+        boolean highlightActionCards = false;
+        boolean highlightTreasureCards = false;
+        boolean highlightVictoryCards = false;
 
-        String type = player.getActionCardInPlay().getAction().getType();
-        System.out.println(type);
-        if(type.equals("all")) {
-            type = "actionCards treasureCards victoryCards";
-        }
+        String phase = player.getPhase();
+        switch (phase) {
+            case "actionPhase": {
+                highlightActionCards = true;
+                break;
+            }
+            case "buyPhase": {
+                highlightTreasureCards = true;
+                break;
+            }
+            case "discardPhase": {
+                String type = player.getActionCardInPlay().getAction().getType();
+                System.out.println(type);
+                if(type.equals("all")) {
+                    type = "actionCards treasureCards victoryCards";
+                }
 
-        int index = 0;
-        for(ActionCard actionCard: actionCards) {
-            setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
-            if(type.contains("actionCards")) {
-                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
+                if(type.contains("actionCards")) {
+                    highlightActionCards = true;
+                }
+                if(type.contains("treasureCards")) {
+                    highlightTreasureCards = true;
+                }
+                if(type.contains("victoryCards")) {
+                    highlightVictoryCards = true;
+                }
+                break;
             }
-            index++;
         }
-        for(TreasureCard treasureCard: treasureCards) {
-            setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
-            if(type.contains("treasureCards")) {
-                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
-            }
-            index++;
-        }
-        for(VictoryCard victoryCard: victoryCards) {
-            setCardDisplay(cardDisplays[index],victoryCard,hand.numCardInCollection(victoryCard));
-            if(type.contains("victoryCards")) {
-                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
-            }
-            index++;
-        }
+        return new Boolean[]{highlightActionCards,highlightTreasureCards,highlightVictoryCards};
     }
 
     private static void updateDeck() {
