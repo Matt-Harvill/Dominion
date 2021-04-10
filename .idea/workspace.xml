@@ -9,33 +9,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="Now the JAR file actually opens all the files as expected. Runs nicely">
-      <change afterPath="$PROJECT_DIR$/src/newActionStuff/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newActionStuff/ActionParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newActionStuff/NewActionCards.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Cellar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Cellar_Small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/gameScene.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/hostJoinScene.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/selectCards.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/style1.css" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/ActionCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/ActionCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/ActionCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,17 +95,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Dominion.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" />
       <method v="2" />
@@ -186,14 +151,7 @@
       <workItem from="1617982604947" duration="233000" />
       <workItem from="1617982958920" duration="11030000" />
       <workItem from="1618002094696" duration="11512000" />
-      <workItem from="1618019616994" duration="22000000" />
-    </task>
-    <task id="LOCAL-00018" summary="Now added game labels that display player name and total points">
-      <created>1616613447432</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1616613447432</updated>
+      <workItem from="1618019616994" duration="23585000" />
     </task>
     <task id="LOCAL-00019" summary="I can play with multiple clients with basic functionality of moving turn to turn but players dont know what other players do in their turns yet. Also I need to make playeractionmediator a class instead of object">
       <created>1616717345683</created>
@@ -531,7 +489,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618013074189</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar.">
+      <created>1618089128093</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1618089128093</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,7 +516,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Game Over works as expected. Fixed bug where player turns are assigned after game is ended." />
     <MESSAGE value="Display number of cards in opponent deck+hand+discard. Also show number of cards in playerDeck (might do this for discard pile as well).&#10;&#10;I can still get some bugs occasionally but I think for the most part things are working well." />
     <MESSAGE value="all of the piles (playerDiscard, opponentDeck, and playerDeck) are how I wanted them" />
     <MESSAGE value="Now multiple players can join with the same name and they will be assigned a new name with (#of copies of that name)&#10;&#10;Ex: if &quot;host&quot; is already taken -&gt; &quot;host(1)&quot;" />
@@ -576,6 +540,7 @@
     <MESSAGE value="all background are now forest image" />
     <MESSAGE value="This version has turned the project into a runnable jar file with Java version 11" />
     <MESSAGE value="Now the JAR file actually opens all the files as expected. Runs nicely" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now the JAR file actually opens all the files as expected. Runs nicely" />
+    <MESSAGE value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
   </component>
 </project>

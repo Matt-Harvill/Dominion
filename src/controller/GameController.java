@@ -100,6 +100,15 @@ public class GameController {
     @FXML private Text inPlayPlayerLabelText;
     private LabelDisplay inPlayPlayerLabel;
 
+    //----------------Cards in Selection--------------//
+    @FXML private Rectangle cardInSelection1,cardInSelection2,cardInSelection3,cardInSelection4,cardInSelection5,cardInSelection6,
+            cardInSelection7,cardInSelection8,cardInSelection9,cardInSelection10,cardInSelection11;
+    @FXML private Rectangle cardInSelectionNumBack1,cardInSelectionNumBack2,cardInSelectionNumBack3,cardInSelectionNumBack4,cardInSelectionNumBack5,
+            cardInSelectionNumBack6,cardInSelectionNumBack7,cardInSelectionNumBack8,cardInSelectionNumBack9,cardInSelectionNumBack10,cardInSelectionNumBack11;
+    @FXML private Text cardInSelectionNum1,cardInSelectionNum2,cardInSelectionNum3,cardInSelectionNum4,cardInSelectionNum5,cardInSelectionNum6,
+            cardInSelectionNum7,cardInSelectionNum8,cardInSelectionNum9,cardInSelectionNum10,cardInSelectionNum11;
+    private CardDisplay[] CISDisplays;
+
     //---------------Decks------------//
     @FXML private Rectangle discardPileLabel, opponentDeckLabel, playerDeckLabel;
     @FXML private Text discardPileLabelText, opponentDeckLabelText, playerDeckLabelText;
@@ -125,71 +134,88 @@ public class GameController {
         //---------------Set ServerInfoPane to notVisible----------//
         serverInfoPane.setVisible(false);
 
-        //--------------Initialize order of CardsInHand-----------------//
-        CardDisplay CIHDisplay1 = new CardDisplay(cardInHand1,new NumberDisplay(cardInHandNumBack1,cardInHandNum1));
-        CardDisplay CIHDisplay2 = new CardDisplay(cardInHand2,new NumberDisplay(cardInHandNumBack2,cardInHandNum2));
-        CardDisplay CIHDisplay3 = new CardDisplay(cardInHand3,new NumberDisplay(cardInHandNumBack3,cardInHandNum3));
-        CardDisplay CIHDisplay4 = new CardDisplay(cardInHand4,new NumberDisplay(cardInHandNumBack4,cardInHandNum4));
-        CardDisplay CIHDisplay5 = new CardDisplay(cardInHand5,new NumberDisplay(cardInHandNumBack5,cardInHandNum5));
-        CardDisplay CIHDisplay6 = new CardDisplay(cardInHand6,new NumberDisplay(cardInHandNumBack6,cardInHandNum6));
-        CardDisplay CIHDisplay7 = new CardDisplay(cardInHand7,new NumberDisplay(cardInHandNumBack7,cardInHandNum7));
-        CardDisplay CIHDisplay8 = new CardDisplay(cardInHand8,new NumberDisplay(cardInHandNumBack8,cardInHandNum8));
-        CardDisplay CIHDisplay9 = new CardDisplay(cardInHand9,new NumberDisplay(cardInHandNumBack9,cardInHandNum9));
-        CardDisplay CIHDisplay10 = new CardDisplay(cardInHand10,new NumberDisplay(cardInHandNumBack10,cardInHandNum10));
-        CardDisplay CIHDisplay11 = new CardDisplay(cardInHand11,new NumberDisplay(cardInHandNumBack11,cardInHandNum11));
-        CIHDisplays = new CardDisplay[]{CIHDisplay1,CIHDisplay2,CIHDisplay3,CIHDisplay4,CIHDisplay5,CIHDisplay6,CIHDisplay7,CIHDisplay8,CIHDisplay9,CIHDisplay10,CIHDisplay11};
+        //--------------Initialize Cards In Hand-----------------//
+        Rectangle[] cardsInHand = new Rectangle[]{cardInHand1,cardInHand2,cardInHand3,cardInHand4,cardInHand5,cardInHand6,cardInHand7,cardInHand8,cardInHand9,cardInHand10,cardInHand11};
+        Rectangle[] cardsInHandNumBacks = new Rectangle[]{cardInHandNumBack1,cardInHandNumBack2,cardInHandNumBack3,cardInHandNumBack4,cardInHandNumBack5,cardInHandNumBack6,
+                cardInHandNumBack7,cardInHandNumBack8,cardInHandNumBack9,cardInHandNumBack10,cardInHandNumBack11};
+        Text[] cardsInHandNums = new Text[]{cardInHandNum1,cardInHandNum2,cardInHandNum3,cardInHandNum4,cardInHandNum5,cardInHandNum6,cardInHandNum7,
+                cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11};
 
+        CIHDisplays = new CardDisplay[cardsInHand.length];
+        for(int i=0; i<cardsInHand.length; i++) {
+            CIHDisplays[i] = new CardDisplay(cardsInHand[i],new NumberDisplay(cardsInHandNumBacks[i],cardsInHandNums[i]));
+        }
         setInitialViewOrder(CIHDisplays);
 
         //------------------Initialize Cards In Play--------------//
-        CardDisplay CIPDisplay1 = new CardDisplay(cardInPlay1,new NumberDisplay(cardInPlayNumBack1,cardInPlayNum1));
-        CardDisplay CIPDisplay2 = new CardDisplay(cardInPlay2,new NumberDisplay(cardInPlayNumBack2,cardInPlayNum2));
-        CardDisplay CIPDisplay3 = new CardDisplay(cardInPlay3,new NumberDisplay(cardInPlayNumBack3,cardInPlayNum3));
-        CardDisplay CIPDisplay4 = new CardDisplay(cardInPlay4,new NumberDisplay(cardInPlayNumBack4,cardInPlayNum4));
-        CardDisplay CIPDisplay5 = new CardDisplay(cardInPlay5,new NumberDisplay(cardInPlayNumBack5,cardInPlayNum5));
-        CardDisplay CIPDisplay6 = new CardDisplay(cardInPlay6,new NumberDisplay(cardInPlayNumBack6,cardInPlayNum6));
-        CardDisplay CIPDisplay7 = new CardDisplay(cardInPlay7,new NumberDisplay(cardInPlayNumBack7,cardInPlayNum7));
-        CardDisplay CIPDisplay8 = new CardDisplay(cardInPlay8,new NumberDisplay(cardInPlayNumBack8,cardInPlayNum8));
-        CardDisplay CIPDisplay9 = new CardDisplay(cardInPlay9,new NumberDisplay(cardInPlayNumBack9,cardInPlayNum9));
-        CardDisplay CIPDisplay10 = new CardDisplay(cardInPlay10,new NumberDisplay(cardInPlayNumBack10,cardInPlayNum10));
-        CardDisplay CIPDisplay11 = new CardDisplay(cardInPlay11,new NumberDisplay(cardInPlayNumBack11,cardInPlayNum11));
-        CIPDisplays = new CardDisplay[]{CIPDisplay1,CIPDisplay2,CIPDisplay3,CIPDisplay4,CIPDisplay5,CIPDisplay6,CIPDisplay7,CIPDisplay8,CIPDisplay9,CIPDisplay10,CIPDisplay11};
+        Rectangle[] cardsInPlay = new Rectangle[]{cardInPlay1,cardInPlay2,cardInPlay3,cardInPlay4,cardInPlay5,cardInPlay6,
+                cardInPlay7,cardInPlay8,cardInPlay9,cardInPlay10,cardInPlay11};
+        Rectangle[] cardsInPlayNumBacks = new Rectangle[]{cardInPlayNumBack1,cardInPlayNumBack2,cardInPlayNumBack3,cardInPlayNumBack4,cardInPlayNumBack5,
+                cardInPlayNumBack6,cardInPlayNumBack7,cardInPlayNumBack8,cardInPlayNumBack9,cardInPlayNumBack10,cardInPlayNumBack11};
+        Text[] cardsInPlayNums = new Text[]{cardInPlayNum1,cardInPlayNum2,cardInPlayNum3,cardInPlayNum4,cardInPlayNum5,cardInPlayNum6,
+                cardInPlayNum7,cardInPlayNum8,cardInPlayNum9,cardInPlayNum10,cardInPlayNum11};
 
+        CIPDisplays = new CardDisplay[cardsInPlay.length];
+        for(int i=0; i<cardsInPlay.length; i++) {
+            CIPDisplays[i] = new CardDisplay(cardsInPlay[i],new NumberDisplay(cardsInPlayNumBacks[i],cardsInPlayNums[i]));
+        }
         setInitialViewOrder(CIPDisplays);
-
         inPlayPlayerLabel = new LabelDisplay(inPlayPlayerLabelBack,inPlayPlayerLabelText);
 
+        //-------------Initialize Cards in Selection-----------------//
+        Rectangle[] cardsInSelection = new Rectangle[]{cardInSelection1,cardInSelection2,cardInSelection3,cardInSelection4,cardInSelection5,cardInSelection6,
+                cardInSelection7,cardInSelection8,cardInSelection9,cardInSelection10,cardInSelection11};
+        Rectangle[] cardsInSelectionNumBacks = new Rectangle[]{cardInSelectionNumBack1,cardInSelectionNumBack2,cardInSelectionNumBack3,cardInSelectionNumBack4,cardInSelectionNumBack5,
+                cardInSelectionNumBack6,cardInSelectionNumBack7,cardInSelectionNumBack8,cardInSelectionNumBack9,cardInSelectionNumBack10,cardInSelectionNumBack11};
+        Text[] cardsInSelectionNums = new Text[]{cardInSelectionNum1,cardInSelectionNum2,cardInSelectionNum3,cardInSelectionNum4,cardInSelectionNum5,cardInSelectionNum6,
+                cardInSelectionNum7,cardInSelectionNum8,cardInSelectionNum9,cardInSelectionNum10,cardInSelectionNum11};
+
+        CISDisplays = new CardDisplay[cardsInSelection.length];
+        for(int i=0; i<cardsInSelection.length; i++) {
+            CISDisplays[i] = new CardDisplay(cardsInSelection[i],new NumberDisplay(cardsInSelectionNumBacks[i],cardsInSelectionNums[i]));
+        }
+
         //--------------Initialize Cards in Supply---------------//
-        BuyableCardDisplay ACISDisplay1 = new BuyableCardDisplay(actionCardInSupply1,new NumberDisplay(actionCardNumBack1,actionCardNum1),actionCardBuyButton1);
-        BuyableCardDisplay ACISDisplay2 = new BuyableCardDisplay(actionCardInSupply2,new NumberDisplay(actionCardNumBack2,actionCardNum2),actionCardBuyButton2);
-        BuyableCardDisplay ACISDisplay3 = new BuyableCardDisplay(actionCardInSupply3,new NumberDisplay(actionCardNumBack3,actionCardNum3),actionCardBuyButton3);
-        BuyableCardDisplay ACISDisplay4 = new BuyableCardDisplay(actionCardInSupply4,new NumberDisplay(actionCardNumBack4,actionCardNum4),actionCardBuyButton4);
-        BuyableCardDisplay ACISDisplay5 = new BuyableCardDisplay(actionCardInSupply5,new NumberDisplay(actionCardNumBack5,actionCardNum5),actionCardBuyButton5);
-        BuyableCardDisplay ACISDisplay6 = new BuyableCardDisplay(actionCardInSupply6,new NumberDisplay(actionCardNumBack6,actionCardNum6),actionCardBuyButton6);
-        BuyableCardDisplay ACISDisplay7 = new BuyableCardDisplay(actionCardInSupply7,new NumberDisplay(actionCardNumBack7,actionCardNum7),actionCardBuyButton7);
-        BuyableCardDisplay ACISDisplay8 = new BuyableCardDisplay(actionCardInSupply8,new NumberDisplay(actionCardNumBack8,actionCardNum8),actionCardBuyButton8);
-        BuyableCardDisplay ACISDisplay9 = new BuyableCardDisplay(actionCardInSupply9,new NumberDisplay(actionCardNumBack9,actionCardNum9),actionCardBuyButton9);
-        BuyableCardDisplay ACISDisplay10 = new BuyableCardDisplay(actionCardInSupply10,new NumberDisplay(actionCardNumBack10,actionCardNum10),actionCardBuyButton10);
+        Rectangle[] ACIS = new Rectangle[]{actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
+                actionCardInSupply6,actionCardInSupply7,actionCardInSupply8,actionCardInSupply9,actionCardInSupply10};
+        Rectangle[] ACISNumBacks = new Rectangle[]{actionCardNumBack1,actionCardNumBack2,actionCardNumBack3,actionCardNumBack4,actionCardNumBack5,actionCardNumBack6,
+                actionCardNumBack7,actionCardNumBack8,actionCardNumBack9,actionCardNumBack10};
+        Text[] ACISNums = new Text[]{actionCardNum1,actionCardNum2,actionCardNum3,actionCardNum4,actionCardNum5,
+                actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
+        Rectangle[] ACISBuyButtons = new Rectangle[]{actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
+                actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10};
 
-        BuyableCardDisplay TCISDisplay1 = new BuyableCardDisplay(treasureCardInSupply1,new NumberDisplay(treasureCardNumBack1,treasureCardNum1),treasureCardBuyButton1);
-        BuyableCardDisplay TCISDisplay2 = new BuyableCardDisplay(treasureCardInSupply2,new NumberDisplay(treasureCardNumBack2,treasureCardNum2),treasureCardBuyButton2);
-        BuyableCardDisplay TCISDisplay3 = new BuyableCardDisplay(treasureCardInSupply3,new NumberDisplay(treasureCardNumBack3,treasureCardNum3),treasureCardBuyButton3);
-        BuyableCardDisplay TCISDisplay4 = new BuyableCardDisplay(treasureCardInSupply4,new NumberDisplay(treasureCardNumBack4,treasureCardNum4),treasureCardBuyButton4);
+        Rectangle[] TCIS = new Rectangle[]{treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4};
+        Rectangle[] TCISNumBacks = new Rectangle[]{treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4};
+        Text[] TCISNums = new Text[]{treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4};
+        Rectangle[] TCISBuyButtons = new Rectangle[]{treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4};
 
-        BuyableCardDisplay VCISDisplay1 = new BuyableCardDisplay(victoryCardInSupply1,new NumberDisplay(victoryCardNumBack1,victoryCardNum1),victoryCardBuyButton1);
-        BuyableCardDisplay VCISDisplay2 = new BuyableCardDisplay(victoryCardInSupply2,new NumberDisplay(victoryCardNumBack2,victoryCardNum2),victoryCardBuyButton2);
-        BuyableCardDisplay VCISDisplay3 = new BuyableCardDisplay(victoryCardInSupply3,new NumberDisplay(victoryCardNumBack3,victoryCardNum3),victoryCardBuyButton3);
-        BuyableCardDisplay VCISDisplay4 = new BuyableCardDisplay(victoryCardInSupply4,new NumberDisplay(victoryCardNumBack4,victoryCardNum4),victoryCardBuyButton4);
+        Rectangle[] VCIS = new Rectangle[]{victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4};
+        Rectangle[] VCISNumBacks = new Rectangle[]{victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4};
+        Text[] VCISNums = new Text[]{victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4};
+        Rectangle[] VCISBuyButtons = new Rectangle[]{victoryCardBuyButton1,victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4};
 
-        BuyableCardDisplay ECISDisplay1 = new BuyableCardDisplay(extraCardInSupply1,new NumberDisplay(extraCardNumBack1,extraCardNum1),extraCardBuyButton1);
-        BuyableCardDisplay ECISDisplay2 = new BuyableCardDisplay(extraCardInSupply2,new NumberDisplay(extraCardNumBack2,extraCardNum2),extraCardBuyButton2);
-        BuyableCardDisplay ECISDisplay3 = new BuyableCardDisplay(extraCardInSupply3,new NumberDisplay(extraCardNumBack3,extraCardNum3),extraCardBuyButton3);
-        BuyableCardDisplay ECISDisplay4 = new BuyableCardDisplay(extraCardInSupply4,new NumberDisplay(extraCardNumBack4,extraCardNum4),extraCardBuyButton4);
+        Rectangle[] ECIS = new Rectangle[]{extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4};
+        Rectangle[] ECISNumBacks = new Rectangle[]{extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4};
+        Text[] ECISNums = new Text[]{extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4};
+        Rectangle[] ECISBuyButtons = new Rectangle[]{extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4};
 
-        ACISDisplays = new BuyableCardDisplay[]{ACISDisplay1,ACISDisplay2,ACISDisplay3,ACISDisplay4,ACISDisplay5,ACISDisplay6,ACISDisplay7,ACISDisplay8,ACISDisplay9,ACISDisplay10};
-        TCISDisplays = new BuyableCardDisplay[]{TCISDisplay1,TCISDisplay2,TCISDisplay3,TCISDisplay4};
-        VCISDisplays = new BuyableCardDisplay[]{VCISDisplay1,VCISDisplay2,VCISDisplay3,VCISDisplay4};
-        ECISDisplays = new BuyableCardDisplay[]{ECISDisplay1,ECISDisplay2,ECISDisplay3,ECISDisplay4};
+        ACISDisplays = new BuyableCardDisplay[ACIS.length];
+        for(int i=0; i<ACIS.length; i++) {
+            ACISDisplays[i] = new BuyableCardDisplay(ACIS[i],new NumberDisplay(ACISNumBacks[i],ACISNums[i]),ACISBuyButtons[i]);
+        }
+        TCISDisplays = new BuyableCardDisplay[TCIS.length];
+        for(int i=0; i<TCIS.length; i++) {
+            TCISDisplays[i] = new BuyableCardDisplay(TCIS[i],new NumberDisplay(TCISNumBacks[i],TCISNums[i]),TCISBuyButtons[i]);
+        }
+        VCISDisplays = new BuyableCardDisplay[VCIS.length];
+        for(int i=0; i<VCIS.length; i++) {
+            VCISDisplays[i] = new BuyableCardDisplay(VCIS[i],new NumberDisplay(VCISNumBacks[i],VCISNums[i]),VCISBuyButtons[i]);
+        }
+        ECISDisplays = new BuyableCardDisplay[ECIS.length];
+        for(int i=0; i<ECIS.length; i++) {
+            ECISDisplays[i] = new BuyableCardDisplay(ECIS[i],new NumberDisplay(ECISNumBacks[i],ECISNums[i]),ECISBuyButtons[i]);
+        }
 
         initializeCardsInSupply(ACISDisplays);
         initializeCardsInSupply(TCISDisplays);
@@ -220,7 +246,11 @@ public class GameController {
         playerDiscardDisplay.hide();
 
         //--------------Initialize Player labels----------------//
-        Rectangle[] playerLabelVictories = new Rectangle[]{playerLabelVictory1, playerLabelVictory2, playerLabelVictory3, playerLabelVictory4, playerLabelVictory5, playerLabelVictory6};
+        Rectangle[] playerLabels = new Rectangle[]{playerLabel1, playerLabel2,playerLabel3,playerLabel4,playerLabel5,playerLabel6};
+        Text[] playerLabelNames = new Text[]{playerLabelName1,playerLabelName2,playerLabelName3,playerLabelName4,playerLabelName5,playerLabelName6};
+        Rectangle[] playerLabelVictories = new Rectangle[]{playerLabelVictory1,playerLabelVictory2,playerLabelVictory3,playerLabelVictory4,playerLabelVictory5,playerLabelVictory6};
+        Text[] playerLabelVictoryNums = new Text[]{playerLabelVictoryNum1,playerLabelVictoryNum2,playerLabelVictoryNum3,playerLabelVictoryNum4,playerLabelVictoryNum5,playerLabelVictoryNum6};
+
         try {
             ImagePattern imagePattern = new ImagePattern(new Image(Main.class.getResource("/Victory_Symbol.png").toURI().toString()));
             for(Rectangle victoryImageSlot: playerLabelVictories) {
@@ -230,17 +260,10 @@ public class GameController {
             ex.printStackTrace();
         }
 
-
-        PlayerInfoDisplay playerInfoDisplay1 = new PlayerInfoDisplay(new LabelDisplay(playerLabel1, playerLabelName1), new NumberDisplay(playerLabelVictory1, playerLabelVictoryNum1));
-        PlayerInfoDisplay playerInfoDisplay2 = new PlayerInfoDisplay(new LabelDisplay(playerLabel2,playerLabelName2),new NumberDisplay(playerLabelVictory2,playerLabelVictoryNum2));
-        PlayerInfoDisplay playerInfoDisplay3 = new PlayerInfoDisplay(new LabelDisplay(playerLabel3,playerLabelName3),new NumberDisplay(playerLabelVictory3,playerLabelVictoryNum3));
-        PlayerInfoDisplay playerInfoDisplay4 = new PlayerInfoDisplay(new LabelDisplay(playerLabel4,playerLabelName4),new NumberDisplay(playerLabelVictory4,playerLabelVictoryNum4));
-        PlayerInfoDisplay playerInfoDisplay5 = new PlayerInfoDisplay(new LabelDisplay(playerLabel5,playerLabelName5),new NumberDisplay(playerLabelVictory5,playerLabelVictoryNum5));
-        PlayerInfoDisplay playerInfoDisplay6 = new PlayerInfoDisplay(new LabelDisplay(playerLabel6,playerLabelName6),new NumberDisplay(playerLabelVictory6,playerLabelVictoryNum6));
-
-        playerInfoDisplays = new PlayerInfoDisplay[]{playerInfoDisplay1,playerInfoDisplay2,playerInfoDisplay3,playerInfoDisplay4,playerInfoDisplay5,playerInfoDisplay6};
-        for(PlayerInfoDisplay display: playerInfoDisplays) {
-            display.hide();
+        playerInfoDisplays = new PlayerInfoDisplay[playerLabels.length];
+        for(int i=0; i<playerLabels.length; i++) {
+            playerInfoDisplays[i] = new PlayerInfoDisplay(new LabelDisplay(playerLabels[i], playerLabelNames[i]), new NumberDisplay(playerLabelVictories[i], playerLabelVictoryNums[i]));
+            playerInfoDisplays[i].hide();
         }
 
         //-------------Set ActionButton to not visible------------//
