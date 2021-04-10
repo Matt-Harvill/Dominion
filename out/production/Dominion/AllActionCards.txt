@@ -4,3 +4,4 @@ Smithy
 Festival
 Laboratory
 Market
+Cellar

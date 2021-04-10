@@ -7,14 +7,14 @@ import model.card.TreasureCard;
 import model.card.VictoryCard;
 import model.factory.CardCollectionFactory;
 import model.factory.CardFactory;
-
-import java.util.Scanner;
+import newActionStuff.ActionCardPerformer;
 
 public class Player {
 
     private String name, phase;
     private CardCollection hand, deck, discardPile, inPlay;
     private int handLimit, numActions, numBuys, purchasePower, amountSpentThisTurn, bonusPurchasePower;
+    private ActionCard actionCardInPlay;
 
     public Player() {
         hand = CardCollectionFactory.getCardCollection();
@@ -82,7 +82,8 @@ public class Player {
     public void playCard(Card card) {
         inPlay.addCardToCollection(hand.removeCardFromCollection(card));
         if(card instanceof ActionCard) {
-            playActionCard((ActionCard) card);
+            actionCardInPlay = (ActionCard) card;
+            ActionCardPerformer.playActionCard();
         } else if(card instanceof TreasureCard) {
             playTreasureCard((TreasureCard) card);
         }
@@ -105,6 +106,7 @@ public class Player {
         points+=getVictoryPoints(inPlay);
         return points;
     }
+    public ActionCard getActionCardInPlay() {return actionCardInPlay;}
 
     private int getVictoryPoints(CardCollection collection) {
         int points = 0;
@@ -114,7 +116,7 @@ public class Player {
         }
         return points;
     }
-    private boolean drawCardFromDeck(){
+    public boolean drawCardFromDeck(){
         if(deck.getSize()==0){
             discardPileToDeck();
             shuffleDeck();
@@ -155,33 +157,7 @@ public class Player {
             discardPile.addCardToCollection(inPlay.drawTopCard());
         }
     }
-    private void playActionCard(ActionCard actionCard){
-        Scanner input = new Scanner(actionCard.getAction());
-        String extractedString;
-        int numAdds = 0;
-        while(input.hasNext()){
-            extractedString = input.next();
-            if(extractedString.contains("+")){
-                numAdds = Integer.parseInt(extractedString.substring(extractedString.indexOf("+")+1,extractedString.indexOf("+")+2));
-            }
-            else if(extractedString.contains("Card")){
-                handLimit+=numAdds;
-                for(int i=0;i<numAdds;i++){
-                    drawCardFromDeck();
-                }
-            }
-            else if(extractedString.contains("Action")){
-                numActions+=numAdds;
-            }
-            else if(extractedString.contains("Buy")){
-                numBuys+=numAdds;
-            }
-            else if(extractedString.contains("Coin")){
-                bonusPurchasePower+=numAdds;
-            }
-        }
-        numActions--;
-    }
+
     private void playTreasureCard(TreasureCard treasureCard) {
         purchasePower+=treasureCard.getPurchasePower();
     }
@@ -199,4 +175,22 @@ public class Player {
     public String getInfoString() {
         return name + " " + getPoints() + " " + (deck.getSize()+hand.getSize()+ discardPile.getSize()) + " ";
     }
+
+    //========================New Functions for ActionCards================//
+    public void incrementNumBuys(int increment) {
+        numBuys += increment;
+    }
+    public void incrementNumActions(int increment) {
+        numActions += increment;
+    }
+    public void incrementPurchasePower(int increment) {
+        purchasePower += increment;
+    }
+    public void incrementHandLimit() {
+        handLimit++;
+    }
+    public void decrementNumActions() {
+        numActions--;
+    }
+
 }

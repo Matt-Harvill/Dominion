@@ -1,0 +1,6 @@
+Smithy              title_draw num_3
+Woodcutter          title_buy num_1  \n  title_coin num_2
+Village             title_draw num_1  \n  title_action num_2
+Market              title_draw num_1  \n  title_action num_1  \n  title_buy num_1  \n  title_coin num_1
+Laboratory          title_draw num_2  \n  title_action num_1
+Festival            title_action num_2  \n  title_buy num_1  \n  title_coin num_2

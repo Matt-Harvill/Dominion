@@ -124,7 +124,11 @@ public class DisplayUpdater {
     }
 
     public static void updateHandDisplay() {
-        updateCardsInHand();
+        if(player.getPhase().equals("discardPhase")) {
+            showDiscardableCardsInHand();
+        } else {
+            updateCardsInHand();
+        }
         updateDeck();
         updateDiscard();
         updateActionBar();
@@ -133,21 +137,30 @@ public class DisplayUpdater {
         Text gameInfoText = controller.getGameInfoText();
         String gameInfoString = "";
         switch (player.getPhase()) {
-            case "actionPhase":
+            case "actionPhase": {
                 gameInfoString += "Number of Actions: " + player.getNumActions() + "   ";
                 updateActionButtonText("Enter Buy Phase");
                 break;
-            case "buyPhase":
+            }
+            case "buyPhase": {
                 gameInfoString += "Number of Buys Remaining : " + player.getNumBuys() + "   ";
                 gameInfoString += "Purchase Power: " + player.getPurchasePower();
                 updateActionButtonText("End Turn");
                 break;
-            case "endPhase": controller.getActionButton().setVisible(false);
+            }
+            case "endPhase": {
+                controller.getActionButton().setVisible(false);
                 break;
-            case "startPhase":
+            }
+            case "startPhase": {
                 updateGameInfoText("Wait for you turn");
                 gameInfoString += "Here is your hand";
                 break;
+            }
+            case "discardPhase": {
+                updateActionButtonText("Discard Cards");
+                gameInfoString += "Select cards to discard";
+            }
         }
         gameInfoText.setText(gameInfoString);
     }
@@ -165,17 +178,19 @@ public class DisplayUpdater {
         List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
         List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
 
+
+        String phase = player.getPhase();
         int index = 0;
         for(ActionCard actionCard: actionCards) {
             setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
-            if(player.getPhase().equals("actionPhase")) {
+            if(phase.equals("actionPhase")) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(TreasureCard treasureCard: treasureCards) {
             setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
-            if(player.getPhase().equals("buyPhase")) {
+            if(phase.equals("buyPhase")) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
@@ -185,6 +200,45 @@ public class DisplayUpdater {
             index++;
         }
     }
+    private static void showDiscardableCardsInHand() {
+        CardDisplay[] cardDisplays = controller.getCIHDisplays();
+        resetCardDisplays(cardDisplays);
+
+        CardCollection hand = player.getHand();
+        List<ActionCard> actionCards = hand.getDistinctActionCards();
+        List<TreasureCard> treasureCards = hand.getDistinctTreasureCards();
+        List<VictoryCard> victoryCards = hand.getDistinctVictoryCards();
+
+        String type = player.getActionCardInPlay().getAction().getType();
+        System.out.println(type);
+        if(type.equals("all")) {
+            type = "actionCards treasureCards victoryCards";
+        }
+
+        int index = 0;
+        for(ActionCard actionCard: actionCards) {
+            setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
+            if(type.contains("actionCards")) {
+                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
+            }
+            index++;
+        }
+        for(TreasureCard treasureCard: treasureCards) {
+            setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
+            if(type.contains("treasureCards")) {
+                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
+            }
+            index++;
+        }
+        for(VictoryCard victoryCard: victoryCards) {
+            setCardDisplay(cardDisplays[index],victoryCard,hand.numCardInCollection(victoryCard));
+            if(type.contains("victoryCards")) {
+                cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
+            }
+            index++;
+        }
+    }
+
     private static void updateDeck() {
         DeckDisplay deckDisplay = controller.getPlayerDeckDisplay();
         int numCards = player.getDeck().getSize();
@@ -229,4 +283,5 @@ public class DisplayUpdater {
         }
         controller.getGameLog().setText(builder.toString());
     }
+
 }

@@ -74,11 +74,16 @@ public final class ActionHandler {
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-        if(cardClicked instanceof ActionCard) {
-            checkCanDoAction();
-        } else if(cardClicked instanceof TreasureCard) {
+//        if(cardClicked instanceof ActionCard) {
+//            checkCanDoAction();
+//        } else
+        if(cardClicked instanceof TreasureCard) {
             DisplayUpdater.showBuyableCards(true);
         }
+    }
+
+    public static void actionCardCompleted(ActionCard card) {
+        checkCanDoAction();
     }
 
     public static void gameOver() {
@@ -100,7 +105,7 @@ public final class ActionHandler {
         DisplayUpdater.gameOver(gameOverText);
     }
 
-    private static void checkCanDoAction() {
+    public static void checkCanDoAction() {
         if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
             buyPhase();
         }

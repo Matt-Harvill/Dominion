@@ -1,35 +1,58 @@
 package model.card;
 
 import javafx.scene.image.Image;
+import newActionStuff.Action;
+import newActionStuff.ActionParser;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ActionCard extends Card {
-    protected String action;
-    protected boolean dependent = true;
-    protected String dependencies;
+    protected List<Action> actions;
+    private int actionIndex;
 
-    public ActionCard(String name, int cost, String action, Image image, Image smallCardImage, String dependencies, String numCards) {
+    public ActionCard(String name, int cost, String actionString, Image image, Image smallCardImage, String numCards) {
         super(name, cost, image, smallCardImage, numCards);
-        this.action = action;
-        this.dependencies = dependencies;
-        if(dependencies==null) dependent = false;
+        actions = new ArrayList<>();
+        loadInActions(actionString);
+//        printActions();
+        actionIndex = 0;
     }
 
-    public String getAction() {
-        return action;
+    public void resetActionIndex() {
+        actionIndex = 0;
     }
-    public void setAction(String action) {
-        this.action = action;
+    public void incrementActionIndex() {
+        actionIndex++;
     }
-    public boolean isDependent() {
-        return dependent;
+    public Action getAction() {
+        if(actionIndex==actions.size()) {
+            return null;
+        } else {
+            return actions.get(actionIndex);
+        }
     }
-    public void setDependent(boolean dependent) {
-        this.dependent = dependent;
+
+    private void loadInActions(String actionString) {
+        Scanner scanner = new Scanner(actionString);
+        while (scanner.hasNext()) {
+            actions.add(ActionParser.parse(scanner.nextLine()));
+        }
     }
-    public String getDependencies() {
-        return dependencies;
+
+    public int getMemory(String memoryName) {
+        for(Action action: actions) {
+            if(action.getMemoryName().equals(memoryName)) {
+                return action.getMemory();
+            }
+        }
+        return -1;
     }
-    public void setDependencies(String dependencies) {
-        this.dependencies = dependencies;
-    }
+
+//    private void printActions() {
+//        for(Action action: actions) {
+//            System.out.println(action);
+//        }
+//    }
 }
