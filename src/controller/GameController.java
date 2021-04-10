@@ -19,6 +19,7 @@ import model.factory.CardFactory;
 import view.*;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -201,9 +202,14 @@ public class GameController {
         Collections.addAll(allCISDisplays, ECISDisplays);
 
         //--------------Initialize player Decks and Discard-----------------//
-        ImagePattern imagePattern = new ImagePattern(new Image(new File("src/resources/BackViewCard.png").toURI().toString()));
-        playerDeck.setFill(imagePattern);
-        opponentDeck.setFill(imagePattern);
+        try {
+            ImagePattern imagePattern = new ImagePattern(new Image(Main.class.getResource("/BackViewCard.png").toURI().toString()));
+            playerDeck.setFill(imagePattern);
+            opponentDeck.setFill(imagePattern);
+        } catch(URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+
         playerDeckDisplay = new DeckDisplay(new DeckCardDisplay(playerDeck,new NumberDisplay(playerDeckNumBack,playerDeckNum)),new LabelDisplay(playerDeckLabel,playerDeckLabelText));
         opponentDeckDisplay = new DeckDisplay(new DeckCardDisplay(opponentDeck,new NumberDisplay(opponentDeckNumBack,opponentDeckNum)),new LabelDisplay(opponentDeckLabel,opponentDeckLabelText));
         playerDiscardDisplay = new DeckDisplay(new DeckCardDisplay(playerDiscard,new NumberDisplay(playerDiscardNumBack,playerDiscardNum)),new LabelDisplay(discardPileLabel,discardPileLabelText));
@@ -214,10 +220,15 @@ public class GameController {
 
         //--------------Initialize Player labels----------------//
         Rectangle[] playerLabelVictories = new Rectangle[]{playerLabelVictory1, playerLabelVictory2, playerLabelVictory3, playerLabelVictory4, playerLabelVictory5, playerLabelVictory6};
-        imagePattern = new ImagePattern(new Image(new File("src/resources/Victory_Symbol.png").toURI().toString()));
-        for(Rectangle victoryImageSlot: playerLabelVictories) {
-            victoryImageSlot.setFill(imagePattern);
+        try {
+            ImagePattern imagePattern = new ImagePattern(new Image(Main.class.getResource("/Victory_Symbol.png").toURI().toString()));
+            for(Rectangle victoryImageSlot: playerLabelVictories) {
+                victoryImageSlot.setFill(imagePattern);
+            }
+        } catch(URISyntaxException ex) {
+            ex.printStackTrace();
         }
+
 
         PlayerInfoDisplay playerInfoDisplay1 = new PlayerInfoDisplay(new LabelDisplay(playerLabel1, playerLabelName1), new NumberDisplay(playerLabelVictory1, playerLabelVictoryNum1));
         PlayerInfoDisplay playerInfoDisplay2 = new PlayerInfoDisplay(new LabelDisplay(playerLabel2,playerLabelName2),new NumberDisplay(playerLabelVictory2,playerLabelVictoryNum2));
@@ -335,9 +346,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn": ActionHandler.startPhase();
-            case "Enter Buy Phase": ActionHandler.buyPhase();
-            case "End Turn": ActionHandler.endPhase();
+            case "Start Turn": ActionHandler.startPhase(); break;
+            case "Enter Buy Phase": ActionHandler.buyPhase(); break;
+            case "End Turn": ActionHandler.endPhase(); break;
         }
 
     }
@@ -427,8 +438,12 @@ public class GameController {
 
     private void initializeCardsInSupply(BuyableCardDisplay[] cardDisplays) {
         for(BuyableCardDisplay cardDisplay: cardDisplays) {
-            cardDisplay.setBuyButtonImage(new Image(new File("src/resources/Plus Sign.png").toURI().toString()));
-            cardDisplay.hide();
+            try {
+                cardDisplay.setBuyButtonImage(new Image(Main.class.getResource("/Plus Sign.png").toURI().toString()));
+                cardDisplay.hide();
+            } catch(URISyntaxException ex) {
+                ex.printStackTrace();
+            }
         }
     }
     private void setInitialViewOrder(CardDisplay[] cardDisplays) {

@@ -12,8 +12,11 @@ import model.card.Card;
 import model.factory.CardFactory;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,8 +40,8 @@ public class SelectCardsInGameController {
 
     private int currentPageNum = 1;
 
-    public void initialize() throws FileNotFoundException {
-        File actionCardsInGame = new File("src/resources/AllActionCards.txt");
+    public void initialize() throws IOException {
+        InputStream actionCardsInGame = (getClass().getResource("/AllActionCards.txt")).openStream();
         Scanner scanner = new Scanner(actionCardsInGame);
 
         allActionCards = new ArrayList<>();
@@ -56,7 +59,7 @@ public class SelectCardsInGameController {
             cardsSelected.add(false);
         }
 
-        if(Main.getServer().getCardsInGame().getDistinctActionCards().size()==0) {
+        if(Main.getServer()==null || Main.getServer().getCardsInGame().getDistinctActionCards().size()==0) {
             cardsChosen = new ArrayList<>();
         } else {
             cardsChosen = Main.getServer().getCardsInGame().getDistinctActionCards();

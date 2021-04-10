@@ -1,0 +1,6 @@
+Village
+Woodcutter
+Smithy
+Festival
+Laboratory
+Market

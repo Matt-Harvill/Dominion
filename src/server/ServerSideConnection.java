@@ -70,7 +70,7 @@ public class ServerSideConnection implements Runnable {
                         sendMessage+= parseCardsInGame(cardsInGame);
                         individualSend(sendMessage);
                         sendMessage = "connected " + getPlayerInfoString();
-
+                        break;
                     case "endTurn":
                         if(gameOver()) {
                             myTurn = false;
@@ -79,7 +79,7 @@ public class ServerSideConnection implements Runnable {
                         } else {
                             sendMessage = assignNewTurn();
                         }
-
+                        break;
                     case "leaveGame":
                         if(myTurn) {
                             broadcast(sendMessage);
@@ -87,7 +87,7 @@ public class ServerSideConnection implements Runnable {
                         }
                         Main.getServer().getServerSideConnections().remove(this);
                         shutDown();
-
+                        break;
                     case "buyCard":
                         String cardName = scanner.next();
                         for (CardStack cardStack : cardStacks) {
@@ -97,6 +97,7 @@ public class ServerSideConnection implements Runnable {
                                 break;
                             }
                         }
+                        break;
                 }
                 broadcast(sendMessage);
 

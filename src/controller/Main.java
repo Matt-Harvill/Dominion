@@ -10,10 +10,11 @@ import model.Player;
 import server.DominionServer;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class Main extends Application {
 
-    private static Parent gameUIScene, hostJoinScene;
+    private static Parent gameUIScene, hostJoinScene, cardSelectScene;
     private static Stage mainStage, cardSelect;
     private static GameController gameController;
     private static HostJoinController hostJoinController;
@@ -25,12 +26,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         mainStage = primaryStage;
         player = new Player();
-        FXMLLoader gameSceneLoader = new FXMLLoader(getClass().getResource("/view/gameScene.fxml"));
+        FXMLLoader gameSceneLoader = new FXMLLoader(getClass().getResource("/gameScene.fxml"));
         gameUIScene = gameSceneLoader.load();
         gameController = gameSceneLoader.getController();
-        FXMLLoader hostJoinSceneLoader = new FXMLLoader(getClass().getResource("/view/hostJoinScene.fxml"));
+        FXMLLoader hostJoinSceneLoader = new FXMLLoader(getClass().getResource("/hostJoinScene.fxml"));
         hostJoinScene = hostJoinSceneLoader.load();
         hostJoinController = hostJoinSceneLoader.getController();
+        FXMLLoader cardSelectLoader = new FXMLLoader(getClass().getResource("/selectCards.fxml"));
+        cardSelectScene = cardSelectLoader.load();
 
         mainStage.setResizable(false);
         goToHostJoinScene();
@@ -87,15 +90,11 @@ public class Main extends Application {
     }
     public static void openCardSelectStage() {
         if(cardSelect==null) {
-            try {
-                cardSelect = new Stage();
-                cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("/view/selectCardsInGame.fxml"))));
-                cardSelect.setResizable(false);
-                cardSelect.show();
-                cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            cardSelect = new Stage();
+            cardSelect.setScene(new Scene(cardSelectScene));
+            cardSelect.setResizable(false);
+            cardSelect.show();
+            cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);
         }
     }
     public static void closeCardSelectStage() {
