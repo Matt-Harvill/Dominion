@@ -3,6 +3,7 @@ package controller;
 import controller.Main;
 import model.Action;
 import model.Player;
+import model.StackCalculator;
 
 import java.util.Scanner;
 
@@ -57,6 +58,9 @@ public class ActionParser {
                 }
                 case "numDiscarded": {
                     num = player.getActionCardInPlay().getMemory(numString); break;
+                }
+                case "numEmptyStacks": {
+                    num = StackCalculator.numEmptyStacks(); break;
                 }
             }
         }

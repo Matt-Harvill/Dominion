@@ -75,6 +75,10 @@ public class CardFactory {
                     return new ActionCard(cardType,2,"title_action num_1 \n title_discard optional_true num_any memoryName_numDiscarded \n title_draw num_numDiscarded",new Image(Main.class.getResource("/Cellar.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Cellar_Small.jpg").toURI().toString()),"All 10");
                 }
+                case "Poacher": {
+                    return new ActionCard(cardType,4,"title_draw num_1 \n title_action num_1 \n title_coin num_1 \n title_discard optional_false num_numEmptyStacks",new Image(Main.class.getResource("/Poacher.jpg").toURI().toString()),
+                            new Image(Main.class.getResource("/Poacher_Small.jpg").toURI().toString()),"All 10");
+                }
                 default: return null;
             }
         } catch (URISyntaxException ex) {

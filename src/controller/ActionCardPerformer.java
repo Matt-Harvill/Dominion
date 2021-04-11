@@ -28,6 +28,11 @@ public class ActionCardPerformer {
 
         int num = ActionParser.parseNum(action);
 
+        if(num==0) {
+            submitAction();
+            return;
+        }
+
         if(action.getPlayersAffected().equals("self")) {
             switch (action.getTitle()) {
                 case "buy": {
