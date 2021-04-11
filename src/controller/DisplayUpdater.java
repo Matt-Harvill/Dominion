@@ -74,20 +74,28 @@ public class DisplayUpdater {
         List<TreasureCard> treasureCards = select.getDistinctTreasureCards();
         List<VictoryCard> victoryCards = select.getDistinctVictoryCards();
 
+        String phase = player.getPhase();
+        String style = null;
+        if(phase.equals("discardPhase")) {
+            style = controller.getYellowCardGlowStyle();
+        } else if(phase.equals("trashPhase")){
+            style = controller.getRedCardGlowStyle();
+        }
+
         int index = 0;
         for(ActionCard actionCard: actionCards) {
             setCardDisplay(cardDisplays[index],actionCard,select.numCardInCollection(actionCard));
-            cardDisplays[index].setStyle(controller.getYellowCardGlowStyle());
+            cardDisplays[index].setStyle(style);
             index++;
         }
         for(TreasureCard treasureCard: treasureCards) {
             setCardDisplay(cardDisplays[index],treasureCard,select.numCardInCollection(treasureCard));
-            cardDisplays[index].setStyle(controller.getYellowCardGlowStyle());
+            cardDisplays[index].setStyle(style);
             index++;
         }
         for(VictoryCard victoryCard: victoryCards) {
             setCardDisplay(cardDisplays[index],victoryCard,select.numCardInCollection(victoryCard));
-            cardDisplays[index].setStyle(controller.getYellowCardGlowStyle());
+            cardDisplays[index].setStyle(style);
             index++;
         }
     }
@@ -198,6 +206,13 @@ public class DisplayUpdater {
                 controller.getSwitchCardViewButton().setVisible(true);
                 break;
             }
+            case "trashPhase": {
+                updateActionButtonText("Trash Cards",ActionCardPerformer.checkActionComplete());
+                gameInfoString += "Select cards to trash";
+
+                controller.getSwitchCardViewButton().setVisible(true);
+                break;
+            }
         }
         gameInfoText.setText(gameInfoString);
     }
@@ -256,6 +271,7 @@ public class DisplayUpdater {
                 highlightTreasureCards = true;
                 break;
             }
+            case "trashPhase":
             case "discardPhase": {
                 String type = player.getActionCardInPlay().getAction().getType();
 //                System.out.println(type);

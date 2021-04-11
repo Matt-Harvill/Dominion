@@ -32,6 +32,7 @@ public class GameController {
     //----------------CSS Styles for Cards---------------//
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
     private final String yellowCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: yellow";
+    private final String redCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: red";
 
     //-----------------Info for ServerInfoDisplay------------//
     @FXML private Text hostIP, portNum;
@@ -270,6 +271,7 @@ public class GameController {
     public PlayerInfoDisplay[] getPlayerInfoDisplays() {return playerInfoDisplays;}
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
     public String getYellowCardGlowStyle() {return yellowCardGlowStyle;}
+    public String getRedCardGlowStyle() {return redCardGlowStyle;}
     public LabelDisplay getInPlayPlayerLabel() {return inPlayPlayerLabel;}
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
     public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}
@@ -355,6 +357,7 @@ public class GameController {
             case "Start Turn": GUIInputHandler.startPhase(); break;
             case "Enter Buy Phase": GUIInputHandler.buyPhase(); break;
             case "End Turn": GUIInputHandler.endPhase(); break;
+            case "Trash Cards":
             case "Discard Cards":
                 ActionCardPerformer.submitAction(); break;
         }

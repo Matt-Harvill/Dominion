@@ -9,19 +9,18 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="fixed error of not updating memory when action is submitted">
-      <change afterPath="$PROJECT_DIR$/src/model/StackCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Poacher.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Poacher_Small.jpg" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="added poacher card and it works">
+      <change afterPath="$PROJECT_DIR$/src/resources/Curse.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Curse_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Remodel.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Remodel_Small.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
     </list>
@@ -107,13 +106,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,14 +177,8 @@
       <workItem from="1618002094696" duration="11512000" />
       <workItem from="1618019616994" duration="23585000" />
       <workItem from="1618091250134" duration="2534000" />
-      <workItem from="1618150587710" duration="15462000" />
-    </task>
-    <task id="LOCAL-00025" summary="action cards selected by host are now loaded in. I need to do this for other cards as well but I'll get to that later.">
-      <created>1617222856624</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1617222856624</updated>
+      <workItem from="1618150587710" duration="16164000" />
+      <workItem from="1618171282409" duration="1022000" />
     </task>
     <task id="LOCAL-00026" summary="minor update for entering name with enter key as well as next button">
       <created>1617223199212</created>
@@ -521,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618166030494</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="added poacher card and it works">
+      <created>1618168368251</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1618168368251</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="CardDisplay Objects have been implemented somewhat to make code more readable;" />
     <MESSAGE value="Fixed ordering of treasure cards and victory cards in supply" />
     <MESSAGE value="Fixed ServerPlayers and fixed exceptions thrown when ServerPlayers didn't already exist because &quot;startTurn&quot; was sent before &quot;inGame&quot;" />
     <MESSAGE value="Set a message for who won @GameOver. Also created CardDisplays for extra cards in game even though they aren't used. Everything should be working much better and is way more organized." />
@@ -566,6 +567,7 @@
     <MESSAGE value="show cards in play or selected cards works pretty well. Also, the number of cards selected feature is working. getting error that cellar is giving 2 actions so I'll try to fix that" />
     <MESSAGE value="fixed error in numActions from cellar. It just wasn't updating the display. Also, now the cellar correctly draws the number of cards that the player discarded from its actions." />
     <MESSAGE value="fixed error of not updating memory when action is submitted" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed error of not updating memory when action is submitted" />
+    <MESSAGE value="added poacher card and it works" />
+    <option name="LAST_COMMIT_MESSAGE" value="added poacher card and it works" />
   </component>
 </project>

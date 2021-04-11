@@ -83,6 +83,7 @@ public final class GUIInputHandler {
                 playCard(card);
                 break;
             }
+            case "trashPhase":
             case "discardPhase": {
                 player.handToSelect(card);
                 ActionCardPerformer.setMemory();
@@ -97,7 +98,9 @@ public final class GUIInputHandler {
         CardCollection select = player.getSelect();
         boolean inSelect = select.getCollection().contains(card);
 
-        if(player.getPhase().equals("discardPhase") && inSelect) {
+        String phase = player.getPhase();
+
+        if((phase.equals("discardPhase") || phase.equals("trashPhase")) && inSelect) {
             player.selectToHand(card);
             ActionCardPerformer.setMemory();
             ActionCardPerformer.checkActionComplete();
@@ -107,7 +110,10 @@ public final class GUIInputHandler {
     private static void updateAfterClick() {
         DisplayUpdater.updateHandDisplay();
         CardCollection inPlayDisplayCollection;
-        if(player.getPhase().equals("discardPhase")) {
+
+        String phase = player.getPhase();
+
+        if(phase.equals("discardPhase") || phase.equals("trashPhase")) {
             inPlayDisplayCollection = player.getSelect();
         } else {
             inPlayDisplayCollection = player.getInPlay();

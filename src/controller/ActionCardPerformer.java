@@ -65,6 +65,12 @@ public class ActionCardPerformer {
                     Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
                     break;
                 }
+                case "trash": {
+                    player.setPhase("trashPhase");
+                    DisplayUpdater.updateHandDisplay();
+                    Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
+                    break;
+                }
             }
         }
     }
@@ -98,6 +104,8 @@ public class ActionCardPerformer {
 //        }
         if(player.getPhase().equals("discardPhase")) {
             player.discardSelect();
+        } else if(player.getPhase().equals("trashPhase")) {
+            player.trashSelect();
         }
 
         player.setPhase("actionPhase");
