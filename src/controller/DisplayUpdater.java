@@ -8,10 +8,8 @@ import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
-import newActionStuff.ActionCardPerformer;
 import view.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayUpdater {

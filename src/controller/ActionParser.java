@@ -1,6 +1,7 @@
-package newActionStuff;
+package controller;
 
 import controller.Main;
+import model.Action;
 import model.Player;
 
 import java.util.Scanner;

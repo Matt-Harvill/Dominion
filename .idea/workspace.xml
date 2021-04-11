@@ -9,15 +9,28 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="show cards in play or selected cards works pretty well. Also, the number of cards selected feature is working. getting error that cellar is giving 2 actions so I'll try to fix that">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="fixed error in numActions from cellar. It just wasn't updating the display. Also, now the cellar correctly draws the number of cards that the player discarded from its actions.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GUIInputHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GUIInputHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/ActionCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/ActionCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/ActionCardPerformer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/Action.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/ActionCardPerformer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/ActionParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/NewActionCards.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/card/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/ActionCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newActionStuff/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newActionStuff/ActionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newActionStuff/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newActionStuff/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newActionStuff/NewActionCards.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +89,9 @@
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\resources" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\resources" />
-      <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\resources" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\view" />
       <recent name="C:\Users\mharv\Documents\Coding Adventures\Dominion\src\resources\images" />
     </key>
@@ -93,7 +106,7 @@
       <option name="VM_PARAMETERS" value="--module-path C:\Users\mharv\.jdks\javafx-sdk-15.0.1\lib --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="newActionStuff.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -170,14 +183,7 @@
       <workItem from="1618002094696" duration="11512000" />
       <workItem from="1618019616994" duration="23585000" />
       <workItem from="1618091250134" duration="2534000" />
-      <workItem from="1618150587710" duration="11191000" />
-    </task>
-    <task id="LOCAL-00023" summary="can host and join with same UI. Now the backend is actually established as well">
-      <created>1617161484363</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1617161484363</updated>
+      <workItem from="1618150587710" duration="12783000" />
     </task>
     <task id="LOCAL-00024" summary="can select from allcards the cards you want in the game. This is only for the the frontend. These cards aren't actually used in the game in backend yet">
       <created>1617216675022</created>
@@ -515,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618161930216</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="fixed error in numActions from cellar. It just wasn't updating the display. Also, now the cellar correctly draws the number of cards that the player discarded from its actions.">
+      <created>1618162884523</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1618162884523</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Discard Pile no longer shows if it is empty" />
     <MESSAGE value="Created New Objects for CardDisplays" />
     <MESSAGE value="CardDisplay Objects have been implemented somewhat to make code more readable;" />
     <MESSAGE value="Fixed ordering of treasure cards and victory cards in supply" />
@@ -560,6 +572,7 @@
     <MESSAGE value="starting to implement selection display with discarding cards." />
     <MESSAGE value="getting discard and memory to work pretty nicely" />
     <MESSAGE value="show cards in play or selected cards works pretty well. Also, the number of cards selected feature is working. getting error that cellar is giving 2 actions so I'll try to fix that" />
-    <option name="LAST_COMMIT_MESSAGE" value="show cards in play or selected cards works pretty well. Also, the number of cards selected feature is working. getting error that cellar is giving 2 actions so I'll try to fix that" />
+    <MESSAGE value="fixed error in numActions from cellar. It just wasn't updating the display. Also, now the cellar correctly draws the number of cards that the player discarded from its actions." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed error in numActions from cellar. It just wasn't updating the display. Also, now the cellar correctly draws the number of cards that the player discarded from its actions." />
   </component>
 </project>

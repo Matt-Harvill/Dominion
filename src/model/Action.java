@@ -1,4 +1,6 @@
-package newActionStuff;
+package model;
+
+import controller.ActionParser;
 
 public class Action {
     private final String title;
@@ -53,7 +55,7 @@ public class Action {
             return true;
         } else {
 //            parseComparator();
-            return memory==ActionParser.parseNum(this);
+            return memory== ActionParser.parseNum(this);
         }
     }
 

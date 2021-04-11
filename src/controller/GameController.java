@@ -16,7 +16,6 @@ import javafx.scene.text.Text;
 import model.CardCollection;
 import model.card.*;
 import model.factory.CardFactory;
-import newActionStuff.ActionCardPerformer;
 import view.*;
 
 import java.net.URISyntaxException;

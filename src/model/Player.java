@@ -7,7 +7,7 @@ import model.card.TreasureCard;
 import model.card.VictoryCard;
 import model.factory.CardCollectionFactory;
 import model.factory.CardFactory;
-import newActionStuff.ActionCardPerformer;
+import controller.ActionCardPerformer;
 
 public class Player {
 

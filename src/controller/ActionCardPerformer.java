@@ -1,8 +1,7 @@
-package newActionStuff;
+package controller;
 
-import controller.GUIInputHandler;
-import controller.DisplayUpdater;
-import controller.Main;
+import model.Action;
+import model.CardCollection;
 import model.Player;
 import model.card.ActionCard;
 
@@ -68,6 +67,9 @@ public class ActionCardPerformer {
     public static void setMemory() {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
+        CardCollection select = player.getSelect();
+        System.out.println("printing cards in Select @ACP_setMemory");
+        select.printCardNamesInCollection();
         action.setMemory(player.getSelect().getSize());
     }
     public static boolean checkActionComplete() {
@@ -80,6 +82,7 @@ public class ActionCardPerformer {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
 
+        setMemory();
         //have a switch case for what info to use as object memory
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
@@ -98,9 +101,7 @@ public class ActionCardPerformer {
     }
 
     public static void actionCardCompleted() {
-        System.out.println("numActions before: " +  player.getNumActions() + " @ACP_actionCardCompleted");
         player.decrementNumActions();
-        System.out.println("numActions after: " +  player.getNumActions() + " @ACP_actionCardCompleted");
         GUIInputHandler.checkCanDoAction();
 
         DisplayUpdater.updateHandDisplay();
