@@ -50,6 +50,7 @@ public class ActionCardPerformer {
                     break;
                 }
                 case "action": {
+                    System.out.println("action num: " + num + " @ACP_startAction");
                     player.incrementNumActions(num);
                     submitAction();
                     break;
@@ -97,7 +98,13 @@ public class ActionCardPerformer {
     }
 
     public static void actionCardCompleted() {
+        System.out.println("numActions before: " +  player.getNumActions() + " @ACP_actionCardCompleted");
         player.decrementNumActions();
+        System.out.println("numActions after: " +  player.getNumActions() + " @ACP_actionCardCompleted");
         GUIInputHandler.checkCanDoAction();
+
+        DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
+        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
     }
 }

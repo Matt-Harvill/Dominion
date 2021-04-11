@@ -45,6 +45,7 @@ public class ActionParser {
     public static int parseNum(Action action) {
         int num = -1;
         String numString = action.getNum();
+        System.out.println("numString: " + numString + " @ActionParser_parseNum");
         boolean isNumeric = numString.chars().allMatch(Character::isDigit);
         if(isNumeric) {
             num = Integer.parseInt(numString);
@@ -58,6 +59,7 @@ public class ActionParser {
                 }
             }
         }
+        System.out.println("num: " + num + " @ActionParser_parseNum");
         return num;
     }
 

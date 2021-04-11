@@ -118,7 +118,7 @@ public class DisplayUpdater {
         PlayerInfoDisplay[] displays = controller.getPlayerInfoDisplays();
 
         for (PlayerInfoDisplay display : displays) {
-            System.out.println("playerLabel name: " + display.getName());
+//            System.out.println("playerLabel name: " + display.getName());
             if (playerName.equals(display.getName()) || display.getName().equals("")) {
                 display.setName(playerName);
                 display.setNum(points);
@@ -168,32 +168,32 @@ public class DisplayUpdater {
 
         switch (player.getPhase()) {
             case "actionPhase": {
-                System.out.println("actionPhase entered @updateActionBar");
+//                System.out.println("actionPhase entered @updateActionBar");
                 gameInfoString += "Number of Actions: " + player.getNumActions() + "   ";
                 updateActionButtonText("Enter Buy Phase",true);
                 break;
             }
             case "buyPhase": {
-                System.out.println("buyPhase entered @updateActionBar");
+//                System.out.println("buyPhase entered @updateActionBar");
                 gameInfoString += "Number of Buys Remaining : " + player.getNumBuys() + "   ";
                 gameInfoString += "Purchase Power: " + player.getPurchasePower();
                 updateActionButtonText("End Turn",true);
                 break;
             }
             case "endPhase": {
-                System.out.println("endPhase entered @updateActionBar");
+//                System.out.println("endPhase entered @updateActionBar");
                 controller.getActionButton().setVisible(false);
                 break;
             }
             case "startPhase": {
-                System.out.println("startPhase entered @updateActionBar");
+//                System.out.println("startPhase entered @updateActionBar");
                 updateGameInfoText("Wait for you turn");
                 controller.getActionButton().setVisible(false);
                 gameInfoString += "Here is your hand";
                 break;
             }
             case "discardPhase": {
-                System.out.println("discardPhase entered @updateActionBar");
+//                System.out.println("discardPhase entered @updateActionBar");
                 updateActionButtonText("Discard Cards",ActionCardPerformer.checkActionComplete());
                 gameInfoString += "Select cards to discard";
 
@@ -260,7 +260,7 @@ public class DisplayUpdater {
             }
             case "discardPhase": {
                 String type = player.getActionCardInPlay().getAction().getType();
-                System.out.println(type);
+//                System.out.println(type);
                 if(type.equals("all")) {
                     type = "actionCards treasureCards victoryCards";
                 }
