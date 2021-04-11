@@ -42,11 +42,16 @@ public class ActionCard extends Card {
     }
 
     public int getMemory(String memoryName) {
+        if(getAction().getMemoryName()==null) {
+            return -1;
+        }
+
         for(Action action: actions) {
             if(action.getMemoryName().equals(memoryName)) {
                 return action.getMemory();
             }
         }
+
         return -1;
     }
 

@@ -6,6 +6,7 @@ import model.ServerPlayer;
 import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
+import newActionStuff.ActionCardPerformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,11 +78,24 @@ public final class ActionHandler {
         }
     }
 
-    public static void moveToSelect(Card cardClicked) {
+    public static void handToSelect(Card cardClicked) {
         CardCollection select = player.getSelect();
         CardCollection hand = player.getHand();
 
         select.addCardToCollection(hand.removeCardFromCollection(cardClicked));
+    }
+    public static void selectToHand(Card cardClicked) {
+        CardCollection select = player.getSelect();
+        CardCollection hand = player.getHand();
+
+        hand.addCardToCollection(select.removeCardFromCollection(cardClicked));
+    }
+    public static void discardSelect() {
+        CardCollection select = player.getSelect();
+        CardCollection discard = player.getDiscardPile();
+        while(select.getSize()>0) {
+            discard.addCardToCollection(select.drawTopCard());
+        }
     }
 
     public static void greenCardInHandClicked(Card card) {
@@ -92,12 +106,35 @@ public final class ActionHandler {
                 break;
             }
             case "discardPhase": {
-                moveToSelect(card);
+                handToSelect(card);
+                ActionCardPerformer.setMemory();
+                ActionCardPerformer.checkActionComplete();
                 break;
             }
         }
+
+        updateAfterClick();
+    }
+    public static void cardInPlayClicked(Card card) {
+        CardCollection select = player.getSelect();
+        boolean inSelect = select.getCollection().contains(card);
+
+        if(player.getPhase().equals("discardPhase") && inSelect) {
+            selectToHand(card);
+            ActionCardPerformer.setMemory();
+            ActionCardPerformer.checkActionComplete();
+        }
+        updateAfterClick();
+    }
+    private static void updateAfterClick() {
         DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
+        CardCollection inPlayDisplayCollection;
+        if(player.getPhase().equals("discardPhase")) {
+            inPlayDisplayCollection = player.getSelect();
+        } else {
+            inPlayDisplayCollection = player.getInPlay();
+        }
+        DisplayUpdater.updateInPlayDisplay(inPlayDisplayCollection, player.getName(), -1,true);
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
     }
 

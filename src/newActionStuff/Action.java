@@ -48,8 +48,19 @@ public class Action {
         return optional;
     }
 
-    public boolean complete() {
-        return true;
+    public boolean isComplete() {
+        if(optional) {
+            return true;
+        } else {
+//            parseComparator();
+            return memory==ActionParser.parseNum(this);
+        }
+    }
+
+    private void parseComparator() {
+//        switch (comparator) {
+//            case ""
+//        }
     }
 
     @Override

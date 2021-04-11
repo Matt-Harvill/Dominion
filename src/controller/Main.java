@@ -28,6 +28,9 @@ public class Main extends Application {
         player = new Player();
         FXMLLoader gameSceneLoader = new FXMLLoader(getClass().getResource("/gameScene.fxml"));
         gameUIScene = gameSceneLoader.load();
+
+        gameUIScene.getStylesheets().add(getClass().getResource("/style1.css").toExternalForm());
+
         gameController = gameSceneLoader.getController();
         FXMLLoader hostJoinSceneLoader = new FXMLLoader(getClass().getResource("/hostJoinScene.fxml"));
         hostJoinScene = hostJoinSceneLoader.load();

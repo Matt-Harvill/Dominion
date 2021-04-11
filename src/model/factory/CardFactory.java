@@ -72,7 +72,7 @@ public class CardFactory {
                             new Image(Main.class.getResource("/Market_Small.jpg").toURI().toString()), "All 10");
                 }
                 case "Cellar": {
-                    return new ActionCard(cardType,2,"title_action num_1 \n title_discard optional_true num_any memoryName_numDiscarded \n title_draw num_numDiscarded",new Image(Main.class.getResource("/Cellar.jpg").toURI().toString()),
+                    return new ActionCard(cardType,2,"title_action num_1 \n title_discard optional_false num_2 memoryName_numDiscarded \n title_draw num_numDiscarded",new Image(Main.class.getResource("/Cellar.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Cellar_Small.jpg").toURI().toString()),"All 10");
                 }
                 default: return null;

@@ -18,7 +18,7 @@ public class ActionCardPerformer {
         Action action = player.getActionCardInPlay().getAction();
 
         if(action==null) {
-            ActionCardPerformer.actionCardCompleted();
+            actionCardCompleted();
             player.getActionCardInPlay().resetActionIndex();
         } else {
             startAction(action);
@@ -63,12 +63,15 @@ public class ActionCardPerformer {
         }
     }
 
-    public static void checkActionComplete() {
-//        if(action.complete()) {
-//            //display submit button and possibly hide other stuff
-//        } else {
-//            //hide submit button
-//        }
+    public static void setMemory() {
+        ActionCard actionCard = player.getActionCardInPlay();
+        Action action = actionCard.getAction();
+        action.setMemory(player.getSelect().getSize());
+    }
+    public static boolean checkActionComplete() {
+        ActionCard actionCard = player.getActionCardInPlay();
+        Action action = actionCard.getAction();
+        return action.isComplete();
     }
 
     public static void submitAction() {
@@ -80,8 +83,11 @@ public class ActionCardPerformer {
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
 
-        if(action.getMemoryName()!=null) {
-            action.setMemory(action.getMemory());
+//        if(action.getMemoryName()!=null) {
+//            action.setMemory(action.getMemory());
+//        }
+        if(player.getPhase().equals("discardPhase")) {
+            ActionHandler.discardSelect();
         }
 
         player.setPhase("actionPhase");

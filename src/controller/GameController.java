@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -16,6 +17,7 @@ import javafx.scene.text.Text;
 import model.CardCollection;
 import model.card.*;
 import model.factory.CardFactory;
+import newActionStuff.ActionCardPerformer;
 import view.*;
 
 import java.io.File;
@@ -53,7 +55,7 @@ public class GameController {
             cardInHandNum8,cardInHandNum9,cardInHandNum10,cardInHandNum11;
     private CardDisplay[] CIHDisplays;
 
-    @FXML private Button actionButton;
+    @FXML private Button actionButton, switchCardViewButton;
     @FXML private Text gameInfoText;
 
     //---------------Cards In Supply---------------//
@@ -99,15 +101,6 @@ public class GameController {
     @FXML private Rectangle inPlayPlayerLabelBack;
     @FXML private Text inPlayPlayerLabelText;
     private LabelDisplay inPlayPlayerLabel;
-
-    //----------------Cards in Selection--------------//
-    @FXML private Rectangle cardInSelection1,cardInSelection2,cardInSelection3,cardInSelection4,cardInSelection5,cardInSelection6,
-            cardInSelection7,cardInSelection8,cardInSelection9,cardInSelection10,cardInSelection11;
-    @FXML private Rectangle cardInSelectionNumBack1,cardInSelectionNumBack2,cardInSelectionNumBack3,cardInSelectionNumBack4,cardInSelectionNumBack5,
-            cardInSelectionNumBack6,cardInSelectionNumBack7,cardInSelectionNumBack8,cardInSelectionNumBack9,cardInSelectionNumBack10,cardInSelectionNumBack11;
-    @FXML private Text cardInSelectionNum1,cardInSelectionNum2,cardInSelectionNum3,cardInSelectionNum4,cardInSelectionNum5,cardInSelectionNum6,
-            cardInSelectionNum7,cardInSelectionNum8,cardInSelectionNum9,cardInSelectionNum10,cardInSelectionNum11;
-    private CardDisplay[] CISDisplays;
 
     //---------------Decks------------//
     @FXML private Rectangle discardPileLabel, opponentDeckLabel, playerDeckLabel;
@@ -161,19 +154,6 @@ public class GameController {
         }
         setInitialViewOrder(CIPDisplays);
         inPlayPlayerLabel = new LabelDisplay(inPlayPlayerLabelBack,inPlayPlayerLabelText);
-
-        //-------------Initialize Cards in Selection-----------------//
-        Rectangle[] cardsInSelection = new Rectangle[]{cardInSelection1,cardInSelection2,cardInSelection3,cardInSelection4,cardInSelection5,cardInSelection6,
-                cardInSelection7,cardInSelection8,cardInSelection9,cardInSelection10,cardInSelection11};
-        Rectangle[] cardsInSelectionNumBacks = new Rectangle[]{cardInSelectionNumBack1,cardInSelectionNumBack2,cardInSelectionNumBack3,cardInSelectionNumBack4,cardInSelectionNumBack5,
-                cardInSelectionNumBack6,cardInSelectionNumBack7,cardInSelectionNumBack8,cardInSelectionNumBack9,cardInSelectionNumBack10,cardInSelectionNumBack11};
-        Text[] cardsInSelectionNums = new Text[]{cardInSelectionNum1,cardInSelectionNum2,cardInSelectionNum3,cardInSelectionNum4,cardInSelectionNum5,cardInSelectionNum6,
-                cardInSelectionNum7,cardInSelectionNum8,cardInSelectionNum9,cardInSelectionNum10,cardInSelectionNum11};
-
-        CISDisplays = new CardDisplay[cardsInSelection.length];
-        for(int i=0; i<cardsInSelection.length; i++) {
-            CISDisplays[i] = new CardDisplay(cardsInSelection[i],new NumberDisplay(cardsInSelectionNumBacks[i],cardsInSelectionNums[i]));
-        }
 
         //--------------Initialize Cards in Supply---------------//
         Rectangle[] ACIS = new Rectangle[]{actionCardInSupply1,actionCardInSupply2,actionCardInSupply3,actionCardInSupply4,actionCardInSupply5,
@@ -374,6 +354,8 @@ public class GameController {
             case "Start Turn": ActionHandler.startPhase(); break;
             case "Enter Buy Phase": ActionHandler.buyPhase(); break;
             case "End Turn": ActionHandler.endPhase(); break;
+            case "Discard Cards":
+                ActionCardPerformer.submitAction(); break;
         }
 
     }
@@ -474,6 +456,25 @@ public class GameController {
     private void setInitialViewOrder(CardDisplay[] cardDisplays) {
         for(int i=0; i < cardDisplays.length; i++) {
             cardDisplays[i].setViewOrder(cardDisplays.length-i);
+        }
+    }
+
+    public void switchCardViewButtonClicked(ActionEvent actionEvent) {
+        if(switchCardViewButton.getText().equals("View Selected Cards")) {
+            //do method
+            switchCardViewButton.setText("View Cards In Play");
+        } else if(switchCardViewButton.getText().equals("View Cards In Play")) {
+            //do method
+            switchCardViewButton.setText("View Selected Cards");
+        }
+    }
+
+    public void cardInPlayClicked(MouseEvent mouseEvent) {
+        Object objectClicked = mouseEvent.getSource();
+        for(CardDisplay cardDisplay: CIPDisplays) {
+            if(cardDisplay.contains(objectClicked)) {
+                ActionHandler.cardInPlayClicked(cardDisplay.getCard()); break;
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ import model.card.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
+import newActionStuff.ActionCardPerformer;
 import view.*;
 
 import java.util.ArrayList;
@@ -31,9 +32,12 @@ public class DisplayUpdater {
         }
     }
 
-    public static void updateInPlayDisplay(CardCollection inPlay, String playerName, int numCards, boolean myTurn) {
-        System.out.println("updateInPlayDisplay called on " + playerName);
-        updateCardsInPlay(inPlay);
+    public static void updateInPlayDisplay(CardCollection collection, String playerName, int numCards, boolean myTurn) {
+        if(collection.equals(player.getInPlay())) {
+            updateCardsInPlay(collection);
+        } else if(collection.equals(player.getSelect())) {
+            updateCardsInSelect();
+        }
         updateOpponentDeck(numCards, myTurn);
         updateInPlayPlayerLabel(playerName,myTurn);
     }
@@ -61,6 +65,32 @@ public class DisplayUpdater {
             setCardDisplay(cardDisplays[index],cardList.get(i),freqOfCardInARow);
             index++;
             freqOfCardInARow=1;
+        }
+    }
+    private static void updateCardsInSelect() {
+        CardDisplay[] cardDisplays = controller.getCIPDisplays();
+        resetCardDisplays(cardDisplays);
+
+        CardCollection select = player.getSelect();
+        List<ActionCard> actionCards = select.getDistinctActionCards();
+        List<TreasureCard> treasureCards = select.getDistinctTreasureCards();
+        List<VictoryCard> victoryCards = select.getDistinctVictoryCards();
+
+        int index = 0;
+        for(ActionCard actionCard: actionCards) {
+            setCardDisplay(cardDisplays[index],actionCard,select.numCardInCollection(actionCard));
+            cardDisplays[index].setStyle(controller.getYellowCardGlowStyle());
+            index++;
+        }
+        for(TreasureCard treasureCard: treasureCards) {
+            setCardDisplay(cardDisplays[index],treasureCard,select.numCardInCollection(treasureCard));
+            cardDisplays[index].setStyle(controller.getYellowCardGlowStyle());
+            index++;
+        }
+        for(VictoryCard victoryCard: victoryCards) {
+            setCardDisplay(cardDisplays[index],victoryCard,select.numCardInCollection(victoryCard));
+            cardDisplays[index].setStyle(controller.getYellowCardGlowStyle());
+            index++;
         }
     }
     private static void updateInPlayPlayerLabel(String otherPlayerName, boolean myTurn) {
@@ -136,13 +166,13 @@ public class DisplayUpdater {
         switch (player.getPhase()) {
             case "actionPhase": {
                 gameInfoString += "Number of Actions: " + player.getNumActions() + "   ";
-                updateActionButtonText("Enter Buy Phase");
+                updateActionButtonText("Enter Buy Phase",true);
                 break;
             }
             case "buyPhase": {
                 gameInfoString += "Number of Buys Remaining : " + player.getNumBuys() + "   ";
                 gameInfoString += "Purchase Power: " + player.getPurchasePower();
-                updateActionButtonText("End Turn");
+                updateActionButtonText("End Turn",true);
                 break;
             }
             case "endPhase": {
@@ -151,20 +181,21 @@ public class DisplayUpdater {
             }
             case "startPhase": {
                 updateGameInfoText("Wait for you turn");
+                controller.getActionButton().setVisible(false);
                 gameInfoString += "Here is your hand";
                 break;
             }
             case "discardPhase": {
-                updateActionButtonText("Discard Cards");
+                updateActionButtonText("Discard Cards",ActionCardPerformer.checkActionComplete());
                 gameInfoString += "Select cards to discard";
             }
         }
         gameInfoText.setText(gameInfoString);
     }
-    private static void updateActionButtonText(String text) {
+    private static void updateActionButtonText(String text, boolean show) {
         Button actionButton = controller.getActionButton();
         actionButton.setText(text);
-        actionButton.setVisible(true);
+        actionButton.setVisible(show);
     }
     private static void updateCardsInHand() {
         CardDisplay[] cardDisplays = controller.getCIHDisplays();

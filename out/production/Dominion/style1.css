@@ -28,3 +28,8 @@
     -fx-stroke: white;
 }
 
+.tab-pane *.tab-header-background
+{
+    -fx-background-color: #00000000;
+}
+

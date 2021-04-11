@@ -107,6 +107,7 @@ public class Player {
         points+=getVictoryPoints(deck);
         points+=getVictoryPoints(hand);
         points+=getVictoryPoints(inPlay);
+        points+=getVictoryPoints(select);
         return points;
     }
     public ActionCard getActionCardInPlay() {return actionCardInPlay;}
