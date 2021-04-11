@@ -197,4 +197,15 @@ public class Player {
         numActions--;
     }
 
+    public void handToSelect(Card cardClicked) {
+        select.addCardToCollection(hand.removeCardFromCollection(cardClicked));
+    }
+    public void selectToHand(Card cardClicked) {
+        hand.addCardToCollection(select.removeCardFromCollection(cardClicked));
+    }
+    public void discardSelect() {
+        while(select.getSize()>0) {
+            discardPile.addCardToCollection(select.drawTopCard());
+        }
+    }
 }

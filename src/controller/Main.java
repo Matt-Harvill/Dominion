@@ -10,7 +10,6 @@ import model.Player;
 import server.DominionServer;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class Main extends Application {
 
@@ -86,18 +85,22 @@ public class Main extends Application {
         mainStage.setTitle("Dominion");
         mainStage.setScene(new Scene(gameUIScene));
 
-        ActionHandler.startPhase();
+        GUIInputHandler.startPhase();
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
 
         mainStage.show();
     }
     public static void openCardSelectStage() {
         if(cardSelect==null) {
-            cardSelect = new Stage();
-            cardSelect.setScene(new Scene(cardSelectScene));
-            cardSelect.setResizable(false);
-            cardSelect.show();
-            cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);
+            try {
+                cardSelect = new Stage();
+                cardSelect.setScene(new Scene(FXMLLoader.load(Main.class.getResource("/selectCards.fxml"))));
+                cardSelect.setResizable(false);
+                cardSelect.show();
+                cardSelect.setOnCloseRequest(windowEvent -> cardSelect=null);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
     public static void closeCardSelectStage() {

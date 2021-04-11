@@ -885,11 +885,6 @@
                                 <Insets bottom="5.0" left="120.0" right="5.0" top="4.0" />
                             </StackPane.margin>
                         </Button>
-                  <Button fx:id="switchCardViewButton" mnemonicParsing="false" onAction="#switchCardViewButtonClicked" text="View Selected Cards" textAlignment="CENTER" StackPane.alignment="TOP_LEFT">
-                     <StackPane.margin>
-                        <Insets left="480.0" top="4.0" />
-                     </StackPane.margin>
-                  </Button>
                         <Text fx:id="gameInfoText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="360.0" StackPane.alignment="TOP_LEFT">
                             <StackPane.margin>
                                 <Insets bottom="5.0" left="220.0" right="5.0" top="8.0" />
@@ -1979,6 +1974,11 @@
                         <Insets bottom="50.0" left="850.0" right="5.0" top="5.0" />
                     </StackPane.margin>
                 </Rectangle>
+            <Button fx:id="switchCardViewButton" mnemonicParsing="false" onAction="#switchCardViewButtonClicked" text="View Selected Cards" textAlignment="CENTER" StackPane.alignment="BOTTOM_LEFT">
+               <StackPane.margin>
+                  <Insets bottom="221.0" left="800.0" />
+               </StackPane.margin>
+            </Button>
             </children>
         </StackPane>
     </center>

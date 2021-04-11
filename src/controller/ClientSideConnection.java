@@ -140,7 +140,7 @@ public class ClientSideConnection implements Runnable {
         ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
             if(myTurn) {
-                ActionHandler.actionPhase();
+                GUIInputHandler.actionPhase();
             }
             else {
                 DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " has started their turn");
@@ -237,7 +237,7 @@ public class ClientSideConnection implements Runnable {
     }
     private void gameOver() {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
-        Platform.runLater(ActionHandler::gameOver);
+        Platform.runLater(GUIInputHandler::gameOver);
     }
     private void updateInfo(ServerPlayer serverPlayer) {
         for(ServerPlayer player: players) {

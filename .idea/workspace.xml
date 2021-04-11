@@ -9,28 +9,22 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="starting to implement selection display with discarding cards.">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="getting discard and memory to work pretty nicely">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ClientSideConnection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/newActionStuff/ActionCardPerformer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/style1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/style1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClientSideConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newActionStuff/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newActionStuff/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newActionStuff/ActionCardPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/style1.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,14 +177,7 @@
       <workItem from="1618002094696" duration="11512000" />
       <workItem from="1618019616994" duration="23585000" />
       <workItem from="1618091250134" duration="2534000" />
-      <workItem from="1618150587710" duration="7756000" />
-    </task>
-    <task id="LOCAL-00021" summary="inGame, chat, connected, startTurn, endTurn, join all operate correctly">
-      <created>1617130211423</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1617130211423</updated>
+      <workItem from="1618150587710" duration="9924000" />
     </task>
     <task id="LOCAL-00022" summary="new intro scene that allows someone to host or join. actual backend not implemented yet">
       <created>1617158514417</created>
@@ -528,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618093788322</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="getting discard and memory to work pretty nicely">
+      <created>1618159735994</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1618159735994</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Now multiple players can join with the same name and they will be assigned a new name with (#of copies of that name)&#10;&#10;Ex: if &quot;host&quot; is already taken -&gt; &quot;host(1)&quot;" />
     <MESSAGE value="cleaning up Main, GameServer, and HostJoinScene.&#10;&#10;HostJoinScene can be closed with no csc errors, name error is erased when back is pressed, and can't type in actioncard in game name slots." />
     <MESSAGE value="Discard Pile no longer shows if it is empty" />
     <MESSAGE value="Created New Objects for CardDisplays" />
@@ -573,6 +566,7 @@
     <MESSAGE value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
     <MESSAGE value="Cleaned up gameController initialize" />
     <MESSAGE value="starting to implement selection display with discarding cards." />
-    <option name="LAST_COMMIT_MESSAGE" value="starting to implement selection display with discarding cards." />
+    <MESSAGE value="getting discard and memory to work pretty nicely" />
+    <option name="LAST_COMMIT_MESSAGE" value="getting discard and memory to work pretty nicely" />
   </component>
 </project>

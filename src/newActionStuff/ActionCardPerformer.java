@@ -1,6 +1,6 @@
 package newActionStuff;
 
-import controller.ActionHandler;
+import controller.GUIInputHandler;
 import controller.DisplayUpdater;
 import controller.Main;
 import model.Player;
@@ -57,6 +57,7 @@ public class ActionCardPerformer {
                 case "discard": {
                     player.setPhase("discardPhase");
                     DisplayUpdater.updateHandDisplay();
+                    Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
                     break;
                 }
             }
@@ -87,7 +88,7 @@ public class ActionCardPerformer {
 //            action.setMemory(action.getMemory());
 //        }
         if(player.getPhase().equals("discardPhase")) {
-            ActionHandler.discardSelect();
+            player.discardSelect();
         }
 
         player.setPhase("actionPhase");
@@ -97,6 +98,6 @@ public class ActionCardPerformer {
 
     public static void actionCardCompleted() {
         player.decrementNumActions();
-        ActionHandler.checkCanDoAction();
+        GUIInputHandler.checkCanDoAction();
     }
 }

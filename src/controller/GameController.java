@@ -3,7 +3,6 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -20,7 +19,6 @@ import model.factory.CardFactory;
 import newActionStuff.ActionCardPerformer;
 import view.*;
 
-import java.io.File;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -126,6 +124,9 @@ public class GameController {
 
         //---------------Set ServerInfoPane to notVisible----------//
         serverInfoPane.setVisible(false);
+
+        //-----------Set switchCardViewButton to notVisible-----------//
+        switchCardViewButton.setVisible(false);
 
         //--------------Initialize Cards In Hand-----------------//
         Rectangle[] cardsInHand = new Rectangle[]{cardInHand1,cardInHand2,cardInHand3,cardInHand4,cardInHand5,cardInHand6,cardInHand7,cardInHand8,cardInHand9,cardInHand10,cardInHand11};
@@ -254,6 +255,7 @@ public class GameController {
     //-------------Getters----------------//
 
     public Button getActionButton() { return actionButton; }
+    public Button getSwitchCardViewButton() {return switchCardViewButton;}
     public Text getGameInfoText() {return gameInfoText;}
     public List<String> getChatDisplayStrings() {return chatDisplayStrings;}
     public List<String> getGameDisplayStrings() {return gameDisplayStrings;}
@@ -292,7 +294,7 @@ public class GameController {
         for(CardDisplay cardDisplay: CIHDisplays) {
             if(cardDisplay.contains(cardClicked)) {
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    ActionHandler.greenCardInHandClicked(cardDisplay.getCard());
+                    GUIInputHandler.greenCardInHandClicked(cardDisplay.getCard());
                 }
             }
         }
@@ -351,9 +353,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn": ActionHandler.startPhase(); break;
-            case "Enter Buy Phase": ActionHandler.buyPhase(); break;
-            case "End Turn": ActionHandler.endPhase(); break;
+            case "Start Turn": GUIInputHandler.startPhase(); break;
+            case "Enter Buy Phase": GUIInputHandler.buyPhase(); break;
+            case "End Turn": GUIInputHandler.endPhase(); break;
             case "Discard Cards":
                 ActionCardPerformer.submitAction(); break;
         }
@@ -363,7 +365,7 @@ public class GameController {
         Object buyButtonClicked = mouseEvent.getSource();
         for(BuyableCardDisplay cardDisplay: allCISDisplays) {
             if(cardDisplay.contains(buyButtonClicked)) {
-                ActionHandler.buyCard(cardDisplay.getCard());
+                GUIInputHandler.buyCard(cardDisplay.getCard());
             }
         }
         System.out.println("buyButtonClicked");
@@ -460,11 +462,10 @@ public class GameController {
     }
 
     public void switchCardViewButtonClicked(ActionEvent actionEvent) {
+        GUIInputHandler.cardViewButtonClicked(switchCardViewButton.getText());
         if(switchCardViewButton.getText().equals("View Selected Cards")) {
-            //do method
             switchCardViewButton.setText("View Cards In Play");
         } else if(switchCardViewButton.getText().equals("View Cards In Play")) {
-            //do method
             switchCardViewButton.setText("View Selected Cards");
         }
     }
@@ -473,7 +474,7 @@ public class GameController {
         Object objectClicked = mouseEvent.getSource();
         for(CardDisplay cardDisplay: CIPDisplays) {
             if(cardDisplay.contains(objectClicked)) {
-                ActionHandler.cardInPlayClicked(cardDisplay.getCard()); break;
+                GUIInputHandler.cardInPlayClicked(cardDisplay.getCard()); break;
             }
         }
     }

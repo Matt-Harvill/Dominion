@@ -33,10 +33,10 @@ public class DisplayUpdater {
     }
 
     public static void updateInPlayDisplay(CardCollection collection, String playerName, int numCards, boolean myTurn) {
-        if(collection.equals(player.getInPlay())) {
-            updateCardsInPlay(collection);
-        } else if(collection.equals(player.getSelect())) {
+        if(collection.equals(player.getSelect())) {
             updateCardsInSelect();
+        } else {
+            updateCardsInPlay(collection);
         }
         updateOpponentDeck(numCards, myTurn);
         updateInPlayPlayerLabel(playerName,myTurn);
@@ -163,31 +163,42 @@ public class DisplayUpdater {
     private static void updateActionBar() {
         Text gameInfoText = controller.getGameInfoText();
         String gameInfoString = "";
+
+        controller.getSwitchCardViewButton().setVisible(false);
+
         switch (player.getPhase()) {
             case "actionPhase": {
+                System.out.println("actionPhase entered @updateActionBar");
                 gameInfoString += "Number of Actions: " + player.getNumActions() + "   ";
                 updateActionButtonText("Enter Buy Phase",true);
                 break;
             }
             case "buyPhase": {
+                System.out.println("buyPhase entered @updateActionBar");
                 gameInfoString += "Number of Buys Remaining : " + player.getNumBuys() + "   ";
                 gameInfoString += "Purchase Power: " + player.getPurchasePower();
                 updateActionButtonText("End Turn",true);
                 break;
             }
             case "endPhase": {
+                System.out.println("endPhase entered @updateActionBar");
                 controller.getActionButton().setVisible(false);
                 break;
             }
             case "startPhase": {
+                System.out.println("startPhase entered @updateActionBar");
                 updateGameInfoText("Wait for you turn");
                 controller.getActionButton().setVisible(false);
                 gameInfoString += "Here is your hand";
                 break;
             }
             case "discardPhase": {
+                System.out.println("discardPhase entered @updateActionBar");
                 updateActionButtonText("Discard Cards",ActionCardPerformer.checkActionComplete());
                 gameInfoString += "Select cards to discard";
+
+                controller.getSwitchCardViewButton().setVisible(true);
+                break;
             }
         }
         gameInfoText.setText(gameInfoString);
