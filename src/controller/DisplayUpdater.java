@@ -226,7 +226,7 @@ public class DisplayUpdater {
                 break;
             }
             case "gainPhase": {
-                controller.getActionButton().setVisible(false);
+                updateActionButtonText("Don't Gain",ActionCardPerformer.actionComplete());
                 gameInfoString += "Gain a card";
                 break;
             }

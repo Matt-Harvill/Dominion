@@ -8,8 +8,9 @@ public class Action {
 
     private final String type,comparatorString,memoryName,numString,costString;
     private int memory;
+    private boolean optional;
 
-    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, String costString, int memory) {
+    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, String costString, int memory, boolean optional) {
         this.title = title;
         this.playersAffected = playersAffected;
         this.type = type;
@@ -18,6 +19,7 @@ public class Action {
         this.numString = numString;
         this.costString = costString;
         this.memory = memory;
+        this.optional = optional;
     }
 
     public String getType() {
@@ -59,6 +61,10 @@ public class Action {
             }
         }
         return false;
+    }
+
+    public boolean isOptional() {
+        return optional;
     }
 
     @Override

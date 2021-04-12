@@ -69,6 +69,7 @@ public class ClientSideConnection implements Runnable {
                 case "leaveGame": leftGame(tempPlayer); break;
                 case "playCard": cardPlayed(tempPlayer,scanner.next()); break;
                 case "buyCard": cardPurchased(tempPlayer,scanner.next()); break;
+                case "gainCard": cardGained(tempPlayer, scanner.next()); break;
                 case "gameOver": gameOver(); break;
                 case "updateInfo": updateInfo(tempPlayer); break;
                 //-----------Self-----------//
@@ -230,6 +231,32 @@ public class ClientSideConnection implements Runnable {
         ServerPlayer finalServerPlayer = serverPlayer;
         Platform.runLater(() -> {
             DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " purchased a " + cardName);
+            DisplayUpdater.updatePlayerLabel(finalServerPlayer.getName(), finalServerPlayer.getPoints());
+            DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false);
+            DisplayUpdater.updateCardSupply(card);
+        });
+    }
+    private void cardGained(ServerPlayer serverPlayer, String cardName) {
+        Card card = CardFactory.getCard(cardName);
+        boolean playerNotFound = true;
+        for(ServerPlayer player: players) {
+            if(player.equals(serverPlayer)) {
+                player.updateInfo(serverPlayer);
+                serverPlayer = player;
+                playerNotFound = false;
+                break;
+            }
+        }
+
+        if(playerNotFound) {
+            players.add(serverPlayer);
+        }
+
+//        printPlayers();
+
+        ServerPlayer finalServerPlayer = serverPlayer;
+        Platform.runLater(() -> {
+            DisplayUpdater.addMsgToGameLog(finalServerPlayer.getName() + " gained a " + cardName);
             DisplayUpdater.updatePlayerLabel(finalServerPlayer.getName(), finalServerPlayer.getPoints());
             DisplayUpdater.updateInPlayDisplay(finalServerPlayer.getInPlay(), finalServerPlayer.getName(), finalServerPlayer.getNumCardsInDeck(), false);
             DisplayUpdater.updateCardSupply(card);

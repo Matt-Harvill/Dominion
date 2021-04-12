@@ -18,29 +18,32 @@ public class ActionParser {
         String memoryName = null;
         int memory = -1;
         String costString = null;
+        boolean optional = false;
 
         Scanner scanner = new Scanner(cardAction);
 
         while(scanner.hasNext()) {
             String msg = scanner.next();
             if(msg.contains("title_")) {
-                title = msg.substring(6);
+                title = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("comparator_")) {
-                comparator = msg.substring(11);
+                comparator = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("num_")) {
-                num = msg.substring(4);
+                num = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("memoryName_")) {
-                memoryName = msg.substring(11);
+                memoryName = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("playersAffected_")) {
-                playersAffected = msg.substring(16);
+                playersAffected = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("type_")) {
-                type = msg.substring(5);
+                type = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("cost_")) {
-                costString = msg.substring(5);
+                costString = msg.substring(msg.indexOf("_") + 1);
+            } else if(msg.contains("optional_")) {
+                optional = Boolean.parseBoolean(msg.substring(msg.indexOf("_") + 1));
             }
         }
 
-        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,memory);
+        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,memory,optional);
     }
 
     public static int parseStringToInt(Action action, String string) {

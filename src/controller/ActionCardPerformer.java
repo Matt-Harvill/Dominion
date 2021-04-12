@@ -124,6 +124,11 @@ public class ActionCardPerformer {
         Action action = actionCard.getAction();
         return action.isComplete(numSelected);
     }
+    public static boolean actionComplete() {
+        ActionCard actionCard = player.getActionCardInPlay();
+        Action action = actionCard.getAction();
+        return action.isOptional();
+    }
 
     public static void submitAction() {
         ActionCard actionCard = player.getActionCardInPlay();
@@ -143,7 +148,7 @@ public class ActionCardPerformer {
             player.trashSelect();
         }
 
-        PhaseUpdater.actionPhase();
+//        PhaseUpdater.actionPhase();
         actionCard.incrementActionIndex();
         startNextAction();
     }

@@ -43,7 +43,7 @@ public final class GUIInputHandler {
         DisplayUpdater.addMsgToGameLog("You gained a " + cardClicked.getName());
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-        DisplayUpdater.showGainableCards(false,0);
+        DisplayUpdater.showGainableCards(false,-1);
 
         ActionCardPerformer.submitAction();
     }
@@ -109,6 +109,19 @@ public final class GUIInputHandler {
             DisplayUpdater.updateInPlayDisplay(player.getSelect(), player.getName(), -1,true);
         } else if(buttonText.equals("View Cards In Play")) {
             DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
+        }
+    }
+
+    public static void actionButtonClicked(String actionButtonText) {
+        switch (actionButtonText) {
+            case "Start Turn": PhaseUpdater.startPhase(); break;
+            case "Enter Buy Phase": PhaseUpdater.buyPhase(); break;
+            case "End Turn": PhaseUpdater.endPhase(); break;
+            case "Don't Gain":
+                DisplayUpdater.showGainableCards(false,-1);
+            case "Trash Cards":
+            case "Discard Cards":
+                ActionCardPerformer.submitAction(); break;
         }
     }
 

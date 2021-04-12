@@ -363,15 +363,7 @@ public class GameController {
     }
 
     public void actionButtonClicked(ActionEvent actionEvent) {
-        switch (actionButton.getText()) {
-            case "Start Turn": PhaseUpdater.startPhase(); break;
-            case "Enter Buy Phase": PhaseUpdater.buyPhase(); break;
-            case "End Turn": PhaseUpdater.endPhase(); break;
-            case "Trash Cards":
-            case "Discard Cards":
-                ActionCardPerformer.submitAction(); break;
-        }
-
+        GUIInputHandler.actionButtonClicked(actionButton.getText());
     }
     public void buyButtonClicked(MouseEvent mouseEvent) {
         Object buyButtonClicked = mouseEvent.getSource();
