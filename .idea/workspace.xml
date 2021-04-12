@@ -9,22 +9,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="trashing works now. Just need to add in trashing cards">
-      <change afterPath="$PROJECT_DIR$/src/resources/Chapel.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Chapel_Small.jpg" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="need to add gaining a card but the comparators and trashing work now">
+      <change afterPath="$PROJECT_DIR$/src/resources/Plus_Sign_Blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Plus_Sign_Green.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GUIInputHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GUIInputHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,14 +177,7 @@
       <workItem from="1618091250134" duration="2534000" />
       <workItem from="1618150587710" duration="16164000" />
       <workItem from="1618171282409" duration="1527000" />
-      <workItem from="1618245017574" duration="1177000" />
-    </task>
-    <task id="LOCAL-00027" summary="finally fixed serverShutDown process. Now I catch the exceptions from closing the sockets. I also alert to clientsideconnections before doing so so they can close too">
-      <created>1617337052046</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1617337052046</updated>
+      <workItem from="1618245017574" duration="3701000" />
     </task>
     <task id="LOCAL-00028" summary="Now start button and reaching max players both trigger startGame in server. Also, when a player leaves, it alerts everyone else and goes to the next player's turn if it was that player's turn.">
       <created>1617396788526</created>
@@ -524,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618172695396</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="need to add gaining a card but the comparators and trashing work now">
+      <created>1618246305893</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1618246305893</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed ServerPlayers and fixed exceptions thrown when ServerPlayers didn't already exist because &quot;startTurn&quot; was sent before &quot;inGame&quot;" />
     <MESSAGE value="Set a message for who won @GameOver. Also created CardDisplays for extra cards in game even though they aren't used. Everything should be working much better and is way more organized." />
     <MESSAGE value="Fixed error with SSCs not updating player info" />
     <MESSAGE value="Fixed error with CSC serverPlayers not being updated correctly so the cards weren't being shown" />
@@ -569,6 +566,7 @@
     <MESSAGE value="fixed error of not updating memory when action is submitted" />
     <MESSAGE value="added poacher card and it works" />
     <MESSAGE value="trashing works now. Just need to add in trashing cards" />
-    <option name="LAST_COMMIT_MESSAGE" value="trashing works now. Just need to add in trashing cards" />
+    <MESSAGE value="need to add gaining a card but the comparators and trashing work now" />
+    <option name="LAST_COMMIT_MESSAGE" value="need to add gaining a card but the comparators and trashing work now" />
   </component>
 </project>

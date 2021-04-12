@@ -65,24 +65,29 @@ public class GameController {
             actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10;
     @FXML private Rectangle actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
             actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10;
+    @FXML private Rectangle actionCardGainButton1,actionCardGainButton2,actionCardGainButton3,actionCardGainButton4,actionCardGainButton5,
+            actionCardGainButton6,actionCardGainButton7,actionCardGainButton8,actionCardGainButton9,actionCardGainButton10;
     private BuyableCardDisplay[] ACISDisplays;
 
     @ FXML private Rectangle treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4;
     @FXML private Rectangle treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4;
     @FXML private Text treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4;
     @FXML private Rectangle treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4;
+    @FXML private Rectangle treasureCardGainButton1,treasureCardGainButton2,treasureCardGainButton3,treasureCardGainButton4;
     private BuyableCardDisplay[] TCISDisplays;
 
     @ FXML private Rectangle victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4;
     @FXML private Rectangle victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4;
     @FXML private Text victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4;
     @FXML private Rectangle victoryCardBuyButton1,victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4;
+    @FXML private Rectangle victoryCardGainButton1,victoryCardGainButton2,victoryCardGainButton3,victoryCardGainButton4;
     private BuyableCardDisplay[] VCISDisplays;
 
     @ FXML private Rectangle extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4;
     @FXML private Rectangle extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4;
     @FXML private Text extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4;
     @FXML private Rectangle extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4;
+    @FXML private Rectangle extraCardGainButton1,extraCardGainButton2,extraCardGainButton3,extraCardGainButton4;
     private BuyableCardDisplay[] ECISDisplays;
 
     private List<BuyableCardDisplay> allCISDisplays;
@@ -165,37 +170,42 @@ public class GameController {
                 actionCardNum6,actionCardNum7,actionCardNum8,actionCardNum9,actionCardNum10};
         Rectangle[] ACISBuyButtons = new Rectangle[]{actionCardBuyButton1,actionCardBuyButton2,actionCardBuyButton3,actionCardBuyButton4,actionCardBuyButton5,
                 actionCardBuyButton6,actionCardBuyButton7,actionCardBuyButton8,actionCardBuyButton9,actionCardBuyButton10};
+        Rectangle[] ACISGainButtons = new Rectangle[]{actionCardGainButton1,actionCardGainButton2,actionCardGainButton3,actionCardGainButton4,actionCardGainButton5,
+                actionCardGainButton6,actionCardGainButton7,actionCardGainButton8,actionCardGainButton9,actionCardGainButton10};
 
         Rectangle[] TCIS = new Rectangle[]{treasureCardInSupply1,treasureCardInSupply2,treasureCardInSupply3,treasureCardInSupply4};
         Rectangle[] TCISNumBacks = new Rectangle[]{treasureCardNumBack1,treasureCardNumBack2,treasureCardNumBack3,treasureCardNumBack4};
         Text[] TCISNums = new Text[]{treasureCardNum1,treasureCardNum2,treasureCardNum3,treasureCardNum4};
         Rectangle[] TCISBuyButtons = new Rectangle[]{treasureCardBuyButton1,treasureCardBuyButton2,treasureCardBuyButton3,treasureCardBuyButton4};
+        Rectangle[] TCISGainButtons = new Rectangle[]{treasureCardGainButton1,treasureCardGainButton2,treasureCardGainButton3,treasureCardGainButton4};
 
         Rectangle[] VCIS = new Rectangle[]{victoryCardInSupply1,victoryCardInSupply2,victoryCardInSupply3,victoryCardInSupply4};
         Rectangle[] VCISNumBacks = new Rectangle[]{victoryCardNumBack1,victoryCardNumBack2,victoryCardNumBack3,victoryCardNumBack4};
         Text[] VCISNums = new Text[]{victoryCardNum1,victoryCardNum2,victoryCardNum3,victoryCardNum4};
         Rectangle[] VCISBuyButtons = new Rectangle[]{victoryCardBuyButton1,victoryCardBuyButton2,victoryCardBuyButton3,victoryCardBuyButton4};
+        Rectangle[] VCISGainButtons = new Rectangle[]{victoryCardGainButton1,victoryCardGainButton2,victoryCardGainButton3,victoryCardGainButton4};
 
         Rectangle[] ECIS = new Rectangle[]{extraCardInSupply1,extraCardInSupply2,extraCardInSupply3,extraCardInSupply4};
         Rectangle[] ECISNumBacks = new Rectangle[]{extraCardNumBack1,extraCardNumBack2,extraCardNumBack3,extraCardNumBack4};
         Text[] ECISNums = new Text[]{extraCardNum1,extraCardNum2,extraCardNum3,extraCardNum4};
         Rectangle[] ECISBuyButtons = new Rectangle[]{extraCardBuyButton1,extraCardBuyButton2,extraCardBuyButton3,extraCardBuyButton4};
+        Rectangle[] ECISGainButtons = new Rectangle[]{extraCardGainButton1,extraCardGainButton2,extraCardGainButton3,extraCardGainButton4};
 
         ACISDisplays = new BuyableCardDisplay[ACIS.length];
         for(int i=0; i<ACIS.length; i++) {
-            ACISDisplays[i] = new BuyableCardDisplay(ACIS[i],new NumberDisplay(ACISNumBacks[i],ACISNums[i]),ACISBuyButtons[i]);
+            ACISDisplays[i] = new BuyableCardDisplay(ACIS[i],new NumberDisplay(ACISNumBacks[i],ACISNums[i]),ACISBuyButtons[i],ACISGainButtons[i]);
         }
         TCISDisplays = new BuyableCardDisplay[TCIS.length];
         for(int i=0; i<TCIS.length; i++) {
-            TCISDisplays[i] = new BuyableCardDisplay(TCIS[i],new NumberDisplay(TCISNumBacks[i],TCISNums[i]),TCISBuyButtons[i]);
+            TCISDisplays[i] = new BuyableCardDisplay(TCIS[i],new NumberDisplay(TCISNumBacks[i],TCISNums[i]),TCISBuyButtons[i],TCISGainButtons[i]);
         }
         VCISDisplays = new BuyableCardDisplay[VCIS.length];
         for(int i=0; i<VCIS.length; i++) {
-            VCISDisplays[i] = new BuyableCardDisplay(VCIS[i],new NumberDisplay(VCISNumBacks[i],VCISNums[i]),VCISBuyButtons[i]);
+            VCISDisplays[i] = new BuyableCardDisplay(VCIS[i],new NumberDisplay(VCISNumBacks[i],VCISNums[i]),VCISBuyButtons[i],VCISGainButtons[i]);
         }
         ECISDisplays = new BuyableCardDisplay[ECIS.length];
         for(int i=0; i<ECIS.length; i++) {
-            ECISDisplays[i] = new BuyableCardDisplay(ECIS[i],new NumberDisplay(ECISNumBacks[i],ECISNums[i]),ECISBuyButtons[i]);
+            ECISDisplays[i] = new BuyableCardDisplay(ECIS[i],new NumberDisplay(ECISNumBacks[i],ECISNums[i]),ECISBuyButtons[i],ECISGainButtons[i]);
         }
 
         initializeCardsInSupply(ACISDisplays);
@@ -370,7 +380,15 @@ public class GameController {
                 GUIInputHandler.buyCard(cardDisplay.getCard());
             }
         }
-        System.out.println("buyButtonClicked");
+    }
+
+    public void gainButtonClicked(MouseEvent mouseEvent) {
+        Object gainButtonClicked = mouseEvent.getSource();
+        for(BuyableCardDisplay cardDisplay: allCISDisplays) {
+            if(cardDisplay.contains(gainButtonClicked)) {
+                GUIInputHandler.gainCard(cardDisplay.getCard());
+            }
+        }
     }
 
     public void setCardsInGame(List<String> cardsInGame) {
@@ -450,12 +468,14 @@ public class GameController {
     private void initializeCardsInSupply(BuyableCardDisplay[] cardDisplays) {
         for(BuyableCardDisplay cardDisplay: cardDisplays) {
             try {
-                cardDisplay.setBuyButtonImage(new Image(Main.class.getResource("/Plus Sign.png").toURI().toString()));
+                cardDisplay.setBuyButtonImage(new Image(Main.class.getResource("/Plus_Sign_Blue.png").toURI().toString()));
+                cardDisplay.setGainButtonImage(new Image(Main.class.getResource("/Plus_Sign_Green.png").toURI().toString()));
                 cardDisplay.hide();
             } catch(URISyntaxException ex) {
                 ex.printStackTrace();
             }
         }
+
     }
     private void setInitialViewOrder(CardDisplay[] cardDisplays) {
         for(int i=0; i < cardDisplays.length; i++) {

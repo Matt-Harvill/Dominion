@@ -83,6 +83,9 @@ public class Player {
         numBuys--;
         amountSpentThisTurn+=card.getCost();
     }
+    public void gainCard(Card card) {
+        discardPile.addCardToCollection(card);
+    }
     public void playCard(Card card) {
         inPlay.addCardToCollection(hand.removeCardFromCollection(card));
         if(card instanceof ActionCard) {

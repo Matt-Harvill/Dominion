@@ -1,5 +1,6 @@
 package controller;
 
+import model.Action;
 import model.CardCollection;
 import model.Player;
 import model.ServerPlayer;
@@ -61,6 +62,21 @@ public final class GUIInputHandler {
             DisplayUpdater.showBuyableCards(true);
         }
     }
+
+    public static void gainCard(Card cardClicked) {
+        player.gainCard(cardClicked);
+
+        ServerSender.gainCard(cardClicked.getName());
+
+        DisplayUpdater.updateCardSupply(cardClicked);
+        DisplayUpdater.addMsgToGameLog("You gained a " + cardClicked.getName());
+        DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
+        DisplayUpdater.showGainableCards(false,0);
+
+        ActionCardPerformer.submitAction();
+    }
+
     private static void playCard(Card cardClicked) {
         for(Card card: player.getHand().getCollection()) {
             if(card.equals(cardClicked)) {

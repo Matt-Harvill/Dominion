@@ -19,6 +19,9 @@ public final class ServerSender {
     public static void buyCard(String cardName) {
         clientSideConnection.send("buyCard " + player.getInfoString() + cardName);
     }
+    public static void gainCard(String cardName) {
+        clientSideConnection.send("gainCard " + player.getInfoString() + cardName);
+    }
     public static void updateInfo() {
         clientSideConnection.send("updateInfo " + player.getInfoString());
     }

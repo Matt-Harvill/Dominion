@@ -160,6 +160,20 @@ public class DisplayUpdater {
         }
     }
 
+    public static void showGainableCards(boolean show, int maxCost) {
+        List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
+
+        for(BuyableCardDisplay cardDisplay: cardDisplays) {
+            Card card = cardDisplay.getCard();
+            int cardNum = cardDisplay.getNum();
+            if(card!=null && card.getCost()<=maxCost && cardNum>0 && show) {
+                cardDisplay.showGainButton();
+            } else {
+                cardDisplay.hideGainButton();
+            }
+        }
+    }
+
     public static void updateHandDisplay() {
         updateCardsInHand();
         updateDeck();

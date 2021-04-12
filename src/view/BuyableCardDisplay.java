@@ -6,11 +6,12 @@ import javafx.scene.shape.Rectangle;
 
 public class BuyableCardDisplay extends CardDisplay {
 
-    private final Rectangle buyButton;
+    private final Rectangle buyButton, gainButton;
 
-    public BuyableCardDisplay(Rectangle card, NumberDisplay numberDisplay, Rectangle buyButton) {
+    public BuyableCardDisplay(Rectangle card, NumberDisplay numberDisplay, Rectangle buyButton, Rectangle gainButton) {
         super(card,numberDisplay);
         this.buyButton = buyButton;
+        this.gainButton = gainButton;
     }
 
     public void showBuyButton() {
@@ -19,9 +20,19 @@ public class BuyableCardDisplay extends CardDisplay {
     public void hideBuyButton() {
         buyButton.setVisible(false);
     }
+    public void showGainButton() {
+        gainButton.setVisible(true);
+    }
+    public void hideGainButton() {
+        gainButton.setVisible(false);
+    }
     public void setBuyButtonImage(Image image) {
         buyButton.setFill(new ImagePattern(image));
     }
+    public void setGainButtonImage(Image image) {
+        gainButton.setFill(new ImagePattern(image));
+    }
+
 
     @Override
     public void show() {
@@ -33,11 +44,12 @@ public class BuyableCardDisplay extends CardDisplay {
     public void hide() {
         super.hide();
         hideBuyButton();
+        hideGainButton();
     }
 
     @Override
     public boolean contains(Object obj) {
-        return super.contains(obj) || obj.equals(buyButton);
+        return super.contains(obj) || obj.equals(buyButton) || obj.equals(gainButton);
     }
 
     @Override

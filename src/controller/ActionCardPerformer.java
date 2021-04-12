@@ -54,7 +54,7 @@ public class ActionCardPerformer {
                     break;
                 }
                 case "action": {
-                    System.out.println("action num: " + num + " @ACP_startAction");
+//                    System.out.println("action num: " + num + " @ACP_startAction");
                     player.incrementNumActions(num);
                     submitAction();
                     break;
@@ -71,6 +71,11 @@ public class ActionCardPerformer {
                     Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
                     break;
                 }
+                case "gain": {
+                    player.setPhase("gainPhase");
+                    DisplayUpdater.showGainableCards(true,num);
+                    break;
+                }
             }
         }
     }
@@ -79,8 +84,8 @@ public class ActionCardPerformer {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
         CardCollection select = player.getSelect();
-        System.out.println("printing cards in Select @ACP_setMemory");
-        select.printCardNamesInCollection();
+//        System.out.println("printing cards in Select @ACP_setMemory");
+//        select.printCardNamesInCollection();
         action.setMemory(player.getSelect().getSize());
     }
     public static boolean checkActionComplete() {
@@ -91,7 +96,6 @@ public class ActionCardPerformer {
 
     public static void submitAction() {
         ActionCard actionCard = player.getActionCardInPlay();
-        Action action = actionCard.getAction();
 
         setMemory();
         //have a switch case for what info to use as object memory
