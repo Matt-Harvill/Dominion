@@ -364,9 +364,9 @@ public class GameController {
 
     public void actionButtonClicked(ActionEvent actionEvent) {
         switch (actionButton.getText()) {
-            case "Start Turn": GUIInputHandler.startPhase(); break;
-            case "Enter Buy Phase": GUIInputHandler.buyPhase(); break;
-            case "End Turn": GUIInputHandler.endPhase(); break;
+            case "Start Turn": PhaseUpdater.startPhase(); break;
+            case "Enter Buy Phase": PhaseUpdater.buyPhase(); break;
+            case "End Turn": PhaseUpdater.endPhase(); break;
             case "Trash Cards":
             case "Discard Cards":
                 ActionCardPerformer.submitAction(); break;
@@ -469,7 +469,7 @@ public class GameController {
         for(BuyableCardDisplay cardDisplay: cardDisplays) {
             try {
                 cardDisplay.setBuyButtonImage(new Image(Main.class.getResource("/Plus_Sign_Blue.png").toURI().toString()));
-                cardDisplay.setGainButtonImage(new Image(Main.class.getResource("/Plus_Sign_Green.png").toURI().toString()));
+                cardDisplay.setGainButtonImage(new Image(Main.class.getResource("/Plus_Sign_Purple.png").toURI().toString()));
                 cardDisplay.hide();
             } catch(URISyntaxException ex) {
                 ex.printStackTrace();

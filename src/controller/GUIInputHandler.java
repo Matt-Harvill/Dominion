@@ -13,41 +13,6 @@ public final class GUIInputHandler {
 
     private static final Player player = Main.getPlayer();
 
-    public static void startPhase() {
-        player.setPhase("startPhase");
-        player.newTurn();
-
-        DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-    }
-    public static void actionPhase() {
-        ServerSender.updateInfo();
-        player.setPhase("actionPhase");
-
-        DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-
-        checkCanDoAction();
-    }
-    public static void buyPhase() {
-        player.setPhase("buyPhase");
-
-        DisplayUpdater.showBuyableCards(true);
-        DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-    }
-    public static void endPhase() {
-        player.setPhase("endPhase");
-        player.endTurn();
-
-        DisplayUpdater.showBuyableCards(false);
-        DisplayUpdater.updateHandDisplay();
-        DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
-        startPhase();
-
-        ServerSender.endTurn();
-    }
-
     public static void buyCard(Card cardClicked) {
         player.buyCard(cardClicked);
 
@@ -60,6 +25,13 @@ public final class GUIInputHandler {
         if(checkNumBuys()) {
             DisplayUpdater.showBuyableCards(true);
         }
+    }
+    private static boolean checkNumBuys() {
+        if(player.getNumBuys()==0) {
+            PhaseUpdater.endPhase();
+            return false;
+        }
+        return true;
     }
 
     public static void gainCard(Card cardClicked) {
@@ -75,7 +47,6 @@ public final class GUIInputHandler {
 
         ActionCardPerformer.submitAction();
     }
-
     private static void playCard(Card cardClicked) {
         for(Card card: player.getHand().getCollection()) {
             if(card.equals(cardClicked)) {
@@ -101,8 +72,6 @@ public final class GUIInputHandler {
             case "trashPhase":
             case "discardPhase": {
                 player.handToSelect(card);
-                player.getActionCardInPlay().getAction().setNumSelected(player.getSelect().getSize());
-                ActionCardPerformer.actionComplete();
                 break;
             }
         }
@@ -117,8 +86,6 @@ public final class GUIInputHandler {
 
         if((phase.equals("discardPhase") || phase.equals("trashPhase")) && inSelect) {
             player.selectToHand(card);
-            player.getActionCardInPlay().getAction().setNumSelected(player.getSelect().getSize());
-            ActionCardPerformer.actionComplete();
         }
         updateAfterClick();
     }
@@ -164,18 +131,6 @@ public final class GUIInputHandler {
         DisplayUpdater.gameOver(gameOverText);
     }
 
-    public static void checkCanDoAction() {
-        if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
-            buyPhase();
-        }
-    }
-    private static boolean checkNumBuys() {
-        if(player.getNumBuys()==0) {
-            endPhase();
-            return false;
-        }
-        return true;
-    }
     private static List<String> calcWinners(List<ServerPlayer> players) {
         List<String> winners = new ArrayList<>();
 

@@ -63,19 +63,15 @@ public class ActionCardPerformer {
                     break;
                 }
                 case "discard": {
-                    player.setPhase("discardPhase");
-                    DisplayUpdater.updateHandDisplay();
-                    Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
+                    PhaseUpdater.discardPhase();
                     break;
                 }
                 case "trash": {
-                    player.setPhase("trashPhase");
-                    DisplayUpdater.updateHandDisplay();
-                    Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
+                    PhaseUpdater.trashPhase();
                     break;
                 }
                 case "gain": {
-                    player.setPhase("gainPhase");
+                    PhaseUpdater.gainPhase();
                     DisplayUpdater.showGainableCards(true, ActionParser.parseStringToInt(action,"cost"));
                     break;
                 }
@@ -123,10 +119,10 @@ public class ActionCardPerformer {
         return returnVal;
     }
 
-    public static boolean actionComplete() {
+    public static boolean actionComplete(int numSelected) {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
-        return action.isComplete();
+        return action.isComplete(numSelected);
     }
 
     public static void submitAction() {
@@ -147,7 +143,7 @@ public class ActionCardPerformer {
             player.trashSelect();
         }
 
-        GUIInputHandler.actionPhase();
+        PhaseUpdater.actionPhase();
         actionCard.incrementActionIndex();
         startNextAction();
     }
@@ -155,7 +151,8 @@ public class ActionCardPerformer {
     public static void actionCardCompleted() {
         player.decrementNumActions();
         player.resetActionCardInPlay();
-        GUIInputHandler.checkCanDoAction();
+        //changed checkCanDoAction to actionPhase
+        PhaseUpdater.actionPhase();
 
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);

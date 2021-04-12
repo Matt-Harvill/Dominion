@@ -62,12 +62,12 @@ public class ActionParser {
                 operator = "-";
                 opValue -= Integer.parseInt(s.substring(s.indexOf("-")+1));
                 s = s.substring(0,s.indexOf("-"));
-                System.out.println("s: " + s + " @ActionParser_parseStringToInt");
+//                System.out.println("s: " + s + " @ActionParser_parseStringToInt");
             } else if(s.contains("+")) {
                 operator = "+";
                 opValue += Integer.parseInt(s.substring(s.indexOf("+")+1));
                 s = s.substring(0,s.indexOf("+"));
-                System.out.println("s: " + s + " @ActionParser_parseStringToInt");
+//                System.out.println("s: " + s + " @ActionParser_parseStringToInt");
             }
 
             switch (s) {

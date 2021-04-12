@@ -7,7 +7,7 @@ public class Action {
     private final String playersAffected;
 
     private final String type,comparatorString,memoryName,numString,costString;
-    private int memory, numSelected;
+    private int memory;
 
     public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, String costString, int memory) {
         this.title = title;
@@ -18,7 +18,6 @@ public class Action {
         this.numString = numString;
         this.costString = costString;
         this.memory = memory;
-        this.numSelected = 0;
     }
 
     public String getType() {
@@ -46,11 +45,8 @@ public class Action {
     public void setMemory(int memory) {
         this.memory = memory;
     }
-    public void setNumSelected(int numSelected) {
-        this.numSelected = numSelected;
-    }
 
-    public boolean isComplete() {
+    public boolean isComplete(int numSelected) {
         switch (comparatorString) {
             case "<=": {
                 return numSelected <= ActionParser.parseStringToInt(this,"num");

@@ -85,7 +85,7 @@ public class Main extends Application {
         mainStage.setTitle("Dominion");
         mainStage.setScene(new Scene(gameUIScene));
 
-        GUIInputHandler.startPhase();
+        PhaseUpdater.startPhase();
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
 
         mainStage.show();

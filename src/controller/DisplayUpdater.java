@@ -206,25 +206,28 @@ public class DisplayUpdater {
                 break;
             }
             case "startPhase": {
-//                System.out.println("startPhase entered @updateActionBar");
-                updateGameInfoText("Wait for you turn");
                 controller.getActionButton().setVisible(false);
                 gameInfoString += "Here is your hand";
                 break;
             }
             case "discardPhase": {
 //                System.out.println("discardPhase entered @updateActionBar");
-                updateActionButtonText("Discard Cards",ActionCardPerformer.actionComplete());
+                updateActionButtonText("Discard Cards",ActionCardPerformer.actionComplete(player.getSelect().getSize()));
                 gameInfoString += "Select cards to discard";
 
                 controller.getSwitchCardViewButton().setVisible(true);
                 break;
             }
             case "trashPhase": {
-                updateActionButtonText("Trash Cards",ActionCardPerformer.actionComplete());
+                updateActionButtonText("Trash Cards",ActionCardPerformer.actionComplete(player.getSelect().getSize()));
                 gameInfoString += "Select cards to trash";
 
                 controller.getSwitchCardViewButton().setVisible(true);
+                break;
+            }
+            case "gainPhase": {
+                controller.getActionButton().setVisible(false);
+                gameInfoString += "Gain a card";
                 break;
             }
         }
