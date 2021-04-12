@@ -7,3 +7,4 @@ Market
 Cellar
 Poacher
 Remodel
+Chapel

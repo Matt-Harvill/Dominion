@@ -6,3 +6,5 @@ Laboratory
 Market
 Cellar
 Poacher
+Remodel
+Chapel

@@ -1,6 +1,5 @@
 package controller;
 
-import controller.Main;
 import model.Action;
 import model.Player;
 import model.StackCalculator;
@@ -15,12 +14,12 @@ public class ActionParser {
         String playersAffected = "self";
         String type = "all";
         String num = "-1";
-        boolean optional = false;
-        String comparator = null;
+        String comparator = "=";
         String memoryName = null;
         int memory = -1;
 
         Scanner scanner = new Scanner(cardAction);
+
         while(scanner.hasNext()) {
             String msg = scanner.next();
             if(msg.contains("title_")) {
@@ -33,20 +32,17 @@ public class ActionParser {
                 memoryName = msg.substring(11);
             } else if(msg.contains("playersAffected_")) {
                 playersAffected = msg.substring(16);
-            } else if(msg.contains("optional_")) {
-                String option = msg.substring(9);
-                optional = Boolean.parseBoolean(option);
             } else if(msg.contains("type_")) {
                 type = msg.substring(5);
             }
         }
 
-        return new Action(title,playersAffected,type,comparator,memoryName,num,memory,optional);
+        return new Action(title,playersAffected,type,comparator,memoryName,num,memory);
     }
 
     public static int parseNum(Action action) {
         int num = -1;
-        String numString = action.getNum();
+        String numString = action.getNumString();
         System.out.println("numString: " + numString + " @ActionParser_parseNum");
         boolean isNumeric = numString.chars().allMatch(Character::isDigit);
         if(isNumeric) {

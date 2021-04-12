@@ -7,21 +7,19 @@ public class Action {
     private final String playersAffected;
 
     private final String type;
-    private final String comparator;
+    private final String comparatorString;
     private final String memoryName;
-    private final String num;
+    private final String numString;
     private int memory;
-    private final boolean optional;
 
-    public Action(String title, String playersAffected, String type, String comparator, String memoryName, String num, int memory, boolean optional) {
+    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, int memory) {
         this.title = title;
         this.playersAffected = playersAffected;
         this.type = type;
-        this.comparator = comparator;
+        this.comparatorString = comparatorString;
         this.memoryName = memoryName;
-        this.num = num;
+        this.numString = numString;
         this.memory = memory;
-        this.optional = optional;
     }
 
     public String getType() {
@@ -33,36 +31,33 @@ public class Action {
     public String getPlayersAffected() {
         return playersAffected;
     }
-    public String getComparator() {
-        return comparator;
+    public String getComparatorString() {
+        return comparatorString;
     }
     public String getMemoryName() {
         return memoryName;
     }
-    public String getNum() {
-        return num;
+    public String getNumString() {
+        return numString;
     }
     public int getMemory() {
         return memory;
     }
     public void setMemory(int memory) {this.memory = memory;}
-    public boolean isOptional() {
-        return optional;
-    }
 
     public boolean isComplete() {
-        if(optional) {
-            return true;
-        } else {
-//            parseComparator();
-            return memory== ActionParser.parseNum(this);
+        switch (comparatorString) {
+            case "<=": {
+                return memory <= ActionParser.parseNum(this);
+            }
+            case ">=": {
+                return memory >= ActionParser.parseNum(this);
+            }
+            case "=": {
+                return memory == ActionParser.parseNum(this);
+            }
         }
-    }
-
-    private void parseComparator() {
-//        switch (comparator) {
-//            case ""
-//        }
+        return false;
     }
 
     @Override
@@ -70,11 +65,10 @@ public class Action {
         return "Action{" +
                 "title='" + title + '\'' +
                 ", playersAffected='" + playersAffected + '\'' +
-                ", comparator='" + comparator + '\'' +
+                ", comparator='" + comparatorString + '\'' +
                 ", memoryName='" + memoryName + '\'' +
-                ", num=" + num +
+                ", num=" + numString +
                 ", memory=" + memory +
-                ", optional=" + optional +
                 '}';
     }
 }
