@@ -214,14 +214,14 @@ public class DisplayUpdater {
             }
             case "discardPhase": {
 //                System.out.println("discardPhase entered @updateActionBar");
-                updateActionButtonText("Discard Cards",ActionCardPerformer.checkActionComplete());
+                updateActionButtonText("Discard Cards",ActionCardPerformer.actionComplete());
                 gameInfoString += "Select cards to discard";
 
                 controller.getSwitchCardViewButton().setVisible(true);
                 break;
             }
             case "trashPhase": {
-                updateActionButtonText("Trash Cards",ActionCardPerformer.checkActionComplete());
+                updateActionButtonText("Trash Cards",ActionCardPerformer.actionComplete());
                 gameInfoString += "Select cards to trash";
 
                 controller.getSwitchCardViewButton().setVisible(true);

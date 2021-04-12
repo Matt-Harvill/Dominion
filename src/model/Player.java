@@ -13,6 +13,7 @@ public class Player {
 
     private String name, phase;
     private CardCollection hand, deck, discardPile, inPlay, select, trash;
+    private CardCollection boughtThisTurn, gainedThisTurn;
     private int handLimit, numActions, numBuys, purchasePower, amountSpentThisTurn, bonusPurchasePower;
     private ActionCard actionCardInPlay;
 
@@ -23,6 +24,8 @@ public class Player {
         inPlay = CardCollectionFactory.getCardCollection();
         select = CardCollectionFactory.getCardCollection();
         trash = CardCollectionFactory.getCardCollection();
+        boughtThisTurn = CardCollectionFactory.getCardCollection();
+        gainedThisTurn = CardCollectionFactory.getCardCollection();
 
         for(int i=0; i<7; i++)
             deck.addCardToCollection(CardFactory.getCard("Copper"));
@@ -48,6 +51,13 @@ public class Player {
         return discardPile;
     }
     public CardCollection getSelect() {return select;}
+    public CardCollection getTrash() {return trash;}
+    public CardCollection getBoughtThisTurn() {
+        return boughtThisTurn;
+    }
+    public CardCollection getGainedThisTurn() {
+        return gainedThisTurn;
+    }
 
     public String getName() {
         return name;
@@ -77,14 +87,18 @@ public class Player {
     public void endTurn() {
         discardHand();
         discardInPlay();
+        boughtThisTurn = CardCollectionFactory.getCardCollection();
+        gainedThisTurn= CardCollectionFactory.getCardCollection();
     }
     public void buyCard(Card card) {
         discardPile.addCardToCollection(card);
+        boughtThisTurn.addCardToCollection(card);
         numBuys--;
         amountSpentThisTurn+=card.getCost();
     }
     public void gainCard(Card card) {
         discardPile.addCardToCollection(card);
+        gainedThisTurn.addCardToCollection(card);
     }
     public void playCard(Card card) {
         inPlay.addCardToCollection(hand.removeCardFromCollection(card));
@@ -115,6 +129,9 @@ public class Player {
         return points;
     }
     public ActionCard getActionCardInPlay() {return actionCardInPlay;}
+    public void resetActionCardInPlay() {
+        actionCardInPlay = null;
+    }
 
     private int getVictoryPoints(CardCollection collection) {
         int points = 0;

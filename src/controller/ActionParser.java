@@ -17,6 +17,7 @@ public class ActionParser {
         String comparator = "=";
         String memoryName = null;
         int memory = -1;
+        String costString = null;
 
         Scanner scanner = new Scanner(cardAction);
 
@@ -34,29 +35,51 @@ public class ActionParser {
                 playersAffected = msg.substring(16);
             } else if(msg.contains("type_")) {
                 type = msg.substring(5);
+            } else if(msg.contains("cost_")) {
+                costString = msg.substring(5);
             }
         }
 
-        return new Action(title,playersAffected,type,comparator,memoryName,num,memory);
+        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,memory);
     }
 
-    public static int parseNum(Action action) {
+    public static int parseStringToInt(Action action, String string) {
         int num = -1;
-        String numString = action.getNumString();
+        String s = null;
+        if(string.equals("num")) {
+            s = action.getNumString();
+        } else if(string.equals("cost")) {
+            s = action.getCostString();
+        }
 //        System.out.println("numString: " + numString + " @ActionParser_parseNum");
-        boolean isNumeric = numString.chars().allMatch(Character::isDigit);
+        boolean isNumeric = s.chars().allMatch(Character::isDigit);
         if(isNumeric) {
-            num = Integer.parseInt(numString);
+            num = Integer.parseInt(s);
         } else {
-            switch (numString) {
+            String operator = null;
+            int opValue = 0;
+            if(s.contains("-")) {
+                operator = "-";
+                opValue -= Integer.parseInt(s.substring(s.indexOf("-")+1));
+                s = s.substring(0,s.indexOf("-"));
+                System.out.println("s: " + s + " @ActionParser_parseStringToInt");
+            } else if(s.contains("+")) {
+                operator = "+";
+                opValue += Integer.parseInt(s.substring(s.indexOf("+")+1));
+                s = s.substring(0,s.indexOf("+"));
+                System.out.println("s: " + s + " @ActionParser_parseStringToInt");
+            }
+
+            switch (s) {
                 case "any": {
                     num = Integer.MAX_VALUE; break;
                 }
-                case "numDiscarded": {
-                    num = player.getActionCardInPlay().getMemory(numString); break;
+                case "numDiscarded":
+                case "costOfCardTrashed": {
+                    num = player.getActionCardInPlay().getMemory(s) + opValue; break;
                 }
                 case "numEmptyStacks": {
-                    num = StackCalculator.numEmptyStacks(); break;
+                    num = StackCalculator.numEmptyStacks() + opValue; break;
                 }
             }
         }

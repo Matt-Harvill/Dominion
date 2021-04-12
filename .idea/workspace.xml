@@ -9,20 +9,27 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="need to add gaining a card but the comparators and trashing work now">
-      <change afterPath="$PROJECT_DIR$/src/resources/Plus_Sign_Blue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Plus_Sign_Green.png" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="gaining cards works. need to add receiver in CSC and I need to set memory better now since some cards depend on memory as more than cards in select">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/GUIInputHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/GUIInputHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ServerSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/gameScene.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/gameScene.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/view/BuyableCardDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/view/BuyableCardDisplay.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIInputHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/gameScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/gameScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/BuyableCardDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/gameSceneWithTabPane.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,14 +184,7 @@
       <workItem from="1618091250134" duration="2534000" />
       <workItem from="1618150587710" duration="16164000" />
       <workItem from="1618171282409" duration="1527000" />
-      <workItem from="1618245017574" duration="3701000" />
-    </task>
-    <task id="LOCAL-00028" summary="Now start button and reaching max players both trigger startGame in server. Also, when a player leaves, it alerts everyone else and goes to the next player's turn if it was that player's turn.">
-      <created>1617396788526</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1617396788526</updated>
+      <workItem from="1618245017574" duration="8933000" />
     </task>
     <task id="LOCAL-00029" summary="fixed naming with weird characters/spaces. Still need to fix it if two players joins with same name">
       <created>1617398203915</created>
@@ -522,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618246305893</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="gaining cards works. need to add receiver in CSC and I need to set memory better now since some cards depend on memory as more than cards in select">
+      <created>1618250994567</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1618250994567</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +549,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Set a message for who won @GameOver. Also created CardDisplays for extra cards in game even though they aren't used. Everything should be working much better and is way more organized." />
     <MESSAGE value="Fixed error with SSCs not updating player info" />
     <MESSAGE value="Fixed error with CSC serverPlayers not being updated correctly so the cards weren't being shown" />
     <MESSAGE value="It appears that I've fixed all of the confusing card display code. We will see" />
@@ -567,6 +573,7 @@
     <MESSAGE value="added poacher card and it works" />
     <MESSAGE value="trashing works now. Just need to add in trashing cards" />
     <MESSAGE value="need to add gaining a card but the comparators and trashing work now" />
-    <option name="LAST_COMMIT_MESSAGE" value="need to add gaining a card but the comparators and trashing work now" />
+    <MESSAGE value="gaining cards works. need to add receiver in CSC and I need to set memory better now since some cards depend on memory as more than cards in select" />
+    <option name="LAST_COMMIT_MESSAGE" value="gaining cards works. need to add receiver in CSC and I need to set memory better now since some cards depend on memory as more than cards in select" />
   </component>
 </project>

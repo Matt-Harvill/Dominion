@@ -1,6 +1,5 @@
 package controller;
 
-import model.Action;
 import model.CardCollection;
 import model.Player;
 import model.ServerPlayer;
@@ -102,8 +101,8 @@ public final class GUIInputHandler {
             case "trashPhase":
             case "discardPhase": {
                 player.handToSelect(card);
-                ActionCardPerformer.setMemory();
-                ActionCardPerformer.checkActionComplete();
+                player.getActionCardInPlay().getAction().setNumSelected(player.getSelect().getSize());
+                ActionCardPerformer.actionComplete();
                 break;
             }
         }
@@ -118,8 +117,8 @@ public final class GUIInputHandler {
 
         if((phase.equals("discardPhase") || phase.equals("trashPhase")) && inSelect) {
             player.selectToHand(card);
-            ActionCardPerformer.setMemory();
-            ActionCardPerformer.checkActionComplete();
+            player.getActionCardInPlay().getAction().setNumSelected(player.getSelect().getSize());
+            ActionCardPerformer.actionComplete();
         }
         updateAfterClick();
     }

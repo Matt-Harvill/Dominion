@@ -482,6 +482,66 @@
                                 <Insets top="380.0" />
                             </StackPane.margin>
                         </Rectangle>
+                  <Rectangle fx:id="treasureCardGainButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="treasureCardGainButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="treasureCardGainButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="280.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="treasureCardGainButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="380.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardGainButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardGainButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardGainButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="280.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="victoryCardGainButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="380.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardGainButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardGainButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardGainButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="280.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="extraCardGainButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="380.0" />
+                     </StackPane.margin>
+                  </Rectangle>
                     </children>
                 </StackPane>
                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" StackPane.alignment="TOP_LEFT">
@@ -872,6 +932,56 @@
                                 <Insets left="480.0" top="180.0" />
                             </StackPane.margin>
                         </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="300.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton5" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" top="80.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton6" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton7" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="100.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton8" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="200.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton9" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="300.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
+                  <Rectangle fx:id="actionCardGainButton10" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="20.0" onMouseClicked="#gainButtonClicked" onMouseEntered="#mouseOverActionCardInSupply" onMouseExited="#mouseExitedActionCardInSupply" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="20.0" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="400.0" top="180.0" />
+                     </StackPane.margin>
+                  </Rectangle>
                     </children>
                 </StackPane>
                 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="720.0" StackPane.alignment="BOTTOM_LEFT">
