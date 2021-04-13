@@ -165,15 +165,9 @@ public class ServerSideConnection implements Runnable {
         return points;
     }
 
+    //assignNewTurn also sends the cardStackNums
     public String assignNewTurn() throws IOException {
         List<ServerSideConnection> connections = Main.getServer().getServerSideConnections();
-
-        //---------------------------------------------------------//
-//        System.out.println("List of SSCs @SSC_assignNewTurn");
-//        for(ServerSideConnection ssc: connections) {
-//            System.out.print(ssc.getName() + "   ");
-//        }
-        //---------------------------------------------------------//
 
         int indexOfThis = connections.indexOf(this);
         String sendMessage = "startTurn ";
@@ -181,14 +175,27 @@ public class ServerSideConnection implements Runnable {
         if(indexOfThis==connections.size()-1) {
             sendMessage+=connections.get(0).getPlayerInfoString();
             connections.get(0).setTurn(true);
+
+            connections.get(0).individualSend(sendCardNums());
         }
         else {
             sendMessage+=connections.get(indexOfThis + 1).getPlayerInfoString();
             connections.get(indexOfThis + 1).setTurn(true);
+
+            connections.get(indexOfThis + 1).individualSend(sendCardNums());
         }
         individualSend(sendMessage);
         return sendMessage;
     }
+
+    private String sendCardNums() throws IOException {
+        String sendMessage = "cardsInGameNums " + getPlayerInfoString();
+        for(CardStack cardStack: cardStacks) {
+            sendMessage += cardStack.getCard().getName() + " " + cardStack.getNumCards() + " ";
+        }
+        return sendMessage;
+    }
+
     public void shutDown() throws IOException {
         dataIn.close();
         dataOut.close();
