@@ -92,7 +92,7 @@ public class CardFactory {
                             new Image(Main.class.getResource("/Workshop_Small.jpg").toURI().toString()),"All 10");
                 }
                 case "Mine": {
-                    return new ActionCard(cardType,5,"title_trash optional_true num_1 memoryName_costOfCardTrashed \n title_gain cost_costOfCardTrashed+3 type_treasureCard",new Image(Main.class.getResource("/Mine.jpg").toURI().toString()),
+                    return new ActionCard(cardType,5,"title_trash comparator_<= num_1 memoryName_costOfCardTrashed type_treasureCard \n title_gain cost_costOfCardTrashed+3 type_treasureCard location_hand",new Image(Main.class.getResource("/Mine.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Mine_Small.jpg").toURI().toString()),"All 10");
                 }
                 default: return null;

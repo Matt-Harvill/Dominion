@@ -96,8 +96,21 @@ public class Player {
         numBuys--;
         amountSpentThisTurn+=card.getCost();
     }
-    public void gainCard(Card card) {
-        discardPile.addCardToCollection(card);
+    public void gainCard(Card card, String location) {
+        CardCollection collection = null;
+        if(location==null) {
+            collection = discardPile;
+        } else {
+            switch (location) {
+                case "hand": {
+                    collection = hand; break;
+                }
+                case "deck": {
+                    collection = deck; break;
+                }
+            }
+        }
+        collection.addCardToCollection(card);
         gainedThisTurn.addCardToCollection(card);
     }
     public void playCard(Card card) {
@@ -224,14 +237,18 @@ public class Player {
     public void selectToHand(Card cardClicked) {
         hand.addCardToCollection(select.removeCardFromCollection(cardClicked));
     }
-    public void discardSelect() {
-        while(select.getSize()>0) {
-            discardPile.addCardToCollection(select.drawTopCard());
+    public void selectToLocation(String location) {
+        CardCollection collection = null;
+        switch (location) {
+            case "discard": {
+                collection = discardPile; break;
+            }
+            case "trash": {
+                collection = trash; break;
+            }
         }
-    }
-    public void trashSelect() {
         while(select.getSize()>0) {
-            trash.addCardToCollection(select.drawTopCard());
+            collection.addCardToCollection(select.drawTopCard());
         }
     }
 }

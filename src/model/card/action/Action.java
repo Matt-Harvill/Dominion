@@ -1,14 +1,11 @@
 package model.card.action;
 
 public class Action {
-    private final String title;
-    private final String playersAffected;
-
-    private final String type,comparatorString,memoryName,numString,costString;
+    private final String title,playersAffected,type,comparatorString,memoryName,numString,costString,location;
     private int memory;
     private boolean optional;
 
-    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, String costString, int memory, boolean optional) {
+    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, String costString, String location, int memory, boolean optional) {
         this.title = title;
         this.playersAffected = playersAffected;
         this.type = type;
@@ -16,6 +13,7 @@ public class Action {
         this.memoryName = memoryName;
         this.numString = numString;
         this.costString = costString;
+        this.location = location;
         this.memory = memory;
         this.optional = optional;
     }
@@ -36,6 +34,7 @@ public class Action {
         return numString;
     }
     public String getCostString() {return costString;}
+    public String getLocation() {return location;}
     public int getMemory() {
         return memory;
     }
@@ -44,9 +43,6 @@ public class Action {
     }
 
     public boolean isComplete(int numSelected) {
-        if(optional) {
-            return true;
-        }
         switch (comparatorString) {
             case "<=": {
                 return numSelected <= ActionParser.parseStringToInt(this,"num");

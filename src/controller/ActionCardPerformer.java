@@ -141,19 +141,28 @@ public class ActionCardPerformer {
     public static void submitAction() {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
+        String phase = player.getPhase();
 
         if(action.getMemoryName()!=null) {
             setMemory();
         }
+
+        switch (phase) {
+            case "discardPhase":
+                player.selectToLocation("discard");
+                break;
+            case "trashPhase":
+                player.selectToLocation("trash");
+                break;
+//            case "gainPhase":
+//                System.out.println("@ACP_submitAction gainPhase switch entered, location: " + action.getLocation());
+//                player.selectToLocation(action.getLocation());
+//                break;
+        }
+
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-
-        if(player.getPhase().equals("discardPhase")) {
-            player.discardSelect();
-        } else if(player.getPhase().equals("trashPhase")) {
-            player.trashSelect();
-        }
 
         actionCard.incrementActionIndex();
         startNextAction();

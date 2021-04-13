@@ -20,6 +20,7 @@ public class ActionParser {
         int memory = -1;
         String costString = null;
         boolean optional = false;
+        String location = null;
 
         Scanner scanner = new Scanner(cardAction);
 
@@ -41,10 +42,12 @@ public class ActionParser {
                 costString = msg.substring(msg.indexOf("_") + 1);
             } else if(msg.contains("optional_")) {
                 optional = Boolean.parseBoolean(msg.substring(msg.indexOf("_") + 1));
+            } else if(msg.contains("location_")) {
+                location = msg.substring(msg.indexOf("_") + 1);
             }
         }
 
-        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,memory,optional);
+        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,location,memory,optional);
     }
 
     public static int parseStringToInt(Action action, String string) {

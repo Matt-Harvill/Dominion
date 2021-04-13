@@ -245,7 +245,6 @@ public class DisplayUpdater {
                 break;
             }
             case "endPhase": {
-//                System.out.println("endPhase entered @updateActionBar");
                 controller.getActionButton().setVisible(false);
                 break;
             }
@@ -255,16 +254,37 @@ public class DisplayUpdater {
                 break;
             }
             case "discardPhase": {
-//                System.out.println("discardPhase entered @updateActionBar");
-                updateActionButtonText("Discard Cards",ActionCardPerformer.actionComplete(player.getSelect().getSize()));
-                gameInfoString += "Select cards to discard";
+                int selectSize = player.getSelect().getSize();
+                boolean actionComplete = ActionCardPerformer.actionComplete(selectSize);
+                String actionButtonText = "";
+                if(actionComplete) {
+                    if(selectSize==0) {
+                        actionButtonText = "Skip Discarding";
+                    } else {
+                        actionButtonText = "Discard Card(s)";
+                    }
+                }
+                updateActionButtonText(actionButtonText,actionComplete);
+
+                gameInfoString += "Select card(s) to discard";
 
                 controller.getSwitchCardViewButton().setVisible(true);
                 break;
             }
             case "trashPhase": {
-                updateActionButtonText("Trash Cards",ActionCardPerformer.actionComplete(player.getSelect().getSize()));
-                gameInfoString += "Select cards to trash";
+                int selectSize = player.getSelect().getSize();
+                boolean actionComplete = ActionCardPerformer.actionComplete(selectSize);
+                String actionButtonText = "";
+                if(actionComplete) {
+                    if(selectSize==0) {
+                        actionButtonText = "Skip Trashing";
+                    } else {
+                        actionButtonText = "Trash Card(s)";
+                    }
+                }
+                updateActionButtonText(actionButtonText,actionComplete);
+
+                gameInfoString += "Select card(s) to trash";
 
                 controller.getSwitchCardViewButton().setVisible(true);
                 break;
@@ -336,16 +356,16 @@ public class DisplayUpdater {
                 String type = player.getActionCardInPlay().getAction().getType();
 //                System.out.println(type);
                 if(type.equals("all")) {
-                    type = "actionCards treasureCards victoryCards";
+                    type = "actionCard treasureCard victoryCard";
                 }
 
-                if(type.contains("actionCards")) {
+                if(type.contains("actionCard")) {
                     highlightActionCards = true;
                 }
-                if(type.contains("treasureCards")) {
+                if(type.contains("treasureCard")) {
                     highlightTreasureCards = true;
                 }
-                if(type.contains("victoryCards")) {
+                if(type.contains("victoryCard")) {
                     highlightVictoryCards = true;
                 }
                 break;

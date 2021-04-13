@@ -29,7 +29,7 @@ public final class DisplayInputHandler {
         }
     }
     public static void gainButtonClicked(Card cardClicked) {
-        player.gainCard(cardClicked);
+        player.gainCard(cardClicked, player.getActionCardInPlay().getAction().getLocation());
 
         ServerSender.gainCard(cardClicked.getName());
 
@@ -76,14 +76,17 @@ public final class DisplayInputHandler {
         }
     }
     public static void actionButtonClicked(String actionButtonText) {
+//        String phase = player.getPhase();
         switch (actionButtonText) {
             case "Start Turn": PhaseUpdater.startPhase(); break;
             case "Enter Buy Phase": PhaseUpdater.buyPhase(); break;
             case "End Turn": PhaseUpdater.endPhase(); break;
             case "Don't Gain":
                 DisplayUpdater.showGainableCards(false,-1,null);
-            case "Trash Cards":
-            case "Discard Cards":
+            case "Skip Discarding":
+            case "Skip Trashing":
+                case "Trash Card(s)":
+            case "Discard Card(s)":
                 ActionCardPerformer.submitAction(); break;
         }
     }

@@ -129,7 +129,7 @@ public class DominionServer {
     }
     private int parseNumCardString(String cardNum) {
         Scanner scanner = new Scanner(cardNum);
-        System.out.println(cardNum);
+//        System.out.println(cardNum);
         while(scanner.hasNext()) {
             String s = scanner.next();
             if(s.equals("All")) {

@@ -9,24 +9,24 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="now server decrements stack when card is gained">
-      <change afterPath="$PROJECT_DIR$/src/resources/Mine.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Mine_Small.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Workshop.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Workshop_Small.jpg" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayInputHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayInputHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayInputHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/card/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/action/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/ActionParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,14 +183,7 @@
       <workItem from="1618171282409" duration="1527000" />
       <workItem from="1618245017574" duration="15191000" />
       <workItem from="1618276560182" duration="656000" />
-      <workItem from="1618326635318" duration="9263000" />
-    </task>
-    <task id="LOCAL-00035" summary="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC">
-      <created>1617586386869</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1617586386869</updated>
+      <workItem from="1618326635318" duration="11775000" />
     </task>
     <task id="LOCAL-00036" summary="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream">
       <created>1617587143666</created>
@@ -528,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618346370146</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected">
+      <created>1618350499753</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1618350499753</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed bug of updating inPlay display" />
     <MESSAGE value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
     <MESSAGE value="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways" />
     <MESSAGE value="updating background of hostJoinScene and style of fonts." />
@@ -573,6 +572,7 @@
     <MESSAGE value="added sending cardstack nums at beginning of turn just to make sure player has correct info at each start to turn. Might add this to every function in the future." />
     <MESSAGE value="reorganizing classes and packages to make sure classes are sticking to one purpose" />
     <MESSAGE value="now server decrements stack when card is gained" />
-    <option name="LAST_COMMIT_MESSAGE" value="now server decrements stack when card is gained" />
+    <MESSAGE value="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected" />
+    <option name="LAST_COMMIT_MESSAGE" value="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected" />
   </component>
 </project>
