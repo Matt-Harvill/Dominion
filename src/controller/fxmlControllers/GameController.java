@@ -296,24 +296,12 @@ public class GameController {
     public CardDisplay[] getCIHDisplays() {return CIHDisplays;}
     public CardDisplay[] getCIPDisplays() {return CIPDisplays;}
 
-    //-------------------Internal Updates------------------------//
-
+    //-------------------Update methods------------------------//
     public void chatSend(ActionEvent actionEvent) {
         if(chatType.getText()==null) return;
         String chatText = chatType.getText();
         DisplayUpdater.addMsgToChatLog(Main.getPlayer().getName() + ": " + chatText);
         ServerSender.chatSend(chatText);
-    }
-
-    public void cardInHandClicked(MouseEvent mouseEvent) {
-        Rectangle cardClicked = (Rectangle) mouseEvent.getSource();
-        for(CardDisplay cardDisplay: CIHDisplays) {
-            if(cardDisplay.contains(cardClicked)) {
-                if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    DisplayInputHandler.greenCardInHandClicked(cardDisplay.getCard());
-                }
-            }
-        }
     }
 
     public void mouseOverCardInHand(MouseEvent mouseEvent) {
@@ -345,28 +333,16 @@ public class GameController {
         }
     }
 
-    private void bringToFront(MouseEvent mouseEvent, CardDisplay[] cardDisplays, boolean entered) {
-        Object cardClicked = mouseEvent.getSource();
-        for(int i = 0; i< cardDisplays.length;i++) {
-            if(cardDisplays[i].contains(cardClicked)) {
-                if(entered) {
-                    cardDisplays[i].setViewOrder(0.2);
-                } else {
-                    cardDisplays[i].setViewOrder(cardDisplays.length-i);
+    public void cardInHandClicked(MouseEvent mouseEvent) {
+        Rectangle cardClicked = (Rectangle) mouseEvent.getSource();
+        for(CardDisplay cardDisplay: CIHDisplays) {
+            if(cardDisplay.contains(cardClicked)) {
+                if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
+                    DisplayInputHandler.greenCardInHandClicked(cardDisplay.getCard());
                 }
-                break;
             }
         }
     }
-    private void showZoomActionCard(Card card, boolean entered) {
-        if(entered) {
-            zoomActionCard.setFill(new ImagePattern(card.getCardImage()));
-            zoomActionCard.setVisible(true);
-        } else {
-            zoomActionCard.setVisible(false);
-        }
-    }
-
     public void actionButtonClicked(ActionEvent actionEvent) {
         DisplayInputHandler.actionButtonClicked(actionButton.getText());
     }
@@ -378,12 +354,27 @@ public class GameController {
             }
         }
     }
-
     public void gainButtonClicked(MouseEvent mouseEvent) {
         Object gainButtonClicked = mouseEvent.getSource();
         for(BuyableCardDisplay cardDisplay: allCISDisplays) {
             if(cardDisplay.contains(gainButtonClicked)) {
                 DisplayInputHandler.gainButtonClicked(cardDisplay.getCard());
+            }
+        }
+    }
+    public void switchCardViewButtonClicked(ActionEvent actionEvent) {
+        DisplayInputHandler.cardViewButtonClicked(switchCardViewButton.getText());
+        if(switchCardViewButton.getText().equals("View Selected Cards")) {
+            switchCardViewButton.setText("View Cards In Play");
+        } else if(switchCardViewButton.getText().equals("View Cards In Play")) {
+            switchCardViewButton.setText("View Selected Cards");
+        }
+    }
+    public void cardInPlayClicked(MouseEvent mouseEvent) {
+        Object objectClicked = mouseEvent.getSource();
+        for(CardDisplay cardDisplay: CIPDisplays) {
+            if(cardDisplay.contains(objectClicked)) {
+                DisplayInputHandler.cardInPlayClicked(cardDisplay.getCard()); break;
             }
         }
     }
@@ -479,22 +470,25 @@ public class GameController {
             cardDisplays[i].setViewOrder(cardDisplays.length-i);
         }
     }
-
-    public void switchCardViewButtonClicked(ActionEvent actionEvent) {
-        DisplayInputHandler.cardViewButtonClicked(switchCardViewButton.getText());
-        if(switchCardViewButton.getText().equals("View Selected Cards")) {
-            switchCardViewButton.setText("View Cards In Play");
-        } else if(switchCardViewButton.getText().equals("View Cards In Play")) {
-            switchCardViewButton.setText("View Selected Cards");
+    private void bringToFront(MouseEvent mouseEvent, CardDisplay[] cardDisplays, boolean entered) {
+        Object cardClicked = mouseEvent.getSource();
+        for(int i = 0; i< cardDisplays.length;i++) {
+            if(cardDisplays[i].contains(cardClicked)) {
+                if(entered) {
+                    cardDisplays[i].setViewOrder(0.2);
+                } else {
+                    cardDisplays[i].setViewOrder(cardDisplays.length-i);
+                }
+                break;
+            }
         }
     }
-
-    public void cardInPlayClicked(MouseEvent mouseEvent) {
-        Object objectClicked = mouseEvent.getSource();
-        for(CardDisplay cardDisplay: CIPDisplays) {
-            if(cardDisplay.contains(objectClicked)) {
-                DisplayInputHandler.cardInPlayClicked(cardDisplay.getCard()); break;
-            }
+    private void showZoomActionCard(Card card, boolean entered) {
+        if(entered) {
+            zoomActionCard.setFill(new ImagePattern(card.getCardImage()));
+            zoomActionCard.setVisible(true);
+        } else {
+            zoomActionCard.setVisible(false);
         }
     }
 }

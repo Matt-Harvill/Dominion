@@ -57,7 +57,6 @@ public class ActionCardPerformer {
                     break;
                 }
                 case "action": {
-//                    System.out.println("action num: " + num + " @ACP_startAction");
                     player.incrementNumActions(num);
                     submitAction();
                     break;
@@ -103,7 +102,6 @@ public class ActionCardPerformer {
             action.setMemory(lastCard.getCost() + memory);
         }
     }
-
     private static int parseOperator(Action action, String memoryName, String operator) {
         int returnVal = 0;
         switch (operator) {
@@ -137,7 +135,6 @@ public class ActionCardPerformer {
         if(action.getMemoryName()!=null) {
             setMemory();
         }
-        //have a switch case for what info to use as object memory
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
@@ -148,7 +145,6 @@ public class ActionCardPerformer {
             player.trashSelect();
         }
 
-//        PhaseUpdater.actionPhase();
         actionCard.incrementActionIndex();
         startNextAction();
     }

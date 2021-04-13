@@ -15,7 +15,6 @@ public class ActionCard extends Card {
         super(name, cost, image, smallCardImage, numCards);
         actions = new ArrayList<>();
         loadInActions(actionString);
-//        printActions();
         actionIndex = 0;
     }
 
@@ -32,14 +31,6 @@ public class ActionCard extends Card {
             return actions.get(actionIndex);
         }
     }
-
-    private void loadInActions(String actionString) {
-        Scanner scanner = new Scanner(actionString);
-        while (scanner.hasNext()) {
-            actions.add(ActionParser.parse(scanner.nextLine()));
-        }
-    }
-
     public int getMemory(String memoryName) {
 
         for(Action action: actions) {
@@ -51,9 +42,10 @@ public class ActionCard extends Card {
         return -1;
     }
 
-//    private void printActions() {
-//        for(Action action: actions) {
-//            System.out.println(action);
-//        }
-//    }
+    private void loadInActions(String actionString) {
+        Scanner scanner = new Scanner(actionString);
+        while (scanner.hasNext()) {
+            actions.add(ActionParser.parse(scanner.nextLine()));
+        }
+    }
 }

@@ -88,6 +88,7 @@ public class ServerSideConnection implements Runnable {
                         Main.getServer().getServerSideConnections().remove(this);
                         shutDown();
                         break;
+                    case "gainButtonClicked":
                     case "buyButtonClicked":
                         String cardName = scanner.next();
                         for (CardStack cardStack : cardStacks) {

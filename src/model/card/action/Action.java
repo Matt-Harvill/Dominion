@@ -29,9 +29,6 @@ public class Action {
     public String getPlayersAffected() {
         return playersAffected;
     }
-    public String getComparatorString() {
-        return comparatorString;
-    }
     public String getMemoryName() {
         return memoryName;
     }
