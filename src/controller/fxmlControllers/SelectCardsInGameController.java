@@ -1,24 +1,18 @@
-package controller;
+package controller.fxmlControllers;
 
-import javafx.application.Platform;
+import controller.mains.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import model.card.ActionCard;
+import model.card.action.ActionCard;
 import model.card.Card;
 import model.factory.CardFactory;
 
-import javax.swing.*;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 

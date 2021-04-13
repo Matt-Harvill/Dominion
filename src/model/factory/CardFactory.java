@@ -1,7 +1,8 @@
 package model.factory;
 
-import controller.Main;
+import controller.mains.Main;
 import javafx.scene.image.Image;
+import model.card.action.ActionCard;
 import model.card.*;
 
 import java.net.URISyntaxException;

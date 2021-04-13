@@ -1,12 +1,12 @@
 package controller;
 
-import model.Action;
+import controller.mains.Main;
+import model.card.action.Action;
 import model.CardCollection;
 import model.Player;
-import model.card.ActionCard;
+import model.card.action.ActionCard;
 import model.card.Card;
-
-import java.util.List;
+import model.card.action.ActionParser;
 
 public class ActionCardPerformer {
 

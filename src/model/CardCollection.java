@@ -1,6 +1,6 @@
 package model;
 
-import model.card.ActionCard;
+import model.card.action.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;

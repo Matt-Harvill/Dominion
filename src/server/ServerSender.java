@@ -1,5 +1,6 @@
-package controller;
+package server;
 
+import controller.mains.Main;
 import model.Player;
 
 public final class ServerSender {
@@ -17,10 +18,10 @@ public final class ServerSender {
         clientSideConnection.send("playCard " + player.getInfoString() + cardName);
     }
     public static void buyCard(String cardName) {
-        clientSideConnection.send("buyCard " + player.getInfoString() + cardName);
+        clientSideConnection.send("buyButtonClicked " + player.getInfoString() + cardName);
     }
     public static void gainCard(String cardName) {
-        clientSideConnection.send("gainCard " + player.getInfoString() + cardName);
+        clientSideConnection.send("gainButtonClicked " + player.getInfoString() + cardName);
     }
     public static void updateInfo() {
         clientSideConnection.send("updateInfo " + player.getInfoString());

@@ -1,15 +1,19 @@
 package controller;
 
+import controller.fxmlControllers.GameController;
+import controller.mains.Main;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import model.CardCollection;
 import model.Player;
-import model.card.ActionCard;
+import model.ServerPlayer;
+import model.card.action.ActionCard;
 import model.card.Card;
 import model.card.TreasureCard;
 import model.card.VictoryCard;
 import view.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayUpdater {
@@ -17,19 +21,30 @@ public class DisplayUpdater {
     private static final GameController controller = Main.getGameController();
     private static final Player player = Main.getPlayer();
 
-    private static void setCardDisplay(CardDisplay cardDisplay,Card card, int numCard) {
-        cardDisplay.setCard(card);
-        cardDisplay.setNum(numCard);
-        cardDisplay.show();
-    }
-    private static void resetCardDisplays(CardDisplay[] cardDisplays) {
-        for(CardDisplay cardDisplay: cardDisplays) {
-            cardDisplay.setCard(null);
-            cardDisplay.setStyle(null);
-            cardDisplay.hide();
+    //--------------------For all players-----------------------//
+    public static void updateCardSupply(Card cardPurchased) {
+        List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
+
+        for(BuyableCardDisplay cardDisplay: cardDisplays) {
+            if(cardDisplay.getCard()!=null && cardDisplay.getCard().equals(cardPurchased)) {
+                int prevNum = cardDisplay.getNum();
+                cardDisplay.setNum(prevNum-1);
+            }
         }
     }
+    public static void updatePlayerLabel(String playerName, int points) {
+        PlayerInfoDisplay[] displays = controller.getPlayerInfoDisplays();
 
+        for (PlayerInfoDisplay display : displays) {
+//            System.out.println("playerLabel name: " + display.getName());
+            if (playerName.equals(display.getName()) || display.getName().equals("")) {
+                display.setName(playerName);
+                display.setNum(points);
+                display.show();
+                break;
+            }
+        }
+    }
     public static void updateInPlayDisplay(CardCollection collection, String playerName, int numCards, boolean myTurn) {
         if(collection.equals(player.getSelect())) {
             updateCardsInSelect();
@@ -39,6 +54,7 @@ public class DisplayUpdater {
         updateOpponentDeck(numCards, myTurn);
         updateInPlayPlayerLabel(playerName,myTurn);
     }
+
     private static void updateOpponentDeck(int numCards, boolean myTurn) {
         DeckDisplay deckDisplay = controller.getOpponentDeckDisplay();
         deckDisplay.getCardDisplay().setNum(numCards);
@@ -109,43 +125,38 @@ public class DisplayUpdater {
         }
 
     }
-
-    public static void updateCardSupply(Card cardPurchased) {
-        List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
-
-        for(BuyableCardDisplay cardDisplay: cardDisplays) {
-            if(cardDisplay.getCard()!=null && cardDisplay.getCard().equals(cardPurchased)) {
-                int prevNum = cardDisplay.getNum();
-                cardDisplay.setNum(prevNum-1);
-            }
-        }
+    private static void setCardDisplay(CardDisplay cardDisplay,Card card, int numCard) {
+        cardDisplay.setCard(card);
+        cardDisplay.setNum(numCard);
+        cardDisplay.show();
     }
-    public static void updatePlayerLabel(String playerName, int points) {
-        PlayerInfoDisplay[] displays = controller.getPlayerInfoDisplays();
-
-        for (PlayerInfoDisplay display : displays) {
-//            System.out.println("playerLabel name: " + display.getName());
-            if (playerName.equals(display.getName()) || display.getName().equals("")) {
-                display.setName(playerName);
-                display.setNum(points);
-                display.show();
-                break;
-            }
+    private static void resetCardDisplays(CardDisplay[] cardDisplays) {
+        for(CardDisplay cardDisplay: cardDisplays) {
+            cardDisplay.setCard(null);
+            cardDisplay.setStyle(null);
+            cardDisplay.hide();
         }
-    }
-    public static void gameOver(String gameOverText) {
-        updateGameInfoText(gameOverText);
-
-        resetCardDisplays(controller.getCIHDisplays());
-        resetCardDisplays(controller.getCIPDisplays());
-        controller.getActionButton().setVisible(false);
-        controller.getInPlayPlayerLabel().hide();
-        controller.getPlayerDiscardDisplay().hide();
-        controller.getPlayerDeckDisplay().hide();
-        controller.getOpponentDeckDisplay().hide();
     }
 
     //---------------------Only this player----------------------//
+    public static void gameOver() {
+        String gameOverText = "Game Over -> ";
+        List<String> winners = calcWinners(Main.getClientSideConnection().getPlayers());
+        if(winners.size()==1) {
+            if(winners.get(0).equals(player.getName())) {
+                gameOverText += "You won";
+            } else {
+                gameOverText += winners.get(0) + " won";
+            }
+        } else {
+            for(int i=0; i<winners.size()-1; i++) {
+                gameOverText += winners.get(i) + " and ";
+            }
+            gameOverText += winners.get(winners.size()-1) + " tied";
+        }
+
+        displayGameOver(gameOverText);
+    }
     public static void showBuyableCards(boolean show) {
         List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
 
@@ -159,7 +170,6 @@ public class DisplayUpdater {
             }
         }
     }
-
     public static void showGainableCards(boolean show, int maxCost) {
         List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
 
@@ -173,13 +183,33 @@ public class DisplayUpdater {
             }
         }
     }
-
     public static void updateHandDisplay() {
         updateCardsInHand();
         updateDeck();
         updateDiscard();
         updateActionBar();
     }
+    public static void addMsgToChatLog(String msg) {
+        if(controller.getChatDisplayStrings().size()>=15) controller.getChatDisplayStrings().remove(0);
+        controller.getChatDisplayStrings().add(msg);
+        controller.getChatType().setText(null);
+        StringBuilder builder = new StringBuilder();
+        for(String s: controller.getChatDisplayStrings()) {
+            builder.append(s); builder.append("\n");
+        }
+        controller.getChatLog().setText(builder.toString());
+    }
+    public static void addMsgToGameLog(String msg) {
+        if(controller.getGameDisplayStrings().size()>=15) controller.getGameDisplayStrings().remove(0);
+        controller.getGameDisplayStrings().add(msg);
+        controller.getGameLog().setText(null);
+        StringBuilder builder = new StringBuilder();
+        for(String s: controller.getGameDisplayStrings()) {
+            builder.append(s); builder.append("\n");
+        }
+        controller.getGameLog().setText(builder.toString());
+    }
+
     private static void updateActionBar() {
         Text gameInfoText = controller.getGameInfoText();
         String gameInfoString = "";
@@ -272,7 +302,6 @@ public class DisplayUpdater {
             index++;
         }
     }
-
     private static Boolean[] calcCardTypesToHighlight() {
         boolean highlightActionCards = false;
         boolean highlightTreasureCards = false;
@@ -310,7 +339,6 @@ public class DisplayUpdater {
         }
         return new Boolean[]{highlightActionCards,highlightTreasureCards,highlightVictoryCards};
     }
-
     private static void updateDeck() {
         DeckDisplay deckDisplay = controller.getPlayerDeckDisplay();
         int numCards = player.getDeck().getSize();
@@ -331,29 +359,34 @@ public class DisplayUpdater {
         }
 
     }
-
     private static void updateGameInfoText(String text) {
         controller.getGameInfoText().setText(text);
     }
-    public static void addMsgToChatLog(String msg) {
-        if(controller.getChatDisplayStrings().size()>=15) controller.getChatDisplayStrings().remove(0);
-        controller.getChatDisplayStrings().add(msg);
-        controller.getChatType().setText(null);
-        StringBuilder builder = new StringBuilder();
-        for(String s: controller.getChatDisplayStrings()) {
-            builder.append(s); builder.append("\n");
-        }
-        controller.getChatLog().setText(builder.toString());
-    }
-    public static void addMsgToGameLog(String msg) {
-        if(controller.getGameDisplayStrings().size()>=15) controller.getGameDisplayStrings().remove(0);
-        controller.getGameDisplayStrings().add(msg);
-        controller.getGameLog().setText(null);
-        StringBuilder builder = new StringBuilder();
-        for(String s: controller.getGameDisplayStrings()) {
-            builder.append(s); builder.append("\n");
-        }
-        controller.getGameLog().setText(builder.toString());
-    }
+    private static List<String> calcWinners(List<ServerPlayer> players) {
+        List<String> winners = new ArrayList<>();
 
+        int maxPoints = player.getPoints();
+        winners.add(player.getName());
+
+        for(ServerPlayer serverPlayer: players) {
+            if(serverPlayer.getPoints() > maxPoints) {
+                winners = new ArrayList<>();
+                winners.add(serverPlayer.getName());
+            } else if (serverPlayer.getPoints()==maxPoints) {
+                winners.add(serverPlayer.getName());
+            }
+        }
+        return winners;
+    }
+    private static void displayGameOver(String gameOverText) {
+        updateGameInfoText(gameOverText);
+
+        resetCardDisplays(controller.getCIHDisplays());
+        resetCardDisplays(controller.getCIPDisplays());
+        controller.getActionButton().setVisible(false);
+        controller.getInPlayPlayerLabel().hide();
+        controller.getPlayerDiscardDisplay().hide();
+        controller.getPlayerDeckDisplay().hide();
+        controller.getOpponentDeckDisplay().hide();
+    }
 }

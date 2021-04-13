@@ -1,6 +1,4 @@
-package model;
-
-import controller.ActionParser;
+package model.card.action;
 
 public class Action {
     private final String title;

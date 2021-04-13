@@ -1,6 +1,6 @@
 package server;
 
-import controller.Main;
+import controller.mains.Main;
 import model.CardCollection;
 import model.card.Card;
 import model.card.CardStack;
@@ -74,7 +74,7 @@ public class ServerSideConnection implements Runnable {
                     case "endTurn":
                         if(gameOver()) {
                             myTurn = false;
-                            sendMessage = "gameOver " + getPlayerInfoString();
+                            sendMessage = "displayGameOver " + getPlayerInfoString();
                             individualSend(sendMessage);
                         } else {
                             sendMessage = assignNewTurn();
@@ -88,7 +88,7 @@ public class ServerSideConnection implements Runnable {
                         Main.getServer().getServerSideConnections().remove(this);
                         shutDown();
                         break;
-                    case "buyCard":
+                    case "buyButtonClicked":
                         String cardName = scanner.next();
                         for (CardStack cardStack : cardStacks) {
                             if (cardStack.getCard().getName().equals(cardName)) {

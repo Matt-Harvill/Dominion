@@ -1,5 +1,8 @@
-package controller;
+package controller.fxmlControllers;
 
+import controller.DisplayUpdater;
+import controller.DisplayInputHandler;
+import controller.mains.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,8 +17,10 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.CardCollection;
+import model.card.action.ActionCard;
 import model.card.*;
 import model.factory.CardFactory;
+import server.ServerSender;
 import view.*;
 
 import java.net.URISyntaxException;
@@ -305,7 +310,7 @@ public class GameController {
         for(CardDisplay cardDisplay: CIHDisplays) {
             if(cardDisplay.contains(cardClicked)) {
                 if(cardClicked.getStyle().equals(greenCardGlowStyle)) {
-                    GUIInputHandler.greenCardInHandClicked(cardDisplay.getCard());
+                    DisplayInputHandler.greenCardInHandClicked(cardDisplay.getCard());
                 }
             }
         }
@@ -363,13 +368,13 @@ public class GameController {
     }
 
     public void actionButtonClicked(ActionEvent actionEvent) {
-        GUIInputHandler.actionButtonClicked(actionButton.getText());
+        DisplayInputHandler.actionButtonClicked(actionButton.getText());
     }
     public void buyButtonClicked(MouseEvent mouseEvent) {
         Object buyButtonClicked = mouseEvent.getSource();
         for(BuyableCardDisplay cardDisplay: allCISDisplays) {
             if(cardDisplay.contains(buyButtonClicked)) {
-                GUIInputHandler.buyCard(cardDisplay.getCard());
+                DisplayInputHandler.buyButtonClicked(cardDisplay.getCard());
             }
         }
     }
@@ -378,7 +383,7 @@ public class GameController {
         Object gainButtonClicked = mouseEvent.getSource();
         for(BuyableCardDisplay cardDisplay: allCISDisplays) {
             if(cardDisplay.contains(gainButtonClicked)) {
-                GUIInputHandler.gainCard(cardDisplay.getCard());
+                DisplayInputHandler.gainButtonClicked(cardDisplay.getCard());
             }
         }
     }
@@ -476,7 +481,7 @@ public class GameController {
     }
 
     public void switchCardViewButtonClicked(ActionEvent actionEvent) {
-        GUIInputHandler.cardViewButtonClicked(switchCardViewButton.getText());
+        DisplayInputHandler.cardViewButtonClicked(switchCardViewButton.getText());
         if(switchCardViewButton.getText().equals("View Selected Cards")) {
             switchCardViewButton.setText("View Cards In Play");
         } else if(switchCardViewButton.getText().equals("View Cards In Play")) {
@@ -488,7 +493,7 @@ public class GameController {
         Object objectClicked = mouseEvent.getSource();
         for(CardDisplay cardDisplay: CIPDisplays) {
             if(cardDisplay.contains(objectClicked)) {
-                GUIInputHandler.cardInPlayClicked(cardDisplay.getCard()); break;
+                DisplayInputHandler.cardInPlayClicked(cardDisplay.getCard()); break;
             }
         }
     }

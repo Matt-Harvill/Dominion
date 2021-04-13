@@ -1,6 +1,7 @@
-package controller;
+package model.card.action;
 
-import model.Action;
+import controller.mains.Main;
+import model.card.action.Action;
 import model.Player;
 import model.StackCalculator;
 

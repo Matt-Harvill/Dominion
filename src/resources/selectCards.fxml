@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectCardsInGameController">
+<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.fxmlControllers.SelectCardsInGameController">
    <bottom>
       <HBox prefHeight="35.0" prefWidth="515.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>

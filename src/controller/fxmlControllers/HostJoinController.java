@@ -1,12 +1,14 @@
-package controller;
+package controller.fxmlControllers;
 
+import controller.mains.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import model.card.ActionCard;
+import model.card.action.ActionCard;
+import server.ClientSideConnection;
 
 import java.net.InetAddress;
 import java.util.List;

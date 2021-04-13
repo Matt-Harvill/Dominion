@@ -1,6 +1,6 @@
 package server;
 
-import controller.Main;
+import controller.mains.Main;
 import model.CardCollection;
 import model.card.Card;
 import model.card.CardStack;

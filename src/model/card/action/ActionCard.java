@@ -1,8 +1,7 @@
-package model.card;
+package model.card.action;
 
 import javafx.scene.image.Image;
-import model.Action;
-import controller.ActionParser;
+import model.card.Card;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,8 @@
 package controller;
 
+import controller.mains.Main;
 import model.Player;
+import server.ServerSender;
 
 public class PhaseUpdater {
 
@@ -21,6 +23,11 @@ public class PhaseUpdater {
         DisplayUpdater.updateInPlayDisplay(player.getInPlay(), player.getName(), -1,true);
 
         checkCanDoAction();
+    }
+    private static void checkCanDoAction() {
+        if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
+            buyPhase();
+        }
     }
     public static void buyPhase() {
         player.setPhase("buyPhase");
@@ -56,11 +63,5 @@ public class PhaseUpdater {
         player.setPhase("gainPhase");
 
         DisplayUpdater.updateHandDisplay();
-    }
-
-    private static void checkCanDoAction() {
-        if (player.getNumActions()==0 || player.getHand().getDistinctActionCards().size()==0) {
-            buyPhase();
-        }
     }
 }

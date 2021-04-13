@@ -1,5 +1,8 @@
-package controller;
+package server;
 
+import controller.DisplayUpdater;
+import controller.mains.Main;
+import controller.PhaseUpdater;
 import javafx.application.Platform;
 import model.Player;
 import model.ServerPlayer;
@@ -68,9 +71,9 @@ public class ClientSideConnection implements Runnable {
                 case "serverShutDown": serverShutDown(); break;
                 case "leaveGame": leftGame(tempPlayer); break;
                 case "playCard": cardPlayed(tempPlayer,scanner.next()); break;
-                case "buyCard": cardPurchased(tempPlayer,scanner.next()); break;
-                case "gainCard": cardGained(tempPlayer, scanner.next()); break;
-                case "gameOver": gameOver(); break;
+                case "buyButtonClicked": cardPurchased(tempPlayer,scanner.next()); break;
+                case "gainButtonClicked": cardGained(tempPlayer, scanner.next()); break;
+                case "displayGameOver": gameOver(); break;
                 case "updateInfo": updateInfo(tempPlayer); break;
                 //-----------Self-----------//
                 case "startTurn": startTurn(tempPlayer); break;
@@ -264,7 +267,7 @@ public class ClientSideConnection implements Runnable {
     }
     private void gameOver() {
         System.out.println("\n\n------------------Game Over--------------------\n\n");
-        Platform.runLater(GUIInputHandler::gameOver);
+        Platform.runLater(DisplayUpdater::gameOver);
     }
     private void updateInfo(ServerPlayer serverPlayer) {
         for(ServerPlayer player: players) {

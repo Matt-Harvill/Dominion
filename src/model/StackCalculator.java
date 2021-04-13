@@ -1,7 +1,7 @@
 package model;
 
-import controller.GameController;
-import controller.Main;
+import controller.fxmlControllers.GameController;
+import controller.mains.Main;
 import view.CardDisplay;
 
 public class StackCalculator {

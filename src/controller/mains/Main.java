@@ -1,5 +1,9 @@
-package controller;
+package controller.mains;
 
+import controller.DisplayUpdater;
+import controller.PhaseUpdater;
+import controller.fxmlControllers.GameController;
+import controller.fxmlControllers.HostJoinController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Player;
+import server.ClientSideConnection;
 import server.DominionServer;
 
 import java.io.IOException;
