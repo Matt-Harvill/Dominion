@@ -44,6 +44,9 @@ public class Action {
     }
 
     public boolean isComplete(int numSelected) {
+        if(optional) {
+            return true;
+        }
         switch (comparatorString) {
             case "<=": {
                 return numSelected <= ActionParser.parseStringToInt(this,"num");

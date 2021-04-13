@@ -9,19 +9,24 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="reorganizing classes and packages to make sure classes are sticking to one purpose">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="now server decrements stack when card is gained">
+      <change afterPath="$PROJECT_DIR$/src/resources/Mine.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Mine_Small.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Workshop.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Workshop_Small.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/Action.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionCard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxmlControllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxmlControllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayInputHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/card/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card/action/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/ActionCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ServerSideConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerSideConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,14 +183,7 @@
       <workItem from="1618171282409" duration="1527000" />
       <workItem from="1618245017574" duration="15191000" />
       <workItem from="1618276560182" duration="656000" />
-      <workItem from="1618326635318" duration="6249000" />
-    </task>
-    <task id="LOCAL-00034" summary="now when a player loads in, it only displays the cards in the game and not their numbers (this will be decided once the game starts). I also added sort features to CardCollection so that my weird bug with cards swapping is gone now">
-      <created>1617581825580</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1617581825580</updated>
+      <workItem from="1618326635318" duration="9263000" />
     </task>
     <task id="LOCAL-00035" summary="displays numbers when loaded in, However, I'm getting a weird error when I close a connection. Says leftGame twice and doesn't seem to close the connections on SSC">
       <created>1617586386869</created>
@@ -523,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618330926646</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="now server decrements stack when card is gained">
+      <created>1618346370146</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1618346370146</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Reimplemented the PlayerInfoDisplay with new LabelDisplay and NumberDisplay objects. Having bug with updating of inPlay display of previous player coming after the new update for the current player on their turn" />
     <MESSAGE value="fixed bug of updating inPlay display" />
     <MESSAGE value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
     <MESSAGE value="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways" />
@@ -568,6 +572,7 @@
     <MESSAGE value="added back optional characteristic of Actions for gaining specifically. Should apply to others though. Also, added CSC &quot;gainCard&quot; receiver. All 10 cards that I have work as expected now" />
     <MESSAGE value="added sending cardstack nums at beginning of turn just to make sure player has correct info at each start to turn. Might add this to every function in the future." />
     <MESSAGE value="reorganizing classes and packages to make sure classes are sticking to one purpose" />
-    <option name="LAST_COMMIT_MESSAGE" value="reorganizing classes and packages to make sure classes are sticking to one purpose" />
+    <MESSAGE value="now server decrements stack when card is gained" />
+    <option name="LAST_COMMIT_MESSAGE" value="now server decrements stack when card is gained" />
   </component>
 </project>

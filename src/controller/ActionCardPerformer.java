@@ -71,7 +71,12 @@ public class ActionCardPerformer {
                 }
                 case "gain": {
                     PhaseUpdater.gainPhase();
-                    DisplayUpdater.showGainableCards(true, ActionParser.parseStringToInt(action,"cost"));
+                    int cost = ActionParser.parseStringToInt(action,"cost");
+                    if(cost<0) {
+                        submitAction();
+                    } else {
+                        DisplayUpdater.showGainableCards(true, cost,action.getType());
+                    }
                     break;
                 }
             }
@@ -99,7 +104,12 @@ public class ActionCardPerformer {
             }
             CardCollection select = player.getSelect();
             Card lastCard = select.peekLastCard();
-            action.setMemory(lastCard.getCost() + memory);
+            if(lastCard==null) {
+                //set cost of card trashed to MIN_VALUE
+                action.setMemory(Integer.MIN_VALUE);
+            } else {
+                action.setMemory(lastCard.getCost() + memory);
+            }
         }
     }
     private static int parseOperator(Action action, String memoryName, String operator) {

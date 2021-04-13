@@ -8,3 +8,5 @@ Cellar
 Poacher
 Remodel
 Chapel
+Workshop
+Mine

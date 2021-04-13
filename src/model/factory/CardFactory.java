@@ -87,6 +87,14 @@ public class CardFactory {
                     return new ActionCard(cardType,2,"title_trash num_4 comparator_<=",new Image(Main.class.getResource("/Chapel.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Chapel_Small.jpg").toURI().toString()),"All 10");
                 }
+                case "Workshop": {
+                    return new ActionCard(cardType,3,"title_gain cost_4",new Image(Main.class.getResource("/Workshop.jpg").toURI().toString()),
+                            new Image(Main.class.getResource("/Workshop_Small.jpg").toURI().toString()),"All 10");
+                }
+                case "Mine": {
+                    return new ActionCard(cardType,5,"title_trash optional_true num_1 memoryName_costOfCardTrashed \n title_gain cost_costOfCardTrashed+3 type_treasureCard",new Image(Main.class.getResource("/Mine.jpg").toURI().toString()),
+                            new Image(Main.class.getResource("/Mine_Small.jpg").toURI().toString()),"All 10");
+                }
                 default: return null;
             }
         } catch (URISyntaxException ex) {

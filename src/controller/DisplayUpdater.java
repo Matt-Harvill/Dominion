@@ -170,17 +170,31 @@ public class DisplayUpdater {
             }
         }
     }
-    public static void showGainableCards(boolean show, int maxCost) {
+    public static void showGainableCards(boolean show, int maxCost, String type) {
         List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
 
         for(BuyableCardDisplay cardDisplay: cardDisplays) {
             Card card = cardDisplay.getCard();
             int cardNum = cardDisplay.getNum();
-            if(card!=null && card.getCost()<=maxCost && cardNum>0 && show) {
+            if(card!=null && card.getCost()<=maxCost && cardNum>0 && show && isType(card,type)) {
                 cardDisplay.showGainButton();
             } else {
                 cardDisplay.hideGainButton();
             }
+        }
+    }
+    private static boolean isType(Card card, String type) {
+        switch (type) {
+            case "all":
+                return true;
+            case "treasureCard":
+                return card instanceof TreasureCard;
+            case "victoryCard":
+                return card instanceof VictoryCard;
+            case "actionCard":
+                return card instanceof ActionCard;
+            default:
+                return false;
         }
     }
     public static void updateHandDisplay() {
