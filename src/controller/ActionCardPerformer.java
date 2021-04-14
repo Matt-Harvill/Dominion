@@ -137,15 +137,23 @@ public class ActionCardPerformer {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
 
-        if(hasNoCardsOfType(action.getType())) {
+        if(action.tooManyCardsSelected(numSelected)) {
+            return false;
+        } else if(hasNoCardsOfType(action.getType())) {
             return true;
+        } else {
+            return action.isComplete(numSelected);
         }
-        return action.isComplete(numSelected);
     }
     public static boolean actionComplete() {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
-        return action.isOptional();
+        if(action.isOptional()) {
+            return true;
+        }
+        else {
+            return hasNoCardsOfType(action.getType());
+        }
     }
     public static boolean hasNoCardsOfType(String type) {
         CardCollection hand = player.getHand();

@@ -320,25 +320,30 @@ public class DisplayUpdater {
         int index = 0;
         for(ActionCard actionCard: actionCards) {
             setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
-            if(cardsTypesToHighlight[0] || isType(actionCard)) {
+            if(cardsTypesToHighlight[0] || showThisType(actionCard)) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(TreasureCard treasureCard: treasureCards) {
             setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
-            if(cardsTypesToHighlight[1] || isType(treasureCard)) {
+            if(cardsTypesToHighlight[1] || showThisType(treasureCard)) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(VictoryCard victoryCard: victoryCards) {
             setCardDisplay(cardDisplays[index],victoryCard,hand.numCardInCollection(victoryCard));
-            if(cardsTypesToHighlight[2] || isType(victoryCard)) {
+            if(cardsTypesToHighlight[2] || showThisType(victoryCard)) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
+    }
+    private static boolean showThisType(Card card) {
+        String phase = player.getPhase();
+
+        return (phase.equals("discardPhase") || phase.equals("trashPhase")) && isType(card);
     }
     private static Boolean[] calcCardTypesToHighlight() {
         boolean highlightActionCards = false;

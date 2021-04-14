@@ -59,6 +59,12 @@ public class Action {
         }
         return false;
     }
+    public boolean tooManyCardsSelected(int numCardsSelected) {
+        if(!comparatorString.equals(">=") && numCardsSelected > ActionParser.parseStringToInt(this,"num")) {
+            return true;
+        }
+        return false;
+    }
 
     public boolean isOptional() {
         return optional;
