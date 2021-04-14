@@ -9,26 +9,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="added Artisan and fixed bug of hasNoCardsOfType for non selection actions ending when they shouldn't. Also figured out a bug that was hard to find but now for selection phases I just updateInPlay display with select CardCollection">
-      <change afterPath="$PROJECT_DIR$/src/resources/Gardens.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/Gardens_Small.jpg" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="added in Gardens card. This included parsing point string for victory cards and changing the way cards are loaded in at the start of game and initial connection to server">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/SelectCardsInGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/SelectCardsInGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/VictoryCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/VictoryCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxmlControllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxmlControllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxmlControllers/HostJoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxmlControllers/HostJoinController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/HostJoinController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/fxmlControllers/SelectCardsInGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxmlControllers/SelectCardsInGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/CardCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CardCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/card/VictoryCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/VictoryCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AllCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllCards.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,13 +100,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,14 +177,8 @@
       <workItem from="1618276560182" duration="656000" />
       <workItem from="1618326635318" duration="16886000" />
       <workItem from="1618359265594" duration="7557000" />
-      <workItem from="1618411902665" duration="2488000" />
-    </task>
-    <task id="LOCAL-00041" summary="Fixed a bug where going to buy phase immeadiately wouldn't show cards that could now be bought">
-      <created>1617658916935</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1617658916935</updated>
+      <workItem from="1618411902665" duration="3010000" />
+      <workItem from="1618424681292" duration="1604000" />
     </task>
     <task id="LOCAL-00042" summary="Game Over works as expected. Fixed bug where player turns are assigned after game is ended.">
       <created>1617660336450</created>
@@ -532,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618374317384</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="added in Gardens card. This included parsing point string for victory cards and changing the way cards are loaded in at the start of game and initial connection to server">
+      <created>1618414759802</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1618414759802</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="all background are now forest image" />
     <MESSAGE value="This version has turned the project into a runnable jar file with Java version 11" />
     <MESSAGE value="Now the JAR file actually opens all the files as expected. Runs nicely" />
     <MESSAGE value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
@@ -577,6 +567,7 @@
     <MESSAGE value="moneylender works now. Also added a feature so that if there aren't any of a certain type in the hand then the action auto completes/submits if at startAction" />
     <MESSAGE value="moneylender works now. if too many cards are selected it now doesn't allow submission of selected cards. Also I fixed cards being highlighted during gain phase (probably during buyPhase as well)" />
     <MESSAGE value="added Artisan and fixed bug of hasNoCardsOfType for non selection actions ending when they shouldn't. Also figured out a bug that was hard to find but now for selection phases I just updateInPlay display with select CardCollection" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Artisan and fixed bug of hasNoCardsOfType for non selection actions ending when they shouldn't. Also figured out a bug that was hard to find but now for selection phases I just updateInPlay display with select CardCollection" />
+    <MESSAGE value="added in Gardens card. This included parsing point string for victory cards and changing the way cards are loaded in at the start of game and initial connection to server" />
+    <option name="LAST_COMMIT_MESSAGE" value="added in Gardens card. This included parsing point string for victory cards and changing the way cards are loaded in at the start of game and initial connection to server" />
   </component>
 </project>

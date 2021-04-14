@@ -34,44 +34,61 @@ public class SelectCardsInGameController {
     private int currentPageNum = 1;
 
     public void initialize() throws IOException {
+        cards = new Rectangle[]{card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,
+                card11,card12,card13,card14,card15,card16,card17,card18,card19,card20,
+                card21,card22,card23,card24,card25};
+
         InputStream actionCardsInGame = (getClass().getResource("/AllCards.txt")).openStream();
         Scanner scanner = new Scanner(actionCardsInGame);
 
         allActionCards = new ArrayList<>();
+        int index = 0;
         while(scanner.hasNext()) {
-            String cardName = scanner.next();
-            allActionCards.add(CardFactory.getCard(cardName));
+            while(scanner.hasNext()) {
+                String cardName = scanner.next();
+                if(cardName.equals("Next_Expansion")) {
+                    while((index% cards.length)!=0) {
+                        allActionCards.add(null);
+                        index++;
+                    }
+                    break;
+                }
+                allActionCards.add(CardFactory.getCard(cardName));
+                index++;
+            }
         }
-
-        cards = new Rectangle[]{card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,
-                card11,card12,card13,card14,card15,card16,card17,card18,card19,card20,
-                card21,card22,card23,card24,card25};
 
         cardsSelected = new ArrayList<>();
         for(int i=0; i<allActionCards.size(); i++) {
             cardsSelected.add(false);
         }
 
-        if(Main.getServer()==null || Main.getServer().getCardsInGame().getDistinctActionCards().size()==0) {
+        if(Main.getServer()==null || Main.getServer().getCardsInGame().getCollection().size()==0) {
             cardsChosen = new ArrayList<>();
         } else {
             cardsChosen = Main.getServer().getCardsInGame().getCollection();
         }
 
-        for(int i=0; i<cardsChosen.size(); i++) {
-            int index = allActionCards.indexOf(cardsChosen.get(i));
-            cardsSelected.set(index,true);
+        for (Card card : cardsChosen) {
+            index = allActionCards.indexOf(card);
+            cardsSelected.set(index, true);
         }
 
-        displayPage1();
+        displayPage();
     }
 
     public void goToPage(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
 
         switch (Integer.parseInt(button.getText())) {
-            case 1: displayPage1(); currentPageNum = 1; break;
-//            case 2: displayPage2(); currentPageNum = 2; break;
+            case 1: {
+                currentPageNum = 1;
+                break;
+            }
+            case 2: {
+                currentPageNum = 2;
+                break;
+            }
 //            case 3:
 //            case 4:
 //            case 5:
@@ -80,18 +97,20 @@ public class SelectCardsInGameController {
 //            case 8:
 //            case 9:
         }
-
+        displayPage();
     }
 
-    private void displayPage1() {
-        for(int i=0; i<25; i++) {
-            if(i<allActionCards.size()) {
-                cards[i].setFill(new ImagePattern(allActionCards.get(i).getCardImage()));
-                if(cardsSelected.get(i)) {
+    private void displayPage() {
+        for(int i=0; i< cards.length; i++) {
+            if((i+((currentPageNum-1)*cards.length))<allActionCards.size() &&
+                    allActionCards.get(i+((currentPageNum-1)*cards.length))!=null) {
+                cards[i].setFill(new ImagePattern(allActionCards.get(i+((currentPageNum-1)*cards.length)).getCardImage()));
+                if(cardsSelected.get(i+(currentPageNum-1)*cards.length)) {
                     cards[i].setStyle("-fx-stroke-width: 3; -fx-stroke: #54ff54;");
                 } else {
                     cards[i].setStyle(null);
                 }
+                cards[i].setVisible(true);
             } else {
                 cards[i].setVisible(false);
             }
@@ -107,15 +126,15 @@ public class SelectCardsInGameController {
                 index = i;
             }
         }
-        Card cardObject = allActionCards.get(index + 25*(currentPageNum-1));
+        Card cardObject = allActionCards.get(index + cards.length*(currentPageNum-1));
 
-        if(cardsSelected.get(index)) {
-            cardsSelected.set(index,false);
+        if(cardsSelected.get(index + cards.length*(currentPageNum-1))) {
+            cardsSelected.set(index + cards.length*(currentPageNum-1),false);
             card.setStyle(null);
             cardsChosen.remove(cardObject);
             Main.getServer().getCardsInGame().removeCardFromCollection(cardObject);
         } else {
-            cardsSelected.set(index,true);
+            cardsSelected.set(index + cards.length*(currentPageNum-1),true);
             card.setStyle("-fx-stroke-width: 3; -fx-stroke: #54ff54;");
             cardsChosen.add(cardObject);
             Main.getServer().getCardsInGame().addCardToCollection(cardObject);
