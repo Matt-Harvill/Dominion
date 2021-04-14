@@ -11,3 +11,4 @@ Chapel
 Workshop
 Mine
 Moneylender
+Artisan

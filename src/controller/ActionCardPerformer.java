@@ -33,7 +33,7 @@ public class ActionCardPerformer {
         int num = ActionParser.parseStringToInt(action,"num");
         boolean doAction = action.doAction();
 
-        if(num==0 || !doAction || hasNoCardsOfType(action.getType())) {
+        if(num==0 || !doAction) {
             submitAction();
             return;
         }
@@ -64,10 +64,18 @@ public class ActionCardPerformer {
                     break;
                 }
                 case "discard": {
+                    if(hasNoCardsOfType(action.getType())) {
+                        submitAction();
+                        break;
+                    }
                     PhaseUpdater.discardPhase();
                     break;
                 }
                 case "trash": {
+                    if(hasNoCardsOfType(action.getType())) {
+                        submitAction();
+                        break;
+                    }
                     PhaseUpdater.trashPhase();
                     break;
                 }
@@ -79,6 +87,14 @@ public class ActionCardPerformer {
                     } else {
                         DisplayUpdater.showGainableCards(true, cost);
                     }
+                    break;
+                }
+                case "toDeck": {
+                    if(hasNoCardsOfType(action.getType())) {
+                        submitAction();
+                        break;
+                    }
+                    PhaseUpdater.toDeckPhase();
                     break;
                 }
             }
@@ -193,6 +209,9 @@ public class ActionCardPerformer {
                 break;
             case "trashPhase":
                 player.selectToLocation("trash");
+                break;
+            case "toDeckPhase":
+                player.selectToLocation("deck");
                 break;
 //            case "gainPhase":
 //                System.out.println("@ACP_submitAction gainPhase switch entered, location: " + action.getLocation());

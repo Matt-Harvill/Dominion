@@ -46,10 +46,17 @@ public class DisplayUpdater {
         }
     }
     public static void updateInPlayDisplay(CardCollection collection, String playerName, int numCards, boolean myTurn) {
+        System.out.println("updateInPlayDisplay called @DisplayUpdater");
         if(collection.equals(player.getSelect())) {
             updateCardsInSelect();
+            System.out.println("select");
+            collection.printCardNamesInCollection();
         } else {
             updateCardsInPlay(collection);
+            if (player.getInPlay().equals(collection)) {
+                System.out.println("inPlay");
+                collection.printCardNamesInCollection();
+            }
         }
         updateOpponentDeck(numCards, myTurn);
         updateInPlayPlayerLabel(playerName,myTurn);
@@ -92,10 +99,16 @@ public class DisplayUpdater {
 
         String phase = player.getPhase();
         String style = null;
-        if(phase.equals("discardPhase")) {
-            style = controller.getYellowCardGlowStyle();
-        } else if(phase.equals("trashPhase")){
-            style = controller.getRedCardGlowStyle();
+        switch (phase) {
+            case "discardPhase":
+                style = controller.getYellowCardGlowStyle();
+                break;
+            case "trashPhase":
+                style = controller.getRedCardGlowStyle();
+                break;
+            case "toDeckPhase":
+                style = controller.getCyanCardGlowStyle();
+                break;
         }
 
         int index = 0;
@@ -293,6 +306,24 @@ public class DisplayUpdater {
                 controller.getSwitchCardViewButton().setVisible(true);
                 break;
             }
+            case "toDeckPhase": {
+                int selectSize = player.getSelect().getSize();
+                boolean actionComplete = ActionCardPerformer.actionComplete(selectSize);
+                String actionButtonText = "";
+                if(actionComplete) {
+                    if(selectSize==0) {
+                        actionButtonText = "Skip Moving";
+                    } else {
+                        actionButtonText = "Move Card(s)";
+                    }
+                }
+                updateActionButtonText(actionButtonText,actionComplete);
+
+                gameInfoString += "Select card(s) to move to deck";
+
+                controller.getSwitchCardViewButton().setVisible(true);
+                break;
+            }
             case "gainPhase": {
                 updateActionButtonText("Don't Gain",ActionCardPerformer.actionComplete());
                 gameInfoString += "Gain a card";
@@ -343,7 +374,7 @@ public class DisplayUpdater {
     private static boolean showThisType(Card card) {
         String phase = player.getPhase();
 
-        return (phase.equals("discardPhase") || phase.equals("trashPhase")) && isType(card);
+        return (phase.equals("discardPhase") || phase.equals("trashPhase") || phase.equals("toDeckPhase")) && isType(card);
     }
     private static Boolean[] calcCardTypesToHighlight() {
         boolean highlightActionCards = false;
@@ -360,6 +391,7 @@ public class DisplayUpdater {
                 highlightTreasureCards = true;
                 break;
             }
+            case "toDeckPhase":
             case "trashPhase":
             case "discardPhase": {
                 String type = player.getActionCardInPlay().getAction().getType();

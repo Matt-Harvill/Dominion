@@ -99,6 +99,10 @@ public class CardFactory {
                     return new ActionCard(cardType,4,"title_trash comparator_<= num_1 memoryName_cardTrashed type_Copper \n title_coin num_3 doAction_cardTrashed",new Image(Main.class.getResource("/Moneylender.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Moneylender_Small.jpg").toURI().toString()),"All 10");
                 }
+                case "Artisan": {
+                    return new ActionCard(cardType,6,"title_gain num_1 cost_5 \n title_toDeck num_1",new Image(Main.class.getResource("/Artisan.jpg").toURI().toString()),
+                            new Image(Main.class.getResource("/Artisan_Small.jpg").toURI().toString()),"All 10");
+                }
                 default: return null;
             }
         } catch (URISyntaxException ex) {

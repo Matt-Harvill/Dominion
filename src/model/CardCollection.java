@@ -67,6 +67,7 @@ public class CardCollection {
     public int getSize() {
         return collection.size();
     }
+    public void addToTop(Card card) {collection.add(0,card);}
     public Card drawTopCard() {
         return collection.remove(0);
     }

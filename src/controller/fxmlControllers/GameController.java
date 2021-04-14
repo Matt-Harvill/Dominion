@@ -38,6 +38,7 @@ public class GameController {
     private final String greenCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: #54ff54;";
     private final String yellowCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: yellow";
     private final String redCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: red";
+    private final String cyanCardGlowStyle = "-fx-stroke-width: 3; -fx-stroke: cyan";
 
     //-----------------Info for ServerInfoDisplay------------//
     @FXML private Text hostIP, portNum;
@@ -287,6 +288,7 @@ public class GameController {
     public String getGreenCardGlowStyle() {return greenCardGlowStyle;}
     public String getYellowCardGlowStyle() {return yellowCardGlowStyle;}
     public String getRedCardGlowStyle() {return redCardGlowStyle;}
+    public String getCyanCardGlowStyle() {return cyanCardGlowStyle;}
     public LabelDisplay getInPlayPlayerLabel() {return inPlayPlayerLabel;}
     public DeckDisplay getPlayerDeckDisplay() {return playerDeckDisplay;}
     public DeckDisplay getOpponentDeckDisplay() {return opponentDeckDisplay;}

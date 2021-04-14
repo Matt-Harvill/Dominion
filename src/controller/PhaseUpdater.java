@@ -51,17 +51,26 @@ public class PhaseUpdater {
         player.setPhase("discardPhase");
 
         DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updateInPlayDisplay(player.getSelect(), player.getName(), -1,true);
         Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
     }
     public static void trashPhase() {
         player.setPhase("trashPhase");
 
         DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updateInPlayDisplay(player.getSelect(), player.getName(), -1,true);
         Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
     }
     public static void gainPhase() {
         player.setPhase("gainPhase");
 
         DisplayUpdater.updateHandDisplay();
+    }
+    public static void toDeckPhase() {
+        player.setPhase("toDeckPhase");
+
+        DisplayUpdater.updateHandDisplay();
+        DisplayUpdater.updateInPlayDisplay(player.getSelect(), player.getName(), -1,true);
+        Main.getGameController().getSwitchCardViewButton().setText("View Cards In Play");
     }
 }

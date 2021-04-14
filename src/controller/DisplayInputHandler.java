@@ -48,6 +48,7 @@ public final class DisplayInputHandler {
                 playCard(card);
                 break;
             }
+            case "toDeckPhase":
             case "trashPhase":
             case "discardPhase": {
                 player.handToSelect(card);
@@ -63,7 +64,7 @@ public final class DisplayInputHandler {
 
         String phase = player.getPhase();
 
-        if((phase.equals("discardPhase") || phase.equals("trashPhase")) && inSelect) {
+        if((phase.equals("discardPhase") || phase.equals("trashPhase") || phase.equals("toDeckPhase")) && inSelect) {
             player.selectToHand(card);
         }
         updateAfterClick();
@@ -85,6 +86,8 @@ public final class DisplayInputHandler {
                 DisplayUpdater.showGainableCards(false,-1);
             case "Skip Discarding":
             case "Skip Trashing":
+            case "Skip Moving":
+            case "Move Card(s)":
                 case "Trash Card(s)":
             case "Discard Card(s)":
                 ActionCardPerformer.submitAction(); break;
@@ -118,7 +121,7 @@ public final class DisplayInputHandler {
 
         String phase = player.getPhase();
 
-        if(phase.equals("discardPhase") || phase.equals("trashPhase")) {
+        if(phase.equals("discardPhase") || phase.equals("trashPhase") || phase.equals("toDeckPhase")) {
             inPlayDisplayCollection = player.getSelect();
         } else {
             inPlayDisplayCollection = player.getInPlay();

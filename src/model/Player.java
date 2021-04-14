@@ -31,7 +31,7 @@ public class Player {
             deck.addCardToCollection(CardFactory.getCard("Copper"));
         for(int i=0; i<3; i++)
             deck.addCardToCollection(CardFactory.getCard("Estate"));
-        shuffleDeck();
+        shuffleCollection(deck);
 
         handLimit = 5;
         numActions = 1;
@@ -156,8 +156,8 @@ public class Player {
     }
     public boolean drawCardFromDeck(){
         if(deck.getSize()==0){
+            shuffleCollection(discardPile);
             discardPileToDeck();
-            shuffleDeck();
         }
         if(hand.getSize()>=handLimit){
             //Full hand
@@ -182,8 +182,8 @@ public class Player {
             if(!drawCardFromDeck()) break;
         }
     }
-    private void shuffleDeck(){
-        deck.shuffle();
+    private void shuffleCollection(CardCollection collection){
+        collection.shuffle();
     }
     private void discardHand(){
         while(hand.getSize()>0) {
@@ -246,9 +246,12 @@ public class Player {
             case "trash": {
                 collection = trash; break;
             }
+            case "deck": {
+                collection = deck; break;
+            }
         }
         while(select.getSize()>0) {
-            collection.addCardToCollection(select.drawTopCard());
+            collection.addToTop(select.drawTopCard());
         }
     }
 }
