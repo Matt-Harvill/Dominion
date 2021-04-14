@@ -12,8 +12,8 @@
    <bottom>
       <HBox prefHeight="35.0" prefWidth="515.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="pageButton1" mnemonicParsing="false" onAction="#goToPage" text="1" />
-            <Button fx:id="pageButton2" mnemonicParsing="false" onAction="#goToPage" text="2" />
+            <Button fx:id="pageButton1" mnemonicParsing="false" onAction="#goToPage" text="Base" />
+            <Button fx:id="pageButton2" mnemonicParsing="false" onAction="#goToPage" text="Intrigue" />
             <Button fx:id="pageButton3" mnemonicParsing="false" onAction="#goToPage" text="3" />
             <Button fx:id="pageButton4" mnemonicParsing="false" onAction="#goToPage" text="4" />
             <Button fx:id="pageButton5" mnemonicParsing="false" onAction="#goToPage" text="5" />

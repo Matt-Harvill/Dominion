@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import model.card.Card;
+import model.factory.CardCollectionFactory;
 import model.factory.CardFactory;
 
 import java.io.*;
@@ -63,15 +64,15 @@ public class SelectCardsInGameController {
             cardsSelected.add(false);
         }
 
-        if(Main.getServer()==null || Main.getServer().getCardsInGame().getCollection().size()==0) {
-            cardsChosen = new ArrayList<>();
-        } else {
-            cardsChosen = Main.getServer().getCardsInGame().getCollection();
+        cardsChosen = new ArrayList<>();
+        if(Main.getServer()!=null && Main.getServer().getCardsInGame().getCollection().size()!=0) {
+            cardsChosen.addAll(Main.getServer().getCardsInGame().getCollection());
         }
 
         for (Card card : cardsChosen) {
             index = allActionCards.indexOf(card);
             cardsSelected.set(index, true);
+            System.out.println(card.toString());
         }
 
         displayPage();
@@ -80,12 +81,12 @@ public class SelectCardsInGameController {
     public void goToPage(ActionEvent actionEvent) {
         Button button = (Button) actionEvent.getSource();
 
-        switch (Integer.parseInt(button.getText())) {
-            case 1: {
+        switch (button.getText()) {
+            case "Base": {
                 currentPageNum = 1;
                 break;
             }
-            case 2: {
+            case "Intrigue": {
                 currentPageNum = 2;
                 break;
             }
@@ -136,9 +137,20 @@ public class SelectCardsInGameController {
         } else {
             cardsSelected.set(index + cards.length*(currentPageNum-1),true);
             card.setStyle("-fx-stroke-width: 3; -fx-stroke: #54ff54;");
+            System.out.println("\ncardsChosen @SCIGController_cardClicked before:");
+            for(Card card2: cardsChosen) System.out.println(card2.getName() + " ");
             cardsChosen.add(cardObject);
+            System.out.println("cardsChosen @SCIGController_cardClicked after:");
+            for(Card card2: cardsChosen) System.out.println(card2.getName() + " ");
+            System.out.println("CardsInGame @SCIGController_cardClicked before:");
+            Main.getServer().getCardsInGame().printCardNamesInCollection();
             Main.getServer().getCardsInGame().addCardToCollection(cardObject);
+            System.out.println("CardsInGame @SCIGController_cardClicked after:");
+            Main.getServer().getCardsInGame().printCardNamesInCollection();
+            System.out.println();
         }
+
+
 
         Main.getHostJoinController().updateActionCardInGameSlots(cardsChosen);
     }

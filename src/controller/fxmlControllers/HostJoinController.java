@@ -151,7 +151,9 @@ public class HostJoinController {
         int index=0;
         if(cardsChosen==null) return;
         while(index < cardsChosen.size()) {
+            System.out.println("index: " + index + " @HJC_updateACIGSlots");
             cardSlots[index].setText(cardsChosen.get(index).getName());
+            System.out.println("card: " + cardsChosen.get(index).getName() + " @HJC_updateACIGSlots");
             index++;
         }
         while(index < cardSlots.length) {

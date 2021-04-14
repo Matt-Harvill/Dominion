@@ -60,6 +60,7 @@ public class Main extends Application {
             } else {
                 if(clientSideConnection!=null) clientSideConnection.leaveGame();
             }
+            closeCardSelectStage();
         });
     }
 
