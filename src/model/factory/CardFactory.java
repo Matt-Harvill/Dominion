@@ -107,6 +107,10 @@ public class CardFactory {
                     return new ActionCard(cardType,6,"title_gain num_1 cost_5 \n title_toDeck num_1",new Image(Main.class.getResource("/Artisan.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Artisan_Small.jpg").toURI().toString()),"All 10");
                 }
+                case "Courtyard": {
+                    return new ActionCard(cardType,2,"title_draw num_3 \n title_toDeck num_1",new Image(Main.class.getResource("/Courtyard.jpg").toURI().toString()),
+                            new Image(Main.class.getResource("/Courtyard_Small.jpg").toURI().toString()),"All 10");
+                }
                 default: return null;
             }
         } catch (URISyntaxException ex) {

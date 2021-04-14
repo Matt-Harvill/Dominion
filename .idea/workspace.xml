@@ -9,17 +9,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="added feature to separate expansions on selectCardScene">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/HostJoinController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/HostJoinController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/SelectCardsInGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/fxmlControllers/SelectCardsInGameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllCards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/selectCards.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/selectCards.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxmlControllers/HostJoinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxmlControllers/HostJoinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxmlControllers/SelectCardsInGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxmlControllers/SelectCardsInGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/mains/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/mains/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/selectCards.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/selectCards.fxml" afterDir="false" />
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="selectCards now closes when hostJoin closes. Also fixed bug where cards would be added twice because cardsChosen==DS.getCardsInGame()'s collection">
+      <change afterPath="$PROJECT_DIR$/src/resources/Courtyard.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Courtyard_Small.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/mains/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/mains/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/selectCards.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/selectCards.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AllCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllCards.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,14 +177,7 @@
       <workItem from="1618326635318" duration="16886000" />
       <workItem from="1618359265594" duration="7557000" />
       <workItem from="1618411902665" duration="3010000" />
-      <workItem from="1618424681292" duration="5530000" />
-    </task>
-    <task id="LOCAL-00043" summary="Display number of cards in opponent deck+hand+discard. Also show number of cards in playerDeck (might do this for discard pile as well).&#10;&#10;I can still get some bugs occasionally but I think for the most part things are working well.">
-      <created>1617681087239</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1617681087239</updated>
+      <workItem from="1618424681292" duration="5863000" />
     </task>
     <task id="LOCAL-00044" summary="all of the piles (playerDiscard, opponentDeck, and playerDeck) are how I wanted them">
       <created>1617728144440</created>
@@ -526,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618426425078</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="selectCards now closes when hostJoin closes. Also fixed bug where cards would be added twice because cardsChosen==DS.getCardsInGame()'s collection">
+      <created>1618432526203</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1618432526203</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Now the JAR file actually opens all the files as expected. Runs nicely" />
     <MESSAGE value="First commit with new actionCard performing structure. Works with original 6 cards and I'm working on adding cellar." />
     <MESSAGE value="Cleaned up gameController initialize" />
     <MESSAGE value="starting to implement selection display with discarding cards." />
@@ -571,6 +566,7 @@
     <MESSAGE value="added Artisan and fixed bug of hasNoCardsOfType for non selection actions ending when they shouldn't. Also figured out a bug that was hard to find but now for selection phases I just updateInPlay display with select CardCollection" />
     <MESSAGE value="added in Gardens card. This included parsing point string for victory cards and changing the way cards are loaded in at the start of game and initial connection to server" />
     <MESSAGE value="added feature to separate expansions on selectCardScene" />
-    <option name="LAST_COMMIT_MESSAGE" value="added feature to separate expansions on selectCardScene" />
+    <MESSAGE value="selectCards now closes when hostJoin closes. Also fixed bug where cards would be added twice because cardsChosen==DS.getCardsInGame()'s collection" />
+    <option name="LAST_COMMIT_MESSAGE" value="selectCards now closes when hostJoin closes. Also fixed bug where cards would be added twice because cardsChosen==DS.getCardsInGame()'s collection" />
   </component>
 </project>
