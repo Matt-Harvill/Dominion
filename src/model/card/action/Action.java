@@ -1,11 +1,12 @@
 package model.card.action;
 
 public class Action {
-    private final String title,playersAffected,type,comparatorString,memoryName,numString,costString,location;
-    private int memory;
+    private final String title,playersAffected,type,comparatorString,memoryName,numString,costString,location,doActionString;
+    private Object memory;
     private boolean optional;
 
-    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString, String costString, String location, int memory, boolean optional) {
+    public Action(String title, String playersAffected, String type, String comparatorString, String memoryName, String numString,
+                  String costString, String location, Object memory, boolean optional, String doActionString) {
         this.title = title;
         this.playersAffected = playersAffected;
         this.type = type;
@@ -16,6 +17,7 @@ public class Action {
         this.location = location;
         this.memory = memory;
         this.optional = optional;
+        this.doActionString = doActionString;
     }
 
     public String getType() {
@@ -35,10 +37,11 @@ public class Action {
     }
     public String getCostString() {return costString;}
     public String getLocation() {return location;}
-    public int getMemory() {
+    public String getDoActionString() {return doActionString;}
+    public Object getMemory() {
         return memory;
     }
-    public void setMemory(int memory) {
+    public void setMemory(Object memory) {
         this.memory = memory;
     }
 
@@ -60,6 +63,7 @@ public class Action {
     public boolean isOptional() {
         return optional;
     }
+    public boolean doAction() {return ActionParser.parseDoActionString(this);}
 
     @Override
     public String toString() {

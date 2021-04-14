@@ -7,6 +7,7 @@ import model.Player;
 import model.card.action.ActionCard;
 import model.card.Card;
 import model.card.action.ActionParser;
+import model.factory.CardFactory;
 
 public class ActionCardPerformer {
 
@@ -30,8 +31,9 @@ public class ActionCardPerformer {
     public static void startAction(Action action) {
 
         int num = ActionParser.parseStringToInt(action,"num");
+        boolean doAction = action.doAction();
 
-        if(num==0) {
+        if(num==0 || !doAction || hasNoCardsOfType(action.getType())) {
             submitAction();
             return;
         }
@@ -75,7 +77,7 @@ public class ActionCardPerformer {
                     if(cost<0) {
                         submitAction();
                     } else {
-                        DisplayUpdater.showGainableCards(true, cost,action.getType());
+                        DisplayUpdater.showGainableCards(true, cost);
                     }
                     break;
                 }
@@ -87,6 +89,7 @@ public class ActionCardPerformer {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
         String memoryName = action.getMemoryName();
+        CardCollection select = player.getSelect();
 
         if(memoryName.contains("numDiscarded")) {
             int memory = 0;
@@ -102,7 +105,6 @@ public class ActionCardPerformer {
                 String operator = memoryName.substring(17, 18);
                 memory += parseOperator(action, memoryName, operator);
             }
-            CardCollection select = player.getSelect();
             Card lastCard = select.peekLastCard();
             if(lastCard==null) {
                 //set cost of card trashed to MIN_VALUE
@@ -110,6 +112,10 @@ public class ActionCardPerformer {
             } else {
                 action.setMemory(lastCard.getCost() + memory);
             }
+        }
+        else if(memoryName.contains("cardTrashed")) {
+            boolean cardTrashed = select.getSize() == 1;
+            action.setMemory(cardTrashed);
         }
     }
     private static int parseOperator(Action action, String memoryName, String operator) {
@@ -130,12 +136,38 @@ public class ActionCardPerformer {
     public static boolean actionComplete(int numSelected) {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
+
+        if(hasNoCardsOfType(action.getType())) {
+            return true;
+        }
         return action.isComplete(numSelected);
     }
     public static boolean actionComplete() {
         ActionCard actionCard = player.getActionCardInPlay();
         Action action = actionCard.getAction();
         return action.isOptional();
+    }
+    public static boolean hasNoCardsOfType(String type) {
+        CardCollection hand = player.getHand();
+        switch (type) {
+            case "all": {
+                return hand.getSize()==0;
+            }
+            case "treasureCard": {
+                return hand.getDistinctTreasureCards().size()==0;
+            }
+            case "victoryCard": {
+                return hand.getDistinctVictoryCards().size()==0;
+            }
+            case "actionCard": {
+                return hand.getDistinctActionCards().size()==0;
+            }
+            case "Copper": {
+                return hand.numCardInCollection(CardFactory.getCard(type))==0;
+            }
+        }
+        System.out.println("Error @ACP_hasNoCardsOfType");
+        return true;
     }
 
     public static void submitAction() {

@@ -10,3 +10,4 @@ Remodel
 Chapel
 Workshop
 Mine
+Moneylender

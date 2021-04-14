@@ -31,7 +31,7 @@ public class ActionCard extends Card {
             return actions.get(actionIndex);
         }
     }
-    public int getMemory(String memoryName) {
+    public Object getMemory(String memoryName) {
 
         for(Action action: actions) {
             if(action.getMemoryName()!=null && action.getMemoryName().equals(memoryName)) {
@@ -39,7 +39,7 @@ public class ActionCard extends Card {
             }
         }
 
-        return -1;
+        return null;
     }
 
     private void loadInActions(String actionString) {

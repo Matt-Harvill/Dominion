@@ -9,24 +9,29 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected">
+    <list default="true" id="ce502023-69ac-4271-9855-6d4c533cee67" name="Default Changelist" comment="mine works completely now. I also added messages &quot;Skip Trashing&quot; and &quot;Skip Discarding&quot; to actionBarButton when none are selected and action is optional">
+      <change afterPath="$PROJECT_DIR$/src/resources/Moneylender.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/Moneylender_Small.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Dominion_jar/Dominion.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/AllActionCards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/ActionCardPerformer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayInputHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayInputHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/controller/DisplayUpdater.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionCard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/card/action/ActionParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/model/factory/CardFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/server/DominionServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dominion/resources/AllActionCards.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ActionCardPerformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayInputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayInputHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DisplayUpdater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/card/action/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/card/action/ActionCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/ActionCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/card/action/ActionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/card/action/ActionParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/factory/CardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/factory/CardFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/DominionServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/DominionServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AllActionCards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AllActionCards.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,14 +188,7 @@
       <workItem from="1618171282409" duration="1527000" />
       <workItem from="1618245017574" duration="15191000" />
       <workItem from="1618276560182" duration="656000" />
-      <workItem from="1618326635318" duration="11775000" />
-    </task>
-    <task id="LOCAL-00036" summary="fixed weird leaveGame error. I forgot that broadcast doesn't send through one's own dataOut stream">
-      <created>1617587143666</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1617587143666</updated>
+      <workItem from="1618326635318" duration="16092000" />
     </task>
     <task id="LOCAL-00037" summary="I added a ServerInfoPanel and I also figured out what was wrong with my ServerSideConnection commands. I was altering the sendMessage variable that was part of the SSC class when I wanted to just update for each individual command. Now it is fixed">
       <created>1617593812073</created>
@@ -528,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618350499753</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="mine works completely now. I also added messages &quot;Skip Trashing&quot; and &quot;Skip Discarding&quot; to actionBarButton when none are selected and action is optional">
+      <created>1618353459930</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1618353459930</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +553,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="deck disappears if empty now. chats no longer editable. cardselect no longer resizable." />
     <MESSAGE value="small updates including no longer update display for endPhase since it goes straight into startPhase which updates display anyways" />
     <MESSAGE value="updating background of hostJoinScene and style of fonts." />
     <MESSAGE value="updating background of cardNums and labelDisplays in style1.css file" />
@@ -573,6 +577,7 @@
     <MESSAGE value="reorganizing classes and packages to make sure classes are sticking to one purpose" />
     <MESSAGE value="now server decrements stack when card is gained" />
     <MESSAGE value="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected" />
-    <option name="LAST_COMMIT_MESSAGE" value="added in workshop and mine. Mine works except it gains to discard pile and I realized I want the action button to say something different if nothing is selected" />
+    <MESSAGE value="mine works completely now. I also added messages &quot;Skip Trashing&quot; and &quot;Skip Discarding&quot; to actionBarButton when none are selected and action is optional" />
+    <option name="LAST_COMMIT_MESSAGE" value="mine works completely now. I also added messages &quot;Skip Trashing&quot; and &quot;Skip Discarding&quot; to actionBarButton when none are selected and action is optional" />
   </component>
 </project>

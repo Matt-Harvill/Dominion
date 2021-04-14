@@ -170,32 +170,36 @@ public class DisplayUpdater {
             }
         }
     }
-    public static void showGainableCards(boolean show, int maxCost, String type) {
+    public static void showGainableCards(boolean show, int maxCost) {
         List<BuyableCardDisplay> cardDisplays = controller.getAllCISDisplays();
 
         for(BuyableCardDisplay cardDisplay: cardDisplays) {
             Card card = cardDisplay.getCard();
             int cardNum = cardDisplay.getNum();
-            if(card!=null && card.getCost()<=maxCost && cardNum>0 && show && isType(card,type)) {
+            if(card!=null && card.getCost()<=maxCost && cardNum>0 && show && isType(card)) {
                 cardDisplay.showGainButton();
             } else {
                 cardDisplay.hideGainButton();
             }
         }
     }
-    private static boolean isType(Card card, String type) {
-        switch (type) {
-            case "all":
-                return true;
-            case "treasureCard":
-                return card instanceof TreasureCard;
-            case "victoryCard":
-                return card instanceof VictoryCard;
-            case "actionCard":
-                return card instanceof ActionCard;
-            default:
-                return false;
+    private static boolean isType(Card card) {
+        if(player.getActionCardInPlay()!=null) {
+            String type = player.getActionCardInPlay().getAction().getType();
+            switch (type) {
+                case "all":
+                    return true;
+                case "treasureCard":
+                    return card instanceof TreasureCard;
+                case "victoryCard":
+                    return card instanceof VictoryCard;
+                case "actionCard":
+                    return card instanceof ActionCard;
+                case "Copper":
+                    return card.getName().equals(type);
+            }
         }
+        return false;
     }
     public static void updateHandDisplay() {
         updateCardsInHand();
@@ -316,21 +320,21 @@ public class DisplayUpdater {
         int index = 0;
         for(ActionCard actionCard: actionCards) {
             setCardDisplay(cardDisplays[index],actionCard,hand.numCardInCollection(actionCard));
-            if(cardsTypesToHighlight[0]) {
+            if(cardsTypesToHighlight[0] || isType(actionCard)) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(TreasureCard treasureCard: treasureCards) {
             setCardDisplay(cardDisplays[index],treasureCard,hand.numCardInCollection(treasureCard));
-            if(cardsTypesToHighlight[1]) {
+            if(cardsTypesToHighlight[1] || isType(treasureCard)) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;
         }
         for(VictoryCard victoryCard: victoryCards) {
             setCardDisplay(cardDisplays[index],victoryCard,hand.numCardInCollection(victoryCard));
-            if(cardsTypesToHighlight[2]) {
+            if(cardsTypesToHighlight[2] || isType(victoryCard)) {
                 cardDisplays[index].setStyle(controller.getGreenCardGlowStyle());
             }
             index++;

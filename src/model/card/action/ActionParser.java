@@ -17,9 +17,10 @@ public class ActionParser {
         String num = "-1";
         String comparator = "=";
         String memoryName = null;
-        int memory = -1;
+        Object memory = null;
         String costString = null;
         boolean optional = false;
+        String doActionString = "true";
         String location = null;
 
         Scanner scanner = new Scanner(cardAction);
@@ -44,10 +45,12 @@ public class ActionParser {
                 optional = Boolean.parseBoolean(msg.substring(msg.indexOf("_") + 1));
             } else if(msg.contains("location_")) {
                 location = msg.substring(msg.indexOf("_") + 1);
+            } else if(msg.contains("doAction_")) {
+                doActionString = msg.substring(msg.indexOf("_") + 1);
             }
         }
 
-        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,location,memory,optional);
+        return new Action(title,playersAffected,type,comparator,memoryName,num,costString,location,memory,optional,doActionString);
     }
 
     public static int parseStringToInt(Action action, String string) {
@@ -83,7 +86,7 @@ public class ActionParser {
                 }
                 case "numDiscarded":
                 case "costOfCardTrashed": {
-                    num = player.getActionCardInPlay().getMemory(s) + opValue; break;
+                    num = (int) player.getActionCardInPlay().getMemory(s) + opValue; break;
                 }
                 case "numEmptyStacks": {
                     num = StackCalculator.numEmptyStacks() + opValue; break;
@@ -92,6 +95,22 @@ public class ActionParser {
         }
 //        System.out.println("num: " + num + " @ActionParser_parseNum");
         return num;
+    }
+
+    public static boolean parseDoActionString(Action action) {
+        String doActionString = action.getDoActionString();
+        switch (doActionString) {
+            case "true": {
+                return true;
+            }
+            case "false": {
+                return false;
+            }
+            case "cardTrashed": {
+                return (boolean) player.getActionCardInPlay().getMemory("cardTrashed");
+            }
+        }
+        return false;
     }
 
 }

@@ -37,7 +37,7 @@ public final class DisplayInputHandler {
         DisplayUpdater.addMsgToGameLog("You gained a " + cardClicked.getName());
         DisplayUpdater.updateHandDisplay();
         DisplayUpdater.updatePlayerLabel(player.getName(), player.getPoints());
-        DisplayUpdater.showGainableCards(false,-1,null);
+        DisplayUpdater.showGainableCards(false,-1);
 
         ActionCardPerformer.submitAction();
     }
@@ -82,7 +82,7 @@ public final class DisplayInputHandler {
             case "Enter Buy Phase": PhaseUpdater.buyPhase(); break;
             case "End Turn": PhaseUpdater.endPhase(); break;
             case "Don't Gain":
-                DisplayUpdater.showGainableCards(false,-1,null);
+                DisplayUpdater.showGainableCards(false,-1);
             case "Skip Discarding":
             case "Skip Trashing":
                 case "Trash Card(s)":
