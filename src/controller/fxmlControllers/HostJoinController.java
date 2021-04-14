@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import model.card.Card;
 import model.card.action.ActionCard;
 import server.ClientSideConnection;
 
@@ -50,7 +51,7 @@ public class HostJoinController {
     public void hostGame(ActionEvent actionEvent) {
         Main.createServer();
 
-        List<ActionCard> cardsChosen = Main.getServer().getCardsInGame().getDistinctActionCards();
+        List<Card> cardsChosen = Main.getServer().getCardsInGame().getCollection();
         updateActionCardInGameSlots(cardsChosen);
         setGameDetails.setVisible(true);
     }
@@ -146,7 +147,7 @@ public class HostJoinController {
         }
     }
 
-    public void updateActionCardInGameSlots(List<ActionCard> cardsChosen) {
+    public void updateActionCardInGameSlots(List<Card> cardsChosen) {
         int index=0;
         if(cardsChosen==null) return;
         while(index < cardsChosen.size()) {

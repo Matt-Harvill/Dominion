@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 import model.CardCollection;
 import model.card.action.ActionCard;
 import model.card.*;
+import model.factory.CardCollectionFactory;
 import model.factory.CardFactory;
 import server.ServerSender;
 import view.*;
@@ -26,6 +27,7 @@ import view.*;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class GameController {
@@ -395,20 +397,33 @@ public class GameController {
         List<VictoryCard> victoryCardsInGame = cardsInGame.getDistinctVictoryCards();
         List<ActionCard> actionCardsInGame = cardsInGame.getDistinctActionCards();
 
+        List<Card> mainSupply = new ArrayList<>();
+        mainSupply.addAll(actionCardsInGame);
+        for(Card card: victoryCardsInGame) {
+            if(card.getName().equals("Gardens")) {
+                mainSupply.add(CardFactory.getCard("Gardens"));
+            }
+        }
+        mainSupply.sort(Comparator.comparing(Card::getCost));
+
         for(int i=0; i<treasureCardsInGame.size(); i++) {
             TreasureCard card = treasureCardsInGame.get(i);
             BuyableCardDisplay cardDisplay = TCISDisplays[i];
             cardDisplay.setCard(card);
             cardDisplay.show();
         }
-        for(int i=0; i<victoryCardsInGame.size(); i++) {
-            VictoryCard card = victoryCardsInGame.get(i);
-            BuyableCardDisplay cardDisplay = VCISDisplays[i];
+        int victoryIndex = 0;
+        for (VictoryCard card : victoryCardsInGame) {
+            if (card.getName().equals("Gardens")) {
+                continue;
+            }
+            BuyableCardDisplay cardDisplay = VCISDisplays[victoryIndex];
             cardDisplay.setCard(card);
             cardDisplay.show();
+            victoryIndex++;
         }
-        for(int i=0; i<actionCardsInGame.size(); i++) {
-            ActionCard card = actionCardsInGame.get(i);
+        for(int i=0; i< mainSupply.size(); i++) {
+            Card card = mainSupply.get(i);
             BuyableCardDisplay cardDisplay = ACISDisplays[i];
             cardDisplay.setCard(card);
             cardDisplay.show();

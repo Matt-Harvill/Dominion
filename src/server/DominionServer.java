@@ -28,7 +28,7 @@ public class DominionServer {
         serverSideConnections = new ArrayList<>();
         cardsInGame = new CardCollection();
         cardStacks = new ArrayList<>();
-        setTreasureVictoryCardsInGame();
+//        setTreasureVictoryCardsInGame();
         try {
             serverSocket = new ServerSocket(0);
             ipAddress = InetAddress.getLocalHost().getHostAddress();
@@ -39,6 +39,7 @@ public class DominionServer {
     }
 
     public void acceptConnections() {
+        setTreasureVictoryCardsInGame();
         try {
             System.out.println("Accepting connections...");
             do {

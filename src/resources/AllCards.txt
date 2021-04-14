@@ -1,0 +1,15 @@
+Village
+Woodcutter
+Smithy
+Festival
+Laboratory
+Market
+Cellar
+Poacher
+Remodel
+Chapel
+Workshop
+Mine
+Moneylender
+Artisan
+Gardens

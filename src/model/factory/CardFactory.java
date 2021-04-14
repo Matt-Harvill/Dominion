@@ -32,20 +32,24 @@ public class CardFactory {
                             new Image(Main.class.getResource("/Platinum_Small.jpg").toURI().toString()), "All 12");
                 }
                 case "Estate": {
-                    return new VictoryCard(cardType, 2, 1, new Image(Main.class.getResource("/Estate.jpg").toURI().toString()),
+                    return new VictoryCard(cardType, 2, "1", new Image(Main.class.getResource("/Estate.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Estate_Small.jpg").toURI().toString()), "2player 8 3+player 12");
                 }
                 case "Duchy": {
-                    return new VictoryCard(cardType, 5, 3, new Image(Main.class.getResource("/Duchy.jpg").toURI().toString()),
+                    return new VictoryCard(cardType, 5, "3", new Image(Main.class.getResource("/Duchy.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Duchy_Small.jpg").toURI().toString()), "2player 8 3+player 12");
                 }
                 case "Province": {
-                    return new VictoryCard(cardType, 8, 6, new Image(Main.class.getResource("/Province.jpg").toURI().toString()),
+                    return new VictoryCard(cardType, 8, "6", new Image(Main.class.getResource("/Province.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Province_Small.jpg").toURI().toString()), "2player 8 3+player 12");
                 }
                 case "Colony": {
-                    return new VictoryCard(cardType, 11, 10, new Image(Main.class.getResource("/Colony.jpg").toURI().toString()),
+                    return new VictoryCard(cardType, 11, "10", new Image(Main.class.getResource("/Colony.jpg").toURI().toString()),
                             new Image(Main.class.getResource("/Colony_Small.jpg").toURI().toString()), "2player 8 3+player 12");
+                }
+                case "Gardens": {
+                    return new VictoryCard(cardType, 4, "numCards/10", new Image(Main.class.getResource("/Gardens.jpg").toURI().toString()),
+                            new Image(Main.class.getResource("/Gardens_Small.jpg").toURI().toString()), "2player 8 3+player 12");
                 }
                 case "Village": {
                     return new ActionCard(cardType, 3, "title_draw num_1  \n  title_action num_2", new Image(Main.class.getResource("/Village.jpg").toURI().toString()),

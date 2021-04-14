@@ -132,6 +132,9 @@ public class Player {
     public int getPurchasePower(){
         return purchasePower - amountSpentThisTurn + bonusPurchasePower;
     }
+    public int getTotalNumCards() {
+        return deck.getSize() + hand.getSize() + discardPile.getSize() + select.getSize() + inPlay.getSize();
+    }
     public int getPoints() {
         int points = 0;
         points+=getVictoryPoints(discardPile);

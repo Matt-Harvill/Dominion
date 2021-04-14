@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import model.card.action.ActionCard;
 import model.card.Card;
 import model.factory.CardFactory;
 
@@ -29,19 +28,19 @@ public class SelectCardsInGameController {
     Rectangle[] cards;
     List<Boolean> cardsSelected;
 
-    private List<ActionCard> allActionCards;
-    private List<ActionCard> cardsChosen;
+    private List<Card> allActionCards;
+    private List<Card> cardsChosen;
 
     private int currentPageNum = 1;
 
     public void initialize() throws IOException {
-        InputStream actionCardsInGame = (getClass().getResource("/AllActionCards.txt")).openStream();
+        InputStream actionCardsInGame = (getClass().getResource("/AllCards.txt")).openStream();
         Scanner scanner = new Scanner(actionCardsInGame);
 
         allActionCards = new ArrayList<>();
         while(scanner.hasNext()) {
             String cardName = scanner.next();
-            allActionCards.add((ActionCard) CardFactory.getCard(cardName));
+            allActionCards.add(CardFactory.getCard(cardName));
         }
 
         cards = new Rectangle[]{card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,
@@ -56,7 +55,7 @@ public class SelectCardsInGameController {
         if(Main.getServer()==null || Main.getServer().getCardsInGame().getDistinctActionCards().size()==0) {
             cardsChosen = new ArrayList<>();
         } else {
-            cardsChosen = Main.getServer().getCardsInGame().getDistinctActionCards();
+            cardsChosen = Main.getServer().getCardsInGame().getCollection();
         }
 
         for(int i=0; i<cardsChosen.size(); i++) {
@@ -118,7 +117,7 @@ public class SelectCardsInGameController {
         } else {
             cardsSelected.set(index,true);
             card.setStyle("-fx-stroke-width: 3; -fx-stroke: #54ff54;");
-            cardsChosen.add((ActionCard) cardObject);
+            cardsChosen.add(cardObject);
             Main.getServer().getCardsInGame().addCardToCollection(cardObject);
         }
 
