@@ -1,0 +1,35 @@
+.borderPaneBackground {
+    -fx-background-image: url("BackgroundLarger.jpg");
+    -fx-background-size: auto;
+}
+.mainStackPaneBackground {
+    -fx-background-image: url("Background.jpg");
+    -fx-border-width: 2;
+    -fx-border-color: white;
+}
+.labelDisplay {
+    -fx-fill: black;
+    -fx-border-radius: 15;
+    -fx-stroke-width: 1;
+    -fx-stroke: white;
+}
+.hostJoinSceneTitle {
+    -fx-font-size: 32;
+    -fx-font-style: italic;
+    -fx-fill: white;
+}
+.hostJoinSceneRegular {
+    -fx-fill: white;
+}
+.numBack {
+    -fx-fill: red;
+    -fx-border-radius: 15;
+    -fx-stroke-width: 1;
+    -fx-stroke: white;
+}
+
+.tab-pane *.tab-header-background
+{
+    -fx-background-color: #00000000;
+}
+

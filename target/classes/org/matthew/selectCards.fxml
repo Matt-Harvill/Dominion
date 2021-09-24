@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.matthew.controller.fxml.SelectCardsInGameController">
+   <bottom>
+      <HBox prefHeight="35.0" prefWidth="515.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="pageButton1" mnemonicParsing="false" onAction="#goToPage" text="Base" />
+            <Button fx:id="pageButton2" mnemonicParsing="false" onAction="#goToPage" text="Intrigue" />
+            <Button fx:id="pageButton3" mnemonicParsing="false" onAction="#goToPage" text="3" />
+            <Button fx:id="pageButton4" mnemonicParsing="false" onAction="#goToPage" text="4" />
+            <Button fx:id="pageButton5" mnemonicParsing="false" onAction="#goToPage" text="5" />
+            <Button fx:id="pageButton6" mnemonicParsing="false" onAction="#goToPage" text="6" />
+            <Button fx:id="pageButton7" mnemonicParsing="false" onAction="#goToPage" text="7" />
+            <Button fx:id="pageButton8" mnemonicParsing="false" onAction="#goToPage" text="8" />
+            <Button fx:id="pageButton9" mnemonicParsing="false" onAction="#goToPage" text="9" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <right>
+      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="515.0" BorderPane.alignment="CENTER">
+         <content>
+            <Pane prefHeight="800.0" prefWidth="500.0" styleClass="mainStackPaneBackground" stylesheets="@style1.css">
+               <children>
+                  <Rectangle fx:id="card1" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card2" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" layoutX="100.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card3" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" layoutX="200.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card4" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" layoutX="300.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card5" arcHeight="15.0" arcWidth="15.0" fill="DODGERBLUE" height="160.0" layoutX="400.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card6" arcHeight="15.0" arcWidth="15.0" fill="#1fff52" height="160.0" layoutY="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card7" arcHeight="15.0" arcWidth="15.0" fill="#1fff52" height="160.0" layoutX="100.0" layoutY="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card8" arcHeight="15.0" arcWidth="15.0" fill="#1fff52" height="160.0" layoutX="200.0" layoutY="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card9" arcHeight="15.0" arcWidth="15.0" fill="#1fff52" height="160.0" layoutX="300.0" layoutY="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card10" arcHeight="15.0" arcWidth="15.0" fill="#1fff52" height="160.0" layoutX="400.0" layoutY="160.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card21" arcHeight="15.0" arcWidth="15.0" fill="#ff281f" height="160.0" layoutY="640.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card12" arcHeight="15.0" arcWidth="15.0" fill="#e81fff" height="160.0" layoutX="100.0" layoutY="320.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card13" arcHeight="15.0" arcWidth="15.0" fill="#e81fff" height="160.0" layoutX="200.0" layoutY="320.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card14" arcHeight="15.0" arcWidth="15.0" fill="#e81fff" height="160.0" layoutX="300.0" layoutY="320.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card15" arcHeight="15.0" arcWidth="15.0" fill="#e81fff" height="160.0" layoutX="400.0" layoutY="320.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card16" arcHeight="15.0" arcWidth="15.0" fill="#e3ff1f" height="160.0" layoutY="480.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card17" arcHeight="15.0" arcWidth="15.0" fill="#e3ff1f" height="160.0" layoutX="100.0" layoutY="480.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card18" arcHeight="15.0" arcWidth="15.0" fill="#e3ff1f" height="160.0" layoutX="200.0" layoutY="480.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card19" arcHeight="15.0" arcWidth="15.0" fill="#e3ff1f" height="160.0" layoutX="300.0" layoutY="480.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card24" arcHeight="15.0" arcWidth="15.0" fill="#ff281f" height="160.0" layoutX="300.0" layoutY="640.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card25" arcHeight="15.0" arcWidth="15.0" fill="#ff281f" height="160.0" layoutX="400.0" layoutY="640.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card20" arcHeight="15.0" arcWidth="15.0" fill="#e3ff1f" height="160.0" layoutX="400.0" layoutY="480.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card11" arcHeight="15.0" arcWidth="15.0" fill="#e81fff" height="160.0" layoutY="320.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card22" arcHeight="15.0" arcWidth="15.0" fill="#ff281f" height="160.0" layoutX="100.0" layoutY="640.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <Rectangle fx:id="card23" arcHeight="15.0" arcWidth="15.0" fill="#ff281f" height="160.0" layoutX="200.0" layoutY="640.0" onMouseClicked="#cardClicked" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+   </right>
+</BorderPane>
