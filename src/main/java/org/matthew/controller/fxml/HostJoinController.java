@@ -7,6 +7,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import org.matthew.controller.IPRetriever;
 import org.matthew.model.card.Card;
 import org.matthew.server.ClientSideConnection;
 
@@ -99,7 +100,7 @@ public class HostJoinController {
                 System.out.println("You hosted the game");
                 try {
                     Main.startServer(maxNumPlayers);
-                    connectToServer(InetAddress.getLocalHost().getHostAddress(),String.valueOf(Main.getServer().getServerSocket().getLocalPort()));
+                    connectToServer(IPRetriever.getIPAddress()/*InetAddress.getLocalHost().getHostAddress()*/,String.valueOf(Main.getServer().getServerSocket().getLocalPort()));
                 } catch (Exception ex) {
                     System.out.println("Error starting/connecting to your own game!");
                 }
@@ -120,6 +121,7 @@ public class HostJoinController {
             Main.setClientSideConnection(csc);
             Main.goToGameScene();
         } catch (Exception ex) {
+            System.out.println("Error connecting to server");
             incorrectServerInfoAlert.setVisible(true);
         }
     }
